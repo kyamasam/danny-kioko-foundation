@@ -51,28 +51,6 @@ export function PageHeader({ activePage }: PageHeaderProps) {
         </h1>
       </div>
 
-      <div className="flex items-center gap-3">
-        {activePage === "books" && (
-          <>
-            <StatChip icon={TrendingUp} label="Reading" value="2" />
-            <StatChip icon={Star} label="Finished" value="1" />
-            <StatChip icon={Clock} label="Queued" value="1" />
-          </>
-        )}
-        {activePage === "podcasts" && (
-          <>
-            <StatChip icon={Headphones} label="Shows" value="4" />
-            <StatChip icon={TrendingUp} label="Episodes" value="2k+" />
-          </>
-        )}
-        {activePage === "blogs" && (
-          <>
-            <StatChip icon={FileText} label="Published" value="2" />
-            <StatChip icon={PenLine} label="Drafts" value="2" />
-            <StatChip icon={TrendingUp} label="Reads" value="2.1k" />
-          </>
-        )}
-      </div>
     </div>
   );
 }
