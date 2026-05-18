@@ -376,7 +376,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Podcasts Section - With Clean Audio Hook */}
       <section id="podcasts" className="bg-stone-50 py-20">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-12 text-center">
@@ -400,7 +399,10 @@ export default function LandingPage() {
           {recentPodcasts[0] && (
             <div className="mb-8">
               <div className="group grid grid-cols-12 gap-6 border-2 border-stone-200 bg-white p-6 transition-all hover:border-amber-500">
-                <div className="col-span-3">
+                <Link
+                  href={`/podcasts/${recentPodcasts[0].id}`}
+                  className="col-span-3 cursor-pointer"
+                >
                   <div className="relative aspect-square w-full overflow-hidden bg-stone-100">
                     {recentPodcasts[0].cover_image_url ? (
                       <img
@@ -414,15 +416,18 @@ export default function LandingPage() {
                       </div>
                     )}
                   </div>
-                </div>
-                <div className="col-span-7 flex flex-col justify-center">
+                </Link>
+                <Link
+                  href={`/podcasts/${recentPodcasts[0].id}`}
+                  className="col-span-7 flex cursor-pointer flex-col justify-center"
+                >
                   <div className="flex items-center gap-2">
                     <span className="text-xs font-mono font-bold text-amber-600">
                       FEATURED EPISODE
                     </span>
                     <div className="h-px flex-1 bg-stone-200" />
                   </div>
-                  <h3 className="mt-2 text-xl font-bold text-stone-900">
+                  <h3 className="mt-2 text-xl font-bold text-stone-900 group-hover:text-amber-600 transition-colors">
                     {recentPodcasts[0].title}
                   </h3>
                   <p className="mt-2 text-sm text-stone-500">
@@ -436,9 +441,9 @@ export default function LandingPage() {
                     <span>•</span>
                     <span>Episode {recentPodcasts[0].episode_number}</span>
                   </div>
-                </div>
+                </Link>
                 <div className="col-span-2 flex items-center justify-end">
-                  <Link href={`/dashboard/podcasts/${recentPodcasts[0].id}`}>
+                  <Link href={`/podcasts/${recentPodcasts[0].id}`}>
                     <Play className="h-10 w-10 text-amber-500 opacity-0 transition-all group-hover:opacity-100 group-hover:scale-110" />
                   </Link>
                 </div>
@@ -464,14 +469,18 @@ export default function LandingPage() {
                   return (
                     <div
                       key={podcast.id}
-                      className={`group border border-stone-200 bg-white p-4 transition-all hover:border-amber-500 ${
+                      className={`group border border-stone-200 bg-white transition-all hover:border-amber-500 ${
                         isCurrentlyPlaying
                           ? "border-amber-500 bg-amber-50/30"
                           : ""
                       }`}
                     >
-                      <div className="flex items-center gap-4">
-                        <div className="relative h-14 w-14 shrink-0 overflow-hidden bg-stone-100">
+                      <div className="flex items-center gap-4 p-4">
+                        {/* Clickable Cover Image */}
+                        <Link
+                          href={`/podcasts/${podcast.id}`}
+                          className="relative h-14 w-14 shrink-0 overflow-hidden bg-stone-100 transition-opacity hover:opacity-80"
+                        >
                           {podcast.cover_image_url ? (
                             <img
                               src={podcast.cover_image_url}
@@ -483,8 +492,13 @@ export default function LandingPage() {
                               <Mic2 className="h-5 w-5 text-amber-500" />
                             </div>
                           )}
-                        </div>
-                        <div className="flex-1">
+                        </Link>
+
+                        {/* Clickable Info Area */}
+                        <Link
+                          href={`/podcasts/${podcast.id}`}
+                          className="flex-1 cursor-pointer"
+                        >
                           <div className="flex items-center gap-2">
                             <span className="text-xs font-mono font-bold text-amber-600">
                               EP {podcast.episode_number}
@@ -495,18 +509,20 @@ export default function LandingPage() {
                               </span>
                             )}
                           </div>
-                          <h4 className="text-sm font-semibold text-stone-900 line-clamp-1">
+                          <h4 className="text-sm font-semibold text-stone-900 line-clamp-1 group-hover:text-amber-600 transition-colors">
                             {podcast.title}
                           </h4>
                           <p className="text-xs text-stone-500">
                             {podcast.host}
                           </p>
-                        </div>
+                        </Link>
 
-                        {/* Play/Pause Button */}
+                        {/* Play/Pause Button - Separate from clickable area */}
                         {isPlayable ? (
                           <button
-                            onClick={() => {
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
                               if (isCurrentlyPlaying) {
                                 stop();
                               } else {
@@ -514,7 +530,7 @@ export default function LandingPage() {
                               }
                             }}
                             disabled={isLoading && !isCurrentlyPlaying}
-                            className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-500 text-white transition-all hover:bg-amber-600 hover:scale-105 disabled:opacity-50"
+                            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-amber-500 text-white transition-all hover:bg-amber-600 hover:scale-105 disabled:opacity-50"
                           >
                             {isLoading && !isCurrentlyPlaying ? (
                               <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
@@ -525,7 +541,10 @@ export default function LandingPage() {
                             )}
                           </button>
                         ) : (
-                          <Link href={`/dashboard/podcasts/${podcast.id}`}>
+                          <Link
+                            href={`/podcasts/${podcast.id}`}
+                            className="shrink-0"
+                          >
                             <button className="flex h-8 w-8 items-center justify-center rounded-full border border-stone-300 text-stone-400 transition-all hover:border-amber-500 hover:text-amber-500">
                               <Play className="h-4 w-4" />
                             </button>
@@ -535,7 +554,7 @@ export default function LandingPage() {
 
                       {/* Audio Player Section - Shows only for actively playing podcast */}
                       {isPlayable && isCurrentlyPlaying && (
-                        <div className="mt-4 animate-in fade-in duration-300 border-t border-amber-200 pt-4">
+                        <div className="animate-in fade-in duration-300 border-t border-amber-200 px-4 pb-4 pt-3">
                           {/* Now Playing Label */}
                           <div className="mb-3 flex items-center gap-2">
                             <div className="flex h-2 w-2">
@@ -548,7 +567,7 @@ export default function LandingPage() {
                             <div className="h-px flex-1 bg-amber-200" />
                           </div>
 
-                          {/* Custom Progress Bar Only - No native audio controls */}
+                          {/* Custom Progress Bar */}
                           <AudioProgress
                             currentTime={currentTime}
                             duration={duration}
