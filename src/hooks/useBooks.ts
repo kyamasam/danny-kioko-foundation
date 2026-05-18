@@ -12,7 +12,6 @@ export function useBooks() {
   const [error, setError] = useState<string | null>(null);
   const supabase = createClient();
 
-  // Fetch all books
   const fetchBooks = useCallback(async () => {
     try {
       setLoading(true);
@@ -34,7 +33,6 @@ export function useBooks() {
     }
   }, [supabase]);
 
-  // Add a new book
   const addBook = useCallback(
     async (book: CreateBookInput) => {
       try {
@@ -44,12 +42,11 @@ export function useBooks() {
           .from("books")
           .insert([
             {
-              title: book.title,
-              author: book.author,
               price: book.price || 0,
               sale_price: book.sale_price || 0,
               cover_page_url: book.cover_page_url || null,
               images: book.images || null,
+              sources: book.sources || [], // Add sources here
             },
           ])
           .select()
@@ -68,7 +65,6 @@ export function useBooks() {
     [supabase],
   );
 
-  // Update a book
   const updateBook = useCallback(
     async (id: number, updates: UpdateBookInput) => {
       try {
@@ -94,7 +90,6 @@ export function useBooks() {
     [supabase],
   );
 
-  // Delete a book
   const deleteBook = useCallback(
     async (id: number) => {
       try {
@@ -118,26 +113,6 @@ export function useBooks() {
     [supabase],
   );
 
-  // Get book by ID
-  const getBookById = useCallback(
-    async (id: number) => {
-      try {
-        const { data, error: fetchError } = await supabase
-          .from("books")
-          .select("*")
-          .eq("id", id)
-          .single();
-
-        if (fetchError) throw fetchError;
-        return { success: true, data };
-      } catch (err: any) {
-        console.error("Error fetching book:", err);
-        return { success: false, error: err.message };
-      }
-    },
-    [supabase],
-  );
-
   useEffect(() => {
     fetchBooks();
   }, [fetchBooks]);
@@ -150,6 +125,5 @@ export function useBooks() {
     addBook,
     updateBook,
     deleteBook,
-    getBookById,
   };
 }
