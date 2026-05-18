@@ -33,7 +33,6 @@ import { Badge } from "@/components/ui/badge";
 interface Book {
   id: number;
   title: string;
-  slug: string;
   short_description: string;
   price: number;
   sale_price: number;
@@ -209,7 +208,7 @@ export default function LandingPage() {
 
                 <div className="space-y-3">
                   {recentBooks.slice(0, 2).map((book) => (
-                    <Link key={book.id} href={`/books/${book.slug}`}>
+                    <Link key={book.id} href={`/books/${book.id}`}>
                       <div className="group flex cursor-pointer items-center gap-3 border border-stone-200 bg-white p-2.5 transition-colors hover:border-emerald-700">
                         {/* Book Mock Block */}
                         <div className="h-12 w-9 shrink-0 bg-stone-100 border border-stone-200 overflow-hidden relative">
@@ -333,7 +332,7 @@ export default function LandingPage() {
           {/* Two Column Secondary Books */}
           <div className="grid gap-6 md:grid-cols-2">
             {recentBooks.slice(1, 3).map((book, idx) => (
-              <Link key={book.id} href={`/books/${book.slug}`}>
+              <Link key={book.id} href={`/books/${book.id}`}>
                 <div className="group flex cursor-pointer items-start gap-5  bg-white p-5 transition-all hover:border-amber-500">
                   <div className="h-28 w-20 shrink-0 overflow-hidden border border-stone-200 bg-stone-50">
                     {book.cover_page_url ? (
