@@ -1,6 +1,7 @@
 "use client";
-
-import { useState, useEffect } from "react";
+import { useAudioPlayer } from "@/hooks/useAudioPlayer";
+import AudioProgress from "@/components/AudioProgress";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -22,6 +23,7 @@ import {
   Target,
   TrendingUp,
   BookOpenIcon,
+  Pause,
   Pencil,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -43,6 +45,7 @@ interface Podcast {
   title: string;
   host: string;
   cover_image_url: string;
+  audio_url: string;
   duration: string;
   is_free: boolean;
   episode_number: number;
@@ -62,11 +65,17 @@ export default function LandingPage() {
   const [recentBooks, setRecentBooks] = useState<Book[]>([]);
   const [recentPodcasts, setRecentPodcasts] = useState<Podcast[]>([]);
   const [recentBlogs, setRecentBlogs] = useState<Blog[]>([]);
+
   const [loading, setLoading] = useState({
     books: true,
     podcasts: true,
     blogs: true,
   });
+
+  const { playingId, isLoading, play, stop, currentTime, duration, seek } =
+    useAudioPlayer();
+
+
 
   useEffect(() => {
     const fetchRecentBooks = async () => {
@@ -367,7 +376,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Podcasts Section - With Featured Episode */}
+      {/* Podcasts Section - With Clean Audio Hook */}
       <section id="podcasts" className="bg-stone-50 py-20">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-12 text-center">
@@ -390,50 +399,50 @@ export default function LandingPage() {
           {/* Featured Episode (if exists) */}
           {recentPodcasts[0] && (
             <div className="mb-8">
-              <Link href={`/dashboard/podcasts/${recentPodcasts[0].id}`}>
-                <div className="group grid cursor-pointer grid-cols-12 gap-6 border-2 border-stone-200 bg-white p-6 transition-all hover:border-amber-500">
-                  <div className="col-span-3">
-                    <div className="relative aspect-square w-full overflow-hidden bg-stone-100">
-                      {recentPodcasts[0].cover_image_url ? (
-                        <img
-                          src={recentPodcasts[0].cover_image_url}
-                          alt={recentPodcasts[0].title}
-                          className="h-full w-full object-cover"
-                        />
-                      ) : (
-                        <div className="flex h-full items-center justify-center bg-amber-50">
-                          <Mic2 className="h-10 w-10 text-amber-500" />
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                  <div className="col-span-7 flex flex-col justify-center">
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs font-mono font-bold text-amber-600">
-                        FEATURED EPISODE
-                      </span>
-                      <div className="h-px flex-1 bg-stone-200" />
-                    </div>
-                    <h3 className="mt-2 text-xl font-bold text-stone-900 group-hover:text-amber-600">
-                      {recentPodcasts[0].title}
-                    </h3>
-                    <p className="mt-2 text-sm text-stone-500">
-                      with {recentPodcasts[0].host}
-                    </p>
-                    <div className="mt-3 flex items-center gap-3 text-sm text-stone-500">
-                      <span className="flex items-center gap-1">
-                        <Clock className="h-3 w-3" />
-                        {recentPodcasts[0].duration}
-                      </span>
-                      <span>•</span>
-                      <span>Episode {recentPodcasts[0].episode_number}</span>
-                    </div>
-                  </div>
-                  <div className="col-span-2 flex items-center justify-end">
-                    <Play className="h-10 w-10 text-amber-500 opacity-0 transition-all group-hover:opacity-100 group-hover:scale-110" />
+              <div className="group grid grid-cols-12 gap-6 border-2 border-stone-200 bg-white p-6 transition-all hover:border-amber-500">
+                <div className="col-span-3">
+                  <div className="relative aspect-square w-full overflow-hidden bg-stone-100">
+                    {recentPodcasts[0].cover_image_url ? (
+                      <img
+                        src={recentPodcasts[0].cover_image_url}
+                        alt={recentPodcasts[0].title}
+                        className="h-full w-full object-cover"
+                      />
+                    ) : (
+                      <div className="flex h-full items-center justify-center bg-amber-50">
+                        <Mic2 className="h-10 w-10 text-amber-500" />
+                      </div>
+                    )}
                   </div>
                 </div>
-              </Link>
+                <div className="col-span-7 flex flex-col justify-center">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-mono font-bold text-amber-600">
+                      FEATURED EPISODE
+                    </span>
+                    <div className="h-px flex-1 bg-stone-200" />
+                  </div>
+                  <h3 className="mt-2 text-xl font-bold text-stone-900">
+                    {recentPodcasts[0].title}
+                  </h3>
+                  <p className="mt-2 text-sm text-stone-500">
+                    with {recentPodcasts[0].host}
+                  </p>
+                  <div className="mt-3 flex items-center gap-3 text-sm text-stone-500">
+                    <span className="flex items-center gap-1">
+                      <Clock className="h-3 w-3" />
+                      {recentPodcasts[0].duration}
+                    </span>
+                    <span>•</span>
+                    <span>Episode {recentPodcasts[0].episode_number}</span>
+                  </div>
+                </div>
+                <div className="col-span-2 flex items-center justify-end">
+                  <Link href={`/dashboard/podcasts/${recentPodcasts[0].id}`}>
+                    <Play className="h-10 w-10 text-amber-500 opacity-0 transition-all group-hover:opacity-100 group-hover:scale-110" />
+                  </Link>
+                </div>
+              </div>
             </div>
           )}
 
@@ -446,45 +455,110 @@ export default function LandingPage() {
                     className="h-24 animate-pulse border border-stone-200 bg-white"
                   />
                 ))
-              : recentPodcasts.slice(1, 5).map((podcast) => (
-                  <Link
-                    key={podcast.id}
-                    href={`/dashboard/podcasts/${podcast.id}`}
-                  >
-                    <div className="group flex cursor-pointer items-center gap-4 border border-stone-200 bg-white p-4 transition-all hover:border-amber-500">
-                      <div className="relative h-14 w-14 shrink-0 overflow-hidden bg-stone-100">
-                        {podcast.cover_image_url ? (
-                          <img
-                            src={podcast.cover_image_url}
-                            alt={podcast.title}
-                            className="h-full w-full object-cover"
-                          />
-                        ) : (
-                          <div className="flex h-full items-center justify-center bg-amber-50">
-                            <Mic2 className="h-5 w-5 text-amber-500" />
-                          </div>
-                        )}
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs font-mono font-bold text-amber-600">
-                            EP {podcast.episode_number}
-                          </span>
-                          {!podcast.is_free && (
-                            <span className="text-[10px] font-medium text-emerald-600">
-                              Premium
-                            </span>
+              : recentPodcasts.slice(1, 5).map((podcast) => {
+                  const isPlayable = podcast.audio_url?.includes(
+                    "storage/v1/object/public/library/podcasts/",
+                  );
+                  const isCurrentlyPlaying = playingId === podcast.id;
+
+                  return (
+                    <div
+                      key={podcast.id}
+                      className={`group border border-stone-200 bg-white p-4 transition-all hover:border-amber-500 ${
+                        isCurrentlyPlaying
+                          ? "border-amber-500 bg-amber-50/30"
+                          : ""
+                      }`}
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="relative h-14 w-14 shrink-0 overflow-hidden bg-stone-100">
+                          {podcast.cover_image_url ? (
+                            <img
+                              src={podcast.cover_image_url}
+                              alt={podcast.title}
+                              className="h-full w-full object-cover"
+                            />
+                          ) : (
+                            <div className="flex h-full items-center justify-center bg-amber-50">
+                              <Mic2 className="h-5 w-5 text-amber-500" />
+                            </div>
                           )}
                         </div>
-                        <h4 className="text-sm font-semibold text-stone-900 line-clamp-1 group-hover:text-amber-600">
-                          {podcast.title}
-                        </h4>
-                        <p className="text-xs text-stone-500">{podcast.host}</p>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs font-mono font-bold text-amber-600">
+                              EP {podcast.episode_number}
+                            </span>
+                            {!podcast.is_free && (
+                              <span className="text-[10px] font-medium text-emerald-600">
+                                Premium
+                              </span>
+                            )}
+                          </div>
+                          <h4 className="text-sm font-semibold text-stone-900 line-clamp-1">
+                            {podcast.title}
+                          </h4>
+                          <p className="text-xs text-stone-500">
+                            {podcast.host}
+                          </p>
+                        </div>
+
+                        {/* Play/Pause Button */}
+                        {isPlayable ? (
+                          <button
+                            onClick={() => {
+                              if (isCurrentlyPlaying) {
+                                stop();
+                              } else {
+                                play(podcast.id, podcast.audio_url);
+                              }
+                            }}
+                            disabled={isLoading && !isCurrentlyPlaying}
+                            className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-500 text-white transition-all hover:bg-amber-600 hover:scale-105 disabled:opacity-50"
+                          >
+                            {isLoading && !isCurrentlyPlaying ? (
+                              <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                            ) : isCurrentlyPlaying ? (
+                              <Pause className="h-4 w-4 fill-white" />
+                            ) : (
+                              <Play className="h-4 w-4 fill-white ml-0.5" />
+                            )}
+                          </button>
+                        ) : (
+                          <Link href={`/dashboard/podcasts/${podcast.id}`}>
+                            <button className="flex h-8 w-8 items-center justify-center rounded-full border border-stone-300 text-stone-400 transition-all hover:border-amber-500 hover:text-amber-500">
+                              <Play className="h-4 w-4" />
+                            </button>
+                          </Link>
+                        )}
                       </div>
-                      <Play className="h-4 w-4 text-stone-400 group-hover:text-amber-500" />
+
+                      {/* Audio Player Section - Shows only for actively playing podcast */}
+                      {isPlayable && isCurrentlyPlaying && (
+                        <div className="mt-4 animate-in fade-in duration-300 border-t border-amber-200 pt-4">
+                          {/* Now Playing Label */}
+                          <div className="mb-3 flex items-center gap-2">
+                            <div className="flex h-2 w-2">
+                              <div className="absolute h-2 w-2 animate-ping rounded-full bg-amber-500 opacity-75" />
+                              <div className="relative h-2 w-2 rounded-full bg-amber-500" />
+                            </div>
+                            <span className="text-xs font-medium text-amber-600">
+                              Now Playing
+                            </span>
+                            <div className="h-px flex-1 bg-amber-200" />
+                          </div>
+
+                          {/* Custom Progress Bar Only - No native audio controls */}
+                          <AudioProgress
+                            currentTime={currentTime}
+                            duration={duration}
+                            onSeek={seek}
+                          />
+                        </div>
+                      )}
                     </div>
-                  </Link>
-                ))}
+                  );
+                })}
           </div>
         </div>
       </section>
