@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Instrument+Sans:wght@300;400;500&display=swap');
+
+
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -116,6 +119,38 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
+
+@layer utilities {
+  .animate-in {
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  
+  .fade-in { animation-name: fadeIn; }
+  .slide-in-from-top { animation-name: slideFromTop; }
+  .slide-in-from-bottom-3 { animation-name: slideFromBottom; }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideFromTop {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes slideFromBottom {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .delay-75 { animation-delay: 75ms; }
+  .delay-150 { animation-delay: 150ms; }
+  .delay-300 { animation-delay: 300ms; }
+}
+
 
 @layer base {
   * {
