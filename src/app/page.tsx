@@ -21,6 +21,8 @@ import {
   Briefcase,
   Target,
   TrendingUp,
+  BookOpenIcon,
+  Pencil,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -109,7 +111,7 @@ export default function LandingPage() {
 
   const formatPrice = (price?: number) => {
     if (!price || price === 0) return "Free";
-    return `KSh ${(price * 128).toLocaleString()}`; // Convert to KSh roughly
+    return `KSh ${(price).toLocaleString()}`; // Convert to KSh roughly
   };
 
   const latestFeaturedBlog = recentBlogs[0];
@@ -143,357 +145,209 @@ export default function LandingPage() {
               About
             </Link>
           </nav>
-          <Link href="/dashboard">
+          <Link href="/contact">
             <Button className="rounded-full bg-stone-900 px-6 text-white hover:bg-stone-800 transition-all">
-              Member Dashboard
+              Talk to us
             </Button>
           </Link>
         </div>
       </header>
 
       {/* Hero Section with Featured Content */}
-      <section className="relative border-b border-stone-200 bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-16 lg:py-24">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-            {/* Left Column - Hero Text */}
-            <div className="flex flex-col justify-center">
-              {latestFeaturedBlog && (
-                <Link
-                  href={`/dashboard/blogs/${latestFeaturedBlog.slug}`}
-                  className="group mb-6 inline-flex w-fit items-center gap-3 border border-stone-200 bg-stone-50 px-3 py-1.5 text-sm hover:border-stone-400 transition"
-                >
-                  <span className="bg-stone-900 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
-                    New
-                  </span>
-                  <span className="text-stone-600 line-clamp-1">
-                    {latestFeaturedBlog.title}
-                  </span>
-                  <ArrowUpRight className="h-3.5 w-3.5 text-stone-400 group-hover:text-stone-900" />
-                </Link>
-              )}
-              <h1 className="text-4xl font-bold tracking-tight text-stone-900 sm:text-5xl lg:text-6xl">
-                Practical Blueprints for{" "}
-                <span className="border-b-4 border-amber-500">
-                  Wealth Generation
-                </span>
+      <section className="border-b border-stone-200 bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-12 lg:py-16">
+          {/* Clean, Modular Grid without unnecessary spacing */}
+          <div className="grid gap-8 lg:grid-cols-12 items-stretch">
+            {/* Center Column: Solid Typographic Headline (No Gradients) */}
+            <div className="lg:col-span-8  border-stone-200  flex flex-col justify-center bg-white">
+              <h1 className="text-3xl font-black tracking-tight text-stone-950 sm:text-4xl lg:text-5xl uppercase leading-none">
+                Practical Blueprints for Wealth Generation
               </h1>
-              <p className="mt-6 text-lg leading-relaxed text-stone-600">
-                Drawing from 30+ years of financial leadership at Kenya's top
-                institutions, I provide actionable frameworks for entrepreneurs,
-                investors, and career professionals.
+
+              <p className="mt-4 text-xs sm:text-sm leading-relaxed text-stone-600 font-medium">
+                Drawing from over three decades of definitive executive command
+                across Kenya's cornerstone financial institutions, I formulate
+                strategic risk mitigation and asset growth frameworks for
+                builders and professional investors.
               </p>
-              <div className="mt-8 flex flex-wrap gap-4">
+
+              {/* Flat Box Action Containers */}
+              <div className="mt-6 flex flex-wrap gap-2">
                 <Link href="#books">
-                  <Button className="rounded-full bg-amber-500 px-8 text-stone-900 hover:bg-amber-400">
-                    Explore Books
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                  <Button className="rounded-none bg-emerald-700 px-4 py-5 text-xs font-bold uppercase tracking-wider text-white hover:bg-emerald-800 transition-colors shadow-none">
+                    Browse Books
                   </Button>
                 </Link>
-                <Link href="#about">
+                <Link href="#podcasts">
                   <Button
                     variant="outline"
-                    className="rounded-full border-stone-300"
+                    className="rounded-none border-stone-300 bg-white px-4 py-5 text-xs font-bold uppercase tracking-wider text-stone-700 hover:bg-stone-50 transition-colors shadow-none"
                   >
-                    Meet the Author
+                    Audio Catalog
                   </Button>
                 </Link>
               </div>
-
-              {/* Trust Indicators */}
-              <div className="mt-8 flex flex-wrap gap-6 border-t border-stone-100 pt-8">
-                <div className="flex items-center gap-2">
-                  <Briefcase className="h-4 w-4 text-amber-600" />
-                  <span className="text-xs text-stone-500">
-                    Former CBK Finance Director
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Target className="h-4 w-4 text-amber-600" />
-                  <span className="text-xs text-stone-500">Ex-KDIC CEO</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <TrendingUp className="h-4 w-4 text-amber-600" />
-                  <span className="text-xs text-stone-500">30+ Years Exp</span>
-                </div>
-              </div>
             </div>
 
-            {/* Right Column - Feature Image or Book Cover */}
-            <div className="relative flex items-center justify-center">
-              <div className="relative h-80 w-80 overflow-hidden border-2 border-stone-200 bg-stone-100 shadow-xl">
-                {recentBooks[0]?.cover_page_url ? (
-                  <img
-                    src={recentBooks[0].cover_page_url}
-                    alt={recentBooks[0].title}
-                    className="h-full w-full object-cover"
-                  />
-                ) : (
-                  <div className="flex h-full flex-col items-center justify-center p-8 text-center">
-                    <BookOpen className="mb-4 h-12 w-12 text-stone-400" />
-                    <p className="text-sm text-stone-500">
-                      Featured Publication
-                    </p>
-                    <p className="mt-2 text-xs text-stone-400">
-                      How To Start and Run Your Own Business
-                    </p>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+            {/* Right Column: Visual Inventory Cards */}
+            <div className="lg:col-span-3 border border-stone-200 p-6 flex flex-col justify-between bg-stone-50/50">
+              <div>
+                <span className="text-[10px] font-mono text-stone-400 uppercase tracking-widest block font-bold mb-4">
+                  Featured Library
+                </span>
 
-      {/* Books Section - With Real Cover Images */}
-      <section id="books" className="bg-stone-50 py-20">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-12 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
-            <div>
-              <Badge className="mb-3 rounded-full bg-amber-100 text-amber-700">
-                Publications
-              </Badge>
-              <h2 className="text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl">
-                Featured Books
-              </h2>
-              <p className="mt-2 text-stone-600">
-                Essential reads for entrepreneurs and financial planners
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-3">
-              <a
-                href="https://amazon.com"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-1 text-sm text-stone-600 hover:text-stone-900"
-              >
-                Amazon <ExternalLink className="h-3 w-3" />
-              </a>
-              <a
-                href="https://nuriabooks.com"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-1 text-sm text-stone-600 hover:text-stone-900"
-              >
-                Nuria Bookstore <ExternalLink className="h-3 w-3" />
-              </a>
-            </div>
-          </div>
+                <div className="space-y-3">
+                  {recentBooks.slice(0, 2).map((book) => (
+                    <Link key={book.id} href={`/dashboard/books/${book.id}`}>
+                      <div className="group flex cursor-pointer items-center gap-3 border border-stone-200 bg-white p-2.5 transition-colors hover:border-emerald-700">
+                        {/* Book Mock Block */}
+                        <div className="h-12 w-9 shrink-0 bg-stone-100 border border-stone-200 overflow-hidden relative">
+                          {book.cover_page_url ? (
+                            <img
+                              src={book.cover_page_url}
+                              alt={book.title}
+                              className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-200"
+                            />
+                          ) : (
+                            <div className="flex h-full w-full items-center justify-center text-stone-300">
+                              <BookOpen className="h-3 w-3 stroke-[1.5]" />
+                            </div>
+                          )}
+                        </div>
 
-          {/* Primary Feature Books */}
-          <div className="mb-16 grid gap-8 md:grid-cols-2">
-            {/* Business Book Card */}
-            <div className="group overflow-hidden border border-stone-200 bg-white transition-all hover:shadow-md">
-              <div className="grid grid-cols-2 gap-0">
-                <div className="relative aspect-[3/4] overflow-hidden bg-stone-100">
-                  {recentBooks[0]?.cover_page_url ? (
-                    <img
-                      src={recentBooks[0].cover_page_url}
-                      alt={recentBooks[0].title}
-                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                  ) : (
-                    <div className="flex h-full flex-col items-center justify-center bg-amber-50 p-4 text-center">
-                      <BookOpen className="mb-2 h-8 w-8 text-amber-600" />
-                      <span className="text-xs font-medium text-amber-700">
-                        Cover Art
-                      </span>
-                    </div>
-                  )}
-                </div>
-                <div className="flex flex-col p-6">
-                  <Badge className="mb-3 w-fit rounded-full bg-amber-100 text-amber-700">
-                    Volume I
-                  </Badge>
-                  <h3 className="mb-2 text-xl font-bold text-stone-900">
-                    How To Start and Run Your Own Business
-                  </h3>
-                  <p className="mb-4 text-sm text-stone-600 line-clamp-4">
-                    A comprehensive manual for aspiring business owners. From
-                    creating a vision to executing key operational systems.
-                  </p>
-                  <div className="mt-auto flex items-center justify-between">
-                    <Link href="/dashboard/books">
-                      <span className="text-sm font-medium text-amber-600 hover:text-amber-700">
-                        Learn More →
-                      </span>
-                    </Link>
-                    <span className="text-xs text-stone-500">
-                      Paperback & Digital
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Finance Book Card */}
-            <div className="group overflow-hidden border border-stone-200 bg-white transition-all hover:shadow-md">
-              <div className="grid grid-cols-2 gap-0">
-                <div className="relative aspect-[3/4] overflow-hidden bg-stone-100">
-                  {recentBooks[1]?.cover_page_url ? (
-                    <img
-                      src={recentBooks[1].cover_page_url}
-                      alt={recentBooks[1].title}
-                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                  ) : (
-                    <div className="flex h-full flex-col items-center justify-center bg-emerald-50 p-4 text-center">
-                      <TrendingUp className="mb-2 h-8 w-8 text-emerald-600" />
-                      <span className="text-xs font-medium text-emerald-700">
-                        Cover Art
-                      </span>
-                    </div>
-                  )}
-                </div>
-                <div className="flex flex-col p-6">
-                  <Badge className="mb-3 w-fit rounded-full bg-emerald-100 text-emerald-700">
-                    Volume II
-                  </Badge>
-                  <h3 className="mb-2 text-xl font-bold text-stone-900">
-                    Personal Financial and Retirement Planning
-                  </h3>
-                  <p className="mb-4 text-sm text-stone-600 line-clamp-4">
-                    Strategic frameworks for asset protection and passive wealth
-                    acquisition.
-                  </p>
-                  <div className="mt-auto flex items-center justify-between">
-                    <Link href="/dashboard/books">
-                      <span className="text-sm font-medium text-emerald-600 hover:text-emerald-700">
-                        Learn More →
-                      </span>
-                    </Link>
-                    <span className="text-xs text-stone-500">
-                      Paperback & Digital
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Additional Books Grid */}
-          {recentBooks.length > 2 && (
-            <div>
-              <h3 className="mb-6 text-sm font-semibold uppercase tracking-wide text-stone-500">
-                More Publications
-              </h3>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {recentBooks.slice(2).map((book) => (
-                  <Link key={book.id} href={`/dashboard/books/${book.id}`}>
-                    <div className="group flex cursor-pointer items-center gap-4 border border-stone-200 bg-white p-4 transition-all hover:border-stone-400 hover:shadow-sm">
-                      <div className="h-16 w-12 shrink-0 overflow-hidden bg-stone-100">
-                        {book.cover_page_url ? (
-                          <img
-                            src={book.cover_page_url}
-                            alt={book.title}
-                            className="h-full w-full object-cover"
-                          />
-                        ) : (
-                          <div className="flex h-full items-center justify-center bg-stone-100">
-                            <BookOpen className="h-5 w-5 text-stone-400" />
-                          </div>
-                        )}
+                        <div className="min-w-0">
+                          <p className="text-xs font-bold text-stone-900 line-clamp-2 tracking-tight transition-colors group-hover:text-emerald-700">
+                            {book.title}
+                          </p>
+                        </div>
                       </div>
-                      <div className="flex-1">
-                        <h4 className="text-sm font-medium text-stone-900 line-clamp-1">
-                          {book.title}
-                        </h4>
-                        <p className="text-xs text-stone-500">
-                          {formatPrice(book.sale_price || book.price)}
-                        </p>
-                      </div>
-                      <ArrowUpRight className="h-4 w-4 text-stone-400 opacity-0 transition group-hover:opacity-100" />
-                    </div>
-                  </Link>
-                ))}
+                    </Link>
+                  ))}
+                </div>
               </div>
+
+              <Link
+                href="#books"
+                className="mt-6 block text-center text-xs font-mono font-bold uppercase tracking-wider text-emerald-700 hover:text-orange-600 transition-colors bg-white border border-stone-200 py-2"
+              >
+                View All Manifests
+              </Link>
             </div>
-          )}
+          </div>
         </div>
       </section>
 
       {/* Podcasts Section - With Images */}
-      <section id="podcasts" className="bg-white py-20">
+      {/* Books Section - Magazine Spread */}
+      <section id="books" className="bg-stone-50 py-24">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-12 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
-            <div>
-              <Badge className="mb-3 rounded-full bg-blue-100 text-blue-700">
-                <Headphones className="mr-1 h-3 w-3" />
-                Audio Content
-              </Badge>
-              <h2 className="text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl">
-                Podcasts & Panels
-              </h2>
-              <p className="mt-2 text-stone-600">
-                Listen to in-depth conversations on finance and business
-              </p>
-            </div>
-            <Link
-              href="/dashboard/podcasts"
-              className="flex items-center gap-1 text-sm font-medium text-stone-600 hover:text-stone-900"
-            >
-              View all episodes
-              <ChevronRight className="h-4 w-4" />
-            </Link>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {loading.podcasts
-              ? [1, 2, 3].map((i) => (
+          {/* Hero Book - Feature Treatment */}
+          {recentBooks[0] && (
+            <Link href={`/dashboard/books/${recentBooks[0].id}`}>
+              <div className="group mb-12 grid cursor-pointer grid-cols-2 overflow-hidden border-2 border-stone-200 bg-white">
+                {/* Large Feature Image */}
+                <div className="relative bg-stone-100">
+                  {/* Background Image */}
                   <div
-                    key={i}
-                    className="h-32 animate-pulse border border-stone-200 bg-stone-50"
+                    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                    style={{
+                      backgroundImage: recentBooks[0]?.cover_page_url
+                        ? `url(${recentBooks[0].cover_page_url})`
+                        : "none",
+                    }}
                   />
-                ))
-              : recentPodcasts.map((podcast) => (
-                  <Link
-                    key={podcast.id}
-                    href={`/dashboard/podcasts/${podcast.id}`}
-                  >
-                    <div className="group flex cursor-pointer items-center gap-4 border border-stone-200 bg-white p-4 transition-all hover:border-stone-400 hover:shadow-md">
-                      <div className="relative h-16 w-16 shrink-0 overflow-hidden bg-stone-100">
-                        {podcast.cover_image_url ? (
-                          <img
-                            src={podcast.cover_image_url}
-                            alt={podcast.title}
-                            className="h-full w-full object-cover"
-                          />
-                        ) : (
-                          <div className="flex h-full items-center justify-center bg-blue-50">
-                            <Mic2 className="h-6 w-6 text-blue-500" />
-                          </div>
-                        )}
-                        {!podcast.is_free && (
-                          <div className="absolute right-0 top-0 bg-stone-900/80 p-0.5">
-                            <Lock className="h-2.5 w-2.5 text-white" />
-                          </div>
-                        )}
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs font-mono text-stone-400">
-                            EP {podcast.episode_number}
-                          </span>
-                          {!podcast.is_free && (
-                            <span className="text-[10px] font-medium text-emerald-600">
-                              Premium
-                            </span>
-                          )}
-                        </div>
-                        <h3 className="mt-1 text-sm font-semibold text-stone-900 line-clamp-1 group-hover:text-amber-600">
-                          {podcast.title}
-                        </h3>
-                        <p className="text-xs text-stone-500">
-                          with {podcast.host}
-                        </p>
-                        <div className="mt-1 flex items-center gap-2 text-xs text-stone-400">
-                          <Clock className="h-3 w-3" />
-                          {podcast.duration}
-                        </div>
-                      </div>
-                      <Play className="h-4 w-4 text-stone-400 group-hover:text-amber-500" />
+
+                  {/* Dark gradient overlay for text contrast (optional) */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-stone-900/20 to-transparent" />
+
+                  {/* Fallback for no image */}
+                  {!recentBooks[0]?.cover_page_url && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-amber-50">
+                      <BookOpen className="h-16 w-16 text-amber-500" />
                     </div>
-                  </Link>
-                ))}
+                  )}
+                </div>
+
+                {/* Feature Content */}
+                <div className="flex flex-col justify-center p-8">
+                  <div className="mb-4 flex items-center gap-2">
+                    <div className="h-px w-8 bg-amber-500" />
+                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-amber-600">
+                      Book I
+                    </span>
+                  </div>
+                  <h2 className="text-3xl font-bold leading-tight text-stone-900 group-hover:text-amber-600 transition-colors">
+                    {recentBooks[0].title}
+                  </h2>
+                  <p className="mt-4 text-base leading-relaxed text-stone-600">
+                    A comprehensive manual for aspiring business owners. From
+                    creating a vision to executing key operational systems that
+                    drive sustainable growth in today's competitive market.
+                  </p>
+                  <div className="mt-6 flex items-center justify-between">
+                    <div>
+                      <div className="text-2xl font-bold text-amber-600">
+                        {formatPrice(
+                          recentBooks[0].sale_price || recentBooks[0].price,
+                        )}
+                      </div>
+                      <div className="text-xs text-stone-500">
+                        Paperback & Digital
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2 font-medium text-stone-900 group-hover:text-amber-600">
+                      Read more
+                      <ArrowRight className="h-4 w-4" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          )}
+
+          {/* Two Column Secondary Books */}
+          <div className="grid gap-6 md:grid-cols-2">
+            {recentBooks.slice(1, 3).map((book, idx) => (
+              <Link key={book.id} href={`/dashboard/books/${book.id}`}>
+                <div className="group flex cursor-pointer items-start gap-5 border-2 border-stone-200 bg-white p-5 transition-all hover:border-amber-500">
+                  <div className="h-28 w-20 shrink-0 overflow-hidden border border-stone-200 bg-stone-50">
+                    {book.cover_page_url ? (
+                      <img
+                        src={book.cover_page_url}
+                        alt={book.title}
+                        className="h-full w-full object-cover"
+                      />
+                    ) : (
+                      <div className="flex h-full items-center justify-center bg-amber-50">
+                        <BookOpen className="h-5 w-5 text-amber-500" />
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex-1">
+                    <div className="mb-1 flex items-center gap-2">
+                      <span className="text-[10px] font-mono font-bold text-amber-600">
+                        Book {idx + 2}
+                      </span>
+                      <div className="h-px flex-1 bg-stone-200" />
+                    </div>
+                    <h3 className="text-lg font-bold leading-tight text-stone-900 group-hover:text-amber-600 transition-colors">
+                      {book.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-stone-500 line-clamp-2">
+                      {idx === 0
+                        ? "Strategic frameworks for asset protection and retirement planning."
+                        : "Essential strategies for financial independence and wealth building."}
+                    </p>
+                    <div className="mt-3 flex items-center justify-between">
+                      <span className="text-sm font-bold text-amber-600">
+                        {formatPrice(book.sale_price || book.price)}
+                      </span>
+                      <ArrowRight className="h-4 w-4 text-stone-400 transition-transform group-hover:translate-x-1" />
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -503,9 +357,11 @@ export default function LandingPage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-12 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
             <div>
-              <Badge className="mb-3 rounded-full bg-emerald-100 text-emerald-700">
-                <Newspaper className="mr-1 h-3 w-3" />
-                Written Content
+              <Badge className="py-3 px-4">
+                <Pencil className="mr-1 h-6 w-6" />
+                <span className="text-xs text-gray-50 font-semibold">
+                  Written Content
+                </span>
               </Badge>
               <h2 className="text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl">
                 Latest Insights
@@ -627,23 +483,16 @@ export default function LandingPage() {
               </div>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link href="/dashboard">
+                <Link href="/contact">
                   <Button className="rounded-full bg-stone-900 px-8 text-white hover:bg-stone-800">
-                    Member Dashboard
+                    Contact Author
                   </Button>
                 </Link>
-                <Button
-                  variant="outline"
-                  className="rounded-full border-stone-300"
-                >
-                  Contact for Speaking
-                </Button>
               </div>
             </div>
           </div>
         </div>
       </section>
-
 
       {/* Footer */}
       <footer className="border-t border-stone-200 bg-white py-12">
