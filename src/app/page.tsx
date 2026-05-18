@@ -244,7 +244,7 @@ export default function LandingPage() {
           {/* Hero Book - Feature Treatment */}
           {recentBooks[0] && (
             <Link href={`/dashboard/books/${recentBooks[0].id}`}>
-              <div className="group mb-12 grid cursor-pointer grid-cols-2 overflow-hidden border-2 border-stone-200 bg-white">
+              <div className="group mb-12 grid cursor-pointer grid-cols-2 overflow-hidden  bg-white">
                 {/* Large Feature Image */}
                 <div className="relative bg-stone-100">
                   {/* Background Image */}
@@ -309,7 +309,7 @@ export default function LandingPage() {
           <div className="grid gap-6 md:grid-cols-2">
             {recentBooks.slice(1, 3).map((book, idx) => (
               <Link key={book.id} href={`/dashboard/books/${book.id}`}>
-                <div className="group flex cursor-pointer items-start gap-5 border-2 border-stone-200 bg-white p-5 transition-all hover:border-amber-500">
+                <div className="group flex cursor-pointer items-start gap-5  bg-white p-5 transition-all hover:border-amber-500">
                   <div className="h-28 w-20 shrink-0 overflow-hidden border border-stone-200 bg-stone-50">
                     {book.cover_page_url ? (
                       <img
