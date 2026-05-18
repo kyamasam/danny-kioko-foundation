@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+  <title>Jonathan K Bett — Author & Business Executive</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect"
+        href="https://fonts.googleapis.com" />
+  <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap"
+        rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Jost', 'sans-serif'] },
+          colors: {
+            primary: {
+              DEFAULT: '#1A5E4E',
+              light: '#226b5a',
+              dark: '#124034',
+              pale: '#e8f4f1',
+            },
+            teal: { DEFAULT: '#3d9b82', light: '#5ab39c', pale: '#d6f0ea' },
+            gold: { DEFAULT: '#C9913A', light: '#d9a85a', pale: '#f5e6cc' },
+            cream: '#F7F2EB',
+            ink: '#1A1A1A',
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Jost', sans-serif;
+    }
+
+    /* ── Hero ─────────────────────────────── */
+    .hero-bg {
+      position: relative;
+      background: url('library_2.png') center/cover no-repeat;
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg,
+          rgba(14, 46, 38, .90) 0%,
+          rgba(20, 60, 48, .82) 40%,
+          rgba(10, 35, 28, .60) 100%);
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255, 255, 255, .02) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+
+    /* ── 3-D book ─────────────────────────── */
+    .book-wrap {
+      perspective: 1000px;
+    }
+
+    .book-3d {
+      transform: rotateY(-16deg) rotateX(3deg);
+      transform-origin: left center;
+      transition: transform .45s ease;
+      filter: drop-shadow(0 32px 56px rgba(0, 0, 0, .60));
+    }
+
+    .book-3d:hover {
+      transform: rotateY(-6deg) rotateX(1deg);
+    }
+
+    /* ── Role card ────────────────────────── */
+    .role-card {
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .role-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, .08);
+    }
+
+    /* ── Nav underline ────────────────────── */
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #1A5E4E;
+      transition: width .3s ease;
+      border-radius: 1px;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* ── Purchase button ──────────────────── */
+    .buy-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 134px;
+      height: 41px;
+      padding: 0 18px;
+      border-radius: 1px;
+      transition: opacity .2s, transform .2s;
+    }
+
+    .buy-btn:hover {
+      opacity: .88;
+      transform: translateY(-1px);
+    }
+
+    .buy-btn-amazon {
+      background: #F4C77B;
+    }
+
+    .buy-btn-nuria {
+      background: #6fd49a;
+    }
+
+    /* ── Book title underline accent ────────── */
+    .book-title {
+      display: inline-block;
+      position: relative;
+      z-index: 0;
+    }
+
+    .book-title::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 5px;
+      background: #3d9b82;
+      border-radius: 2px;
+      margin-top: 4px;
+    }
+
+    .book-feature {
+      background: #eaf4f0;
+    }
+
+    .book-feature.book-feature-alt {
+      background: #fff;
+    }
+
+    .book-feature-grid {
+      display: grid;
+      grid-template-columns: 278px minmax(0, 1fr);
+      gap: 30px;
+      align-items: start;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 54px 24px 28px;
+    }
+
+    .book-feature-alt .book-feature-grid {
+      grid-template-columns: minmax(0, 1fr) 278px;
+      padding-top: 48px;
+      padding-bottom: 36px;
+    }
+
+    .book-feature-cover {
+      width: 220px;
+      margin-left: 8px;
+      filter: drop-shadow(0 22px 30px rgba(22, 55, 45, .22));
+    }
+
+    .book-feature-alt .book-feature-cover {
+      width: 220px;
+      margin-left: auto;
+      margin-right: 8px;
+    }
+
+    .book-feature-copy {
+      max-width: 815px;
+    }
+
+    .book-feature .book-title {
+      display: inline;
+      background: linear-gradient(to top, rgba(81, 159, 132, .36) 0 .45em, transparent .45em);
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+
+    .book-feature .book-title::after {
+      content: none;
+    }
+
+    .book-feature-copy p,
+    .book-feature-copy li {
+      color: #1f2724;
+      font-size: 17px;
+      line-height: 1.52;
+      letter-spacing: .02em;
+    }
+
+    .book-feature-copy ul {
+      margin: 5px 0 6px 11px;
+    }
+
+    .book-feature-copy li {
+      line-height: 1.45;
+      margin-bottom: 1px;
+    }
+
+    .book-feature-purchase {
+      margin-top: 25px;
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      flex-wrap: wrap;
+    }
+
+    .blog-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      border: 1px solid #e7efec;
+      background: #fff;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-4px);
+      border-color: #cfe2dc;
+      box-shadow: 0 18px 42px rgba(22, 55, 45, .09);
+    }
+
+    .blog-meta {
+      color: #1A5E4E;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .blog-image {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      border-bottom: 1px solid #e7efec;
+    }
+
+    @media (max-width: 900px) {
+      .hero-bg>div {
+        flex-direction: column;
+        gap: 28px;
+        padding: 52px 24px;
+      }
+
+      .hero-bg h1 {
+        font-size: 42px;
+      }
+
+      .hero-bg p {
+        font-size: 16px;
+      }
+
+      .hero-bg .book-3d img {
+        width: 240px;
+      }
+
+      .book-feature-grid {
+        grid-template-columns: 1fr;
+        padding: 42px 24px 34px;
+      }
+
+      .book-feature-alt .book-feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .book-feature-cover {
+        width: 190px;
+        margin: 0 auto;
+      }
+
+      .book-feature-alt .book-feature-cover {
+        margin: 0 auto;
+      }
+    }
+
+    /* ── Section accent rule ──────────────── */
+    .section-rule {
+      display: block;
+      width: 44px;
+      height: 3px;
+      background: linear-gradient(90deg, #1A5E4E, #C9913A);
+      border-radius: 2px;
+      margin-bottom: 0.75rem;
+    }
+
+    /* ── Social link ──────────────────────── */
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 32px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #334155;
+      border-right: 1px solid #e4eeeb;
+      transition: color .2s, background .2s;
+    }
+
+    .social-link:last-child {
+      border-right: none;
+    }
+
+    .social-link:hover {
+      color: #1A5E4E;
+      background: #f0f8f5;
+    }
+
+    /* ── Learn more ───────────────────────── */
+    .learn-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #1A5E4E;
+      letter-spacing: .03em;
+      text-decoration: none;
+      transition: gap .2s, color .2s;
+    }
+
+    .learn-more:hover {
+      color: #124034;
+      gap: 10px;
+    }
+
+    /* ── Float scroll hint ────────────────── */
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(6px)
+      }
+    }
+
+    .scroll-hint {
+      animation: float 2.6s ease-in-out infinite;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-ink antialiased">
+
+  <!-- ══════════════════════════════════════
+       NEWSLETTER BAR
+  ══════════════════════════════════════ -->
+  <div class="bg-teal text-white/90 text-xs py-2.5 text-center tracking-wide font-light">
+    Subscribe to My Newsletter
+    <span class="mx-2 opacity-40">,</span>
+    <a href="#"
+       class="font-semibold underline underline-offset-2 hover:text-white transition-colors">The Financier</a>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════════ -->
+  <nav class="bg-white border-b border-stone-100 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-8 flex items-center justify-between py-2">
+
+      <a href="#"
+         class="flex items-center gap-3">
+        <img src="jkbLogo.png"
+             alt="JKB"
+             class="h-11 w-auto object-contain" />
+        <span class="font-light text-base tracking-wide text-stone-600">Jonathan K Bett</span>
+      </a>
+
+      <div class="flex items-center gap-10">
+        <a href="#about"
+           class="nav-link text-sm font-medium text-stone-600 hover:text-ink transition-colors">About</a>
+        <a href="#books"
+           class="nav-link text-sm font-medium text-stone-600 hover:text-ink transition-colors">Books</a>
+        <a href="#thoughts"
+           class="nav-link text-sm font-medium text-stone-600 hover:text-ink transition-colors">Thoughts</a>
+        <a href="#connect"
+           class="nav-link text-sm font-medium text-stone-600 hover:text-ink transition-colors">Connect With Me</a>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════
+       HERO
+  ══════════════════════════════════════ -->
+  <section class="hero-bg relative overflow-hidden flex items-center min-h-[560px]">
+    <div class="max-w-[1580px] mx-auto px-16 w-full flex items-center gap-20 py-12 relative z-10">
+
+      <!-- Left arrow -->
+      <button aria-label="Previous"
+              id="hero-prev"
+              type="button"
+              class="shrink-0 w-14 h-14 rounded-full bg-white/10 border border-white/20 text-white flex items-center justify-center hover:bg-white/25 transition-colors">
+        <svg class="w-6 h-6"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2"
+             viewBox="0 0 24 24">
+          <path stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+
+      <!-- Text -->
+      <div class="flex-1">
+        <h1 id="hero-title"
+            class="text-[48px] font-bold text-white leading-tight mb-8 max-w-[680px] transition-opacity duration-200">
+          How To Start and Run Your Own Business
+        </h1>
+        <p id="hero-description"
+           class="text-white/80 leading-relaxed text-[19px] mb-10 max-w-[660px] transition-opacity duration-200">
+          Are you looking to start your own business but overwhelmed by the thought of costly consultants and courses?
+          Look no further! Whether you're just starting or looking to improve your existing business, "How to Start and
+          Run Your Own Business" is the ultimate entrepreneur's guide. It provides a comprehensive manual for all
+          aspiring business owners.
+        </p>
+        <a id="hero-cta"
+           href="#books"
+           class="inline-block bg-teal hover:bg-teal-light text-white px-20 py-5 rounded font-semibold text-[18px] tracking-wide transition-colors duration-200">
+          Get This Book
+        </a>
+      </div>
+
+      <!-- Book cover -->
+      <div class="shrink-0 book-wrap">
+        <div class="book-3d">
+          <img id="hero-book"
+               src="book1.png"
+               alt="How To Start and Run Your Own Business"
+               class="w-[360px] object-contain transition-opacity duration-200" />
+        </div>
+      </div>
+
+      <!-- Right arrow -->
+      <button aria-label="Next"
+              id="hero-next"
+              type="button"
+              class="shrink-0 w-14 h-14 rounded-full bg-white/10 border border-white/20 text-white flex items-center justify-center hover:bg-white/25 transition-colors">
+        <svg class="w-6 h-6"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2"
+             viewBox="0 0 24 24">
+          <path stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+
+    </div>
+
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 scroll-hint opacity-30">
+      <svg class="w-5 h-5 text-white"
+           fill="none"
+           stroke="currentColor"
+           stroke-width="2"
+           viewBox="0 0 24 24">
+        <path stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       BIO SECTION
+  ══════════════════════════════════════ -->
+  <section id="about"
+           class="bg-white py-14">
+    <div class="max-w-7xl mx-auto px-8 flex items-center gap-14">
+
+      <!-- Portrait with accent bg -->
+      <div class="shrink-0 relative">
+        <div class="absolute -inset-4 rounded-2xl bg-primary-pale z-0"></div>
+        <img src="bett_transparent.png"
+             alt="Jonathan K Bett"
+             class="relative z-10 w-60 h-auto object-contain" />
+      </div>
+
+      <!-- Text -->
+      <div class="flex-1">
+        <span class="section-rule"></span>
+        <h2 class="text-4xl font-bold mb-3 leading-tight">Jonathan K Bett</h2>
+        <p class="text-stone-500 font-light leading-relaxed mb-3 text-sm max-w-xl">
+          A distinguished business executive, Jonathan brings over 30 years of leadership across Kenya's financial and
+          corporate sectors. He has served as:
+        </p>
+
+        <ul class="space-y-2 mb-4">
+          <li class="flex items-start gap-3 text-stone-700 text-sm">
+            <svg class="w-4 h-4 text-primary shrink-0 mt-0.5"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2.5"
+                 viewBox="0 0 24 24">
+              <path stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 13l4 4L19 7" />
+            </svg>
+            Finance Director — Central Bank of Kenya
+          </li>
+          <li class="flex items-start gap-3 text-stone-700 text-sm">
+            <svg class="w-4 h-4 text-primary shrink-0 mt-0.5"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2.5"
+                 viewBox="0 0 24 24">
+              <path stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 13l4 4L19 7" />
+            </svg>
+            CEO — Kenya Deposit Insurance Corporation
+          </li>
+          <li class="flex items-start gap-3 text-stone-700 text-sm">
+            <svg class="w-4 h-4 text-primary shrink-0 mt-0.5"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2.5"
+                 viewBox="0 0 24 24">
+              <path stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 13l4 4L19 7" />
+            </svg>
+            Independent Director — Rafiki Microfinance Bank &amp; Automobile Association of Kenya PLC
+          </li>
+        </ul>
+
+        <p class="text-stone-500 font-light leading-relaxed text-sm max-w-xl mb-1">
+          Jonathan distils his vast experience into two informative works — <em>How To Start and Run Your Own
+            Business</em> and <em>Personal Financial and Retirement Planning</em> — guiding readers on entrepreneurship,
+          wealth building, and financial security.
+        </p>
+        <p class="text-stone-400 font-light text-sm">He lives in Kenya with his wife, Abigael, and daughter, Claire.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       PORTFOLIO — ROLES
+  ══════════════════════════════════════ -->
+  <section class="border-t border-b border-stone-100 py-10"
+           style="background:#eaf5f1;">
+    <div class="max-w-7xl mx-auto px-8">
+
+      <div class="mb-6">
+        <span class="section-rule"></span>
+        <h2 class="text-2xl font-semibold">Portfolio</h2>
+      </div>
+
+      <div class="grid grid-cols-4 gap-6">
+
+        <div class="flex flex-col items-center text-center py-2">
+          <div class="h-16 flex items-center justify-center mb-3">
+            <img src="cbk_logo.png"
+                 alt="Central Bank of Kenya"
+                 class="max-h-14 max-w-full object-contain" />
+          </div>
+          <p class="text-xs font-medium text-stone-500 tracking-wide">Finance Director</p>
+        </div>
+
+        <div class="flex flex-col items-center text-center py-2">
+          <div class="h-16 flex items-center justify-center mb-3">
+            <img src="kidc.png"
+                 alt="Kenya Deposit Insurance Corporation"
+                 class="max-h-14 max-w-full object-contain" />
+          </div>
+          <p class="text-xs font-medium text-stone-500 tracking-wide">Finance Director</p>
+        </div>
+
+        <div class="flex flex-col items-center text-center py-2">
+          <div class="h-16 flex items-center justify-center mb-3">
+            <img src="rafiki.png"
+                 alt="Rafiki Microfinance Bank"
+                 class="max-h-14 max-w-full object-contain" />
+          </div>
+          <p class="text-xs font-medium text-stone-500 tracking-wide">Finance Director</p>
+        </div>
+
+        <div class="flex flex-col items-center text-center py-2">
+          <div class="h-16 flex items-center justify-center mb-3">
+            <!-- AA Kenya — swap for actual logo if available -->
+            <svg viewBox="0 0 80 60"
+                 class="max-h-20 w-auto"
+                 xmlns="http://www.w3.org/2000/svg">
+              <rect width="80"
+                    height="60"
+                    rx="4"
+                    fill="#F5C800" />
+              <rect x="2"
+                    y="2"
+                    width="76"
+                    height="56"
+                    rx="3"
+                    fill="none"
+                    stroke="#1A5E4E"
+                    stroke-width="2.5" />
+              <text x="40"
+                    y="28"
+                    text-anchor="middle"
+                    fill="#1A5E4E"
+                    font-size="22"
+                    font-weight="800"
+                    font-family="Jost,sans-serif">AA</text>
+              <text x="40"
+                    y="44"
+                    text-anchor="middle"
+                    fill="#1A5E4E"
+                    font-size="9"
+                    font-weight="600"
+                    font-family="Jost,sans-serif"
+                    letter-spacing="1">KENYA</text>
+            </svg>
+          </div>
+          <p class="text-xs font-medium text-stone-500 tracking-wide">Finance Director</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       BOOKS SECTION HEADING
+  ══════════════════════════════════════ -->
+  <div id="books"
+       class="bg-white pt-10 pb-3 max-w-7xl mx-auto px-8">
+    <span class="section-rule"></span>
+    <h2 class="text-2xl font-semibold">Books</h2>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       BOOK 1
+  ══════════════════════════════════════ -->
+  <section class="book-feature">
+    <div class="book-feature-grid">
+
+      <!-- Book cover -->
+      <div class="shrink-0">
+        <img src="book1.png"
+             alt="How To Start and Run Your Own Business"
+             class="book-feature-cover object-contain" />
+      </div>
+
+      <!-- Text -->
+      <div class="book-feature-copy">
+        <h3 class="text-[40px] font-bold leading-tight mb-7 text-ink">
+          <span class="book-title">How To Start and Run Your Own Business</span>
+        </h3>
+
+        <p class="mb-0">
+          A distinguished business executive, Jonathan brings over 30 years of leadership across Kenya's financial and
+          corporate sectors. He has served as:
+        </p>
+        <ul>
+          <li class="flex gap-2"><span>·</span> Finance Director — Central Bank of Kenya</li>
+          <li class="flex gap-2"><span>·</span> CEO — Kenya Deposit Insurance Corporation</li>
+          <li class="flex gap-2"><span>·</span> <span>Serves as an independent director of Rafiki Microfinance Bank and
+              Automobile Association of Kenya PLC.</span></li>
+        </ul>
+        <p class="mb-0">
+          Jonathan distils his vast experience into two informative works — How To Start and Run Your Own Business and
+          Personal Financial and Retirement Planning — guiding readers on entrepreneurship, wealth building, and
+          financial security.
+        </p>
+        <p class="mb-6">
+          He lives in Kenya with his wife, Abigael, and daughter, Claire.
+        </p>
+
+        <a href="#"
+           class="learn-more mb-7 block text-[15px] normal-case tracking-normal">Learn More</a>
+
+        <div class="book-feature-purchase">
+          <span class="text-[18px] font-bold text-ink tracking-wide">Purchase On:</span>
+          <a href="#"
+             class="buy-btn buy-btn-amazon">
+            <img src="amazon-logo.png"
+                 alt="Amazon"
+                 class="h-7 w-auto object-contain brightness-0" />
+          </a>
+          <a href="#"
+             class="buy-btn buy-btn-nuria">
+            <img src="nuria-logo.png"
+                 alt="Nuria"
+                 class="h-7 w-auto object-contain brightness-0" />
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       BOOK 2
+  ══════════════════════════════════════ -->
+  <section class="book-feature book-feature-alt">
+    <div class="book-feature-grid">
+
+      <!-- Text -->
+      <div class="book-feature-copy">
+        <h3 class="text-[40px] font-bold leading-tight mb-7 text-ink">
+          <span class="book-title">Personal Financial and Retirement Planning</span>
+        </h3>
+
+        <p class="mb-0">
+          A distinguished business executive, Jonathan brings over 30 years of leadership across Kenya's financial and
+          corporate sectors. He has served as:
+        </p>
+        <ul>
+          <li class="flex gap-2"><span>·</span> Finance Director — Central Bank of Kenya</li>
+          <li class="flex gap-2"><span>·</span> CEO — Kenya Deposit Insurance Corporation</li>
+          <li class="flex gap-2"><span>·</span> <span>Serves as an independent director of Rafiki Microfinance Bank and
+              Automobile Association of Kenya PLC.</span></li>
+        </ul>
+        <p class="mb-0">
+          Jonathan distils his vast experience into two informative works — How To Start and Run Your Own Business and
+          Personal Financial and Retirement Planning — guiding readers on entrepreneurship, wealth building, and
+          financial security.
+        </p>
+        <p class="mb-6">
+          He lives in Kenya with his wife, Abigael, and daughter, Claire.
+        </p>
+
+        <a href="#"
+           class="learn-more mb-7 block text-[15px] normal-case tracking-normal">Learn More</a>
+
+        <div class="book-feature-purchase">
+          <span class="text-[18px] font-bold text-ink tracking-wide">Purchase On:</span>
+          <a href="#"
+             class="buy-btn buy-btn-amazon">
+            <img src="amazon-logo.png"
+                 alt="Amazon"
+                 class="h-7 w-auto object-contain brightness-0" />
+          </a>
+          <a href="#"
+             class="buy-btn buy-btn-nuria">
+            <img src="nuria-logo.png"
+                 alt="Nuria"
+                 class="h-7 w-auto object-contain brightness-0" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Book cover -->
+      <div class="shrink-0">
+        <img src="book2.png"
+             alt="Personal Financial and Retirement Planning"
+             class="book-feature-cover object-contain" />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       BLOGS / THOUGHTS
+  ══════════════════════════════════════ -->
+  <section id="thoughts"
+           class="bg-white py-16 border-t border-stone-100">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="mb-9 max-w-2xl">
+        <span class="section-rule"></span>
+        <h2 class="text-3xl font-bold mb-3">Blogs</h2>
+        <p class="text-stone-500 text-sm leading-relaxed">
+          Notes on business, personal finance, leadership, and the practical decisions that shape long-term security.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+        <article class="blog-card">
+          <img src="library.png"
+               alt="Library shelves and reading space"
+               class="blog-image" />
+          <div class="p-7 flex flex-col flex-1">
+            <p class="blog-meta mb-4">Business Strategy</p>
+            <h3 class="text-xl font-bold leading-snug mb-3 text-ink">
+              Building a Business That Can Survive Its First Years
+            </h3>
+            <p class="text-stone-600 text-sm leading-relaxed mb-6">
+              Clear planning, disciplined cash flow, and patient execution make the difference between a promising idea
+              and a business that can keep growing.
+            </p>
+            <a href="#"
+               class="learn-more mt-auto text-[14px] normal-case tracking-normal">Read More</a>
+          </div>
+        </article>
+
+        <article class="blog-card">
+          <img src="book2.png"
+               alt="Personal Financial and Retirement Planning book cover"
+               class="blog-image object-contain bg-[#eaf4f0] p-5" />
+          <div class="p-7 flex flex-col flex-1">
+            <p class="blog-meta mb-4">Personal Finance</p>
+            <h3 class="text-xl font-bold leading-snug mb-3 text-ink">
+              Why Retirement Planning Should Start Before Retirement Feels Near
+            </h3>
+            <p class="text-stone-600 text-sm leading-relaxed mb-6">
+              Financial security is built through early choices, consistent saving, and a realistic view of future needs,
+              not last-minute pressure.
+            </p>
+            <a href="#"
+               class="learn-more mt-auto text-[14px] normal-case tracking-normal">Read More</a>
+          </div>
+        </article>
+
+        <article class="blog-card">
+          <img src="library_2.png"
+               alt="Quiet library interior"
+               class="blog-image" />
+          <div class="p-7 flex flex-col flex-1">
+            <p class="blog-meta mb-4">Leadership</p>
+            <h3 class="text-xl font-bold leading-snug mb-3 text-ink">
+              Lessons From Financial Leadership in Complex Institutions
+            </h3>
+            <p class="text-stone-600 text-sm leading-relaxed mb-6">
+              Good leadership depends on judgment, accountability, and the ability to make careful decisions when the
+              stakes are high.
+            </p>
+            <a href="#"
+               class="learn-more mt-auto text-[14px] normal-case tracking-normal">Read More</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       SOCIAL BAR
+  ══════════════════════════════════════ -->
+  <div id="connect"
+       class="bg-white border-t border-b border-stone-100">
+    <div class="max-w-4xl mx-auto flex items-stretch justify-center">
+
+      <a href="#"
+         class="social-link flex-1 justify-center">
+        <svg class="w-4 h-4 text-[#0077B5]"
+             fill="currentColor"
+             viewBox="0 0 24 24">
+          <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.327-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+        </svg>
+        Linkedin
+      </a>
+
+      <a href="#"
+         class="social-link flex-1 justify-center">
+        <svg class="w-4 h-4 text-[#1877F2]"
+             fill="currentColor"
+             viewBox="0 0 24 24">
+          <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+        </svg>
+        Facebook
+      </a>
+
+      <a href="#"
+         class="social-link flex-1 justify-center">
+        <svg class="w-4 h-4 text-ink"
+             fill="currentColor"
+             viewBox="0 0 24 24">
+          <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+        </svg>
+        Twitter /X
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer style="background:#1A5E4E;"
+          class="py-10">
+    <div class="max-w-7xl mx-auto px-8 flex items-start justify-between gap-12">
+
+      <!-- Brand -->
+      <div class="max-w-xs">
+        <div class="flex items-center gap-3 mb-4">
+          <img src="jkbLogoTransparent.png"
+               alt="JKB"
+               class="h-10 w-auto object-contain brightness-0 invert opacity-70" />
+          <span class="text-white/70 text-sm font-light">Jonathan K Bett</span>
+        </div>
+        <p class="text-white/75 text-xs font-light leading-relaxed">
+          A distinguished business executive. Jonathan brings over 30 years of leadership across Kenya's corporate
+          sectors.
+        </p>
+      </div>
+
+      <!-- Nav links -->
+      <div class="flex flex-col gap-3">
+        <p class="text-white/30 text-[10px] font-bold tracking-widest uppercase mb-1">Navigation</p>
+        <a href="#"
+           class="text-white/45 text-xs font-light hover:text-white transition-colors">Home</a>
+        <a href="#about"
+           class="text-white/45 text-xs font-light hover:text-white transition-colors">About</a>
+        <a href="#books"
+           class="text-white/45 text-xs font-light hover:text-white transition-colors">Books</a>
+        <a href="#"
+           class="text-white/45 text-xs font-light hover:text-white transition-colors">Thoughts</a>
+      </div>
+
+      <!-- Newsletter CTA -->
+      <div class="max-w-xs">
+        <p class="text-white/30 text-[10px] font-bold tracking-widest uppercase mb-3">Newsletter</p>
+        <p class="text-white/50 text-xs font-light mb-5 leading-relaxed">
+          Stay updated with insights on business, finance &amp; leadership.
+        </p>
+        <a href="#"
+           class="inline-block bg-teal hover:bg-teal-light text-white text-xs font-semibold tracking-wide px-6 py-2.5 rounded-full transition-colors">
+          The Financier ↗
+        </a>
+      </div>
+
+
+    </div>
+    <div class="w-full flex-1  text-center items-center">
+      <p class="text-white/80 text-xs font-light mt-3">© 2026 Jonathan Bett</p>
+    </div>
+
+  </footer>
+
+  <script>
+    const heroSlides = [
+      {
+        title: 'How To Start and Run Your Own Business',
+        description:
+          `Are you looking to start your own business but overwhelmed by the thought of costly consultants and courses? Look no further! Whether you're just starting or looking to improve your existing business, "How to Start and Run Your Own Business" is the ultimate entrepreneur's guide. It provides a comprehensive manual for all aspiring business owners.`,
+        image: 'book1.png',
+        alt: 'How To Start and Run Your Own Business',
+      },
+      {
+        title: 'Personal Financial and Retirement Planning',
+        description:
+          `A comprehensive guide to financial security, wealth building, and retirement planning. This book helps readers think clearly about personal finance, long-term goals, and practical choices for a more secure future.`,
+        image: 'book2.png',
+        alt: 'Personal Financial and Retirement Planning',
+      },
+    ];
+
+    const heroTitle = document.getElementById('hero-title');
+    const heroDescription = document.getElementById('hero-description');
+    const heroBook = document.getElementById('hero-book');
+    const heroPrev = document.getElementById('hero-prev');
+    const heroNext = document.getElementById('hero-next');
+    let activeHeroSlide = 0;
+
+    function showHeroSlide(index) {
+      activeHeroSlide = (index + heroSlides.length) % heroSlides.length;
+      const slide = heroSlides[activeHeroSlide];
+      const animatedEls = [heroTitle, heroDescription, heroBook];
+
+      animatedEls.forEach((el) => el.classList.add('opacity-0'));
+
+      window.setTimeout(() => {
+        heroTitle.textContent = slide.title;
+        heroDescription.textContent = slide.description;
+        heroBook.src = slide.image;
+        heroBook.alt = slide.alt;
+        animatedEls.forEach((el) => el.classList.remove('opacity-0'));
+      }, 180);
+    }
+
+    heroPrev.addEventListener('click', () => showHeroSlide(activeHeroSlide - 1));
+    heroNext.addEventListener('click', () => showHeroSlide(activeHeroSlide + 1));
+  </script>
+
+</body>
+
+</html>
