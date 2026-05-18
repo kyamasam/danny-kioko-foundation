@@ -27,19 +27,28 @@ import {
 import { cn } from "@/lib/utils";
 import { type Page } from "./types";
 import { AddBookForm } from "@/components/books/AddBookForm";
-import { useBooks } from "@/hooks/useBooks";
 
 interface TopBarProps {
   activePage: Page;
   setActivePage: (page: Page) => void;
+  setAddOpen: (open: boolean) => void;
+  searchOpen: boolean;
+  setSearchOpen: (open: boolean) => void;
+  searchQ: string;
+  setSearchQ: (q: string) => void;
 }
 
-export function TopBar({ activePage, setActivePage }: TopBarProps) {
+export function TopBar({
+  activePage,
+  setActivePage,
+  setAddOpen,
+  searchOpen,
+  setSearchOpen,
+  searchQ,
+  setSearchQ,
+}: TopBarProps) {
   const router = useRouter();
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [searchQ, setSearchQ] = useState("");
   const [showAddBookForm, setShowAddBookForm] = useState(false);
-  const { books } = useBooks();
 
   const navItems: {
     id: Page;
@@ -55,18 +64,12 @@ export function TopBar({ activePage, setActivePage }: TopBarProps) {
     if (activePage === "books") {
       setShowAddBookForm(true);
     }
-    // Add similar logic for podcasts and blogs when those components are ready
-    // else if (activePage === "podcasts") {
-    //   setShowAddPodcastForm(true);
-    // }
-    // else if (activePage === "blogs") {
-    //   setShowAddBlogForm(true);
-    // }
+    // You can also use the parent's setAddOpen if you want to handle it there
+    // setAddOpen(true);
   };
 
   const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && searchQ.trim()) {
-      // Implement search functionality
       console.log("Searching for:", searchQ);
       setSearchOpen(false);
     }

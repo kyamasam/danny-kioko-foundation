@@ -31,6 +31,7 @@ import { Badge } from "@/components/ui/badge";
 interface Book {
   id: number;
   title: string;
+  short_description: string;
   price: number;
   sale_price: number;
   cover_page_url: string;
@@ -239,7 +240,7 @@ export default function LandingPage() {
 
       {/* Books Section - Magazine Spread */}
       <section id="books" className="bg-stone-50 py-24">
-          <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-7xl px-6">
           <div className="mb-12 text-center">
             <div className="inline-flex items-center gap-3">
               <div className="h-px w-8 bg-amber-500" />
@@ -295,9 +296,8 @@ export default function LandingPage() {
                     {recentBooks[0].title}
                   </h2>
                   <p className="mt-4 text-base leading-relaxed text-stone-600">
-                    A comprehensive manual for aspiring business owners. From
-                    creating a vision to executing key operational systems that
-                    drive sustainable growth in today's competitive market.
+                    {recentBooks[0].short_description ||
+                      "A comprehensive guide to financial strategy and wealth building, drawing on decades of experience in Kenya's financial sector."}
                   </p>
                   <div className="mt-6 flex items-center justify-between">
                     <div>
