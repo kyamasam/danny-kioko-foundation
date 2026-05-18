@@ -237,10 +237,25 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Podcasts Section - With Images */}
       {/* Books Section - Magazine Spread */}
       <section id="books" className="bg-stone-50 py-24">
-        <div className="mx-auto max-w-7xl px-6">
+          <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-12 text-center">
+            <div className="inline-flex items-center gap-3">
+              <div className="h-px w-8 bg-amber-500" />
+              <span className="text-xs font-mono font-medium uppercase tracking-wider text-amber-600">
+                Read & Grow
+              </span>
+              <div className="h-px w-8 bg-amber-500" />
+            </div>
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl">
+              Books & Articles
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-stone-600">
+              In-depth content on finance, business strategy, and wealth
+              building
+            </p>
+          </div>
           {/* Hero Book - Feature Treatment */}
           {recentBooks[0] && (
             <Link href={`/dashboard/books/${recentBooks[0].id}`}>
@@ -348,6 +363,128 @@ export default function LandingPage() {
                 </div>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Podcasts Section - With Featured Episode */}
+      <section id="podcasts" className="bg-stone-50 py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-12 text-center">
+            <div className="inline-flex items-center gap-3">
+              <div className="h-px w-8 bg-amber-500" />
+              <span className="text-xs font-mono font-medium uppercase tracking-wider text-amber-600">
+                Listen & Learn
+              </span>
+              <div className="h-px w-8 bg-amber-500" />
+            </div>
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl">
+              Podcasts & Interviews
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-stone-600">
+              In-depth conversations on finance, business strategy, and wealth
+              building
+            </p>
+          </div>
+
+          {/* Featured Episode (if exists) */}
+          {recentPodcasts[0] && (
+            <div className="mb-8">
+              <Link href={`/dashboard/podcasts/${recentPodcasts[0].id}`}>
+                <div className="group grid cursor-pointer grid-cols-12 gap-6 border-2 border-stone-200 bg-white p-6 transition-all hover:border-amber-500">
+                  <div className="col-span-3">
+                    <div className="relative aspect-square w-full overflow-hidden bg-stone-100">
+                      {recentPodcasts[0].cover_image_url ? (
+                        <img
+                          src={recentPodcasts[0].cover_image_url}
+                          alt={recentPodcasts[0].title}
+                          className="h-full w-full object-cover"
+                        />
+                      ) : (
+                        <div className="flex h-full items-center justify-center bg-amber-50">
+                          <Mic2 className="h-10 w-10 text-amber-500" />
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div className="col-span-7 flex flex-col justify-center">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-mono font-bold text-amber-600">
+                        FEATURED EPISODE
+                      </span>
+                      <div className="h-px flex-1 bg-stone-200" />
+                    </div>
+                    <h3 className="mt-2 text-xl font-bold text-stone-900 group-hover:text-amber-600">
+                      {recentPodcasts[0].title}
+                    </h3>
+                    <p className="mt-2 text-sm text-stone-500">
+                      with {recentPodcasts[0].host}
+                    </p>
+                    <div className="mt-3 flex items-center gap-3 text-sm text-stone-500">
+                      <span className="flex items-center gap-1">
+                        <Clock className="h-3 w-3" />
+                        {recentPodcasts[0].duration}
+                      </span>
+                      <span>•</span>
+                      <span>Episode {recentPodcasts[0].episode_number}</span>
+                    </div>
+                  </div>
+                  <div className="col-span-2 flex items-center justify-end">
+                    <Play className="h-10 w-10 text-amber-500 opacity-0 transition-all group-hover:opacity-100 group-hover:scale-110" />
+                  </div>
+                </div>
+              </Link>
+            </div>
+          )}
+
+          {/* Other Episodes Grid */}
+          <div className="grid gap-4 md:grid-cols-2">
+            {loading.podcasts
+              ? [1, 2, 3, 4].map((i) => (
+                  <div
+                    key={i}
+                    className="h-24 animate-pulse border border-stone-200 bg-white"
+                  />
+                ))
+              : recentPodcasts.slice(1, 5).map((podcast) => (
+                  <Link
+                    key={podcast.id}
+                    href={`/dashboard/podcasts/${podcast.id}`}
+                  >
+                    <div className="group flex cursor-pointer items-center gap-4 border border-stone-200 bg-white p-4 transition-all hover:border-amber-500">
+                      <div className="relative h-14 w-14 shrink-0 overflow-hidden bg-stone-100">
+                        {podcast.cover_image_url ? (
+                          <img
+                            src={podcast.cover_image_url}
+                            alt={podcast.title}
+                            className="h-full w-full object-cover"
+                          />
+                        ) : (
+                          <div className="flex h-full items-center justify-center bg-amber-50">
+                            <Mic2 className="h-5 w-5 text-amber-500" />
+                          </div>
+                        )}
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-mono font-bold text-amber-600">
+                            EP {podcast.episode_number}
+                          </span>
+                          {!podcast.is_free && (
+                            <span className="text-[10px] font-medium text-emerald-600">
+                              Premium
+                            </span>
+                          )}
+                        </div>
+                        <h4 className="text-sm font-semibold text-stone-900 line-clamp-1 group-hover:text-amber-600">
+                          {podcast.title}
+                        </h4>
+                        <p className="text-xs text-stone-500">{podcast.host}</p>
+                      </div>
+                      <Play className="h-4 w-4 text-stone-400 group-hover:text-amber-500" />
+                    </div>
+                  </Link>
+                ))}
           </div>
         </div>
       </section>
