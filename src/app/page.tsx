@@ -33,6 +33,7 @@ import { Badge } from "@/components/ui/badge";
 interface Book {
   id: number;
   title: string;
+  slug: string;
   short_description: string;
   price: number;
   sale_price: number;
@@ -208,7 +209,7 @@ export default function LandingPage() {
 
                 <div className="space-y-3">
                   {recentBooks.slice(0, 2).map((book) => (
-                    <Link key={book.id} href={`/dashboard/books/${book.id}`}>
+                    <Link key={book.id} href={`/books/${book.slug}`}>
                       <div className="group flex cursor-pointer items-center gap-3 border border-stone-200 bg-white p-2.5 transition-colors hover:border-emerald-700">
                         {/* Book Mock Block */}
                         <div className="h-12 w-9 shrink-0 bg-stone-100 border border-stone-200 overflow-hidden relative">
@@ -268,7 +269,7 @@ export default function LandingPage() {
           </div>
           {/* Hero Book - Feature Treatment */}
           {recentBooks[0] && (
-            <Link href={`/dashboard/books/${recentBooks[0].id}`}>
+            <Link href={`/books/${recentBooks[0].id}`}>
               <div className="group mb-12 grid cursor-pointer grid-cols-2 overflow-hidden  bg-white">
                 {/* Large Feature Image */}
                 <div className="relative bg-stone-100">
@@ -332,7 +333,7 @@ export default function LandingPage() {
           {/* Two Column Secondary Books */}
           <div className="grid gap-6 md:grid-cols-2">
             {recentBooks.slice(1, 3).map((book, idx) => (
-              <Link key={book.id} href={`/dashboard/books/${book.id}`}>
+              <Link key={book.id} href={`/books/${book.slug}`}>
                 <div className="group flex cursor-pointer items-start gap-5  bg-white p-5 transition-all hover:border-amber-500">
                   <div className="h-28 w-20 shrink-0 overflow-hidden border border-stone-200 bg-stone-50">
                     {book.cover_page_url ? (
@@ -601,7 +602,7 @@ export default function LandingPage() {
               </p>
             </div>
             <Link
-              href="/dashboard/blogs"
+              href="/blogs"
               className="flex items-center gap-1 text-sm font-medium text-stone-600 hover:text-stone-900"
             >
               Read all articles
@@ -620,7 +621,7 @@ export default function LandingPage() {
               : recentBlogs.map((blog) => (
                   <Link
                     key={blog.id}
-                    href={`/dashboard/blogs/${blog.slug}`}
+                    href={`/blogs/${blog.slug}`}
                     className="group overflow-hidden border border-stone-200 bg-white transition-all hover:shadow-md"
                   >
                     <div className="relative h-48 overflow-hidden bg-stone-100">
