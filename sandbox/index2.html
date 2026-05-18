@@ -235,6 +235,24 @@
     }
 
     @media (max-width: 900px) {
+      .hero-bg>div {
+        flex-direction: column;
+        gap: 28px;
+        padding: 52px 24px;
+      }
+
+      .hero-bg h1 {
+        font-size: 42px;
+      }
+
+      .hero-bg p {
+        font-size: 16px;
+      }
+
+      .hero-bg .book-3d img {
+        width: 240px;
+      }
+
       .book-feature-grid {
         grid-template-columns: 1fr;
         padding: 42px 24px 34px;
@@ -366,13 +384,15 @@
   <!-- ══════════════════════════════════════
        HERO
   ══════════════════════════════════════ -->
-  <section class="hero-bg relative overflow-hidden flex items-center">
-    <div class="max-w-7xl mx-auto px-12 w-full flex items-center gap-12 py-14 relative z-10">
+  <section class="hero-bg relative overflow-hidden flex items-center min-h-[560px]">
+    <div class="max-w-[1580px] mx-auto px-16 w-full flex items-center gap-20 py-24 relative z-10">
 
       <!-- Left arrow -->
       <button aria-label="Previous"
-              class="shrink-0 w-10 h-10 rounded-full bg-white/10 border border-white/20 text-white flex items-center justify-center hover:bg-white/25 transition-colors">
-        <svg class="w-4 h-4"
+              id="hero-prev"
+              type="button"
+              class="shrink-0 w-14 h-14 rounded-full bg-white/10 border border-white/20 text-white flex items-center justify-center hover:bg-white/25 transition-colors">
+        <svg class="w-6 h-6"
              fill="none"
              stroke="currentColor"
              stroke-width="2"
@@ -385,17 +405,20 @@
 
       <!-- Text -->
       <div class="flex-1">
-        <h1 class="text-5xl font-bold text-white leading-tight mb-4 max-w-lg">
+        <h1 id="hero-title"
+            class="text-[48px] font-bold text-white leading-tight mb-8 max-w-[680px] transition-opacity duration-200">
           How To Start and Run Your Own Business
         </h1>
-        <p class="text-white/70 leading-relaxed text-sm mb-7 max-w-md">
+        <p id="hero-description"
+           class="text-white/80 leading-relaxed text-[19px] mb-10 max-w-[660px] transition-opacity duration-200">
           Are you looking to start your own business but overwhelmed by the thought of costly consultants and courses?
           Look no further! Whether you're just starting or looking to improve your existing business, "How to Start and
           Run Your Own Business" is the ultimate entrepreneur's guide. It provides a comprehensive manual for all
           aspiring business owners.
         </p>
-        <a href="#"
-           class="inline-block bg-teal hover:bg-teal-light text-white px-14 py-3.5 rounded font-medium text-sm tracking-wide transition-colors duration-200">
+        <a id="hero-cta"
+           href="#books"
+           class="inline-block bg-teal hover:bg-teal-light text-white px-20 py-5 rounded font-semibold text-[18px] tracking-wide transition-colors duration-200">
           Get This Book
         </a>
       </div>
@@ -403,16 +426,19 @@
       <!-- Book cover -->
       <div class="shrink-0 book-wrap">
         <div class="book-3d">
-          <img src="book1.png"
+          <img id="hero-book"
+               src="book1.png"
                alt="How To Start and Run Your Own Business"
-               class="w-56 object-contain" />
+               class="w-[360px] object-contain transition-opacity duration-200" />
         </div>
       </div>
 
       <!-- Right arrow -->
       <button aria-label="Next"
-              class="shrink-0 w-10 h-10 rounded-full bg-white/10 border border-white/20 text-white flex items-center justify-center hover:bg-white/25 transition-colors">
-        <svg class="w-4 h-4"
+              id="hero-next"
+              type="button"
+              class="shrink-0 w-14 h-14 rounded-full bg-white/10 border border-white/20 text-white flex items-center justify-center hover:bg-white/25 transition-colors">
+        <svg class="w-6 h-6"
              fill="none"
              stroke="currentColor"
              stroke-width="2"
@@ -822,6 +848,51 @@
     </div>
 
   </footer>
+
+  <script>
+    const heroSlides = [
+      {
+        title: 'How To Start and Run Your Own Business',
+        description:
+          `Are you looking to start your own business but overwhelmed by the thought of costly consultants and courses? Look no further! Whether you're just starting or looking to improve your existing business, "How to Start and Run Your Own Business" is the ultimate entrepreneur's guide. It provides a comprehensive manual for all aspiring business owners.`,
+        image: 'book1.png',
+        alt: 'How To Start and Run Your Own Business',
+      },
+      {
+        title: 'Personal Financial and Retirement Planning',
+        description:
+          `A comprehensive guide to financial security, wealth building, and retirement planning. This book helps readers think clearly about personal finance, long-term goals, and practical choices for a more secure future.`,
+        image: 'book2.png',
+        alt: 'Personal Financial and Retirement Planning',
+      },
+    ];
+
+    const heroTitle = document.getElementById('hero-title');
+    const heroDescription = document.getElementById('hero-description');
+    const heroBook = document.getElementById('hero-book');
+    const heroPrev = document.getElementById('hero-prev');
+    const heroNext = document.getElementById('hero-next');
+    let activeHeroSlide = 0;
+
+    function showHeroSlide(index) {
+      activeHeroSlide = (index + heroSlides.length) % heroSlides.length;
+      const slide = heroSlides[activeHeroSlide];
+      const animatedEls = [heroTitle, heroDescription, heroBook];
+
+      animatedEls.forEach((el) => el.classList.add('opacity-0'));
+
+      window.setTimeout(() => {
+        heroTitle.textContent = slide.title;
+        heroDescription.textContent = slide.description;
+        heroBook.src = slide.image;
+        heroBook.alt = slide.alt;
+        animatedEls.forEach((el) => el.classList.remove('opacity-0'));
+      }, 180);
+    }
+
+    heroPrev.addEventListener('click', () => showHeroSlide(activeHeroSlide - 1));
+    heroNext.addEventListener('click', () => showHeroSlide(activeHeroSlide + 1));
+  </script>
 
 </body>
 
