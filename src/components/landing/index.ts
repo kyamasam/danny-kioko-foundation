@@ -1,0 +1,10 @@
+export { NewsletterBar } from "./NewsletterBar";
+export { Navigation } from "./Navigation";
+export { HeroCarousel } from "./HeroCarousel";
+export { BioSection } from "./BioSection";
+export { PortfolioSection } from "./PortfolioSection";
+export { BookFeature } from "./BookFeature";
+export { PodcastSection } from "./PodcastSection";
+export { BlogSection } from "./BlogSection";
+export { SocialBar } from "./SocialBar";
+export { Footer } from "./Footer";

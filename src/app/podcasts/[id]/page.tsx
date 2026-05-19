@@ -161,7 +161,6 @@ export default function PodcastDetailPage() {
         console.log("Share cancelled");
       }
     } else {
-      // Fallback: copy to clipboard
       navigator.clipboard.writeText(window.location.href);
       alert("Link copied to clipboard!");
     }
@@ -171,7 +170,7 @@ export default function PodcastDetailPage() {
     return (
       <div className="flex min-h-screen items-center justify-center bg-stone-50">
         <div className="text-center">
-          <div className="h-12 w-12 animate-spin rounded-full border-4 border-amber-500 border-t-transparent mx-auto" />
+          <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-amber-500 border-t-transparent" />
           <p className="mt-4 text-stone-600">Loading episode...</p>
         </div>
       </div>
@@ -449,9 +448,9 @@ export default function PodcastDetailPage() {
             <div className="mt-8 flex items-center justify-between border-t border-stone-200 pt-6">
               <button
                 onClick={() =>
-                  router.push(`/dashboard/podcasts/${podcast.id - 1}`)
+                  router.push(`/podcasts/${podcast.id - 1}`)
                 }
-                className="flex items-center gap-2 text-sm text-stone-500 hover:text-stone-900"
+                className="flex items-center gap-2 text-sm text-stone-500 hover:text-stone-900 transition-colors disabled:opacity-50"
                 disabled={podcast.id === 1}
               >
                 <ArrowLeft className="h-4 w-4" />
@@ -459,9 +458,9 @@ export default function PodcastDetailPage() {
               </button>
               <button
                 onClick={() =>
-                  router.push(`/dashboard/podcasts/${podcast.id + 1}`)
+                  router.push(`/podcasts/${podcast.id + 1}`)
                 }
-                className="flex items-center gap-2 text-sm text-stone-500 hover:text-stone-900"
+                className="flex items-center gap-2 text-sm text-stone-500 hover:text-stone-900 transition-colors"
               >
                 Next Episode
                 <ChevronRight className="h-4 w-4" />
