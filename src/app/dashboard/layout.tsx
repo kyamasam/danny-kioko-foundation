@@ -37,8 +37,7 @@ export default function DashboardLayout({
   };
 
   return (
-    <div className="min-h-screen bg-stone-50 font-['Instrument_Sans',sans-serif]">
-      {/* Font imports via next/font or link tags - add these to your root layout */}
+    <div className="min-h-screen bg-stone-50 ">
       <TopBar
         activePage={activePage}
         setActivePage={handlePageChange}
@@ -56,12 +55,24 @@ export default function DashboardLayout({
           {children}
         </div>
 
-        <div className="mt-12 flex animate-in fade-in slide-in-from-bottom-3 items-center justify-center gap-1.5 text-stone-400 delay-300">
-          <span className="block h-px w-4 bg-stone-300" />
-          <span className="font-['Instrument_Sans',sans-serif] text-[0.58rem] uppercase tracking-[0.12em]">
-            BrandFlow · Your creative library
+        {/* Dashboard Footer - Matches landing page aesthetic */}
+        <div className="mt-12 flex animate-in fade-in slide-in-from-bottom-3 flex-col items-center justify-center gap-3 border-t border-stone-200 pt-8 delay-300">
+          {/* Decorative line inspired by landing page */}
+          <div className="flex items-center gap-2">
+            <span className="block h-px w-8 bg-gradient-to-r from-transparent to-stone-300" />
+            <div className="w-3 h-[2px] bg-gradient-to-r from-[#1A5E4E] to-[#C9913A] rounded-sm"></div>
+            <span className="block h-px w-8 bg-gradient-to-l from-transparent to-stone-300" />
+          </div>
+
+          <span className=" text-[0.65rem] uppercase tracking-[0.15em] text-stone-400">
+            Jonathan Aggrey Bett · Creative Library
           </span>
-          <span className="block h-px w-4 bg-stone-300" />
+
+          <div className="flex items-center gap-4 text-[0.65rem] text-stone-300">
+            <span>Personal Financial & Retirement Planning</span>
+            <span className="w-1 h-1 rounded-full bg-stone-300" />
+            <span>How To Start And Run Your Own Business</span>
+          </div>
         </div>
       </main>
 

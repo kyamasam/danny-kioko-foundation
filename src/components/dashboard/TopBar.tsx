@@ -64,8 +64,6 @@ export function TopBar({
     if (activePage === "books") {
       setShowAddBookForm(true);
     }
-    // You can also use the parent's setAddOpen if you want to handle it there
-    // setAddOpen(true);
   };
 
   const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -77,134 +75,111 @@ export function TopBar({
 
   return (
     <>
-      <header className="sticky top-0 z-30 border-b border-stone-200 bg-stone-50/95 backdrop-blur-sm animate-in slide-in-from-top duration-500">
-        <div className="mx-auto flex max-w-6xl items-center gap-0 px-6">
-          {/* Logo */}
-          <div className="flex shrink-0 items-center gap-2.5 border-r border-stone-200 pr-6 py-3">
-            <div className="grid h-7 w-7 grid-cols-2 grid-rows-2 gap-[2.5px] border border-stone-300 p-[5px]">
-              <div className="rounded-[1px] bg-stone-700" />
-              <div className="rounded-[1px] bg-stone-700" />
-              <div className="rounded-[1px] bg-stone-700" />
-              <div className="rounded-[1px] bg-stone-300" />
-            </div>
-            <span className="font-['Playfair_Display',serif] text-[0.95rem] tracking-wide text-stone-800">
-              BrandFlow
+      <header className="sticky top-0 z-50 border-b border-stone-100 bg-white">
+        <div className="max-w-7xl mx-auto px-8 flex items-center justify-between py-2">
+          {/* Logo - Exact match to HTML design */}
+          <a href="/dashboard" className="flex items-center gap-3">
+            <img
+              src="https://saicxdmkixfxhkaxfhmm.supabase.co/storage/v1/object/public/library/covers/jkbLogo.png"
+              alt="JKB"
+              className="h-11 w-auto object-contain"
+            />
+            <span className="font-light text-base tracking-wide text-stone-600">
+              Jonathan K Bett
             </span>
-          </div>
+          </a>
 
-          {/* Nav links */}
-          <nav className="flex flex-1 items-end gap-6 pl-6 pt-3">
-            {navItems.map(({ id, label, icon: Icon }) => (
+          {/* Navigation - Exact match to HTML nav-link style */}
+          <div className="flex items-center gap-10">
+            {navItems.map(({ id, label }) => (
               <button
                 key={id}
                 onClick={() => setActivePage(id)}
                 className={cn(
-                  "group relative inline-flex items-center gap-[5px] border-none bg-transparent px-0 pb-2.5 font-['Instrument_Sans',sans-serif] text-[0.72rem] font-medium uppercase tracking-[0.12em] transition-all",
+                  "nav-link text-sm font-medium transition-colors",
                   activePage === id
-                    ? "text-stone-800"
-                    : "text-stone-400 hover:text-stone-600",
-                  "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:rounded-sm after:bg-stone-800 after:transition-all after:duration-300",
+                    ? "text-ink"
+                    : "text-stone-600 hover:text-ink",
+                  "relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full",
                   activePage === id && "after:w-full",
                 )}
               >
-                <Icon className="h-3 w-3" />
                 {label}
               </button>
             ))}
-          </nav>
+          </div>
 
-          {/* Right actions */}
-          <div className="flex shrink-0 items-center gap-1 border-l border-stone-200 py-3 pl-6 ml-6">
+          {/* Right actions - Keep functional but styled minimally */}
+          <div className="flex items-center gap-4">
             <Button
               size="sm"
               onClick={handleAddClick}
-              className="relative h-7 gap-1.5 overflow-hidden rounded-none bg-stone-900 px-3 font-['Instrument_Sans',sans-serif] text-[0.65rem] font-medium uppercase tracking-[0.1em] text-white hover:bg-stone-800 group"
+              className="h-9 px-4 bg-teal hover:bg-teal-light text-white text-sm font-medium rounded-none transition-colors"
             >
-              <Plus className="h-3 w-3" />
+              <Plus className="h-4 w-4 mr-1" />
               Add{" "}
               {activePage === "books"
                 ? "Book"
                 : activePage === "podcasts"
                   ? "Podcast"
                   : "Post"}
-              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/15 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
             </Button>
 
-            <Button
-              size="sm"
-              variant="ghost"
-              className="h-7 w-7 rounded-none p-0 text-stone-400 hover:bg-stone-100 hover:text-stone-700"
+            <button
               onClick={() => setSearchOpen(!searchOpen)}
+              className="text-stone-400 hover:text-stone-600 transition-colors"
             >
-              <Search className="h-3.5 w-3.5" />
-            </Button>
+              <Search className="h-5 w-5" />
+            </button>
 
-            <Button
-              size="sm"
-              variant="ghost"
-              className="relative h-7 w-7 rounded-none p-0 text-stone-400 hover:bg-stone-100 hover:text-stone-700"
-            >
-              <Bell className="h-3.5 w-3.5" />
-              <span className="absolute right-1 top-1 h-1.5 w-1.5 rounded-full bg-amber-500" />
-            </Button>
+            <button className="relative text-stone-400 hover:text-stone-600 transition-colors">
+              <Bell className="h-5 w-5" />
+              <span className="absolute -top-1 -right-1 h-2 w-2 rounded-full bg-gold" />
+            </button>
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  className="h-7 gap-1 rounded-none px-2 font-['Instrument_Sans',sans-serif] text-[0.65rem] text-stone-500 hover:bg-stone-100 hover:text-stone-800"
-                >
-                  <div className="flex h-5 w-5 items-center justify-center border border-stone-300 font-['Playfair_Display',serif] text-[0.55rem] text-stone-600">
-                    CD
+                <button className="flex items-center gap-2 text-sm font-medium text-stone-600 hover:text-ink transition-colors">
+                  <div className="flex h-8 w-8 items-center justify-center border border-stone-200 rounded-full bg-primary-pale">
+                    <span className="text-primary text-sm font-semibold">
+                      JB
+                    </span>
                   </div>
-                  <ChevronDown className="h-3 w-3" />
-                </Button>
+                  <ChevronDown className="h-4 w-4" />
+                </button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent
-                align="end"
-                className="w-44 rounded-none border-stone-200 bg-stone-50 p-1 shadow-lg"
-              >
-                <DropdownMenuItem className="gap-2 rounded-none font-['Instrument_Sans',sans-serif] text-xs text-stone-600 focus:bg-stone-100">
-                  <User className="h-3 w-3" /> Profile
+              <DropdownMenuContent align="end" className="w-48">
+                <DropdownMenuItem>
+                  <User className="mr-2 h-4 w-4" /> Profile
                 </DropdownMenuItem>
-                <DropdownMenuItem className="gap-2 rounded-none font-['Instrument_Sans',sans-serif] text-xs text-stone-600 focus:bg-stone-100">
-                  <Settings className="h-3 w-3" /> Settings
+                <DropdownMenuItem>
+                  <Settings className="mr-2 h-4 w-4" /> Settings
                 </DropdownMenuItem>
-                <DropdownMenuSeparator className="bg-stone-200" />
+                <DropdownMenuSeparator />
                 <DropdownMenuItem
-                  className="gap-2 rounded-none font-['Instrument_Sans',sans-serif] text-xs text-red-500 focus:bg-red-50 focus:text-red-600"
                   onClick={() => router.push("/login")}
+                  className="text-red-600"
                 >
-                  <LogOut className="h-3 w-3" /> Sign out
+                  <LogOut className="mr-2 h-4 w-4" /> Sign out
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
         </div>
 
-        {/* Search bar */}
+        {/* Search Bar */}
         {searchOpen && (
-          <div className="animate-in slide-in-from-top-2 duration-300 border-t border-stone-200 bg-white px-6 py-2">
-            <div className="relative mx-auto max-w-6xl">
-              <Search className="absolute left-0 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-stone-400" />
+          <div className="border-t border-stone-100 bg-white px-8 py-3">
+            <div className="relative max-w-7xl mx-auto">
+              <Search className="absolute left-0 top-1/2 h-4 w-4 -translate-y-1/2 text-stone-400" />
               <Input
                 autoFocus
-                placeholder={`Search ${activePage}…`}
+                placeholder={`Search ${activePage}...`}
                 value={searchQ}
                 onChange={(e) => setSearchQ(e.target.value)}
                 onKeyDown={handleSearch}
-                className="border-none border-b border-stone-300 bg-transparent pl-7 font-['Instrument_Sans',sans-serif] text-sm text-stone-800 placeholder:text-stone-400 focus:border-stone-800 focus:ring-0"
+                className="pl-8 border-0 border-b border-stone-200 rounded-none focus:border-primary focus:ring-0"
               />
-              <button
-                onClick={() => {
-                  setSearchOpen(false);
-                  setSearchQ("");
-                }}
-                className="absolute right-0 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-700"
-              >
-                <X className="h-3.5 w-3.5" />
-              </button>
             </div>
           </div>
         )}
@@ -217,6 +192,26 @@ export function TopBar({
           onSuccess={() => setShowAddBookForm(false)}
         />
       )}
+
+      <style jsx>{`
+        .nav-link {
+          position: relative;
+        }
+        .nav-link::after {
+          content: "";
+          position: absolute;
+          bottom: -4px;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: #1a5e4e;
+          transition: width 0.3s ease;
+          border-radius: 1px;
+        }
+        .nav-link:hover::after {
+          width: 100%;
+        }
+      `}</style>
     </>
   );
 }

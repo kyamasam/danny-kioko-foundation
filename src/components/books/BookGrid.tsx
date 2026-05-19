@@ -213,7 +213,6 @@ export function BookGrid({ onAddClick }: BookGridProps) {
               book={book}
               onEdit={handleEdit}
               onDelete={handleDelete}
-              delay={(index % 4) + 1}
             />
           ))}
         </div>
