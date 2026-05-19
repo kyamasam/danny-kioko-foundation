@@ -80,7 +80,7 @@ export const metadata: Metadata = {
       "Jonathan Aggrey Bett | Personal Financial & Retirement Planning Books",
     description:
       "Master your finances with 'Personal Financial and Retirement Planning' and learn entrepreneurship with 'How To Start And Run Your Own Business' by Jonathan Aggrey Bett.",
-    url: "https://yourdomain.com",
+    url: "https://jbett.netlify.app",
     siteName: "Jonathan Aggrey Bett - Author",
     locale: "en_US",
     type: "website",
@@ -113,14 +113,14 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://yourdomain.com",
+    canonical: "https://jbett.netlify.app",
   },
   category: "books",
 };
 
 async function fetchRecentBooks(): Promise<Book[]> {
   try {
-    const response = await fetch(`jbett.netlify.app/api/books?limit=4`, {
+    const response = await fetch(`https://jbett.netlify.app/api/books?limit=4`, {
       next: { revalidate: 3600 },
     });
     const result = await response.json();
@@ -134,7 +134,7 @@ async function fetchRecentBooks(): Promise<Book[]> {
 
 async function fetchRecentPodcasts(): Promise<Podcast[]> {
   try {
-    const response = await fetch(`jbett.netlify.app/api/podcasts?limit=5`, {
+    const response = await fetch(`https://jbett.netlify.app/api/podcasts?limit=5`, {
       next: { revalidate: 3600 },
     });
     const result = await response.json();
@@ -148,7 +148,7 @@ async function fetchRecentPodcasts(): Promise<Podcast[]> {
 
 async function fetchRecentBlogs(): Promise<Blog[]> {
   try {
-    const response = await fetch(`jbett.netlify.app/api/blogs?limit=5`, {
+    const response = await fetch(`https://jbett.netlify.app/api/blogs?limit=5`, {
       next: { revalidate: 3600 },
     });
     const result = await response.json();
@@ -190,7 +190,7 @@ export default async function LandingPage() {
             name: "Jonathan Aggrey Bett",
             description:
               "Author of books on personal financial planning, retirement strategies, and entrepreneurship.",
-            url: "https://yourdomain.com",
+            url: "https://jbett.netlify.app",
             sameAs: [
               "https://twitter.com/jonathanbett",
               "https://linkedin.com/in/jonathanbett",
@@ -276,7 +276,7 @@ export default async function LandingPage() {
             "@context": "https://schema.org",
             "@type": "WebSite",
             name: "Jonathan Aggrey Bett - Author",
-            url: "https://yourdomain.com",
+            url: "https://jbett.netlify.app",
             description:
               "Official website of Jonathan Aggrey Bett, author of books on personal financial planning, retirement strategies, and how to start and run your own business.",
             potentialAction: {
@@ -284,7 +284,7 @@ export default async function LandingPage() {
               target: {
                 "@type": "EntryPoint",
                 urlTemplate:
-                  "https://yourdomain.com/search?q={search_term_string}",
+                  "https://jbett.netlify.app/search?q={search_term_string}",
               },
               "query-input": "required name=search_term_string",
             },
