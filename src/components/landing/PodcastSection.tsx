@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Play, Pause, Clock, Mic2, Headphones, ArrowRight } from "lucide-react";
 import AudioProgress from "@/components/AudioProgress";
+import { useClientAudio } from "./ClientAudioProvider";
 
 interface Podcast {
   id: number;
@@ -16,30 +17,29 @@ interface Podcast {
 }
 
 interface PodcastSectionProps {
-  podcasts: Podcast[];
-  loading: boolean;
-  playingId: number | null;
-  isLoading: boolean;
-  onPlay: (id: number, url: string) => void;
-  onStop: () => void;
-  currentTime: number;
-  duration: number;
-  onSeek: (time: number) => void;
+  initialPodcasts: Podcast[];
 }
 
-export function PodcastSection({
-  podcasts,
-  loading,
-  playingId,
-  isLoading,
-  onPlay,
-  onStop,
-  currentTime,
-  duration,
-  onSeek,
-}: PodcastSectionProps) {
+export function PodcastSection({ initialPodcasts }: PodcastSectionProps) {
+  const { playingId, isLoading, play, stop, currentTime, duration, seek } =
+    useClientAudio();
+
+  const podcasts = initialPodcasts;
+  const loading = false; // No loading state needed since data comes from server
   const featuredPodcast = podcasts[0];
   const otherPodcasts = podcasts.slice(1, 5);
+
+  const handlePlay = (id: number, url: string) => {
+    play(id, url);
+  };
+
+  const handleStop = () => {
+    stop();
+  };
+
+  const handleSeek = (time: number) => {
+    seek(time);
+  };
 
   if (loading && podcasts.length === 0) {
     return (
@@ -220,9 +220,9 @@ export function PodcastSection({
                           e.preventDefault();
                           e.stopPropagation();
                           if (isCurrentlyPlaying) {
-                            onStop();
+                            handleStop();
                           } else {
-                            onPlay(podcast.id, podcast.audio_url);
+                            handlePlay(podcast.id, podcast.audio_url);
                           }
                         }}
                         disabled={isLoading && !isCurrentlyPlaying}
@@ -262,7 +262,7 @@ export function PodcastSection({
                     <AudioProgress
                       currentTime={currentTime}
                       duration={duration}
-                      onSeek={onSeek}
+                      onSeek={handleSeek}
                     />
                   </div>
                 )}

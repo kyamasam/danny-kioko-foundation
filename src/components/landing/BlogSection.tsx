@@ -14,11 +14,13 @@ interface Blog {
 }
 
 interface BlogSectionProps {
-  blogs: Blog[];
-  loading: boolean;
+  initialBlogs: Blog[];
 }
 
-export function BlogSection({ blogs, loading }: BlogSectionProps) {
+export function BlogSection({ initialBlogs }: BlogSectionProps) {
+  const blogs = initialBlogs;
+  const loading = false; // No loading state needed since data comes from server
+
   return (
     <section id="thoughts" className="bg-white py-16 border-t border-stone-100">
       <div className="max-w-7xl mx-auto px-8">
