@@ -1,68 +1,64 @@
 import { useState, useEffect, useCallback } from "react";
-import { createClient } from "@/lib/supabase/client";
 import type {
   Book,
   CreateBookInput,
   UpdateBookInput,
 } from "@/components/books/types";
+import { getErrorMessage } from "@/lib/error";
 
 export function useBooks() {
   const [books, setBooks] = useState<Book[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const supabase = createClient();
 
   const fetchBooks = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
 
-      const { data, error: fetchError } = await supabase
-        .from("books")
-        .select("*")
-        .order("created_at", { ascending: false });
+      const response = await fetch("/api/books");
+      const result = await response.json();
 
-      if (fetchError) throw fetchError;
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || "Failed to fetch books");
+      }
 
-      setBooks(data || []);
-    } catch (err: any) {
-      setError(err.message);
+      setBooks(result.data || []);
+    } catch (err: unknown) {
+      const message = getErrorMessage(err);
+      setError(message);
       console.error("Error fetching books:", err);
     } finally {
       setLoading(false);
     }
-  }, [supabase]);
+  }, []);
 
   const addBook = useCallback(
     async (book: CreateBookInput) => {
       try {
         setError(null);
 
-        const { data, error: insertError } = await supabase
-          .from("books")
-          .insert([
-            {
-              price: book.price || 0,
-              sale_price: book.sale_price || 0,
-              cover_page_url: book.cover_page_url || null,
-              images: book.images || null,
-              sources: book.sources || [], // Add sources here
-            },
-          ])
-          .select()
-          .single();
+        const response = await fetch("/api/books", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(book),
+        });
+        const result = await response.json();
 
-        if (insertError) throw insertError;
+        if (!response.ok || !result.success) {
+          throw new Error(result.error || "Failed to add book");
+        }
 
-        setBooks((prev) => [data, ...prev]);
-        return { success: true, data };
-      } catch (err: any) {
-        setError(err.message);
+        setBooks((prev) => [result.data, ...prev]);
+        return { success: true, data: result.data };
+      } catch (err: unknown) {
+        const message = getErrorMessage(err);
+        setError(message);
         console.error("Error adding book:", err);
-        return { success: false, error: err.message };
+        return { success: false, error: message };
       }
     },
-    [supabase],
+    [],
   );
 
   const updateBook = useCallback(
@@ -70,24 +66,29 @@ export function useBooks() {
       try {
         setError(null);
 
-        const { data, error: updateError } = await supabase
-          .from("books")
-          .update(updates)
-          .eq("id", id)
-          .select()
-          .single();
+        const response = await fetch(`/api/books/${id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updates),
+        });
+        const result = await response.json();
 
-        if (updateError) throw updateError;
+        if (!response.ok || !result.success) {
+          throw new Error(result.error || "Failed to update book");
+        }
 
-        setBooks((prev) => prev.map((book) => (book.id === id ? data : book)));
-        return { success: true, data };
-      } catch (err: any) {
-        setError(err.message);
+        setBooks((prev) =>
+          prev.map((book) => (book.id === id ? result.data : book)),
+        );
+        return { success: true, data: result.data };
+      } catch (err: unknown) {
+        const message = getErrorMessage(err);
+        setError(message);
         console.error("Error updating book:", err);
-        return { success: false, error: err.message };
+        return { success: false, error: message };
       }
     },
-    [supabase],
+    [],
   );
 
   const deleteBook = useCallback(
@@ -95,26 +96,33 @@ export function useBooks() {
       try {
         setError(null);
 
-        const { error: deleteError } = await supabase
-          .from("books")
-          .delete()
-          .eq("id", id);
+        const response = await fetch(`/api/books/${id}`, {
+          method: "DELETE",
+        });
+        const result = await response.json();
 
-        if (deleteError) throw deleteError;
+        if (!response.ok || !result.success) {
+          throw new Error(result.error || "Failed to delete book");
+        }
 
         setBooks((prev) => prev.filter((book) => book.id !== id));
         return { success: true };
-      } catch (err: any) {
-        setError(err.message);
+      } catch (err: unknown) {
+        const message = getErrorMessage(err);
+        setError(message);
         console.error("Error deleting book:", err);
-        return { success: false, error: err.message };
+        return { success: false, error: message };
       }
     },
-    [supabase],
+    [],
   );
 
   useEffect(() => {
-    fetchBooks();
+    const timeout = window.setTimeout(() => {
+      void fetchBooks();
+    }, 0);
+
+    return () => window.clearTimeout(timeout);
   }, [fetchBooks]);
 
   return {

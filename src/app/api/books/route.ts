@@ -1,7 +1,9 @@
 import { createClient } from "@/lib/supabase/server";
+import { requireAuthenticatedSupabase } from "@/lib/supabase/auth";
+import { getErrorMessage } from "@/lib/error";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const supabase = await createClient();
 
@@ -13,10 +15,10 @@ export async function GET(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ success: true, data });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("GET /api/books error:", error);
     return NextResponse.json(
-      { success: false, error: error.message },
+      { success: false, error: getErrorMessage(error) },
       { status: 500 },
     );
   }
@@ -24,7 +26,10 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const supabase = await createClient();
+    const auth = await requireAuthenticatedSupabase();
+    if ("response" in auth) return auth.response;
+
+    const { supabase } = auth;
     const body = await request.json();
 
     // Validate required fields
@@ -54,10 +59,10 @@ export async function POST(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ success: true, data }, { status: 201 });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("POST /api/books error:", error);
     return NextResponse.json(
-      { success: false, error: error.message },
+      { success: false, error: getErrorMessage(error) },
       { status: 500 },
     );
   }

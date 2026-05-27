@@ -1,4 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
+import { requireAuthenticatedSupabase } from "@/lib/supabase/auth";
+import { getErrorMessage } from "@/lib/error";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
@@ -36,10 +38,10 @@ export async function GET(
     }
 
     return NextResponse.json({ success: true, data });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("GET /api/podcasts/[id] error:", error);
     return NextResponse.json(
-      { success: false, error: error.message },
+      { success: false, error: getErrorMessage(error) },
       { status: 500 },
     );
   }
@@ -51,7 +53,10 @@ export async function PUT(
 ) {
   try {
     const { id } = await params;
-    const supabase = await createClient();
+    const auth = await requireAuthenticatedSupabase();
+    if ("response" in auth) return auth.response;
+
+    const { supabase } = auth;
     const body = await request.json();
 
     if (!id || id === "undefined") {
@@ -84,10 +89,10 @@ export async function PUT(
     if (error) throw error;
 
     return NextResponse.json({ success: true, data });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("PUT /api/podcasts/[id] error:", error);
     return NextResponse.json(
-      { success: false, error: error.message },
+      { success: false, error: getErrorMessage(error) },
       { status: 500 },
     );
   }
@@ -99,7 +104,10 @@ export async function DELETE(
 ) {
   try {
     const { id } = await params;
-    const supabase = await createClient();
+    const auth = await requireAuthenticatedSupabase();
+    if ("response" in auth) return auth.response;
+
+    const { supabase } = auth;
 
     if (!id || id === "undefined") {
       return NextResponse.json(
@@ -116,10 +124,10 @@ export async function DELETE(
     if (error) throw error;
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("DELETE /api/podcasts/[id] error:", error);
     return NextResponse.json(
-      { success: false, error: error.message },
+      { success: false, error: getErrorMessage(error) },
       { status: 500 },
     );
   }

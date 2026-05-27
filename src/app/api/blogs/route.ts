@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { getErrorMessage } from "@/lib/error";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
@@ -9,7 +10,7 @@ export async function GET(request: NextRequest) {
       ? parseInt(searchParams.get("limit")!)
       : 10;
 
-    let query = supabase
+    const query = supabase
       .from("blogs")
       .select("*")
       .eq("is_published", true)
@@ -21,10 +22,10 @@ export async function GET(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ success: true, data });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("GET /api/blogs error:", error);
     return NextResponse.json(
-      { success: false, error: error.message },
+      { success: false, error: getErrorMessage(error) },
       { status: 500 },
     );
   }

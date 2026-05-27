@@ -1,23 +1,23 @@
 "use client";
 
-import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
-import { useRouter } from "next/navigation";
 import {
-  Mail,
-  Lock,
+  AlertCircle,
+  ArrowRight,
   Eye,
   EyeOff,
-  ArrowRight,
   Loader2,
-  AlertCircle,
+  Lock,
+  Mail,
   Sparkles,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Alert, AlertDescription } from "@/components/ui/alert";
 import { cn } from "@/lib/utils";
 
 export default function LoginForm() {
@@ -410,19 +410,7 @@ export default function LoginForm() {
                 <span className="h-px flex-1 bg-stone-200" />
               </div>
 
-              {/* Sign up */}
-              <div className="anim-slide d-400 text-center">
-                <p className="font-body text-[0.8rem] text-stone-500">
-                  Don't have an account?{" "}
-                  <button
-                    type="button"
-                    onClick={() => router.push("/signup")}
-                    className="font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 transition-all hover:decoration-stone-600"
-                  >
-                    Create one
-                  </button>
-                </p>
-              </div>
+
             </form>
 
             {/* Trust badge */}

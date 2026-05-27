@@ -1,6 +1,18 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
+const PROTECTED_API_PREFIXES = ["/api/books", "/api/podcasts", "/api/blogs"];
+const WRITE_METHODS = new Set(["POST", "PUT", "PATCH", "DELETE"]);
+
+function isProtectedApiMutation(request: NextRequest) {
+  return (
+    WRITE_METHODS.has(request.method) &&
+    PROTECTED_API_PREFIXES.some((prefix) =>
+      request.nextUrl.pathname.startsWith(prefix),
+    )
+  );
+}
+
 export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({
     request,
@@ -32,8 +44,14 @@ export async function updateSession(request: NextRequest) {
   const { data } = await supabase.auth.getClaims();
   const user = data?.claims;
 
-  // If no user and trying to access dashboard, redirect to login
   if (!user) {
+    if (isProtectedApiMutation(request)) {
+      return NextResponse.json(
+        { success: false, error: "Unauthorized" },
+        { status: 401 },
+      );
+    }
+
     const url = request.nextUrl.clone();
     url.pathname = "/auth/login";
     return NextResponse.redirect(url);

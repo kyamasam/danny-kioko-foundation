@@ -1,12 +1,11 @@
 import { NextResponse } from "next/server";
 
-export async function POST(request: Request) {
-  const body = await request.json();
-  const { email, password } = body;
-
-  console.log("Login attempt:", email, password);
-
-  return NextResponse.json({
-    message: "Login API endpoint",
-  });
+export async function POST() {
+  return NextResponse.json(
+    {
+      success: false,
+      error: "Use Supabase Auth from the login form.",
+    },
+    { status: 410 },
+  );
 }

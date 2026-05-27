@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { getErrorMessage } from "@/lib/error";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
@@ -41,10 +42,10 @@ export async function GET(
       .eq("id", data.id);
 
     return NextResponse.json({ success: true, data });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("GET /api/blogs/[slug] error:", error);
     return NextResponse.json(
-      { success: false, error: error.message },
+      { success: false, error: getErrorMessage(error) },
       { status: 500 },
     );
   }
