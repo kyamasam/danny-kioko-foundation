@@ -1,9 +1,5 @@
-import LoginForm from "@/components/auth/login-form";
+import { BlogGrid } from "@/components/blogs/BlogGrid";
 
 export default function Blogs() {
-  return (
-    <div className="text-center">
-      <h1 className="text-3xl font-bold">Welcome to the blog</h1>
-    </div>
-  );
+  return <BlogGrid />;
 }

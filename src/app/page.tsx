@@ -120,12 +120,15 @@ export const metadata: Metadata = {
 
 async function fetchRecentBooks(): Promise<Book[]> {
   try {
-    const response = await fetch(`https://jbett.netlify.app/api/books?limit=4`, {
-      next: { revalidate: 3600 },
-    });
-    const result = await response.json();
-    if (result.success) return result.data;
-    return [];
+    const { createClient } = await import("@/lib/supabase/server");
+    const supabase = await createClient();
+    const { data, error } = await supabase
+      .from("books")
+      .select("*")
+      .order("created_at", { ascending: false })
+      .limit(4);
+    if (error) throw error;
+    return data || [];
   } catch (error) {
     console.error("Error fetching books:", error);
     return [];
@@ -134,12 +137,15 @@ async function fetchRecentBooks(): Promise<Book[]> {
 
 async function fetchRecentPodcasts(): Promise<Podcast[]> {
   try {
-    const response = await fetch(`https://jbett.netlify.app/api/podcasts?limit=5`, {
-      next: { revalidate: 3600 },
-    });
-    const result = await response.json();
-    if (result.success) return result.data;
-    return [];
+    const { createClient } = await import("@/lib/supabase/server");
+    const supabase = await createClient();
+    const { data, error } = await supabase
+      .from("podcasts")
+      .select("*")
+      .order("created_at", { ascending: false })
+      .limit(5);
+    if (error) throw error;
+    return data || [];
   } catch (error) {
     console.error("Error fetching podcasts:", error);
     return [];
@@ -148,12 +154,16 @@ async function fetchRecentPodcasts(): Promise<Podcast[]> {
 
 async function fetchRecentBlogs(): Promise<Blog[]> {
   try {
-    const response = await fetch(`https://jbett.netlify.app/api/blogs?limit=5`, {
-      next: { revalidate: 3600 },
-    });
-    const result = await response.json();
-    if (result.success) return result.data;
-    return [];
+    const { createClient } = await import("@/lib/supabase/server");
+    const supabase = await createClient();
+    const { data, error } = await supabase
+      .from("blogs")
+      .select("id, title, excerpt, cover_image_url, read_time, is_free, slug")
+      .eq("is_published", true)
+      .order("created_at", { ascending: false })
+      .limit(3);
+    if (error) throw error;
+    return data || [];
   } catch (error) {
     console.error("Error fetching blogs:", error);
     return [];
