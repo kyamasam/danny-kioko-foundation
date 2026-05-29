@@ -5,1085 +5,801 @@
   <meta charset="UTF-8" />
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0" />
-  <title>Jonathan K Bett — Author & Business Executive</title>
+  <title>Danny Kioko | Music & Evangelism</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect"
         href="https://fonts.googleapis.com" />
   <link rel="preconnect"
         href="https://fonts.gstatic.com"
         crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Great+Vibes&display=swap"
         rel="stylesheet" />
-
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { sans: ['Jost', 'sans-serif'] },
+          fontFamily: {
+            sans: ["Inter", "Arial", "sans-serif"],
+            script: ["Great Vibes", "cursive"],
+          },
           colors: {
-            primary: {
-              DEFAULT: '#1A5E4E',
-              light: '#226b5a',
-              dark: '#124034',
-              pale: '#e8f4f1',
-            },
-            teal: { DEFAULT: '#3d9b82', light: '#5ab39c', pale: '#d6f0ea' },
-            gold: { DEFAULT: '#C9913A', light: '#d9a85a', pale: '#f5e6cc' },
-            cream: '#F7F2EB',
-            ink: '#1A1A1A',
+            release: "#f25a25",
+            ink: "#101010",
+            midnight: "#122a5c",
+          },
+          boxShadow: {
+            listen: "0 13px 20px rgba(4, 4, 4, .24)",
+            navButton: "0 8px 18px rgba(18, 42, 92, .17)",
           },
         },
       },
-    }
+    };
   </script>
-
   <style>
-    body {
-      font-family: 'Jost', sans-serif;
-    }
-
-    /* ── Hero ─────────────────────────────── */
-    .hero-bg {
-      position: relative;
-      background: url('library_2.png') center/cover no-repeat;
-    }
-
-    .hero-bg::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(110deg,
-          rgba(14, 46, 38, .90) 0%,
-          rgba(20, 60, 48, .82) 40%,
-          rgba(10, 35, 28, .60) 100%);
-    }
-
-    .hero-bg::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle, rgba(255, 255, 255, .02) 1px, transparent 1px);
-      background-size: 28px 28px;
+    .slide {
+      opacity: 0;
       pointer-events: none;
+      transform: scale(1.018);
     }
 
-    /* ── 3-D book ─────────────────────────── */
-    .book-wrap {
-      perspective: 1000px;
+    .slide.is-active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
     }
 
-    .book-3d {
-      transform: rotateY(-16deg) rotateX(3deg);
-      transform-origin: left center;
-      transition: transform .45s ease;
-      filter: drop-shadow(0 32px 56px rgba(0, 0, 0, .60));
+    .dot.is-active {
+      width: 57px;
     }
 
-    .book-3d:hover {
-      transform: rotateY(-6deg) rotateX(1deg);
+    .nav-links.is-open {
+      display: flex;
     }
 
-    /* ── Role card ────────────────────────── */
-    .role-card {
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-
-    .role-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 48px rgba(0, 0, 0, .08);
-    }
-
-    /* ── Nav underline ────────────────────── */
-    .nav-link {
-      position: relative;
-    }
-
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: #1A5E4E;
-      transition: width .3s ease;
-      border-radius: 1px;
-    }
-
-    .nav-link:hover::after {
-      width: 100%;
-    }
-
-    /* ── Purchase button ──────────────────── */
-    .buy-btn {
+    .music-pill {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 134px;
-      height: 41px;
-      padding: 0 18px;
-      border-radius: 1px;
-      transition: opacity .2s, transform .2s;
-    }
-
-    .buy-btn:hover {
-      opacity: .88;
-      transform: translateY(-1px);
-    }
-
-    .buy-btn-amazon {
-      background: #F4C77B;
-    }
-
-    .buy-btn-nuria {
-      background: #6fd49a;
-    }
-
-    /* ── Book title underline accent ────────── */
-    .book-title {
-      display: inline-block;
-      position: relative;
-      z-index: 0;
-    }
-
-    .book-title::after {
-      content: '';
-      display: block;
-      width: 100%;
-      height: 5px;
-      background: #3d9b82;
-      border-radius: 2px;
-      margin-top: 4px;
-    }
-
-    .book-feature {
-      background: #eaf4f0;
-    }
-
-    .book-feature.book-feature-alt {
+      gap: 4px;
+      min-width: 91px;
+      height: 36px;
+      padding: 0 12px;
+      border: 1px solid #ead8df;
+      border-radius: 9999px;
       background: #fff;
-    }
-
-    .book-feature-grid {
-      display: grid;
-      grid-template-columns: 278px minmax(0, 1fr);
-      gap: 30px;
-      align-items: start;
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 54px 24px 28px;
-    }
-
-    .book-feature-alt .book-feature-grid {
-      grid-template-columns: minmax(0, 1fr) 278px;
-      padding-top: 48px;
-      padding-bottom: 36px;
-    }
-
-    .book-feature-cover {
-      width: 220px;
-      margin-left: 8px;
-      filter: drop-shadow(0 22px 30px rgba(22, 55, 45, .22));
-    }
-
-    .book-feature-alt .book-feature-cover {
-      width: 220px;
-      margin-left: auto;
-      margin-right: 8px;
-    }
-
-    .book-feature-copy {
-      max-width: 815px;
-    }
-
-    .book-feature .book-title {
-      display: inline;
-      background: linear-gradient(to top, rgba(81, 159, 132, .36) 0 .45em, transparent .45em);
-      -webkit-box-decoration-break: clone;
-      box-decoration-break: clone;
-    }
-
-    .book-feature .book-title::after {
-      content: none;
-    }
-
-    .book-feature-copy p,
-    .book-feature-copy li {
-      color: #1f2724;
-      font-size: 17px;
-      line-height: 1.52;
-      letter-spacing: .02em;
-    }
-
-    .book-feature-copy ul {
-      margin: 5px 0 6px 11px;
-    }
-
-    .book-feature-copy li {
-      line-height: 1.45;
-      margin-bottom: 1px;
-    }
-
-    .book-feature-purchase {
-      margin-top: 25px;
-      display: flex;
-      align-items: center;
-      gap: 26px;
-      flex-wrap: wrap;
-    }
-
-    .blog-card {
-      display: flex;
-      flex-direction: column;
-      min-height: 100%;
-      border: 1px solid #e7efec;
-      background: #fff;
-      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-    }
-
-    .blog-card:hover {
-      transform: translateY(-4px);
-      border-color: #cfe2dc;
-      box-shadow: 0 18px 42px rgba(22, 55, 45, .09);
-    }
-
-    .blog-meta {
-      color: #1A5E4E;
       font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+      transition: transform .15s ease;
     }
 
-    .blog-image {
-      width: 100%;
-      height: 190px;
-      object-fit: cover;
-      border-bottom: 1px solid #e7efec;
+    .music-pill:hover {
+      transform: translateY(-2px);
     }
 
-    @media (max-width: 900px) {
-      .hero-bg>div {
-        flex-direction: column;
-        gap: 28px;
-        padding: 52px 24px;
-      }
-
-      .hero-bg h1 {
-        font-size: 42px;
-      }
-
-      .hero-bg p {
-        font-size: 16px;
-      }
-
-      .hero-bg .book-3d img {
-        width: 240px;
-      }
-
-      .book-feature-grid {
-        grid-template-columns: 1fr;
-        padding: 42px 24px 34px;
-      }
-
-      .book-feature-alt .book-feature-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .book-feature-cover {
-        width: 190px;
-        margin: 0 auto;
-      }
-
-      .book-feature-alt .book-feature-cover {
-        margin: 0 auto;
-      }
-
-    }
-
-    /* ── Section accent rule ──────────────── */
-    .section-rule {
-      display: block;
-      width: 44px;
-      height: 3px;
-      background: linear-gradient(90deg, #1A5E4E, #C9913A);
-      border-radius: 2px;
-      margin-bottom: 0.75rem;
-    }
-
-    /* ── Social link ──────────────────────── */
-    .social-link {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 32px;
-      font-size: 14px;
-      font-weight: 500;
-      color: #334155;
-      border-right: 1px solid #e4eeeb;
-      transition: color .2s, background .2s;
-    }
-
-    .social-link:last-child {
-      border-right: none;
-    }
-
-    .social-link:hover {
-      color: #1A5E4E;
-      background: #f0f8f5;
-    }
-
-    /* ── Contact form ────────────────────── */
-    .contact-field {
-      width: 100%;
-      border: 1px solid #dbe8e4;
-      background: #fff;
-      padding: 13px 15px;
-      font-size: 14px;
-      color: #1A1A1A;
-      outline: none;
-      transition: border-color .2s, box-shadow .2s;
-    }
-
-    .contact-field:focus {
-      border-color: #1A5E4E;
-      box-shadow: 0 0 0 3px rgba(26, 94, 78, .10);
-    }
-
-    .contact-field::placeholder {
-      color: #9ca8a4;
-    }
-
-    .contact-layout {
-      display: grid;
-      grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
-      gap: 48px;
-      align-items: start;
-    }
-
-    @media (max-width: 900px) {
-      .contact-layout {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* ── Learn more ───────────────────────── */
-    .learn-more {
+    .youtube-icon {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 14px;
+      border-radius: 4px;
+      background: #f00;
+      color: #fff;
+    }
+
+    .spotify-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 17px;
+      height: 17px;
+      border-radius: 9999px;
+      background: #1ed760;
+      color: #fff;
+    }
+
+    .footer-listen-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       gap: 6px;
-      font-size: 13px;
-      font-weight: 600;
-      color: #1A5E4E;
-      letter-spacing: .03em;
-      text-decoration: none;
-      transition: gap .2s, color .2s;
+      min-width: 112px;
+      height: 40px;
+      padding: 0 15px;
+      border: 1px solid rgba(99, 145, 225, .8);
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, .02);
+      font-size: 15px;
+      font-weight: 700;
+      transition: background .15s ease, transform .15s ease;
     }
 
-    .learn-more:hover {
-      color: #124034;
-      gap: 10px;
-    }
-
-    /* ── Float scroll hint ────────────────── */
-    @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0)
-      }
-
-      50% {
-        transform: translateY(6px)
-      }
-    }
-
-    .scroll-hint {
-      animation: float 2.6s ease-in-out infinite;
+    .footer-listen-pill:hover {
+      background: rgba(255, 255, 255, .08);
+      transform: translateY(-2px);
     }
   </style>
 </head>
 
-<body class="bg-white text-ink antialiased">
+<body class="min-h-screen bg-[#0c0b10] font-sans text-white antialiased">
+  <main class="min-h-screen overflow-hidden border-t-[3px] border-x-2 border-[#111] max-sm:border-x-0">
+    <div
+         class="flex h-[33px] items-center justify-center bg-release px-4 text-center text-[15px] font-medium tracking-[.01em] max-sm:h-[31px] max-sm:text-[13px]">
+      New Song Release: Muvango
+    </div>
 
-  <!-- ══════════════════════════════════════
-       NEWSLETTER BAR
-  ══════════════════════════════════════ -->
-  <div class="bg-teal text-white/90 text-xs py-2.5 text-center tracking-wide font-light">
-    Subscribe to My Newsletter
-    <span class="mx-2 opacity-40">,</span>
-    <a href="#"
-       class="font-semibold underline underline-offset-2 hover:text-white transition-colors">The Financier</a>
-  </div>
-
-  <!-- ══════════════════════════════════════
-       NAVIGATION
-  ══════════════════════════════════════ -->
-  <nav class="bg-white border-b border-stone-100 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-8 flex items-center justify-between py-2">
-
-      <a href="#"
-         class="flex items-center gap-3">
-        <img src="jkbLogo.png"
-             alt="JKB"
-             class="h-11 w-auto object-contain" />
-        <span class="font-light text-base tracking-wide text-stone-600">Jonathan K Bett</span>
+    <header class="relative z-10 grid h-[72px] grid-cols-[minmax(160px,1fr)_auto_minmax(130px,1fr)] items-center gap-6 bg-[#f5f2ec] py-0 pl-[36px] pr-[16px] text-ink shadow-[0_1px_0_rgba(15,15,15,.08)] max-[980px]:h-[68px] max-[980px]:grid-cols-[auto_1fr_auto_auto] max-[980px]:gap-3.5 max-[980px]:px-[18px] max-sm:h-[63px] max-sm:px-3"
+            aria-label="Primary">
+      <a class="justify-self-start whitespace-nowrap font-script text-[clamp(28px,2.8vw,36px)] leading-none text-[#111] max-[980px]:text-[30px] max-sm:text-[26px]"
+         href="index2.html">
+        Danny Kioko
       </a>
 
-      <div class="flex items-center gap-10">
-        <a href="#about"
-           class="nav-link text-sm font-medium text-stone-600 hover:text-ink transition-colors">About</a>
-        <a href="#books"
-           class="nav-link text-sm font-medium text-stone-600 hover:text-ink transition-colors">Books</a>
-        <a href="#thoughts"
-           class="nav-link text-sm font-medium text-stone-600 hover:text-ink transition-colors">Thoughts</a>
-        <a href="#connect"
-           class="nav-link text-sm font-medium text-stone-600 hover:text-ink transition-colors">Connect With Me</a>
+      <nav class="nav-links flex items-center justify-center gap-[clamp(28px,4.2vw,52px)] whitespace-nowrap text-[clamp(15px,1.35vw,17px)] font-normal text-[#1a1a1a] max-[980px]:absolute max-[980px]:left-0 max-[980px]:right-0 max-[980px]:top-[68px] max-[980px]:hidden max-[980px]:flex-col max-[980px]:items-stretch max-[980px]:gap-0 max-[980px]:border-t max-[980px]:border-[#ececec] max-[980px]:bg-[#f5f2ec] max-[980px]:px-[18px] max-[980px]:pb-[18px] max-[980px]:pt-2.5 max-[980px]:text-[17px] max-[980px]:shadow-[0_18px_32px_rgba(0,0,0,.14)] max-sm:top-[63px]"
+           id="siteNav"
+           aria-label="Main navigation">
+        <a class="relative py-2 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 max-[980px]:py-3"
+           href="#">About Me</a>
+        <a class="relative py-2 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 max-[980px]:py-3"
+           href="#">Music &amp; Evangelism</a>
+        <a class="relative py-2 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 max-[980px]:py-3"
+           href="about.html">DKF</a>
+        <a class="relative py-2 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 max-[980px]:py-3"
+           href="#">The Light</a>
+      </nav>
+
+      <a class="inline-flex h-[42px] min-w-[126px] items-center justify-center justify-self-end rounded-full bg-[#111] px-[22px] text-[14px] font-semibold tracking-wide text-white shadow-navButton transition-opacity hover:opacity-80 max-[980px]:min-w-[110px] max-[980px]:px-4 max-sm:hidden"
+         href="#">
+        Listen Now
+      </a>
+
+      <button class="menu-button hidden h-[42px] w-[42px] flex-col items-center justify-center gap-[5px] rounded-[7px] border-0 bg-[#f0f1f5] text-[#121212] max-[980px]:inline-flex"
+              type="button"
+              aria-label="Toggle navigation"
+              aria-expanded="false"
+              aria-controls="siteNav">
+        <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
+        <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
+        <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
+      </button>
+    </header>
+
+    <section class="relative isolate h-[calc(100vh-105px)] min-h-[500px] bg-[#15121c] max-[980px]:h-[calc(100vh-101px)] max-sm:h-[calc(100vh-94px)]"
+             aria-label="Featured music">
+      <div class="absolute inset-0">
+        <article
+                 class="slide is-active absolute inset-0 grid place-items-center px-[70px] pb-[54px] pt-[58px] transition-[opacity,transform] duration-700 ease-out max-[980px]:px-[54px] max-[980px]:pb-[64px] max-[980px]:pt-[62px] max-sm:items-center max-sm:px-6 max-sm:pb-[76px] max-sm:pt-[58px]">
+          <div
+               class="absolute inset-0 -z-20 bg-[url('its-possible.png')] bg-cover bg-center max-sm:bg-[position:53%_center]">
+          </div>
+          <div
+               class="absolute inset-0 -z-10 bg-[linear-gradient(rgba(18,16,28,.51),rgba(18,16,28,.51)),radial-gradient(circle_at_50%_46%,rgba(255,255,255,.05),transparent_38%)]">
+          </div>
+          <div class="mt-1.5 w-full max-w-[760px] text-center">
+            <div
+                 class="mb-[19px] inline-flex items-center justify-center gap-3 text-[clamp(16px,1.9vw,20px)] font-normal leading-tight text-white/95 before:h-[3px] before:w-[52px] before:bg-current before:opacity-80 after:h-[3px] after:w-[52px] after:bg-[#21d0c3] max-sm:mb-[18px] max-sm:gap-[9px] max-sm:text-sm max-sm:before:h-0.5 max-sm:before:w-7 max-sm:after:h-0.5 max-sm:after:w-7">
+              Now Streaming On Youtube
+            </div>
+            <h1
+                class="m-0 text-[clamp(40px,5.2vw,62px)] font-medium uppercase leading-none tracking-[.1em] text-white max-sm:text-[clamp(34px,12vw,48px)] max-sm:tracking-[.06em]">
+              Its Possible
+            </h1>
+            <p
+               class="m-0 mt-[30px] text-[clamp(18px,2vw,22px)] font-medium uppercase leading-tight tracking-[.01em] text-white max-sm:mt-[31px] max-sm:text-[19px]">
+              New Song!
+            </p>
+            <a class="mt-11 inline-flex h-[48px] min-w-[160px] items-center justify-center rounded-[31px] bg-release px-[28px] text-[clamp(17px,1.8vw,20px)] font-medium text-white shadow-listen transition hover:-translate-y-0.5 hover:bg-[#ff642d] focus-visible:-translate-y-0.5 focus-visible:bg-[#ff642d] max-[980px]:mt-9 max-sm:mt-8 max-sm:h-[48px] max-sm:min-w-[154px] max-sm:text-[19px]"
+               href="#">
+              Listen Now
+            </a>
+          </div>
+        </article>
+
+        <article
+                 class="slide absolute inset-0 grid place-items-center px-[70px] pb-[54px] pt-[58px] transition-[opacity,transform] duration-700 ease-out max-[980px]:px-[54px] max-[980px]:pb-[64px] max-[980px]:pt-[62px] max-sm:items-center max-sm:px-6 max-sm:pb-[76px] max-sm:pt-[58px]">
+          <div
+               class="absolute inset-0 -z-20 bg-[url('uinuliwe.png')] bg-cover bg-center max-sm:bg-[position:53%_center]">
+          </div>
+          <div
+               class="absolute inset-0 -z-10 bg-[linear-gradient(rgba(18,16,28,.51),rgba(18,16,28,.51)),radial-gradient(circle_at_50%_46%,rgba(255,255,255,.05),transparent_38%)]">
+          </div>
+          <div class="mt-1.5 w-full max-w-[760px] text-center">
+            <div
+                 class="mb-[19px] inline-flex items-center justify-center gap-3 text-[clamp(16px,1.9vw,20px)] font-normal leading-tight text-white/95 before:h-[3px] before:w-[52px] before:bg-current before:opacity-80 after:h-[3px] after:w-[52px] after:bg-[#21d0c3] max-sm:mb-[18px] max-sm:gap-[9px] max-sm:text-sm max-sm:before:h-0.5 max-sm:before:w-7 max-sm:after:h-0.5 max-sm:after:w-7">
+              Worship With Danny Kioko
+            </div>
+            <h1
+                class="m-0 text-[clamp(40px,5.2vw,62px)] font-medium uppercase leading-none tracking-[.1em] text-white max-sm:text-[clamp(34px,12vw,48px)] max-sm:tracking-[.06em]">
+              Uinuliwe
+            </h1>
+            <p
+               class="m-0 mt-[30px] text-[clamp(18px,2vw,22px)] font-medium uppercase leading-tight tracking-[.01em] text-white max-sm:mt-[31px] max-sm:text-[19px]">
+              Now Playing
+            </p>
+            <a class="mt-11 inline-flex h-[48px] min-w-[160px] items-center justify-center rounded-[31px] bg-release px-[28px] text-[clamp(17px,1.8vw,20px)] font-medium text-white shadow-listen transition hover:-translate-y-0.5 hover:bg-[#ff642d] focus-visible:-translate-y-0.5 focus-visible:bg-[#ff642d] max-[980px]:mt-9 max-sm:mt-8 max-sm:h-[48px] max-sm:min-w-[154px] max-sm:text-[19px]"
+               href="#">
+              Listen Now
+            </a>
+          </div>
+        </article>
+
+        <article
+                 class="slide absolute inset-0 grid place-items-center px-[70px] pb-[54px] pt-[58px] transition-[opacity,transform] duration-700 ease-out max-[980px]:px-[54px] max-[980px]:pb-[64px] max-[980px]:pt-[62px] max-sm:items-center max-sm:px-6 max-sm:pb-[76px] max-sm:pt-[58px]">
+          <div
+               class="absolute inset-0 -z-20 bg-[url('amenikumbuka.png')] bg-cover bg-center max-sm:bg-[position:53%_center]">
+          </div>
+          <div
+               class="absolute inset-0 -z-10 bg-[linear-gradient(rgba(18,16,28,.51),rgba(18,16,28,.51)),radial-gradient(circle_at_50%_46%,rgba(255,255,255,.05),transparent_38%)]">
+          </div>
+          <div class="mt-1.5 w-full max-w-[760px] text-center">
+            <div
+                 class="mb-[19px] inline-flex items-center justify-center gap-3 text-[clamp(16px,1.9vw,20px)] font-normal leading-tight text-white/95 before:h-[3px] before:w-[52px] before:bg-current before:opacity-80 after:h-[3px] after:w-[52px] after:bg-[#21d0c3] max-sm:mb-[18px] max-sm:gap-[9px] max-sm:text-sm max-sm:before:h-0.5 max-sm:before:w-7 max-sm:after:h-0.5 max-sm:after:w-7">
+              Music &amp; Evangelism
+            </div>
+            <h1
+                class="m-0 text-[clamp(40px,5.2vw,62px)] font-medium uppercase leading-none tracking-[.1em] text-white max-sm:text-[clamp(34px,12vw,48px)] max-sm:tracking-[.06em]">
+              Amenikumbuka
+            </h1>
+            <p
+               class="m-0 mt-[30px] text-[clamp(18px,2vw,22px)] font-medium uppercase leading-tight tracking-[.01em] text-white max-sm:mt-[31px] max-sm:text-[19px]">
+              Be Encouraged
+            </p>
+            <a class="mt-11 inline-flex h-[48px] min-w-[160px] items-center justify-center rounded-[31px] bg-release px-[28px] text-[clamp(17px,1.8vw,20px)] font-medium text-white shadow-listen transition hover:-translate-y-0.5 hover:bg-[#ff642d] focus-visible:-translate-y-0.5 focus-visible:bg-[#ff642d] max-[980px]:mt-9 max-sm:mt-8 max-sm:h-[48px] max-sm:min-w-[154px] max-sm:text-[19px]"
+               href="#">
+              Listen Now
+            </a>
+          </div>
+        </article>
       </div>
 
-    </div>
-  </nav>
-
-  <!-- ══════════════════════════════════════
-       HERO
-  ══════════════════════════════════════ -->
-  <section class="hero-bg relative overflow-hidden flex items-center min-h-[560px]">
-    <div class="max-w-[1580px] mx-auto px-16 w-full flex items-center gap-20 py-12 relative z-10">
-
-      <!-- Left arrow -->
-      <button aria-label="Previous"
-              id="hero-prev"
+      <button class="slider-arrow prev absolute left-4 top-1/2 z-[5] -translate-y-1/2 inline-flex h-[51px] w-[51px] items-center justify-center rounded-full border border-white/70 bg-white/10 text-white transition hover:scale-[1.04] hover:bg-white/20 focus-visible:scale-[1.04] focus-visible:bg-white/20 max-sm:bottom-6 max-sm:left-[22px] max-sm:top-auto max-sm:translate-y-0 max-sm:h-11 max-sm:w-11"
               type="button"
-              class="shrink-0 w-14 h-14 rounded-full bg-white/10 border border-white/20 text-white flex items-center justify-center hover:bg-white/25 transition-colors">
-        <svg class="w-6 h-6"
+              aria-label="Previous slide">
+        <svg class="h-[25px] w-[25px] stroke-[1.7]"
+             viewBox="0 0 24 24"
              fill="none"
              stroke="currentColor"
-             stroke-width="2"
-             viewBox="0 0 24 24">
-          <path stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M15 19l-7-7 7-7" />
+             aria-hidden="true">
+          <path d="M15 18l-6-6 6-6" />
+          <path d="M21 12H9" />
         </svg>
       </button>
 
-      <!-- Text -->
-      <div class="flex-1">
-        <h1 id="hero-title"
-            class="text-[48px] font-bold text-white leading-tight mb-8 max-w-[680px] transition-opacity duration-200">
-          How To Start and Run Your Own Business
-        </h1>
-        <p id="hero-description"
-           class="text-white/80 leading-relaxed text-[19px] mb-10 max-w-[660px] transition-opacity duration-200">
-          Are you looking to start your own business but overwhelmed by the thought of costly consultants and courses?
-          Look no further! Whether you're just starting or looking to improve your existing business, "How to Start and
-          Run Your Own Business" is the ultimate entrepreneur's guide. It provides a comprehensive manual for all
-          aspiring business owners.
-        </p>
-        <a id="hero-cta"
-           href="#books"
-           class="inline-block bg-teal hover:bg-teal-light text-white px-20 py-5 rounded font-semibold text-[18px] tracking-wide transition-colors duration-200">
-          Get This Book
-        </a>
-      </div>
-
-      <!-- Book cover -->
-      <div class="shrink-0 book-wrap">
-        <div class="book-3d">
-          <img id="hero-book"
-               src="book1.png"
-               alt="How To Start and Run Your Own Business"
-               class="w-[360px] object-contain transition-opacity duration-200" />
-        </div>
-      </div>
-
-      <!-- Right arrow -->
-      <button aria-label="Next"
-              id="hero-next"
+      <button class="slider-arrow next absolute right-4 top-1/2 z-[5] -translate-y-1/2 inline-flex h-[51px] w-[51px] items-center justify-center rounded-full border border-white/70 bg-white/10 text-white transition hover:scale-[1.04] hover:bg-white/20 focus-visible:scale-[1.04] focus-visible:bg-white/20 max-sm:bottom-6 max-sm:right-[22px] max-sm:top-auto max-sm:translate-y-0 max-sm:h-11 max-sm:w-11"
               type="button"
-              class="shrink-0 w-14 h-14 rounded-full bg-white/10 border border-white/20 text-white flex items-center justify-center hover:bg-white/25 transition-colors">
-        <svg class="w-6 h-6"
+              aria-label="Next slide">
+        <svg class="h-[25px] w-[25px] stroke-[1.7]"
+             viewBox="0 0 24 24"
              fill="none"
              stroke="currentColor"
-             stroke-width="2"
-             viewBox="0 0 24 24">
-          <path stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M9 5l7 7-7 7" />
+             aria-hidden="true">
+          <path d="M9 6l6 6-6 6" />
+          <path d="M3 12h12" />
         </svg>
       </button>
 
-    </div>
+      <div class="slider-dots absolute bottom-[82px] left-1/2 z-[6] flex -translate-x-1/2 items-center justify-center gap-1 max-sm:bottom-[38px]"
+           aria-label="Slide controls"></div>
+      <div class="absolute bottom-0 right-0 z-[4] h-[3px] w-[321px] bg-release max-sm:w-[34vw]"
+           aria-hidden="true">
+      </div>
+    </section>
 
-    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 scroll-hint opacity-30">
-      <svg class="w-5 h-5 text-white"
-           fill="none"
-           stroke="currentColor"
-           stroke-width="2"
-           viewBox="0 0 24 24">
-        <path stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M19 9l-7 7-7-7" />
-      </svg>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       BIO SECTION
-  ══════════════════════════════════════ -->
-  <section id="about"
-           class="bg-white py-14">
-    <div class="max-w-7xl mx-auto px-8 flex items-center gap-14">
-
-      <!-- Portrait with accent bg -->
-      <div class="shrink-0 relative">
-        <div class="absolute -inset-4 rounded-2xl bg-primary-pale z-0"></div>
-        <img src="bett_transparent.png"
-             alt="Jonathan K Bett"
-             class="relative z-10 w-60 h-auto object-contain" />
+    <section class="relative isolate overflow-hidden bg-[#f7f7f7] px-12 pb-[86px] pt-[56px] text-[#050505] max-lg:px-8 max-sm:px-5 max-sm:pb-16 max-sm:pt-12"
+             aria-labelledby="meet-danny">
+      <div class="pointer-events-none absolute -right-[96px] -top-[128px] z-0 h-[338px] w-[388px] rounded-[52%_0_0_57%/50%_0_0_56%] bg-release max-lg:-right-[150px] max-lg:-top-[150px] max-sm:-right-[190px] max-sm:-top-[180px]"
+           aria-hidden="true"></div>
+      <div class="pointer-events-none absolute right-[16px] top-[64px] z-0 h-[212px] w-[278px] rotate-[-17deg] rounded-[55%_45%_58%_42%/48%_52%_48%_52%] bg-release max-lg:right-[-72px] max-sm:right-[-140px] max-sm:top-[86px]"
+           aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -bottom-[73px] -left-[5px] z-0 h-[154px] w-[182px] rounded-tl-none bg-[#fac844] max-sm:-bottom-[88px] max-sm:w-[142px]"
+           aria-hidden="true">
+        <div class="absolute -bottom-8 -left-8 h-[108px] w-[166px] rounded-[50%] bg-[#f7f7f7]"></div>
       </div>
 
-      <!-- Text -->
-      <div class="flex-1">
-        <span class="section-rule"></span>
-        <h2 class="text-4xl font-bold mb-3 leading-tight">Jonathan K Bett</h2>
-        <p class="text-stone-500 font-light leading-relaxed mb-3 text-sm max-w-xl">
-          A distinguished business executive, Jonathan brings over 30 years of leadership across Kenya's financial and
-          corporate sectors. He has served as:
-        </p>
+      <div
+           class="relative z-10 mx-auto grid max-w-[1126px] grid-cols-[1fr_520px] items-center gap-[56px] max-lg:grid-cols-1 max-lg:gap-10">
+        <div class="max-w-[560px] max-lg:max-w-3xl">
+          <h2 id="meet-danny"
+              class="mb-[46px] flex flex-wrap items-end gap-x-[28px] gap-y-2 text-[clamp(32px,3.7vw,42px)] font-normal leading-none tracking-normal max-sm:mb-8 max-sm:text-[40px]">
+            <span>Meet</span>
+            <span class="border-b border-release pb-2 text-release">Ev Dan Kioko</span>
+          </h2>
 
-        <ul class="space-y-2 mb-4">
-          <li class="flex items-start gap-3 text-stone-700 text-sm">
-            <svg class="w-4 h-4 text-primary shrink-0 mt-0.5"
-                 fill="none"
-                 stroke="currentColor"
-                 stroke-width="2.5"
-                 viewBox="0 0 24 24">
-              <path stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M5 13l4 4L19 7" />
-            </svg>
-            Finance Director — Central Bank of Kenya
-          </li>
-          <li class="flex items-start gap-3 text-stone-700 text-sm">
-            <svg class="w-4 h-4 text-primary shrink-0 mt-0.5"
-                 fill="none"
-                 stroke="currentColor"
-                 stroke-width="2.5"
-                 viewBox="0 0 24 24">
-              <path stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M5 13l4 4L19 7" />
-            </svg>
-            CEO — Kenya Deposit Insurance Corporation
-          </li>
-          <li class="flex items-start gap-3 text-stone-700 text-sm">
-            <svg class="w-4 h-4 text-primary shrink-0 mt-0.5"
-                 fill="none"
-                 stroke="currentColor"
-                 stroke-width="2.5"
-                 viewBox="0 0 24 24">
-              <path stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M5 13l4 4L19 7" />
-            </svg>
-            Independent Director — Rafiki Microfinance Bank &amp; Automobile Association of Kenya PLC
-          </li>
-        </ul>
-
-        <p class="text-stone-500 font-light leading-relaxed text-sm max-w-xl mb-1">
-          Jonathan distils his vast experience into two informative works — <em>How To Start and Run Your Own
-            Business</em> and <em>Personal Financial and Retirement Planning</em> — guiding readers on entrepreneurship,
-          wealth building, and financial security.
-        </p>
-        <p class="text-stone-400 font-light text-sm">He lives in Kenya with his wife, Abigael, and daughter, Claire.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       PORTFOLIO — ROLES
-  ══════════════════════════════════════ -->
-  <section class="border-t border-b border-stone-100 py-10"
-           style="background:#eaf5f1;">
-    <div class="max-w-7xl mx-auto px-8">
-
-      <div class="mb-6">
-        <span class="section-rule"></span>
-        <h2 class="text-2xl font-semibold">Portfolio</h2>
-      </div>
-
-      <div class="grid grid-cols-4 gap-6">
-
-        <div class="flex flex-col items-center text-center py-2">
-          <div class="h-16 flex items-center justify-center mb-3">
-            <img src="cbk_logo.png"
-                 alt="Central Bank of Kenya"
-                 class="max-h-14 max-w-full object-contain" />
-          </div>
-          <p class="text-xs font-medium text-stone-500 tracking-wide">Finance Director</p>
-        </div>
-
-        <div class="flex flex-col items-center text-center py-2">
-          <div class="h-16 flex items-center justify-center mb-3">
-            <img src="kidc.png"
-                 alt="Kenya Deposit Insurance Corporation"
-                 class="max-h-14 max-w-full object-contain" />
-          </div>
-          <p class="text-xs font-medium text-stone-500 tracking-wide">CEO</p>
-        </div>
-
-        <div class="flex flex-col items-center text-center py-2">
-          <div class="h-16 flex items-center justify-center mb-3">
-            <img src="rafiki.png"
-                 alt="Rafiki Microfinance Bank"
-                 class="max-h-14 max-w-full object-contain" />
-          </div>
-          <p class="text-xs font-medium text-stone-500 tracking-wide">Independent Director</p>
-        </div>
-
-        <div class="flex flex-col items-center text-center py-2">
-          <div class="h-16 flex items-center justify-center mb-3">
-            <!-- AA Kenya — swap for actual logo if available -->
-            <img src="AALogo.png"
-                 alt="AAA"
-                 class="max-h-14 max-w-full object-contain" />
-          </div>
-          <p class="text-xs font-medium text-stone-500 tracking-wide">Independent Director</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       BOOKS SECTION HEADING
-  ══════════════════════════════════════ -->
-  <div id="books"
-       class="bg-white pt-10 pb-3 max-w-7xl mx-auto px-8">
-    <span class="section-rule"></span>
-    <h2 class="text-2xl font-semibold">Books</h2>
-  </div>
-
-  <!-- ══════════════════════════════════════
-       BOOK 1
-  ══════════════════════════════════════ -->
-  <section class="book-feature">
-    <div class="book-feature-grid">
-
-      <!-- Book cover -->
-      <div class="shrink-0">
-        <img src="book1.png"
-             alt="How To Start and Run Your Own Business"
-             class="book-feature-cover object-contain" />
-      </div>
-
-      <!-- Text -->
-      <div class="book-feature-copy">
-        <h3 class="text-[40px] font-bold leading-tight mb-7 text-ink">
-          <span class="book-title">How To Start and Run Your Own Business</span>
-        </h3>
-
-        <p class="mb-0">
-          A distinguished business executive, Jonathan brings over 30 years of leadership across Kenya's financial and
-          corporate sectors. He has served as:
-        </p>
-        <ul>
-          <li class="flex gap-2"><span>·</span> Finance Director — Central Bank of Kenya</li>
-          <li class="flex gap-2"><span>·</span> CEO — Kenya Deposit Insurance Corporation</li>
-          <li class="flex gap-2"><span>·</span> <span>Serves as an independent director of Rafiki Microfinance Bank and
-              Automobile Association of Kenya PLC.</span></li>
-        </ul>
-        <p class="mb-0">
-          Jonathan distils his vast experience into two informative works — How To Start and Run Your Own Business and
-          Personal Financial and Retirement Planning — guiding readers on entrepreneurship, wealth building, and
-          financial security.
-        </p>
-        <p class="mb-6">
-          He lives in Kenya with his wife, Abigael, and daughter, Claire.
-        </p>
-
-        <a href="#"
-           class="learn-more mb-7 block text-[15px] normal-case tracking-normal">Learn More</a>
-
-        <div class="book-feature-purchase">
-          <span class="text-[18px] font-bold text-ink tracking-wide">Purchase On:</span>
-          <a href="#"
-             class="buy-btn buy-btn-amazon">
-            <img src="amazon-logo.png"
-                 alt="Amazon"
-                 class="h-7 w-auto object-contain brightness-0" />
-          </a>
-          <a href="#"
-             class="buy-btn buy-btn-nuria">
-            <img src="nuria-logo.png"
-                 alt="Nuria"
-                 class="h-7 w-auto object-contain brightness-0" />
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       BOOK 2
-  ══════════════════════════════════════ -->
-  <section class="book-feature book-feature-alt">
-    <div class="book-feature-grid">
-
-      <!-- Text -->
-      <div class="book-feature-copy">
-        <h3 class="text-[40px] font-bold leading-tight mb-7 text-ink">
-          <span class="book-title">Personal Financial and Retirement Planning</span>
-        </h3>
-
-        <p class="mb-0">
-          A distinguished business executive, Jonathan brings over 30 years of leadership across Kenya's financial and
-          corporate sectors. He has served as:
-        </p>
-        <ul>
-          <li class="flex gap-2"><span>·</span> Finance Director — Central Bank of Kenya</li>
-          <li class="flex gap-2"><span>·</span> CEO — Kenya Deposit Insurance Corporation</li>
-          <li class="flex gap-2"><span>·</span> <span>Serves as an independent director of Rafiki Microfinance Bank and
-              Automobile Association of Kenya PLC.</span></li>
-        </ul>
-        <p class="mb-0">
-          Jonathan distils his vast experience into two informative works — How To Start and Run Your Own Business and
-          Personal Financial and Retirement Planning — guiding readers on entrepreneurship, wealth building, and
-          financial security.
-        </p>
-        <p class="mb-6">
-          He lives in Kenya with his wife, Abigael, and daughter, Claire.
-        </p>
-
-        <a href="#"
-           class="learn-more mb-7 block text-[15px] normal-case tracking-normal">Learn More</a>
-
-        <div class="book-feature-purchase">
-          <span class="text-[18px] font-bold text-ink tracking-wide">Purchase On:</span>
-          <a href="#"
-             class="buy-btn buy-btn-amazon">
-            <img src="amazon-logo.png"
-                 alt="Amazon"
-                 class="h-7 w-auto object-contain brightness-0" />
-          </a>
-          <a href="#"
-             class="buy-btn buy-btn-nuria">
-            <img src="nuria-logo.png"
-                 alt="Nuria"
-                 class="h-7 w-auto object-contain brightness-0" />
-          </a>
-        </div>
-      </div>
-
-      <!-- Book cover -->
-      <div class="shrink-0">
-        <img src="book2.png"
-             alt="Personal Financial and Retirement Planning"
-             class="book-feature-cover object-contain" />
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       BLOGS / THOUGHTS
-  ══════════════════════════════════════ -->
-  <section id="thoughts"
-           class="bg-white py-16 border-t border-stone-100">
-    <div class="max-w-7xl mx-auto px-8">
-      <div class="mb-9 max-w-2xl">
-        <span class="section-rule"></span>
-        <h2 class="text-3xl font-bold mb-3">Blogs</h2>
-        <p class="text-stone-500 text-sm leading-relaxed">
-          Notes on business, personal finance, leadership, and the practical decisions that shape long-term security.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
-        <article class="blog-card">
-          <img src="library.png"
-               alt="Library shelves and reading space"
-               class="blog-image" />
-          <div class="p-7 flex flex-col flex-1">
-            <p class="blog-meta mb-4">Business Strategy</p>
-            <h3 class="text-xl font-bold leading-snug mb-3 text-ink">
-              Building a Business That Can Survive Its First Years
-            </h3>
-            <p class="text-stone-600 text-sm leading-relaxed mb-6">
-              Clear planning, disciplined cash flow, and patient execution make the difference between a promising idea
-              and a business that can keep growing.
-            </p>
-            <a href="#"
-               class="learn-more mt-auto text-[14px] normal-case tracking-normal">Read More</a>
-          </div>
-        </article>
-
-        <article class="blog-card">
-          <img src="book2.png"
-               alt="Personal Financial and Retirement Planning book cover"
-               class="blog-image object-contain bg-[#eaf4f0] p-5" />
-          <div class="p-7 flex flex-col flex-1">
-            <p class="blog-meta mb-4">Personal Finance</p>
-            <h3 class="text-xl font-bold leading-snug mb-3 text-ink">
-              Why Retirement Planning Should Start Before Retirement Feels Near
-            </h3>
-            <p class="text-stone-600 text-sm leading-relaxed mb-6">
-              Financial security is built through early choices, consistent saving, and a realistic view of future
-              needs,
-              not last-minute pressure.
-            </p>
-            <a href="#"
-               class="learn-more mt-auto text-[14px] normal-case tracking-normal">Read More</a>
-          </div>
-        </article>
-
-        <article class="blog-card">
-          <img src="library_2.png"
-               alt="Quiet library interior"
-               class="blog-image" />
-          <div class="p-7 flex flex-col flex-1">
-            <p class="blog-meta mb-4">Leadership</p>
-            <h3 class="text-xl font-bold leading-snug mb-3 text-ink">
-              Lessons From Financial Leadership in Complex Institutions
-            </h3>
-            <p class="text-stone-600 text-sm leading-relaxed mb-6">
-              Good leadership depends on judgment, accountability, and the ability to make careful decisions when the
-              stakes are high.
-            </p>
-            <a href="#"
-               class="learn-more mt-auto text-[14px] normal-case tracking-normal">Read More</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       CONNECT
-  ══════════════════════════════════════ -->
-  <section id="connect"
-           class="bg-[#f5faf8] py-16 border-t border-stone-100">
-    <div class="max-w-7xl mx-auto px-8">
-      <div class="contact-layout">
-        <div class="max-w-md">
-          <span class="section-rule"></span>
-          <h2 class="text-3xl font-bold mb-4">Connect With Me</h2>
-          <p class="text-stone-600 text-sm leading-relaxed mb-6">
-            Send a message for speaking invitations, book enquiries, interviews, or conversations around business,
-            finance, and leadership.
+          <p
+             class="max-w-[560px] text-[15px] font-normal leading-[1.68] tracking-[.01em] text-black max-lg:text-[15px] max-sm:text-[15px] max-sm:leading-[1.65]">
+            Evangelist Danny Kioko is a gospel musician, preacher, mentor, and philanthropist known for using music and
+            evangelism to inspire faith, hope, and spiritual growth. Originally from Kitui County, Kenya, he has
+            ministered internationally through gospel concerts, worship experiences, crusades, mentorship programs, and
+            community outreach initiatives.
           </p>
-          <p class="flex items-center gap-3 text-sm text-stone-600">
-            <span class="w-9 h-9 rounded-full bg-white border border-[#dbe8e4] flex items-center justify-center">
-              <svg class="w-4 h-4 text-primary"
-                   fill="none"
-                   stroke="currentColor"
-                   stroke-width="2"
-                   viewBox="0 0 24 24">
-                <path stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8" />
-                <path stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-            </span>
-            I will get back to you as soon as possible.
-          </p>
+
+          <div class="mt-[28px] flex max-w-[333px] flex-col gap-[22px] max-sm:max-w-full">
+            <a class="group inline-flex h-[52px] items-center justify-between rounded-full bg-release px-[44px] text-[19px] font-normal text-white transition hover:bg-[#ff642d] focus-visible:bg-[#ff642d] max-sm:h-14 max-sm:px-8 max-sm:text-[19px]"
+               href="#">
+              <span>Philanthropy</span>
+              <span class="text-[32px] leading-none transition group-hover:translate-x-1"
+                    aria-hidden="true">&rarr;</span>
+            </a>
+
+            <a class="group inline-flex h-[52px] items-center justify-between rounded-full bg-midnight px-[44px] text-[19px] font-normal text-white transition hover:bg-[#173770] focus-visible:bg-[#173770] max-sm:h-14 max-sm:px-8 max-sm:text-[19px]"
+               href="#">
+              <span>Music</span>
+              <span class="text-[32px] leading-none transition group-hover:translate-x-1"
+                    aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
         </div>
 
-        <form action="#"
-              method="post"
-              class="bg-white border border-[#dbe8e4] p-8 shadow-[0_22px_55px_rgba(22,55,45,.08)]">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
-            <label class="block">
-              <span class="block text-xs font-semibold text-stone-500 tracking-wide mb-2">Full Name</span>
-              <input type="text"
-                     name="name"
-                     autocomplete="name"
-                     placeholder="Your name"
-                     required
-                     class="contact-field" />
-            </label>
-            <label class="block">
-              <span class="block text-xs font-semibold text-stone-500 tracking-wide mb-2">Email Address</span>
-              <input type="email"
-                     name="email"
-                     autocomplete="email"
-                     placeholder="you@example.com"
-                     required
-                     class="contact-field" />
-            </label>
+        <div class="relative max-lg:mx-auto max-lg:w-full max-lg:max-w-[560px]">
+          <img class="h-[500px] w-full rounded-[43px] object-cover object-[50%_42%] shadow-[0_1px_0_rgba(255,255,255,.4)] max-lg:h-[470px] max-sm:h-[350px] max-sm:rounded-[32px]"
+               src="696649985_1743111447082865_6915584910928185175_n.jpg"
+               alt="Evangelist Danny Kioko standing in front of a silver car" />
+        </div>
+      </div>
+    </section>
+
+    <section class="relative overflow-hidden bg-[#f7f7f7] px-8 pb-[58px] pt-[56px] text-black max-lg:px-6 max-sm:px-5 max-sm:pb-14 max-sm:pt-12"
+             aria-labelledby="my-music">
+      <div class="mx-auto max-w-[1160px]">
+        <h2 id="my-music"
+            class="mb-[38px] text-center text-[clamp(32px,3.7vw,40px)] font-normal leading-none tracking-normal max-sm:mb-9">
+          <span>My</span>
+          <span class="ml-4 inline-block border-b border-release pb-[14px] text-release max-sm:ml-2">Music</span>
+        </h2>
+
+        <div
+             class="grid grid-cols-[minmax(0,475px)_minmax(0,600px)] items-center justify-between gap-[56px] max-lg:grid-cols-1 max-lg:gap-10">
+          <div class="pt-[34px] max-lg:pt-0">
+            <p
+               class="mb-[22px] flex items-center gap-3 text-[19px] font-normal uppercase leading-none tracking-[.02em] text-release max-sm:text-lg">
+              <span class="h-px w-[31px] bg-release"
+                    aria-hidden="true"></span>
+              Latest Release
+            </p>
+
+            <h3
+                class="mb-[52px] text-[clamp(42px,5vw,52px)] font-normal leading-none tracking-normal max-lg:mb-12 max-sm:text-[48px]">
+              Muvango
+            </h3>
+
+            <p class="mb-3 text-[19px] font-normal leading-tight tracking-[.01em] max-sm:text-xl">
+              A Song of hope and Encouragement
+            </p>
+            <p class="mb-[40px] text-[19px] font-normal leading-tight tracking-[.01em] max-sm:mb-9 max-sm:text-xl">
+              To all Believers
+            </p>
+
+            <div class="mb-[24px] flex items-center gap-7 max-sm:gap-5">
+              <img class="h-[64px] w-[64px] object-contain max-sm:h-16 max-sm:w-16"
+                   src="skizalogo.png"
+                   alt="Skiza logo" />
+              <p class="text-[32px] font-extrabold leading-none tracking-[.04em] text-midnight max-sm:text-[32px]">
+                *240*34#
+              </p>
+            </div>
+
+            <p class="mb-[24px] text-[23px] font-normal uppercase leading-none tracking-[.02em] max-sm:text-2xl">
+              Listen On
+            </p>
+
+            <div class="flex flex-wrap items-center gap-5 max-sm:gap-3">
+              <a class="inline-flex h-[40px] items-center justify-center gap-1.5 rounded-full border border-[#ead8df] bg-white px-5 text-[17px] font-bold text-[#111] shadow-sm transition hover:-translate-y-0.5 max-sm:h-11 max-sm:px-4"
+                 href="#"
+                 aria-label="Listen on YouTube">
+                <span
+                      class="inline-flex h-[19px] w-[27px] items-center justify-center rounded-[5px] bg-[#ff0000] text-white">
+                  <svg class="h-3 w-3.5"
+                       viewBox="0 0 24 24"
+                       fill="currentColor"
+                       aria-hidden="true">
+                    <path d="M9 7.8v8.4l7.2-4.2L9 7.8z" />
+                  </svg>
+                </span>
+                <span>YouTube</span>
+              </a>
+
+              <a class="inline-flex h-[40px] items-center justify-center gap-1.5 rounded-full border border-[#ead8df] bg-white px-5 text-[17px] font-bold text-[#16c65f] shadow-sm transition hover:-translate-y-0.5 max-sm:h-11 max-sm:px-4"
+                 href="#"
+                 aria-label="Listen on Spotify">
+                <span
+                      class="inline-flex h-[23px] w-[23px] items-center justify-center rounded-full bg-[#1ed760] text-white">
+                  <svg class="h-[15px] w-[15px]"
+                       viewBox="0 0 24 24"
+                       fill="none"
+                       stroke="currentColor"
+                       stroke-linecap="round"
+                       stroke-width="2.2"
+                       aria-hidden="true">
+                    <path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" />
+                    <path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" />
+                    <path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" />
+                  </svg>
+                </span>
+                <span>Spotify</span>
+              </a>
+
+              <a class="inline-flex h-[40px] items-center justify-center gap-1.5 rounded-full border border-[#ead8df] bg-white px-6 text-[20px] font-normal text-black shadow-sm transition hover:-translate-y-0.5 max-sm:h-11 max-sm:px-5 max-sm:text-lg"
+                 href="#"
+                 aria-label="Listen on Apple Music">
+                <svg class="h-[24px] w-[20px]"
+                     viewBox="0 0 24 24"
+                     fill="currentColor"
+                     aria-hidden="true">
+                  <path
+                        d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z" />
+                </svg>
+                <span>Apple</span>
+              </a>
+            </div>
           </div>
 
-          <label class="block mb-5">
-            <span class="block text-xs font-semibold text-stone-500 tracking-wide mb-2">Subject</span>
-            <input type="text"
-                   name="subject"
-                   placeholder="How can I help?"
-                   class="contact-field" />
-          </label>
+          <div class="relative">
+            <div class="overflow-hidden rounded-[17px] bg-[#d9d1ff]">
+              <img class="h-[390px] w-full object-cover object-center max-lg:h-[360px] max-sm:h-[250px]"
+                   src="muvango.png"
+                   alt="Danny Kioko performing Muvango on stage" />
+            </div>
 
-          <label class="block mb-6">
-            <span class="block text-xs font-semibold text-stone-500 tracking-wide mb-2">Message</span>
-            <textarea name="message"
-                      rows="6"
-                      placeholder="Write your message here..."
-                      required
-                      class="contact-field resize-none"></textarea>
-          </label>
+            <div
+                 class="absolute bottom-4 left-1/2 flex h-[88px] w-[92%] -translate-x-1/2 items-center gap-5 rounded-[4px] bg-white px-6 shadow-[0_10px_28px_rgba(0,0,0,.12)] max-sm:h-auto max-sm:flex-wrap max-sm:gap-3 max-sm:px-4 max-sm:py-4">
+              <div class="flex items-center gap-4 text-black max-sm:gap-3">
+                <button class="text-[19px] leading-none"
+                        type="button"
+                        aria-label="Previous track">&#9668;&#9668;</button>
+                <button class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-black text-white"
+                        type="button"
+                        aria-label="Play Muvango">
+                  <span class="ml-0.5 text-[15px] leading-none">&#9658;</span>
+                </button>
+                <button class="text-[19px] leading-none"
+                        type="button"
+                        aria-label="Next track">&#9658;&#9658;</button>
+              </div>
 
-          <button type="submit"
-                  class="inline-flex items-center justify-center bg-primary hover:bg-primary-light text-white px-9 py-3.5 text-sm font-semibold tracking-wide transition-colors">
-            Send Message
-          </button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════
-       SOCIAL BAR
-  ══════════════════════════════════════ -->
-  <div class="bg-white border-t border-b border-stone-100">
-    <div class="max-w-4xl mx-auto flex items-stretch justify-center">
-
-      <a href="#"
-         class="social-link flex-1 justify-center">
-        <svg class="w-4 h-4 text-[#0077B5]"
-             fill="currentColor"
-             viewBox="0 0 24 24">
-          <path
-                d="M20.447 20.452h-3.554v-5.569c0-1.327-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-        </svg>
-        Linkedin
-      </a>
-
-      <a href="#"
-         class="social-link flex-1 justify-center">
-        <svg class="w-4 h-4 text-[#1877F2]"
-             fill="currentColor"
-             viewBox="0 0 24 24">
-          <path
-                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-        </svg>
-        Facebook
-      </a>
-
-      <a href="#"
-         class="social-link flex-1 justify-center">
-        <svg class="w-4 h-4 text-ink"
-             fill="currentColor"
-             viewBox="0 0 24 24">
-          <path
-                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-        </svg>
-        Twitter /X
-      </a>
-
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════
-       FOOTER
-  ══════════════════════════════════════ -->
-  <footer style="background:#1A5E4E;"
-          class="py-10">
-    <div class="max-w-7xl mx-auto px-8 flex items-start justify-between gap-12">
-
-      <!-- Brand -->
-      <div class="max-w-xs">
-        <div class="flex items-center gap-3 mb-4">
-          <img src="jkbLogoTransparent.png"
-               alt="JKB"
-               class="h-10 w-auto object-contain brightness-0 invert opacity-70" />
-          <span class="text-white/70 text-sm font-light">Jonathan K Bett</span>
+              <div class="min-w-0 flex-1">
+                <div
+                     class="mb-2 grid grid-cols-[1fr_auto_auto] items-center gap-8 text-[11px] text-black max-sm:grid-cols-1 max-sm:gap-1">
+                  <span></span>
+                  <span>Muvango</span>
+                  <span class="text-right">EV Danny Kioko<br />1:4 / 4.52</span>
+                </div>
+                <div class="h-1 w-full bg-[#ddd]">
+                  <div class="h-full w-[43%] bg-release"></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <p class="text-white/75 text-xs font-light leading-relaxed">
-          A distinguished business executive. Jonathan brings over 30 years of leadership across Kenya's corporate
-          sectors.
+      </div>
+    </section>
+
+    <section class="bg-white px-8 pb-[58px] pt-5 text-black max-lg:px-6 max-sm:px-5" aria-labelledby="all-music">
+      <div class="mx-auto max-w-[1120px]">
+        <h2 id="all-music"
+            class="mb-[64px] text-center text-[clamp(32px,3.8vw,43px)] font-normal leading-none tracking-normal max-sm:mb-10">
+          <span>All</span>
+          <span class="ml-5 inline-block border-b border-release pb-[16px] text-release max-sm:ml-2">Music</span>
+        </h2>
+
+        <div class="grid grid-cols-3 gap-x-20 gap-y-[88px] max-lg:grid-cols-2 max-lg:gap-x-10 max-sm:grid-cols-1 max-sm:gap-y-14">
+          <article class="music-card">
+            <h3 class="mb-4 text-center text-[22px] font-normal leading-none tracking-[.01em] text-midnight">It&rsquo;s Possible</h3>
+            <div class="relative overflow-hidden rounded-[16px]">
+              <img class="h-[238px] w-full object-cover object-center" src="its-possible.png"
+                   alt="Danny Kioko performing It's Possible" />
+              <div class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm">
+                <button class="text-xs leading-none" type="button" aria-label="Previous It's Possible">&#9668;&#9668;</button>
+                <button class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
+                        type="button" aria-label="Play It's Possible">
+                  <span class="ml-px text-[9px] leading-none">&#9658;</span>
+                </button>
+                <button class="text-xs leading-none" type="button" aria-label="Next It's Possible">&#9658;&#9658;</button>
+              </div>
+            </div>
+            <div class="mt-[18px] flex items-center justify-between gap-3">
+              <a class="music-pill text-[#111]" href="#" aria-label="Listen to It's Possible on YouTube">
+                <span class="youtube-icon"><svg class="h-2.5 w-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 7.8v8.4l7.2-4.2L9 7.8z" /></svg></span>
+                <span>YouTube</span>
+              </a>
+              <a class="music-pill font-bold text-[#16c65f]" href="#" aria-label="Listen to It's Possible on Spotify">
+                <span class="spotify-icon"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.3" aria-hidden="true"><path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" /><path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" /><path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" /></svg></span>
+                <span>Spotify</span>
+              </a>
+              <a class="music-pill text-black" href="#" aria-label="Listen to It's Possible on Apple Music">
+                <svg class="h-[20px] w-[17px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z" /></svg>
+                <span>Apple</span>
+              </a>
+            </div>
+            <div class="mt-[18px] flex items-center justify-center gap-8">
+              <img class="h-[43px] w-[43px] object-contain" src="skizalogo.png" alt="Skiza logo" />
+              <p class="text-[25px] font-extrabold leading-none tracking-[.04em] text-midnight">*240*34#</p>
+            </div>
+          </article>
+
+          <article class="music-card">
+            <h3 class="mb-4 text-center text-[22px] font-normal leading-none tracking-[.01em] text-midnight">Muvango</h3>
+            <div class="relative overflow-hidden rounded-[16px]">
+              <img class="h-[238px] w-full object-cover object-center" src="muvango.png"
+                   alt="Danny Kioko performing Muvango" />
+              <div class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm">
+                <button class="text-xs leading-none" type="button" aria-label="Previous Muvango">&#9668;&#9668;</button>
+                <button class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
+                        type="button" aria-label="Play Muvango"><span class="ml-px text-[9px] leading-none">&#9658;</span></button>
+                <button class="text-xs leading-none" type="button" aria-label="Next Muvango">&#9658;&#9658;</button>
+              </div>
+            </div>
+            <div class="mt-[18px] flex items-center justify-between gap-3">
+              <a class="music-pill text-[#111]" href="#" aria-label="Listen to Muvango on YouTube"><span class="youtube-icon"><svg class="h-2.5 w-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 7.8v8.4l7.2-4.2L9 7.8z" /></svg></span><span>YouTube</span></a>
+              <a class="music-pill font-bold text-[#16c65f]" href="#" aria-label="Listen to Muvango on Spotify"><span class="spotify-icon"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.3" aria-hidden="true"><path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" /><path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" /><path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" /></svg></span><span>Spotify</span></a>
+              <a class="music-pill text-black" href="#" aria-label="Listen to Muvango on Apple Music"><svg class="h-[20px] w-[17px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z" /></svg><span>Apple</span></a>
+            </div>
+            <div class="mt-[18px] flex items-center justify-center gap-8"><img class="h-[43px] w-[43px] object-contain" src="skizalogo.png" alt="Skiza logo" /><p class="text-[25px] font-extrabold leading-none tracking-[.04em] text-midnight">*240*34#</p></div>
+          </article>
+
+          <article class="music-card">
+            <h3 class="mb-4 text-center text-[22px] font-normal leading-none tracking-[.01em] text-midnight">Ni Wewe</h3>
+            <div class="relative overflow-hidden rounded-[16px]">
+              <img class="h-[238px] w-full object-cover object-center" src="ni-wewe.avif"
+                   alt="Danny Kioko Ni Wewe music video" />
+              <div class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm">
+                <button class="text-xs leading-none" type="button" aria-label="Previous Ni Wewe">&#9668;&#9668;</button>
+                <button class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
+                        type="button" aria-label="Play Ni Wewe"><span class="ml-px text-[9px] leading-none">&#9658;</span></button>
+                <button class="text-xs leading-none" type="button" aria-label="Next Ni Wewe">&#9658;&#9658;</button>
+              </div>
+            </div>
+            <div class="mt-[18px] flex items-center justify-between gap-3">
+              <a class="music-pill text-[#111]" href="#" aria-label="Listen to Ni Wewe on YouTube"><span class="youtube-icon"><svg class="h-2.5 w-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 7.8v8.4l7.2-4.2L9 7.8z" /></svg></span><span>YouTube</span></a>
+              <a class="music-pill font-bold text-[#16c65f]" href="#" aria-label="Listen to Ni Wewe on Spotify"><span class="spotify-icon"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.3" aria-hidden="true"><path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" /><path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" /><path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" /></svg></span><span>Spotify</span></a>
+              <a class="music-pill text-black" href="#" aria-label="Listen to Ni Wewe on Apple Music"><svg class="h-[20px] w-[17px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z" /></svg><span>Apple</span></a>
+            </div>
+            <div class="mt-[18px] flex items-center justify-center gap-8"><img class="h-[43px] w-[43px] object-contain" src="skizalogo.png" alt="Skiza logo" /><p class="text-[25px] font-extrabold leading-none tracking-[.04em] text-midnight">*240*34#</p></div>
+          </article>
+
+          <article class="music-card">
+            <h3 class="mb-4 text-center text-[22px] font-normal leading-none tracking-[.01em] text-midnight">Uinuliwe</h3>
+            <div class="relative overflow-hidden rounded-[16px]">
+              <img class="h-[238px] w-full object-cover object-center" src="uinuliwe.png"
+                   alt="Danny Kioko performing Uinuliwe" />
+              <div class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm">
+                <button class="text-xs leading-none" type="button" aria-label="Previous Uinuliwe">&#9668;&#9668;</button>
+                <button class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
+                        type="button" aria-label="Play Uinuliwe"><span class="ml-px text-[9px] leading-none">&#9658;</span></button>
+                <button class="text-xs leading-none" type="button" aria-label="Next Uinuliwe">&#9658;&#9658;</button>
+              </div>
+            </div>
+            <div class="mt-[18px] flex items-center justify-between gap-3">
+              <a class="music-pill text-[#111]" href="#" aria-label="Listen to Uinuliwe on YouTube"><span class="youtube-icon"><svg class="h-2.5 w-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 7.8v8.4l7.2-4.2L9 7.8z" /></svg></span><span>YouTube</span></a>
+              <a class="music-pill font-bold text-[#16c65f]" href="#" aria-label="Listen to Uinuliwe on Spotify"><span class="spotify-icon"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.3" aria-hidden="true"><path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" /><path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" /><path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" /></svg></span><span>Spotify</span></a>
+              <a class="music-pill text-black" href="#" aria-label="Listen to Uinuliwe on Apple Music"><svg class="h-[20px] w-[17px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z" /></svg><span>Apple</span></a>
+            </div>
+            <div class="mt-[18px] flex items-center justify-center gap-8"><img class="h-[43px] w-[43px] object-contain" src="skizalogo.png" alt="Skiza logo" /><p class="text-[25px] font-extrabold leading-none tracking-[.04em] text-midnight">*240*34#</p></div>
+          </article>
+
+          <article class="music-card">
+            <h3 class="mb-4 text-center text-[22px] font-normal leading-none tracking-[.01em] text-midnight">Neema</h3>
+            <div class="relative overflow-hidden rounded-[16px]">
+              <img class="h-[238px] w-full object-cover object-center" src="neema.avif"
+                   alt="Danny Kioko Neema music video" />
+              <div class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm">
+                <button class="text-xs leading-none" type="button" aria-label="Previous Neema">&#9668;&#9668;</button>
+                <button class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
+                        type="button" aria-label="Play Neema"><span class="ml-px text-[9px] leading-none">&#9658;</span></button>
+                <button class="text-xs leading-none" type="button" aria-label="Next Neema">&#9658;&#9658;</button>
+              </div>
+            </div>
+            <div class="mt-[18px] flex items-center justify-between gap-3">
+              <a class="music-pill text-[#111]" href="#" aria-label="Listen to Neema on YouTube"><span class="youtube-icon"><svg class="h-2.5 w-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 7.8v8.4l7.2-4.2L9 7.8z" /></svg></span><span>YouTube</span></a>
+              <a class="music-pill font-bold text-[#16c65f]" href="#" aria-label="Listen to Neema on Spotify"><span class="spotify-icon"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.3" aria-hidden="true"><path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" /><path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" /><path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" /></svg></span><span>Spotify</span></a>
+              <a class="music-pill text-black" href="#" aria-label="Listen to Neema on Apple Music"><svg class="h-[20px] w-[17px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z" /></svg><span>Apple</span></a>
+            </div>
+            <div class="mt-[18px] flex items-center justify-center gap-8"><img class="h-[43px] w-[43px] object-contain" src="skizalogo.png" alt="Skiza logo" /><p class="text-[25px] font-extrabold leading-none tracking-[.04em] text-midnight">*240*34#</p></div>
+          </article>
+
+          <article class="music-card">
+            <h3 class="mb-4 text-center text-[22px] font-normal leading-none tracking-[.01em] text-midnight">Ithoka</h3>
+            <div class="relative overflow-hidden rounded-[16px]">
+              <img class="h-[238px] w-full object-cover object-center" src="ithoka.avif"
+                   alt="Danny Kioko Ithoka music video" />
+              <div class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm">
+                <button class="text-xs leading-none" type="button" aria-label="Previous Ithoka">&#9668;&#9668;</button>
+                <button class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
+                        type="button" aria-label="Play Ithoka"><span class="ml-px text-[9px] leading-none">&#9658;</span></button>
+                <button class="text-xs leading-none" type="button" aria-label="Next Ithoka">&#9658;&#9658;</button>
+              </div>
+            </div>
+            <div class="mt-[18px] flex items-center justify-between gap-3">
+              <a class="music-pill text-[#111]" href="#" aria-label="Listen to Ithoka on YouTube"><span class="youtube-icon"><svg class="h-2.5 w-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 7.8v8.4l7.2-4.2L9 7.8z" /></svg></span><span>YouTube</span></a>
+              <a class="music-pill font-bold text-[#16c65f]" href="#" aria-label="Listen to Ithoka on Spotify"><span class="spotify-icon"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.3" aria-hidden="true"><path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" /><path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" /><path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" /></svg></span><span>Spotify</span></a>
+              <a class="music-pill text-black" href="#" aria-label="Listen to Ithoka on Apple Music"><svg class="h-[20px] w-[17px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z" /></svg><span>Apple</span></a>
+            </div>
+            <div class="mt-[18px] flex items-center justify-center gap-8"><img class="h-[43px] w-[43px] object-contain" src="skizalogo.png" alt="Skiza logo" /><p class="text-[25px] font-extrabold leading-none tracking-[.04em] text-midnight">*240*34#</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="relative isolate overflow-hidden bg-[#f7f7f7] px-8 pb-10 pt-8 text-black max-lg:px-6 max-sm:px-5"
+             aria-labelledby="dkf-title">
+      <div class="pointer-events-none absolute -left-[70px] -top-[150px] h-[250px] w-[190px] rounded-[0_0_90px_90px] bg-[#fac844] max-sm:-left-[110px]"
+           aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -left-[54px] top-[76px] h-[170px] w-[132px] rounded-full bg-[#fac844] max-sm:-left-[92px]"
+           aria-hidden="true"></div>
+      <div class="pointer-events-none absolute left-1/2 top-[-290px] -z-0 h-[980px] w-[1060px] -translate-x-1/2 rounded-[48%] border border-[#fac844]/80"
+           aria-hidden="true"></div>
+
+      <div class="relative z-10 mx-auto max-w-[980px] text-center">
+        <h2 id="dkf-title"
+            class="mb-10 text-[clamp(34px,4vw,46px)] font-normal leading-none tracking-normal">
+          <span>Danny Kioko</span>
+          <span class="ml-4 inline-block border-b border-release pb-4 text-release max-sm:ml-0 max-sm:mt-2">Foundation</span>
+        </h2>
+
+        <p class="mx-auto max-w-[850px] text-[22px] font-normal leading-[1.62] tracking-[.01em] max-lg:text-[19px] max-sm:text-[15px]">
+          The Danny Kioko Foundation (DKF) is a non-profit organization dedicated to improving the quality of life for
+          underprivileged children and vulnerable communities in Kenya and beyond. The foundation was born out of the
+          many cases of need that Danny encountered during his evangelism missions across Kenya and East Africa.
         </p>
+
+        <div class="mt-[40px] grid grid-cols-3 gap-[68px] max-lg:gap-6 max-md:grid-cols-1">
+          <div class="rounded-[14px] bg-[#fac844] px-8 py-5 text-white">
+            <p class="font-mono text-[58px] leading-none tracking-[-.04em] max-lg:text-[48px]">1,000</p>
+            <p class="mt-4 text-[19px] font-bold leading-none">Children Reached</p>
+          </div>
+          <div class="rounded-[14px] bg-midnight px-8 py-5 text-white">
+            <p class="font-mono text-[58px] leading-none tracking-[-.04em] max-lg:text-[48px]">$ 50k</p>
+            <p class="mt-4 text-[19px] font-bold leading-none">Raised</p>
+          </div>
+          <div class="rounded-[14px] bg-[#20d461] px-8 py-5 text-white">
+            <p class="font-mono text-[58px] leading-none tracking-[-.04em] max-lg:text-[48px]">$ 50k</p>
+            <p class="mt-4 text-[19px] font-bold leading-none">Raised</p>
+          </div>
+        </div>
+
+        <div class="mt-[40px] flex items-end justify-between gap-8 text-left max-md:flex-col max-md:items-stretch">
+          <div>
+            <p class="mb-4 text-[25px] font-normal leading-none max-sm:text-2xl">Support Us Via:</p>
+            <div class="flex flex-wrap gap-5">
+              <a class="inline-flex h-[44px] min-w-[132px] items-center justify-center rounded-full border border-[#ead8df] bg-white px-6 text-[20px] font-extrabold text-[#34b557]"
+                 href="#" aria-label="Support via M-PESA">
+                <img class="h-[25px] w-auto object-contain"
+                     src="m-pesa-logo.png"
+                     alt="M-PESA" />
+              </a>
+              <a class="inline-flex h-[44px] min-w-[132px] items-center justify-center gap-2 rounded-full border border-[#ead8df] bg-white px-6 text-[15px] font-extrabold text-[#1d4f99]"
+                 href="#" aria-label="Support via PayPal">
+                <img class="h-[22px] w-auto object-contain"
+                     src="paypal-logo.png"
+                     alt="PayPal" />
+              </a>
+            </div>
+          </div>
+
+          <a class="inline-flex h-[52px] min-w-[280px] items-center justify-center gap-5 rounded-full bg-midnight px-10 text-[23px] font-normal text-white transition hover:bg-[#173770] max-sm:min-w-0 max-sm:w-full max-sm:text-[19px]"
+             href="about.html">
+            More About DKF
+            <span class="text-[32px]" aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-midnight px-8 pb-5 pt-[48px] text-white max-lg:px-6 max-sm:px-5">
+      <div class="mx-auto grid max-w-[1066px] grid-cols-[1.4fr_1fr_.8fr_auto] gap-14 max-lg:grid-cols-2 max-sm:grid-cols-1">
+        <div>
+          <a class="font-script text-[44px] leading-none text-white" href="#">Danny Kioko</a>
+          <p class="mt-8 text-[15px] font-light text-white/85">The Worship Minister and Evangelist</p>
+        </div>
+
+        <div>
+          <h3 class="mb-8 text-[15px] font-light uppercase tracking-[.04em] text-white">Links</h3>
+          <nav class="flex flex-col gap-4 text-[15px] font-light text-white/90">
+            <a href="#">Music</a>
+            <a href="#">Danny Kioko Foundation</a>
+            <a href="#">The Light</a>
+          </nav>
+
+          <div class="mt-8 flex gap-4 text-white">
+            <a href="#" aria-label="Facebook">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v8h4v-8h3l1-4h-4V9c0-.6.4-1 1-1z" /></svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="5" /><circle cx="12" cy="12" r="3.5" /><path d="M17.5 6.5h.01" /></svg>
+            </a>
+            <a href="#" aria-label="Twitter">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.8c-.7.3-1.5.5-2.3.6.8-.5 1.4-1.2 1.7-2.2-.8.5-1.6.8-2.6 1-1.5-1.6-4.1-.8-4.7 1.3-.1.4-.1.8 0 1.1-3.2-.2-6-1.7-7.9-4-.4.7-.6 1.5-.3 2.3.2.8.7 1.5 1.4 1.9-.6 0-1.2-.2-1.7-.5 0 1.8 1.3 3.4 3.1 3.7-.6.2-1.2.2-1.8.1.5 1.5 2 2.6 3.7 2.7-1.6 1.2-3.5 1.9-5.6 1.9H4c1.8 1.2 4 1.8 6.3 1.8 7.5 0 11.7-6.2 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z" /></svg>
+            </a>
+            <a href="#" aria-label="Email">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16v12H4z" /><path d="m4 7 8 6 8-6" /></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="mb-8 text-[15px] font-light uppercase tracking-[.04em] text-white">Songs</h3>
+          <div class="flex flex-col gap-4 text-[15px] font-light text-white/90">
+            <a href="#">Muvango</a>
+            <a href="#">Muvango</a>
+            <a href="#">Muvango</a>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-6">
+          <a class="footer-listen-pill text-[#1ed760]" href="#"><span class="spotify-icon"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.3"><path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" /><path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" /><path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" /></svg></span><span>Spotify</span></a>
+          <a class="footer-listen-pill text-white" href="#"><span class="youtube-icon"><svg class="h-2.5 w-3" viewBox="0 0 24 24" fill="currentColor"><path d="M9 7.8v8.4l7.2-4.2L9 7.8z" /></svg></span><span>YouTube</span></a>
+          <a class="footer-listen-pill text-white" href="#"><svg class="h-[26px] w-[22px]" viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z" /></svg><span>Apple</span></a>
+        </div>
       </div>
 
-      <!-- Nav links -->
-      <div class="flex flex-col gap-3">
-        <p class="text-white/30 text-[10px] font-bold tracking-widest uppercase mb-1">Navigation</p>
-        <a href="#"
-           class="text-white/45 text-xs font-light hover:text-white transition-colors">Home</a>
-        <a href="#about"
-           class="text-white/45 text-xs font-light hover:text-white transition-colors">About</a>
-        <a href="#books"
-           class="text-white/45 text-xs font-light hover:text-white transition-colors">Books</a>
-        <a href="#"
-           class="text-white/45 text-xs font-light hover:text-white transition-colors">Thoughts</a>
+      <div class="mx-auto mt-[40px] max-w-[1066px] border-t border-white/20 pt-6 text-center text-[15px] font-light text-white/90">
+        &copy; Dan Kioko -2026
       </div>
-
-      <!-- Newsletter CTA -->
-      <div class="max-w-xs">
-        <p class="text-white/30 text-[10px] font-bold tracking-widest uppercase mb-3">Newsletter</p>
-        <p class="text-white/50 text-xs font-light mb-5 leading-relaxed">
-          Stay updated with insights on business, finance &amp; leadership.
-        </p>
-        <a href="#"
-           class="inline-block bg-teal hover:bg-teal-light text-white text-xs font-semibold tracking-wide px-6 py-2.5 rounded-full transition-colors">
-          The Financier ↗
-        </a>
-      </div>
-
-
-    </div>
-    <div class="w-full flex-1  text-center items-center">
-      <p class="text-white/80 text-xs font-light mt-3">© 2026 Jonathan Bett</p>
-    </div>
-
-  </footer>
+    </footer>
+  </main>
 
   <script>
-    const heroSlides = [
-      {
-        title: 'How To Start and Run Your Own Business',
-        description:
-          `Are you looking to start your own business but overwhelmed by the thought of costly consultants and courses? Look no further! Whether you're just starting or looking to improve your existing business, "How to Start and Run Your Own Business" is the ultimate entrepreneur's guide. It provides a comprehensive manual for all aspiring business owners.`,
-        image: 'book1.png',
-        alt: 'How To Start and Run Your Own Business',
-      },
-      {
-        title: 'Personal Financial and Retirement Planning',
-        description:
-          `A comprehensive guide to financial security, wealth building, and retirement planning. This book helps readers think clearly about personal finance, long-term goals, and practical choices for a more secure future.`,
-        image: 'book2.png',
-        alt: 'Personal Financial and Retirement Planning',
-      },
-    ];
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const dotsWrap = document.querySelector(".slider-dots");
+    const prevButton = document.querySelector(".slider-arrow.prev");
+    const nextButton = document.querySelector(".slider-arrow.next");
+    const menuButton = document.querySelector(".menu-button");
+    const siteNav = document.querySelector("#siteNav");
+    const dotBaseClass = "dot h-[13px] w-[13px] rounded-full border-0 bg-white opacity-95 transition-[width,opacity]";
+    let activeIndex = 0;
+    let autoplayId;
 
-    const heroTitle = document.getElementById('hero-title');
-    const heroDescription = document.getElementById('hero-description');
-    const heroBook = document.getElementById('hero-book');
-    const heroPrev = document.getElementById('hero-prev');
-    const heroNext = document.getElementById('hero-next');
-    let activeHeroSlide = 0;
+    slides.forEach((_, index) => {
+      const dot = document.createElement("button");
+      dot.className = index === 0 ? `${dotBaseClass} is-active` : dotBaseClass;
+      dot.type = "button";
+      dot.setAttribute("aria-label", `Go to slide ${index + 1}`);
+      dot.addEventListener("click", () => {
+        showSlide(index);
+        restartAutoplay();
+      });
+      dotsWrap.appendChild(dot);
+    });
 
-    function showHeroSlide(index) {
-      activeHeroSlide = (index + heroSlides.length) % heroSlides.length;
-      const slide = heroSlides[activeHeroSlide];
-      const animatedEls = [heroTitle, heroDescription, heroBook];
+    const dots = Array.from(document.querySelectorAll(".dot"));
 
-      animatedEls.forEach((el) => el.classList.add('opacity-0'));
+    function showSlide(index) {
+      activeIndex = (index + slides.length) % slides.length;
 
-      window.setTimeout(() => {
-        heroTitle.textContent = slide.title;
-        heroDescription.textContent = slide.description;
-        heroBook.src = slide.image;
-        heroBook.alt = slide.alt;
-        animatedEls.forEach((el) => el.classList.remove('opacity-0'));
-      }, 180);
+      slides.forEach((slide, slideIndex) => {
+        slide.classList.toggle("is-active", slideIndex === activeIndex);
+      });
+
+      dots.forEach((dot, dotIndex) => {
+        dot.classList.toggle("is-active", dotIndex === activeIndex);
+      });
     }
 
-    heroPrev.addEventListener('click', () => showHeroSlide(activeHeroSlide - 1));
-    heroNext.addEventListener('click', () => showHeroSlide(activeHeroSlide + 1));
-  </script>
+    function nextSlide() {
+      showSlide(activeIndex + 1);
+    }
 
+    function restartAutoplay() {
+      window.clearInterval(autoplayId);
+      autoplayId = window.setInterval(nextSlide, 6500);
+    }
+
+    prevButton.addEventListener("click", () => {
+      showSlide(activeIndex - 1);
+      restartAutoplay();
+    });
+
+    nextButton.addEventListener("click", () => {
+      nextSlide();
+      restartAutoplay();
+    });
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = siteNav.classList.toggle("is-open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    restartAutoplay();
+  </script>
 </body>
 
 </html>
