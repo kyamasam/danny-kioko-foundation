@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0" />
-  <title>Danny Kioko Foundation | About DKF</title>
+  <title>Danny Kioko Foundation | The Light</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect"
         href="https://fonts.googleapis.com" />
@@ -85,43 +85,30 @@
       color: #fff;
     }
 
-    .impact-card {
-      min-height: 164px;
-    }
-
-    .need-row {
-      display: grid;
-      grid-template-columns: 132px 1fr;
-      gap: 24px;
-      border-top: 1px solid rgba(16, 16, 16, .12);
-      padding-top: 24px;
-    }
-
-    .about-hero-photo {
+    .light-photo {
       overflow: hidden;
       border-radius: 22px;
       background: #fff;
       box-shadow: 0 18px 34px rgba(20, 18, 14, .13);
     }
 
-    .about-hero-photo img {
+    .light-photo img {
       display: block;
       height: 100%;
       width: 100%;
       object-fit: cover;
     }
 
-    .about-marquee {
-      font-family: Georgia, "Times New Roman", serif;
-      font-style: italic;
-      font-weight: 400;
-      letter-spacing: -.055em;
-      line-height: .72;
-      white-space: nowrap;
+    .program-row {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 28px;
+      border-top: 1px solid rgba(16, 16, 16, .12);
+      padding-top: 28px;
     }
 
     @media (max-width: 640px) {
-      .need-row {
+      .program-row {
         grid-template-columns: 1fr;
         gap: 10px;
       }
@@ -151,9 +138,9 @@
            href="index2.html">About Me</a>
         <a class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
            href="music-and-evangelism.html">Music &amp; Evangelism</a>
-        <a class="relative py-3 text-release after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-100 after:bg-release md:py-2"
-           href="about.html">DKF</a>
         <a class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
+           href="about.html">DKF</a>
+        <a class="relative py-3 text-release after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-100 after:bg-release md:py-2"
            href="the-light.html">The Light</a>
       </nav>
 
@@ -174,62 +161,51 @@
     </header>
 
     <section class="relative isolate overflow-hidden bg-[#f4efe6] text-ink"
-             aria-labelledby="dkf-hero">
-      <div class="relative mx-auto grid min-h-[500px] max-w-[1180px] grid-cols-[minmax(310px,.78fr)_minmax(420px,1fr)] items-center gap-10 px-8 py-8 max-lg:min-h-0 max-lg:grid-cols-1 max-lg:px-8 max-lg:py-10 max-sm:px-5"
-           aria-label="About DKF overview">
+             aria-labelledby="light-hero">
+      <div class="relative mx-auto grid min-h-[530px] max-w-[1180px] grid-cols-[minmax(310px,.86fr)_minmax(420px,1fr)] items-center gap-10 px-8 py-8 max-lg:min-h-0 max-lg:grid-cols-1 max-lg:px-8 max-lg:py-10 max-sm:px-5">
         <div class="pointer-events-none absolute -right-16 bottom-7 z-0 h-[120px] w-[150px] rounded-full bg-harvest max-sm:-right-20 max-sm:h-[96px] max-sm:w-[124px]"
              aria-hidden="true"></div>
 
-
-        <div class="relative z-10 max-w-[500px]">
+        <div class="relative z-10 max-w-[540px]">
           <p class="mb-4 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[.18em] text-release">
             <span class="h-[3px] w-[42px] bg-release"
                   aria-hidden="true"></span>
-            Non-profit organization
+            International youth project
           </p>
-          <h1 id="dkf-hero"
-              class="text-[clamp(30px,3.7vw,48px)] font-extrabold uppercase leading-[.94] tracking-normal">
-            Hope in action for vulnerable children.
+          <h1 id="light-hero"
+              class="text-[clamp(34px,4.8vw,66px)] font-extrabold uppercase leading-[.9] tracking-normal">
+            The Light
           </h1>
-          <p class="mt-5 max-w-[470px] text-[15px] leading-[1.65] text-black/70">
-            The Danny Kioko Foundation restores dignity and opportunity through education, nutrition, healthcare,
-            shelter, and spiritual support.
+          <p class="mt-5 max-w-[500px] text-[17px] leading-[1.65] text-black/72 max-sm:text-[15px]">
+            A DK Foundation mentorship project helping young people grow in faith, leadership, purpose, and life skills.
           </p>
-          <div class="mt-6 grid max-w-[430px] grid-cols-3 gap-2.5 max-sm:grid-cols-3">
-            <div class="rounded-[8px] bg-white/80 px-3.5 py-3 shadow-[0_10px_24px_rgba(20,18,14,.06)]">
-              <p class="font-mono text-[22px] font-extrabold leading-none text-release">100+</p>
-              <p class="mt-1 text-[10px] font-bold uppercase tracking-[.05em] text-black/60">children</p>
-            </div>
-            <div class="rounded-[8px] bg-white/80 px-3.5 py-3 shadow-[0_10px_24px_rgba(20,18,14,.06)]">
-              <p class="font-mono text-[22px] font-extrabold leading-none text-midnight">52.5%</p>
-              <p class="mt-1 text-[10px] font-bold uppercase tracking-[.05em] text-black/60">poverty</p>
-            </div>
-            <div class="rounded-[8px] bg-white/80 px-3.5 py-3 shadow-[0_10px_24px_rgba(20,18,14,.06)]">
-              <p class="font-mono text-[22px] font-extrabold leading-none text-greenhope">1.57M</p>
-              <p class="mt-1 text-[10px] font-bold uppercase tracking-[.05em] text-black/60">at risk</p>
-            </div>
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a class="inline-flex h-[48px] min-w-[166px] items-center justify-center rounded-full bg-release px-7 text-[17px] font-semibold text-white transition hover:bg-[#ff642d]"
+               href="#programs">
+              Explore Programs
+            </a>
+            <a class="inline-flex h-[48px] min-w-[142px] items-center justify-center rounded-full border border-black/15 bg-white px-7 text-[17px] font-semibold text-midnight transition hover:bg-white/75"
+               href="about.html">
+              About DKF
+            </a>
           </div>
         </div>
 
-        <div class="relative z-10 grid grid-cols-[1.15fr_.85fr] gap-3 max-sm:grid-cols-1">
-          <div class="relative">
-            <div class="absolute left-3 top-3 z-20 rounded-full bg-[#e7002a] px-3 py-1 text-[11px] font-bold text-white shadow-sm">
-              DKF
-            </div>
-            <figure class="about-hero-photo h-[340px] max-lg:h-[320px] max-sm:h-[230px]">
-              <img src="dkf/dkf-kids-2.png"
-                   alt="Danny Kioko smiling with children supported by DKF" />
-            </figure>
-          </div>
-
+        <div class="relative z-10 grid grid-cols-[1fr_.82fr] gap-3 max-sm:grid-cols-1">
+          <figure class="light-photo h-[360px] max-lg:h-[320px] max-sm:h-[235px]">
+            <img src="dkf/dkf-kids-2.png"
+                 alt="Young people smiling during a DK Foundation outreach" />
+          </figure>
           <div class="grid gap-3">
-            <figure class="about-hero-photo h-[163px] max-lg:h-[154px] max-sm:h-[190px]">
-              <img src="dkf/dkf-kids-1.png"
-                   alt="Children sharing a meal during a DKF outreach" />
-            </figure>
-            <figure class="about-hero-photo h-[163px] max-lg:h-[154px] max-sm:h-[190px]">
-              <img src="dkf/dkf-kids-3.png"
-                   alt="Children receiving food through the Danny Kioko Foundation" />
+            <div class="rounded-[8px] bg-midnight p-6 text-white shadow-heavy max-sm:p-5">
+              <p class="font-mono text-[40px] font-extrabold leading-none text-harvest">Faith</p>
+              <p class="mt-4 text-[15px] leading-[1.55] text-white/82">
+                Mentorship, prayer, worship, and practical guidance for a brighter future.
+              </p>
+            </div>
+            <figure class="light-photo h-[166px] max-lg:h-[146px] max-sm:h-[205px]">
+              <img src="pexels-anat-morad-275582206-13250722.jpg"
+                   alt="City skyline representing international youth collaboration" />
             </figure>
           </div>
         </div>
@@ -237,7 +213,7 @@
     </section>
 
     <section class="relative overflow-hidden bg-[#f7f7f7] px-8 py-[76px] text-ink max-lg:px-6 max-sm:px-5 max-sm:py-14"
-             aria-labelledby="origin-title">
+             aria-labelledby="about-light-title">
       <div class="pointer-events-none absolute -right-[130px] -top-[170px] h-[360px] w-[410px] rounded-[52%_0_0_57%/50%_0_0_56%] bg-release"
            aria-hidden="true"></div>
       <div class="pointer-events-none absolute -bottom-[92px] left-0 h-[188px] w-[220px] bg-harvest"
@@ -245,199 +221,187 @@
 
       <div class="relative z-10 mx-auto grid max-w-[1120px] grid-cols-[.85fr_1.15fr] gap-14 max-lg:grid-cols-1">
         <div>
-          <p class="mb-4 text-[18px] font-normal uppercase tracking-[.02em] text-release">Born on mission</p>
-          <h2 id="origin-title"
+          <p class="mb-4 text-[18px] font-normal uppercase tracking-[.02em] text-release">About the project</p>
+          <h2 id="about-light-title"
               class="text-[clamp(38px,5vw,64px)] font-normal leading-[1.02] tracking-normal">
-            A foundation formed where need kept meeting the gospel.
+            A safe place for young people to discover purpose.
           </h2>
         </div>
 
         <div class="grid gap-7 text-[17px] leading-[1.75] text-black/80 max-sm:text-[15px]">
           <p>
-            DKF began with the many urgent cases Danny encountered during evangelism missions across Kenya and East
-            Africa: children without school fees, families without food, guardians overwhelmed by illness, poverty, and
-            loss.
+            The Light is hosted by DK Foundation, a non-profit registered in Washington State. It creates a positive,
+            faith-filled environment where youths from different backgrounds are mentored, encouraged, and equipped to
+            become responsible leaders.
           </p>
           <p>
-            COVID-19, prolonged droughts, and political unrest deepened those hardships. Even with limited resources,
-            DKF now helps more than 100 children access education, nutrition, healthcare, and other essential needs.
-            Many live with guardians who cannot provide enough support; some face severe malnutrition and serious health
-            conditions.
+            Through conferences, mentorship, outreach, and Christian teaching, the project responds to challenges such
+            as lack of guidance, unemployment, depression, peer pressure, substance abuse, violence, and loss of
+            direction.
           </p>
         </div>
       </div>
     </section>
 
     <section class="grid grid-cols-2 bg-white text-ink max-lg:grid-cols-1"
-             aria-labelledby="mission-title">
+             aria-labelledby="light-mission-title">
       <div class="bg-midnight px-10 py-[74px] text-white max-lg:px-8 max-sm:px-5 max-sm:py-14">
         <div class="mx-auto max-w-[520px]">
-          <p class="mb-5 text-[16px] font-medium uppercase tracking-[.12em] text-harvest">Our Mission</p>
-          <h2 id="mission-title"
+          <p class="mb-5 text-[16px] font-medium uppercase tracking-[.12em] text-harvest">Mission</p>
+          <h2 id="light-mission-title"
               class="text-[clamp(34px,4.5vw,54px)] font-normal leading-[1.05]">
-            Restore hope, dignity, and opportunity.
+            Mentor, train, and empower the next generation.
           </h2>
           <p class="mt-7 text-[18px] leading-[1.72] text-white/80 max-sm:text-[16px]">
-            We provide access to education, healthcare, nutrition, shelter, and spiritual support so vulnerable children
-            can grow in safety instead of survival mode.
+            We provide Christian mentorship, leadership training, educational support, and opportunities that help
+            young people grow spiritually, emotionally, socially, and professionally.
           </p>
         </div>
       </div>
 
       <div class="bg-harvest px-10 py-[74px] text-ink max-lg:px-8 max-sm:px-5 max-sm:py-14">
         <div class="mx-auto max-w-[520px]">
-          <p class="mb-5 text-[16px] font-bold uppercase tracking-[.12em] text-release">Our Vision</p>
+          <p class="mb-5 text-[16px] font-bold uppercase tracking-[.12em] text-release">Vision</p>
           <h2 class="text-[clamp(34px,4.5vw,54px)] font-normal leading-[1.05]">
-            Every child gets room to thrive.
+            Spiritually grounded, confident, purpose-driven leaders.
           </h2>
           <p class="mt-7 text-[18px] leading-[1.72] text-black/75 max-sm:text-[16px]">
-            We envision safe, healthy, supportive communities where a child's future is not decided by poverty,
-            abandonment, disability, illness, or where they were born.
+            The Light envisions young people who shine in their communities and positively impact the world through
+            faith, character, and service.
           </p>
         </div>
       </div>
     </section>
 
-    <section class="bg-[#f7f7f7] px-8 py-[82px] text-ink max-lg:px-6 max-sm:px-5 max-sm:py-14"
-             aria-labelledby="need-title">
+    <section class="bg-white px-8 py-[82px] text-ink max-lg:px-6 max-sm:px-5 max-sm:py-14"
+             aria-labelledby="objectives-title">
       <div class="mx-auto max-w-[1120px]">
-        <div class="mb-12 grid grid-cols-[.75fr_1.25fr] gap-12 max-lg:grid-cols-1 max-lg:gap-6">
-          <h2 id="need-title"
+        <div class="mb-12 grid grid-cols-[.72fr_1.28fr] gap-12 max-lg:grid-cols-1 max-lg:gap-6">
+          <h2 id="objectives-title"
               class="text-[clamp(38px,5vw,62px)] font-normal leading-none">
-            The need is personal, then national.
+            What The Light helps young people build.
           </h2>
-          <p class="max-w-[680px] text-[18px] leading-[1.75] text-black/75 max-sm:text-[15px]">
-            Many children DKF supports have lost parents young or been abandoned, leaving them exposed to street life,
-            hunger, illness, and school dropout. DKF is also deeply committed to children with special needs and
-            children
-            directly or indirectly affected by HIV/AIDS.
+          <p class="max-w-[690px] text-[18px] leading-[1.75] text-black/75 max-sm:text-[15px]">
+            The project brings youths together for mentorship, faith formation, practical training, friendship, and
+            community service.
           </p>
         </div>
 
-        <div class="grid gap-6">
-          <div class="need-row">
-            <p class="font-mono text-[36px] font-extrabold leading-none text-release">15.9M</p>
-            <p class="text-[19px] leading-[1.55] max-sm:text-[16px]">
-              Kenyans live in monetary poverty, according to UNICEF's 2022 reporting.
-            </p>
+        <div class="grid grid-cols-3 gap-5 max-lg:grid-cols-2 max-sm:grid-cols-1">
+          <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
+            <h3 class="mb-3 text-[22px] font-bold text-midnight">Christian values</h3>
+            <p class="text-[15px] leading-[1.65] text-black/70">Faith, moral leadership, prayer, worship, and spiritual
+              growth.</p>
           </div>
-          <div class="need-row">
-            <p class="font-mono text-[36px] font-extrabold leading-none text-midnight">50%</p>
-            <p class="text-[19px] leading-[1.55] max-sm:text-[16px]">
-              Half the population experiences multidimensional poverty, including gaps in healthcare, safe water,
-              nutrition, housing, and sanitation.
-            </p>
+          <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
+            <h3 class="mb-3 text-[22px] font-bold text-release">Mentorship</h3>
+            <p class="text-[15px] leading-[1.65] text-black/70">Guidance from experienced Christian leaders, role
+              models, pastors, and professionals.</p>
           </div>
-          <div class="need-row">
-            <p class="font-mono text-[36px] font-extrabold leading-none text-greenhope">46.5%</p>
-            <p class="text-[19px] leading-[1.55] max-sm:text-[16px]">
-              Nearly half of Nairobi County residents live in informal settlements, where economic shocks hit children
-              first and hardest.
-            </p>
+          <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
+            <h3 class="mb-3 text-[22px] font-bold text-greenhope">Leadership skills</h3>
+            <p class="text-[15px] leading-[1.65] text-black/70">Communication, teamwork, integrity, confidence, and
+              personal responsibility.</p>
+          </div>
+          <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
+            <h3 class="mb-3 text-[22px] font-bold text-midnight">Education</h3>
+            <p class="text-[15px] leading-[1.65] text-black/70">Encouragement toward learning, career development,
+              entrepreneurship, and innovation.</p>
+          </div>
+          <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
+            <h3 class="mb-3 text-[22px] font-bold text-release">Safe spaces</h3>
+            <p class="text-[15px] leading-[1.65] text-black/70">Room for young people to share stories, ask questions,
+              build friendships, and receive care.</p>
+          </div>
+          <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
+            <h3 class="mb-3 text-[22px] font-bold text-greenhope">Community service</h3>
+            <p class="text-[15px] leading-[1.65] text-black/70">Outreach, school visits, charity events, counseling,
+              and practical acts of compassion.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="relative isolate overflow-hidden bg-white px-8 py-[78px] text-ink max-lg:px-6 max-sm:px-5 max-sm:py-14"
-             aria-labelledby="work-title">
+    <section id="programs"
+             class="relative isolate overflow-hidden bg-[#f7f7f7] px-8 py-[82px] text-ink max-lg:px-6 max-sm:px-5 max-sm:py-14"
+             aria-labelledby="programs-title">
       <div class="absolute left-1/2 top-[-520px] z-0 h-[980px] w-[1060px] -translate-x-1/2 rounded-[48%] border border-harvest"
            aria-hidden="true"></div>
       <div class="relative z-10 mx-auto max-w-[1120px]">
         <div class="mb-12 flex items-end justify-between gap-8 max-lg:flex-col max-lg:items-start">
-          <h2 id="work-title"
-              class="max-w-[560px] text-[clamp(38px,5vw,62px)] font-normal leading-none">
-            What DKF puts in a child's hands.
+          <h2 id="programs-title"
+              class="max-w-[620px] text-[clamp(38px,5vw,62px)] font-normal leading-none">
+            Programs that turn encouragement into direction.
           </h2>
           <a class="inline-flex h-[52px] min-w-[220px] items-center justify-center gap-5 rounded-full bg-release px-9 text-[20px] font-normal text-white transition hover:bg-[#ff642d] max-sm:w-full max-sm:text-[18px]"
-             href="#support">
-            Partner with DKF
+             href="#impact">
+            See the impact
             <span class="text-[30px]"
                   aria-hidden="true">&rarr;</span>
           </a>
         </div>
 
-        <div class="grid grid-cols-3 gap-5 max-lg:grid-cols-2 max-sm:grid-cols-1">
-          <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
-            <h3 class="mb-3 text-[22px] font-bold text-midnight">School sponsorships</h3>
-            <p class="text-[15px] leading-[1.65] text-black/70">Fees, supplies, uniforms, and the steady push that keeps
-              a child in class.</p>
+        <div class="grid gap-8">
+          <div class="program-row">
+            <h3 class="text-[26px] font-bold leading-tight text-midnight">Youth conferences</h3>
+            <p class="text-[18px] leading-[1.65] text-black/75 max-sm:text-[16px]">
+              International gatherings with worship, prayer, speakers, pastors, artists, counseling, networking, and
+              talent showcases.
+            </p>
           </div>
-          <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
-            <h3 class="mb-3 text-[22px] font-bold text-release">Food &amp; nutrition</h3>
-            <p class="text-[15px] leading-[1.65] text-black/70">Meals and nutrition support for children facing hunger
-              and malnutrition.</p>
+          <div class="program-row">
+            <h3 class="text-[26px] font-bold leading-tight text-release">Christian mentorship</h3>
+            <p class="text-[18px] leading-[1.65] text-black/75 max-sm:text-[16px]">
+              Mentors provide spiritual guidance, accountability, encouragement, and support as youths overcome
+              challenges and build strong values.
+            </p>
           </div>
-          <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
-            <h3 class="mb-3 text-[22px] font-bold text-greenhope">Healthcare support</h3>
-            <p class="text-[15px] leading-[1.65] text-black/70">Medical assistance for children whose families cannot
-              carry the cost alone.</p>
+          <div class="program-row">
+            <h3 class="text-[26px] font-bold leading-tight text-greenhope">Leadership training</h3>
+            <p class="text-[18px] leading-[1.65] text-black/75 max-sm:text-[16px]">
+              Workshops and team activities develop communication, emotional wellness, career readiness, and practical
+              leadership.
+            </p>
           </div>
-          <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
-            <h3 class="mb-3 text-[22px] font-bold text-midnight">Safe shelter</h3>
-            <p class="text-[15px] leading-[1.65] text-black/70">Child protection and loving environments for children at
-              risk.</p>
-          </div>
-          <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
-            <h3 class="mb-3 text-[22px] font-bold text-release">Special needs care</h3>
-            <p class="text-[15px] leading-[1.65] text-black/70">Compassionate support for children with disabilities and
-              HIV/AIDS-related needs.</p>
-          </div>
-          <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
-            <h3 class="mb-3 text-[22px] font-bold text-greenhope">Mentorship</h3>
-            <p class="text-[15px] leading-[1.65] text-black/70">Community outreach, empowerment, spiritual guidance, and
-              steady encouragement.</p>
+          <div class="program-row">
+            <h3 class="text-[26px] font-bold leading-tight text-midnight">Community outreach</h3>
+            <p class="text-[18px] leading-[1.65] text-black/75 max-sm:text-[16px]">
+              Charity events, school visits, counseling sessions, and service initiatives support vulnerable youths and
+              families.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="support"
+    <section id="impact"
              class="relative isolate overflow-hidden bg-release px-8 py-[76px] text-white max-lg:px-6 max-sm:px-5 max-sm:py-14"
-             aria-labelledby="support-title">
+             aria-labelledby="impact-title">
       <div class="absolute -right-[90px] -top-[96px] h-[210px] w-[310px] rounded-[50%] bg-harvest"
            aria-hidden="true"></div>
       <div class="absolute -bottom-[80px] left-[10%] h-[170px] w-[260px] rounded-[50%] bg-midnight"
            aria-hidden="true"></div>
 
-      <div
-           class="relative z-10 mx-auto grid max-w-[1120px] grid-cols-[1.15fr_.85fr] items-end gap-12 max-lg:grid-cols-1">
+      <div class="relative z-10 mx-auto grid max-w-[1120px] grid-cols-[1.05fr_.95fr] items-center gap-12 max-lg:grid-cols-1">
         <div>
-          <p class="mb-5 text-[18px] font-bold uppercase tracking-[.08em] text-white/75">How you can help</p>
-          <h2 id="support-title"
-              class="max-w-[760px] text-[clamp(42px,6vw,78px)] font-extrabold uppercase leading-[.9]">
-            Relief today. A future tomorrow.
+          <p class="mb-5 text-[18px] font-bold uppercase tracking-[.08em] text-white/75">Impact</p>
+          <h2 id="impact-title"
+              class="max-w-[780px] text-[clamp(42px,6vw,78px)] font-extrabold uppercase leading-[.9]">
+            Helping young people shine.
           </h2>
-          <p class="mt-7 max-w-[680px] text-[20px] leading-[1.65] text-white/90 max-sm:text-[16px]">
-            Your support helps provide immediate care while building sustainable solutions that break cycles of poverty
-            and vulnerability. Together, we can give every child the chance to thrive.
+          <p class="mt-7 max-w-[700px] text-[20px] leading-[1.65] text-white/90 max-sm:text-[16px]">
+            The Light inspires hope, restores purpose, and nurtures young leaders who are spiritually strong, socially
+            responsible, and committed to making a positive difference.
           </p>
         </div>
 
         <div class="rounded-[8px] bg-white p-7 text-ink shadow-heavy">
-          <p class="mb-5 text-[22px] font-normal leading-tight">Support us via:</p>
-          <div class="flex flex-wrap gap-4">
-            <a class="inline-flex h-[48px] min-w-[142px] items-center justify-center rounded-full border border-[#ead8df] bg-white px-6 text-[20px] font-extrabold text-[#34b557] shadow-sm"
-               href="#"
-               aria-label="Support via M-PESA">
-              <img class="h-[27px] w-auto object-contain"
-                   src="m-pesa-logo.png"
-                   alt="M-PESA" />
-            </a>
-            <a class="inline-flex h-[48px] min-w-[142px] items-center justify-center rounded-full border border-[#ead8df] bg-white px-6 text-[15px] font-extrabold text-[#1d4f99] shadow-sm"
-               href="#"
-               aria-label="Support via PayPal">
-              <img class="h-[24px] w-auto object-contain"
-                   src="paypal-logo.png"
-                   alt="PayPal" />
-            </a>
-          </div>
-          <p class="mt-7 border-t border-black/10 pt-6 text-[16px] leading-[1.65] text-black/70">
-            Thank you for your support, prayers, and partnership.
+          <p class="text-[24px] font-normal leading-tight">
+            Together, we can raise a generation that shines as a light in the world.
           </p>
-          <p class="mt-5 text-[18px] font-bold leading-tight">
-            Danny Kioko<br />
-            <span class="text-[14px] font-normal text-black/60">Founder &amp; Director, DKF</span>
+          <p class="mt-6 border-t border-black/10 pt-6 text-[16px] leading-[1.65] text-black/70">
+            Through faith, mentorship, leadership, and empowerment, The Light guides young people toward futures filled
+            with purpose, hope, and positive impact.
           </p>
         </div>
       </div>
