@@ -131,94 +131,106 @@
 
 <body class="min-h-screen bg-[#0c0b10] font-sans text-white antialiased">
   <main class="min-h-screen overflow-hidden border-t-[3px] border-x-2 border-[#111] max-sm:border-x-0">
+    <div
+         class="flex h-[33px] items-center justify-center bg-release px-4 text-center text-[15px] font-medium tracking-[.01em] max-sm:h-[31px] max-sm:text-[13px]">
+      New Song Release: Muvango
+    </div>
+
+    <header class="relative z-30 grid h-[64px] grid-cols-[minmax(160px,1fr)_auto_minmax(130px,1fr)] items-center gap-6 bg-white/95 py-0 pl-[32px] pr-[12px] text-ink shadow-[0_1px_0_rgba(15,15,15,.08)] max-[980px]:h-[65px] max-[980px]:grid-cols-[auto_1fr_auto_auto] max-[980px]:gap-3.5 max-[980px]:px-[18px] max-sm:h-[63px] max-sm:px-3"
+            aria-label="Primary">
+      <a class="justify-self-start whitespace-nowrap font-script text-[clamp(25px,2.5vw,31px)] leading-none text-[#111] max-[980px]:text-[28px] max-sm:text-[24px]"
+         href="index2.html">
+        Danny Kioko
+      </a>
+
+      <nav class="nav-links flex items-center justify-center gap-[clamp(16px,2.6vw,30px)] whitespace-nowrap text-[clamp(13px,1vw,15px)] font-normal text-[#090909] max-[980px]:absolute max-[980px]:left-0 max-[980px]:right-0 max-[980px]:top-[65px] max-[980px]:hidden max-[980px]:flex-col max-[980px]:items-stretch max-[980px]:gap-0 max-[980px]:border-t max-[980px]:border-[#ececec] max-[980px]:bg-white/95 max-[980px]:px-[18px] max-[980px]:pb-[18px] max-[980px]:pt-2.5 max-[980px]:text-[15px] max-[980px]:shadow-[0_18px_32px_rgba(0,0,0,.14)] max-sm:top-[63px]"
+           id="siteNav"
+           aria-label="Main navigation">
+        <a class="relative py-2 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 max-[980px]:py-3"
+           href="index2.html">About Me</a>
+        <a class="relative py-2 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 max-[980px]:py-3"
+           href="index2.html">Music &amp; Evangelism</a>
+        <a class="relative py-2 text-release after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-100 after:bg-release max-[980px]:py-3"
+           href="about.html">DKF</a>
+        <a class="relative py-2 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 max-[980px]:py-3"
+           href="#">The Light</a>
+      </nav>
+
+      <a class="inline-flex h-[29px] min-w-[96px] items-center justify-center justify-self-end rounded-[7px] bg-midnight px-[15px] text-[11px] font-bold text-white shadow-navButton max-[980px]:min-w-[90px] max-[980px]:px-3 max-sm:hidden"
+         href="index2.html">
+        Listen Now
+      </a>
+
+      <button class="menu-button hidden h-[42px] w-[42px] flex-col items-center justify-center gap-[5px] rounded-[7px] border-0 bg-[#f0f1f5] text-[#121212] max-[980px]:inline-flex"
+              type="button"
+              aria-label="Toggle navigation"
+              aria-expanded="false"
+              aria-controls="siteNav">
+        <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
+        <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
+        <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
+      </button>
+    </header>
+
     <section class="relative isolate overflow-hidden bg-[#f4efe6] text-ink"
              aria-labelledby="dkf-hero">
-      <header class="relative z-30 mx-auto flex h-[96px] max-w-[1770px] items-center justify-between gap-8 px-[7vw] max-lg:px-8 max-sm:h-[76px] max-sm:px-5"
-              aria-label="Primary">
-        <a class="flex items-center gap-3 text-ink"
-           href="index2.html"
-           aria-label="Danny Kioko Foundation home">
-          <span class="grid h-[45px] w-[45px] place-items-center rounded-full border-2 border-ink text-[12px] font-extrabold tracking-[-.04em] max-sm:h-10 max-sm:w-10">
-            DKF
-          </span>
-          <span class="leading-tight">
-            <span class="block text-[15px] font-extrabold uppercase tracking-[.08em] max-sm:text-[12px]">Danny Kioko</span>
-            <span class="block text-[14px] font-medium uppercase tracking-[.15em] max-sm:text-[11px]">Foundation</span>
-          </span>
-        </a>
-
-        <nav class="nav-links flex items-center gap-[clamp(28px,3.2vw,54px)] text-[20px] font-medium text-black/70 max-[900px]:absolute max-[900px]:left-5 max-[900px]:right-5 max-[900px]:top-[76px] max-[900px]:hidden max-[900px]:flex-col max-[900px]:items-stretch max-[900px]:gap-0 max-[900px]:rounded-[8px] max-[900px]:border max-[900px]:border-black/10 max-[900px]:bg-[#f4efe6] max-[900px]:p-3 max-[900px]:text-[17px] max-[900px]:shadow-[0_18px_40px_rgba(0,0,0,.12)]"
-             id="siteNav"
-             aria-label="Main navigation">
-          <a class="py-2 transition hover:text-release max-[900px]:border-b max-[900px]:border-black/10 max-[900px]:py-3"
-             href="index2.html">Home</a>
-          <a class="py-2 text-release max-[900px]:border-b max-[900px]:border-black/10 max-[900px]:py-3"
-             href="about.html">About</a>
-          <a class="py-2 transition hover:text-release max-[900px]:border-b max-[900px]:border-black/10 max-[900px]:py-3"
-             href="#support">Apply</a>
-          <a class="py-2 transition hover:text-release max-[900px]:border-b max-[900px]:border-black/10 max-[900px]:py-3"
-             href="#work-title">Press</a>
-          <a class="py-2 transition hover:text-release max-[900px]:py-3"
-             href="#support">Join Us</a>
-        </nav>
-
-        <button class="menu-button hidden h-[42px] w-[42px] flex-col items-center justify-center gap-[5px] rounded-[7px] border border-black/10 bg-white/50 text-[#121212] max-[900px]:inline-flex"
-                type="button"
-                aria-label="Toggle navigation"
-                aria-expanded="false"
-                aria-controls="siteNav">
-          <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
-          <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
-          <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
-        </button>
-      </header>
-
-      <div class="relative mx-auto min-h-[650px] max-w-[1770px] px-[7vw] pb-[72px] pt-[68px] max-xl:min-h-[600px] max-lg:min-h-0 max-lg:px-8 max-lg:pb-16 max-lg:pt-10 max-sm:px-5 max-sm:pb-12">
-        <div class="pointer-events-none absolute -right-[64px] bottom-[36px] z-20 h-[212px] w-[246px] rounded-full bg-harvest max-lg:h-[150px] max-lg:w-[180px] max-sm:-right-[90px] max-sm:bottom-[18px]"
+      <div class="relative mx-auto grid min-h-[500px] max-w-[1180px] grid-cols-[minmax(310px,.78fr)_minmax(420px,1fr)] items-center gap-10 px-8 py-8 max-lg:min-h-0 max-lg:grid-cols-1 max-lg:px-8 max-lg:py-10 max-sm:px-5"
+           aria-label="About DKF overview">
+        <div class="pointer-events-none absolute -right-16 bottom-7 z-0 h-[120px] w-[150px] rounded-full bg-harvest max-sm:-right-20 max-sm:h-[96px] max-sm:w-[124px]"
              aria-hidden="true"></div>
-        <div class="pointer-events-none absolute inset-x-0 bottom-0 z-0 overflow-hidden border-b-[3px] border-release"
-             aria-hidden="true">
-          <div class="about-marquee translate-y-[20px] text-[clamp(96px,13.8vw,250px)] text-release">
-            About Us&nbsp;&nbsp;About Us&nbsp;&nbsp;About Us
+
+
+        <div class="relative z-10 max-w-[500px]">
+          <p class="mb-4 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[.18em] text-release">
+            <span class="h-[3px] w-[42px] bg-release"
+                  aria-hidden="true"></span>
+            Non-profit organization
+          </p>
+          <h1 id="dkf-hero"
+              class="text-[clamp(30px,3.7vw,48px)] font-extrabold uppercase leading-[.94] tracking-normal">
+            Hope in action for vulnerable children.
+          </h1>
+          <p class="mt-5 max-w-[470px] text-[15px] leading-[1.65] text-black/70">
+            The Danny Kioko Foundation restores dignity and opportunity through education, nutrition, healthcare,
+            shelter, and spiritual support.
+          </p>
+          <div class="mt-6 grid max-w-[430px] grid-cols-3 gap-2.5 max-sm:grid-cols-3">
+            <div class="rounded-[8px] bg-white/80 px-3.5 py-3 shadow-[0_10px_24px_rgba(20,18,14,.06)]">
+              <p class="font-mono text-[22px] font-extrabold leading-none text-release">100+</p>
+              <p class="mt-1 text-[10px] font-bold uppercase tracking-[.05em] text-black/60">children</p>
+            </div>
+            <div class="rounded-[8px] bg-white/80 px-3.5 py-3 shadow-[0_10px_24px_rgba(20,18,14,.06)]">
+              <p class="font-mono text-[22px] font-extrabold leading-none text-midnight">52.5%</p>
+              <p class="mt-1 text-[10px] font-bold uppercase tracking-[.05em] text-black/60">poverty</p>
+            </div>
+            <div class="rounded-[8px] bg-white/80 px-3.5 py-3 shadow-[0_10px_24px_rgba(20,18,14,.06)]">
+              <p class="font-mono text-[22px] font-extrabold leading-none text-greenhope">1.57M</p>
+              <p class="mt-1 text-[10px] font-bold uppercase tracking-[.05em] text-black/60">at risk</p>
+            </div>
           </div>
         </div>
 
-        <div class="relative z-10 grid grid-cols-[minmax(220px,380px)_minmax(380px,560px)_minmax(220px,390px)] items-center justify-center gap-[clamp(38px,6vw,110px)] max-lg:grid-cols-[.85fr_1.15fr] max-lg:gap-8 max-sm:grid-cols-1">
-          <figure class="about-hero-photo h-[500px] rotate-[-6deg] translate-y-[44px] max-xl:h-[430px] max-lg:h-[360px] max-lg:translate-y-0 max-sm:h-[300px] max-sm:rotate-[-3deg]">
-            <img src="dkf/dkf-kids-3.png"
-                 alt="Children receiving food through the Danny Kioko Foundation" />
-          </figure>
-
+        <div class="relative z-10 grid grid-cols-[1.15fr_.85fr] gap-3 max-sm:grid-cols-1">
           <div class="relative">
-            <div class="absolute -left-5 top-5 z-20 rounded-full bg-[#e7002a] px-3 py-1 text-[14px] font-bold text-white shadow-sm max-sm:left-3 max-sm:top-3">
+            <div class="absolute left-3 top-3 z-20 rounded-full bg-[#e7002a] px-3 py-1 text-[11px] font-bold text-white shadow-sm">
               DKF
             </div>
-            <figure class="about-hero-photo h-[640px] max-xl:h-[560px] max-lg:h-[500px] max-sm:h-[360px]">
+            <figure class="about-hero-photo h-[340px] max-lg:h-[320px] max-sm:h-[230px]">
               <img src="dkf/dkf-kids-2.png"
                    alt="Danny Kioko smiling with children supported by DKF" />
             </figure>
           </div>
 
-          <figure class="about-hero-photo h-[500px] rotate-[4deg] translate-y-[70px] max-xl:h-[430px] max-lg:col-span-2 max-lg:h-[360px] max-lg:translate-y-0 max-lg:rotate-[2deg] max-sm:col-span-1 max-sm:h-[300px]">
-            <img src="dkf/dkf-kids-1.png"
-                 alt="Children sharing a meal during a DKF outreach" />
-          </figure>
-        </div>
-
-        <div class="relative z-10 mt-14 max-w-[760px] max-lg:mt-12">
-          <p class="mb-5 flex items-center gap-4 text-[13px] font-bold uppercase tracking-[.16em] text-release">
-            <span class="h-[3px] w-[54px] bg-release"
-                  aria-hidden="true"></span>
-            Non-profit organization
-          </p>
-          <h1 id="dkf-hero"
-              class="text-[clamp(38px,5.6vw,86px)] font-extrabold uppercase leading-[.9] tracking-normal">
-            Hope in action for vulnerable children.
-          </h1>
-          <p class="mt-6 max-w-[650px] text-[clamp(16px,1.45vw,22px)] leading-[1.65] text-black/70">
-            The Danny Kioko Foundation restores dignity and opportunity through education, nutrition, healthcare,
-            shelter, and spiritual support.
-          </p>
+          <div class="grid gap-3">
+            <figure class="about-hero-photo h-[163px] max-lg:h-[154px] max-sm:h-[190px]">
+              <img src="dkf/dkf-kids-1.png"
+                   alt="Children sharing a meal during a DKF outreach" />
+            </figure>
+            <figure class="about-hero-photo h-[163px] max-lg:h-[154px] max-sm:h-[190px]">
+              <img src="dkf/dkf-kids-3.png"
+                   alt="Children receiving food through the Danny Kioko Foundation" />
+            </figure>
+          </div>
         </div>
       </div>
     </section>
@@ -295,7 +307,8 @@
           </h2>
           <p class="max-w-[680px] text-[18px] leading-[1.75] text-black/75 max-sm:text-[15px]">
             Many children DKF supports have lost parents young or been abandoned, leaving them exposed to street life,
-            hunger, illness, and school dropout. DKF is also deeply committed to children with special needs and children
+            hunger, illness, and school dropout. DKF is also deeply committed to children with special needs and
+            children
             directly or indirectly affected by HIV/AIDS.
           </p>
         </div>
@@ -338,34 +351,41 @@
           <a class="inline-flex h-[52px] min-w-[220px] items-center justify-center gap-5 rounded-full bg-release px-9 text-[20px] font-normal text-white transition hover:bg-[#ff642d] max-sm:w-full max-sm:text-[18px]"
              href="#support">
             Partner with DKF
-            <span class="text-[30px]" aria-hidden="true">&rarr;</span>
+            <span class="text-[30px]"
+                  aria-hidden="true">&rarr;</span>
           </a>
         </div>
 
         <div class="grid grid-cols-3 gap-5 max-lg:grid-cols-2 max-sm:grid-cols-1">
           <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
             <h3 class="mb-3 text-[22px] font-bold text-midnight">School sponsorships</h3>
-            <p class="text-[15px] leading-[1.65] text-black/70">Fees, supplies, uniforms, and the steady push that keeps a child in class.</p>
+            <p class="text-[15px] leading-[1.65] text-black/70">Fees, supplies, uniforms, and the steady push that keeps
+              a child in class.</p>
           </div>
           <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
             <h3 class="mb-3 text-[22px] font-bold text-release">Food &amp; nutrition</h3>
-            <p class="text-[15px] leading-[1.65] text-black/70">Meals and nutrition support for children facing hunger and malnutrition.</p>
+            <p class="text-[15px] leading-[1.65] text-black/70">Meals and nutrition support for children facing hunger
+              and malnutrition.</p>
           </div>
           <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
             <h3 class="mb-3 text-[22px] font-bold text-greenhope">Healthcare support</h3>
-            <p class="text-[15px] leading-[1.65] text-black/70">Medical assistance for children whose families cannot carry the cost alone.</p>
+            <p class="text-[15px] leading-[1.65] text-black/70">Medical assistance for children whose families cannot
+              carry the cost alone.</p>
           </div>
           <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
             <h3 class="mb-3 text-[22px] font-bold text-midnight">Safe shelter</h3>
-            <p class="text-[15px] leading-[1.65] text-black/70">Child protection and loving environments for children at risk.</p>
+            <p class="text-[15px] leading-[1.65] text-black/70">Child protection and loving environments for children at
+              risk.</p>
           </div>
           <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
             <h3 class="mb-3 text-[22px] font-bold text-release">Special needs care</h3>
-            <p class="text-[15px] leading-[1.65] text-black/70">Compassionate support for children with disabilities and HIV/AIDS-related needs.</p>
+            <p class="text-[15px] leading-[1.65] text-black/70">Compassionate support for children with disabilities and
+              HIV/AIDS-related needs.</p>
           </div>
           <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
             <h3 class="mb-3 text-[22px] font-bold text-greenhope">Mentorship</h3>
-            <p class="text-[15px] leading-[1.65] text-black/70">Community outreach, empowerment, spiritual guidance, and steady encouragement.</p>
+            <p class="text-[15px] leading-[1.65] text-black/70">Community outreach, empowerment, spiritual guidance, and
+              steady encouragement.</p>
           </div>
         </div>
       </div>
@@ -379,7 +399,8 @@
       <div class="absolute -bottom-[80px] left-[10%] h-[170px] w-[260px] rounded-[50%] bg-midnight"
            aria-hidden="true"></div>
 
-      <div class="relative z-10 mx-auto grid max-w-[1120px] grid-cols-[1.15fr_.85fr] items-end gap-12 max-lg:grid-cols-1">
+      <div
+           class="relative z-10 mx-auto grid max-w-[1120px] grid-cols-[1.15fr_.85fr] items-end gap-12 max-lg:grid-cols-1">
         <div>
           <p class="mb-5 text-[18px] font-bold uppercase tracking-[.08em] text-white/75">How you can help</p>
           <h2 id="support-title"
@@ -396,13 +417,15 @@
           <p class="mb-5 text-[22px] font-normal leading-tight">Support us via:</p>
           <div class="flex flex-wrap gap-4">
             <a class="inline-flex h-[48px] min-w-[142px] items-center justify-center rounded-full border border-[#ead8df] bg-white px-6 text-[20px] font-extrabold text-[#34b557] shadow-sm"
-               href="#" aria-label="Support via M-PESA">
+               href="#"
+               aria-label="Support via M-PESA">
               <img class="h-[27px] w-auto object-contain"
                    src="m-pesa-logo.png"
                    alt="M-PESA" />
             </a>
             <a class="inline-flex h-[48px] min-w-[142px] items-center justify-center rounded-full border border-[#ead8df] bg-white px-6 text-[15px] font-extrabold text-[#1d4f99] shadow-sm"
-               href="#" aria-label="Support via PayPal">
+               href="#"
+               aria-label="Support via PayPal">
               <img class="h-[24px] w-auto object-contain"
                    src="paypal-logo.png"
                    alt="PayPal" />
@@ -420,9 +443,11 @@
     </section>
 
     <footer class="bg-midnight px-8 pb-5 pt-[48px] text-white max-lg:px-6 max-sm:px-5">
-      <div class="mx-auto grid max-w-[1066px] grid-cols-[1.4fr_1fr_.8fr_auto] gap-14 max-lg:grid-cols-2 max-sm:grid-cols-1">
+      <div
+           class="mx-auto grid max-w-[1066px] grid-cols-[1.4fr_1fr_.8fr_auto] gap-14 max-lg:grid-cols-2 max-sm:grid-cols-1">
         <div>
-          <a class="font-script text-[44px] leading-none text-white" href="index2.html">Danny Kioko</a>
+          <a class="font-script text-[44px] leading-none text-white"
+             href="index2.html">Danny Kioko</a>
           <p class="mt-8 text-[15px] font-light text-white/85">The Worship Minister and Evangelist</p>
         </div>
 
@@ -435,17 +460,51 @@
           </nav>
 
           <div class="mt-8 flex gap-4 text-white">
-            <a href="#" aria-label="Facebook">
-              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v8h4v-8h3l1-4h-4V9c0-.6.4-1 1-1z" /></svg>
+            <a href="#"
+               aria-label="Facebook">
+              <svg class="h-5 w-5"
+                   viewBox="0 0 24 24"
+                   fill="currentColor">
+                <path d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v8h4v-8h3l1-4h-4V9c0-.6.4-1 1-1z" />
+              </svg>
             </a>
-            <a href="#" aria-label="Instagram">
-              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="5" /><circle cx="12" cy="12" r="3.5" /><path d="M17.5 6.5h.01" /></svg>
+            <a href="#"
+               aria-label="Instagram">
+              <svg class="h-5 w-5"
+                   viewBox="0 0 24 24"
+                   fill="none"
+                   stroke="currentColor"
+                   stroke-width="2">
+                <rect x="4"
+                      y="4"
+                      width="16"
+                      height="16"
+                      rx="5" />
+                <circle cx="12"
+                        cy="12"
+                        r="3.5" />
+                <path d="M17.5 6.5h.01" />
+              </svg>
             </a>
-            <a href="#" aria-label="Twitter">
-              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.8c-.7.3-1.5.5-2.3.6.8-.5 1.4-1.2 1.7-2.2-.8.5-1.6.8-2.6 1-1.5-1.6-4.1-.8-4.7 1.3-.1.4-.1.8 0 1.1-3.2-.2-6-1.7-7.9-4-.4.7-.6 1.5-.3 2.3.2.8.7 1.5 1.4 1.9-.6 0-1.2-.2-1.7-.5 0 1.8 1.3 3.4 3.1 3.7-.6.2-1.2.2-1.8.1.5 1.5 2 2.6 3.7 2.7-1.6 1.2-3.5 1.9-5.6 1.9H4c1.8 1.2 4 1.8 6.3 1.8 7.5 0 11.7-6.2 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z" /></svg>
+            <a href="#"
+               aria-label="Twitter">
+              <svg class="h-5 w-5"
+                   viewBox="0 0 24 24"
+                   fill="currentColor">
+                <path
+                      d="M22 5.8c-.7.3-1.5.5-2.3.6.8-.5 1.4-1.2 1.7-2.2-.8.5-1.6.8-2.6 1-1.5-1.6-4.1-.8-4.7 1.3-.1.4-.1.8 0 1.1-3.2-.2-6-1.7-7.9-4-.4.7-.6 1.5-.3 2.3.2.8.7 1.5 1.4 1.9-.6 0-1.2-.2-1.7-.5 0 1.8 1.3 3.4 3.1 3.7-.6.2-1.2.2-1.8.1.5 1.5 2 2.6 3.7 2.7-1.6 1.2-3.5 1.9-5.6 1.9H4c1.8 1.2 4 1.8 6.3 1.8 7.5 0 11.7-6.2 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z" />
+              </svg>
             </a>
-            <a href="#" aria-label="Email">
-              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16v12H4z" /><path d="m4 7 8 6 8-6" /></svg>
+            <a href="#"
+               aria-label="Email">
+              <svg class="h-5 w-5"
+                   viewBox="0 0 24 24"
+                   fill="none"
+                   stroke="currentColor"
+                   stroke-width="2">
+                <path d="M4 6h16v12H4z" />
+                <path d="m4 7 8 6 8-6" />
+              </svg>
             </a>
           </div>
         </div>
@@ -460,13 +519,35 @@
         </div>
 
         <div class="flex flex-col gap-6">
-          <a class="footer-listen-pill text-[#1ed760]" href="#"><span class="spotify-icon"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.3"><path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" /><path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" /><path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" /></svg></span><span>Spotify</span></a>
-          <a class="footer-listen-pill text-white" href="#"><span class="youtube-icon"><svg class="h-2.5 w-3" viewBox="0 0 24 24" fill="currentColor"><path d="M9 7.8v8.4l7.2-4.2L9 7.8z" /></svg></span><span>YouTube</span></a>
-          <a class="footer-listen-pill text-white" href="#"><svg class="h-[26px] w-[22px]" viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z" /></svg><span>Apple</span></a>
+          <a class="footer-listen-pill text-[#1ed760]"
+             href="#"><span class="spotify-icon"><svg class="h-3 w-3"
+                   viewBox="0 0 24 24"
+                   fill="none"
+                   stroke="currentColor"
+                   stroke-linecap="round"
+                   stroke-width="2.3">
+                <path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" />
+                <path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" />
+                <path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" />
+              </svg></span><span>Spotify</span></a>
+          <a class="footer-listen-pill text-white"
+             href="#"><span class="youtube-icon"><svg class="h-2.5 w-3"
+                   viewBox="0 0 24 24"
+                   fill="currentColor">
+                <path d="M9 7.8v8.4l7.2-4.2L9 7.8z" />
+              </svg></span><span>YouTube</span></a>
+          <a class="footer-listen-pill text-white"
+             href="#"><svg class="h-[26px] w-[22px]"
+                 viewBox="0 0 24 24"
+                 fill="currentColor">
+              <path
+                    d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z" />
+            </svg><span>Apple</span></a>
         </div>
       </div>
 
-      <div class="mx-auto mt-[40px] max-w-[1066px] border-t border-white/20 pt-6 text-center text-[15px] font-light text-white/90">
+      <div
+           class="mx-auto mt-[40px] max-w-[1066px] border-t border-white/20 pt-6 text-center text-[15px] font-light text-white/90">
         &copy; Dan Kioko -2026
       </div>
     </footer>
