@@ -1,573 +1,808 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0" />
-  <title>Danny Kioko Foundation | About DKF</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect"
-        href="https://fonts.googleapis.com" />
-  <link rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Great+Vibes&amp;display=swap"
-        rel="stylesheet" />
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ["Inter", "Arial", "sans-serif"],
-            script: ["Great Vibes", "cursive"],
-          },
-          colors: {
-            release: "#f25a25",
-            ink: "#101010",
-            midnight: "#122a5c",
-            harvest: "#fac844",
-            greenhope: "#20d461",
-          },
-          boxShadow: {
-            navButton: "0 8px 18px rgba(18, 42, 92, .17)",
-            heavy: "0 24px 54px rgba(0, 0, 0, .24)",
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Danny Kioko Foundation | About DKF</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Great+Vibes&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "Arial", "sans-serif"],
+              script: ["Great Vibes", "cursive"],
+            },
+            colors: {
+              release: "#f25a25",
+              ink: "#101010",
+              midnight: "#122a5c",
+              harvest: "#fac844",
+              greenhope: "#20d461",
+            },
+            boxShadow: {
+              navButton: "0 8px 18px rgba(18, 42, 92, .17)",
+              heavy: "0 24px 54px rgba(0, 0, 0, .24)",
+            },
           },
         },
-      },
-    };
-  </script>
-  <style>
-    .nav-links.is-open {
-      display: flex;
-    }
-
-    .footer-listen-pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      min-width: 112px;
-      height: 40px;
-      padding: 0 15px;
-      border: 1px solid rgba(99, 145, 225, .8);
-      border-radius: 9999px;
-      background: rgba(255, 255, 255, .02);
-      font-size: 15px;
-      font-weight: 700;
-      transition: background .15s ease, transform .15s ease;
-    }
-
-    .footer-listen-pill:hover {
-      background: rgba(255, 255, 255, .08);
-      transform: translateY(-2px);
-    }
-
-    .youtube-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 20px;
-      height: 14px;
-      border-radius: 4px;
-      background: #f00;
-      color: #fff;
-    }
-
-    .spotify-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 17px;
-      height: 17px;
-      border-radius: 9999px;
-      background: #1ed760;
-      color: #fff;
-    }
-
-    .impact-card {
-      min-height: 164px;
-    }
-
-    .need-row {
-      display: grid;
-      grid-template-columns: 132px 1fr;
-      gap: 24px;
-      border-top: 1px solid rgba(16, 16, 16, .12);
-      padding-top: 24px;
-    }
-
-    .about-hero-photo {
-      overflow: hidden;
-      border-radius: 22px;
-      background: #fff;
-      box-shadow: 0 18px 34px rgba(20, 18, 14, .13);
-    }
-
-    .about-hero-photo img {
-      display: block;
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-    }
-
-    .about-marquee {
-      font-family: Georgia, "Times New Roman", serif;
-      font-style: italic;
-      font-weight: 400;
-      letter-spacing: -.055em;
-      line-height: .72;
-      white-space: nowrap;
-    }
-
-    @media (max-width: 640px) {
-      .need-row {
-        grid-template-columns: 1fr;
-        gap: 10px;
+      };
+    </script>
+    <style>
+      .nav-links.is-open {
+        display: flex;
       }
-    }
-  </style>
-</head>
 
-<body class="min-h-screen bg-[#0c0b10] font-sans text-white antialiased">
-  <main class="min-h-screen overflow-hidden border-t-[3px] border-x-2 border-[#111] max-sm:border-x-0">
-    <div
-         class="flex h-[33px] items-center justify-center bg-release px-4 text-center text-[15px] font-medium tracking-[.01em] max-sm:h-[31px] max-sm:text-[13px]">
-      New Song Release: Muvango
-    </div>
+      .footer-listen-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        min-width: 112px;
+        height: 40px;
+        padding: 0 15px;
+        border: 1px solid rgba(99, 145, 225, 0.8);
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.02);
+        font-size: 15px;
+        font-weight: 700;
+        transition:
+          background 0.15s ease,
+          transform 0.15s ease;
+      }
 
-    <header class="relative z-10 flex items-center justify-between gap-3.5 bg-[#f5f2ec] py-0 px-3 h-[63px] sm:px-[18px] sm:h-[68px] md:h-[64px] md:gap-6 md:pl-[36px] md:pr-[16px] text-ink shadow-[0_1px_0_rgba(15,15,15,.08)]"
-            aria-label="Primary">
+      .footer-listen-pill:hover {
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateY(-2px);
+      }
 
-      <a class="text-2xl whitespace-nowrap font-script leading-none text-[#111]"
-         href="index2.html">
-        Danny Kioko
-      </a>
+      .youtube-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 14px;
+        border-radius: 4px;
+        background: #f00;
+        color: #fff;
+      }
 
-      <nav class="nav-links absolute left-0 right-0 top-[63px] hidden flex-col items-stretch gap-0 border-t border-[#ececec] bg-[#f5f2ec] px-[18px] pb-[18px] pt-2.5 text-[15px] shadow-[0_18px_32px_rgba(0,0,0,.14)] sm:top-[68px] md:relative md:top-0 md:left-auto md:right-auto md:flex md:flex-row md:items-center md:justify-center md:gap-[clamp(16px,2.5vw,32px)] md:border-0 md:bg-transparent md:p-0 md:text-[clamp(13px,1.1vw,15px)] md:shadow-none md:ml-auto"
-           id="siteNav"
-           aria-label="Main navigation">
-        <a class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
-           href="index2.html">About Me</a>
-        <a class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
-           href="music-and-evangelism.html">Music &amp; Evangelism</a>
-        <a class="relative py-3 text-release after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-100 after:bg-release md:py-2"
-           href="about.html">DKF</a>
+      .spotify-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 17px;
+        height: 17px;
+        border-radius: 9999px;
+        background: #1ed760;
+        color: #fff;
+      }
+
+      .impact-card {
+        min-height: 164px;
+      }
+
+      .need-row {
+        display: grid;
+        grid-template-columns: 132px 1fr;
+        gap: 24px;
+        border-top: 1px solid rgba(16, 16, 16, 0.12);
+        padding-top: 24px;
+      }
+
+      .about-hero-photo {
+        overflow: hidden;
+        border-radius: 22px;
+        background: #fff;
+        box-shadow: 0 18px 34px rgba(20, 18, 14, 0.13);
+      }
+
+      .about-hero-photo img {
+        display: block;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .about-marquee {
+        font-family: Georgia, "Times New Roman", serif;
+        font-style: italic;
+        font-weight: 400;
+        letter-spacing: -0.055em;
+        line-height: 0.72;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 640px) {
+        .need-row {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen bg-[#0c0b10] font-sans text-white antialiased">
+    <main
+      class="min-h-screen overflow-hidden border-t-[3px] border-x-2 border-[#111] max-sm:border-x-0"
+    >
+      <div
+        class="flex h-[33px] items-center justify-center bg-release px-4 text-center text-[15px] font-medium tracking-[.01em] max-sm:h-[31px] max-sm:text-[13px]"
+      >
+        New Song Release: Muvango
+      </div>
+
+      <header
+        class="relative z-10 flex items-center justify-between gap-3.5 bg-[#f5f2ec] py-0 px-3 h-[63px] sm:px-[18px] sm:h-[68px] md:h-[64px] md:gap-6 md:pl-[36px] md:pr-[16px] text-ink shadow-[0_1px_0_rgba(15,15,15,.08)]"
+        aria-label="Primary"
+      >
         <a
+          class="text-2xl whitespace-nowrap font-script leading-none text-[#111]"
+          href="index.html"
+        >
+          Danny Kioko
+        </a>
+
+        <nav
+          class="nav-links absolute left-0 right-0 top-[63px] hidden flex-col items-stretch gap-0 border-t border-[#ececec] bg-[#f5f2ec] px-[18px] pb-[18px] pt-2.5 text-[15px] shadow-[0_18px_32px_rgba(0,0,0,.14)] sm:top-[68px] md:relative md:top-0 md:left-auto md:right-auto md:flex md:flex-row md:items-center md:justify-center md:gap-[clamp(16px,2.5vw,32px)] md:border-0 md:bg-transparent md:p-0 md:text-[clamp(13px,1.1vw,15px)] md:shadow-none md:ml-auto"
+          id="siteNav"
+          aria-label="Main navigation"
+        >
+          <a
+            class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
+            href="index.html"
+            >About Me</a
+          >
+          <a
+            class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
+            href="music-and-evangelism.html"
+            >Music &amp; Evangelism</a
+          >
+          <a
+            class="relative py-3 text-release after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-100 after:bg-release md:py-2"
+            href="about.html"
+            >DKF</a
+          >
+          <a
             class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
             href="safe-space-gala.html"
             >Safe Space Gala</a
           >
-        <!-- <a class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
+          <!-- <a class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
            href="the-light.html">The Light</a> -->
-      </nav>
+        </nav>
 
-      <a class="hidden min-w-[110px] items-center justify-center justify-self-end rounded-full bg-[#111] px-4 text-[14px] font-semibold tracking-wide text-white shadow-navButton transition-opacity hover:opacity-80 sm:inline-flex md:h-[42px] md:min-w-[126px] md:px-[22px]"
-         href="music-and-evangelism.html">
-        Listen Now
-      </a>
+        <a
+          class="hidden min-w-[110px] items-center justify-center justify-self-end rounded-full bg-[#111] px-4 text-[14px] font-semibold tracking-wide text-white shadow-navButton transition-opacity hover:opacity-80 sm:inline-flex md:h-[42px] md:min-w-[126px] md:px-[22px]"
+          href="music-and-evangelism.html"
+        >
+          Listen Now
+        </a>
 
-      <button class="menu-button inline-flex h-[42px] w-[42px] flex-col items-center justify-center gap-[5px] rounded-[7px] border-0 bg-[#f0f1f5] text-[#121212] md:hidden"
-              type="button"
-              aria-label="Toggle navigation"
-              aria-expanded="false"
-              aria-controls="siteNav">
-        <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
-        <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
-        <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
-      </button>
-    </header>
+        <button
+          class="menu-button inline-flex h-[42px] w-[42px] flex-col items-center justify-center gap-[5px] rounded-[7px] border-0 bg-[#f0f1f5] text-[#121212] md:hidden"
+          type="button"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+          aria-controls="siteNav"
+        >
+          <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
+          <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
+          <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
+        </button>
+      </header>
 
-    <section class="relative isolate overflow-hidden bg-[#f4efe6] text-ink"
-             aria-labelledby="dkf-hero">
-      <div class="relative mx-auto grid min-h-[500px] max-w-[1180px] grid-cols-[minmax(310px,.78fr)_minmax(420px,1fr)] items-center gap-10 px-8 py-8 max-lg:min-h-0 max-lg:grid-cols-1 max-lg:px-8 max-lg:py-10 max-sm:px-5"
-           aria-label="About DKF overview">
-        <div class="pointer-events-none absolute -right-16 bottom-7 z-0 h-[120px] w-[150px] rounded-full bg-harvest max-sm:-right-20 max-sm:h-[96px] max-sm:w-[124px]"
-             aria-hidden="true"></div>
+      <section
+        class="relative isolate overflow-hidden bg-[#f4efe6] text-ink"
+        aria-labelledby="dkf-hero"
+      >
+        <div
+          class="relative mx-auto grid min-h-[500px] max-w-[1180px] grid-cols-[minmax(310px,.78fr)_minmax(420px,1fr)] items-center gap-10 px-8 py-8 max-lg:min-h-0 max-lg:grid-cols-1 max-lg:px-8 max-lg:py-10 max-sm:px-5"
+          aria-label="About DKF overview"
+        >
+          <div
+            class="pointer-events-none absolute -right-16 bottom-7 z-0 h-[120px] w-[150px] rounded-full bg-harvest max-sm:-right-20 max-sm:h-[96px] max-sm:w-[124px]"
+            aria-hidden="true"
+          ></div>
 
-
-        <div class="relative z-10 max-w-[500px]">
-          <p class="mb-4 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[.18em] text-release">
-            <span class="h-[3px] w-[42px] bg-release"
-                  aria-hidden="true"></span>
-            Non-profit organization
-          </p>
-          <h1 id="dkf-hero"
-              class="text-[clamp(30px,3.7vw,48px)] font-extrabold uppercase leading-[.94] tracking-normal">
-            Hope in action for vulnerable children.
-          </h1>
-          <p class="mt-5 max-w-[470px] text-[15px] leading-[1.65] text-black/70">
-            The Danny Kioko Foundation restores dignity and opportunity through education, nutrition, healthcare,
-            shelter, and spiritual support.
-          </p>
-          <div class="mt-6 grid max-w-[430px] grid-cols-3 gap-2.5 max-sm:grid-cols-3">
-            <div class="rounded-[8px] bg-white/80 px-3.5 py-3 shadow-[0_10px_24px_rgba(20,18,14,.06)]">
-              <p class="font-mono text-[22px] font-extrabold leading-none text-release">100+</p>
-              <p class="mt-1 text-[10px] font-bold uppercase tracking-[.05em] text-black/60">children</p>
+          <div class="relative z-10 max-w-[500px]">
+            <p
+              class="mb-4 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[.18em] text-release"
+            >
+              <span
+                class="h-[3px] w-[42px] bg-release"
+                aria-hidden="true"
+              ></span>
+              Non-profit organization
+            </p>
+            <h1
+              id="dkf-hero"
+              class="text-[clamp(30px,3.7vw,48px)] font-extrabold uppercase leading-[.94] tracking-normal"
+            >
+              Hope in action for vulnerable children.
+            </h1>
+            <p
+              class="mt-5 max-w-[470px] text-[15px] leading-[1.65] text-black/70"
+            >
+              The Danny Kioko Foundation restores dignity and opportunity
+              through education, nutrition, healthcare, shelter, and spiritual
+              support.
+            </p>
+            <div
+              class="mt-6 grid max-w-[430px] grid-cols-3 gap-2.5 max-sm:grid-cols-3"
+            >
+              <div
+                class="rounded-[8px] bg-white/80 px-3.5 py-3 shadow-[0_10px_24px_rgba(20,18,14,.06)]"
+              >
+                <p
+                  class="font-mono text-[22px] font-extrabold leading-none text-release"
+                >
+                  100+
+                </p>
+                <p
+                  class="mt-1 text-[10px] font-bold uppercase tracking-[.05em] text-black/60"
+                >
+                  children
+                </p>
+              </div>
+              <div
+                class="rounded-[8px] bg-white/80 px-3.5 py-3 shadow-[0_10px_24px_rgba(20,18,14,.06)]"
+              >
+                <p
+                  class="font-mono text-[22px] font-extrabold leading-none text-midnight"
+                >
+                  52.5%
+                </p>
+                <p
+                  class="mt-1 text-[10px] font-bold uppercase tracking-[.05em] text-black/60"
+                >
+                  poverty
+                </p>
+              </div>
+              <div
+                class="rounded-[8px] bg-white/80 px-3.5 py-3 shadow-[0_10px_24px_rgba(20,18,14,.06)]"
+              >
+                <p
+                  class="font-mono text-[22px] font-extrabold leading-none text-greenhope"
+                >
+                  1.57M
+                </p>
+                <p
+                  class="mt-1 text-[10px] font-bold uppercase tracking-[.05em] text-black/60"
+                >
+                  at risk
+                </p>
+              </div>
             </div>
-            <div class="rounded-[8px] bg-white/80 px-3.5 py-3 shadow-[0_10px_24px_rgba(20,18,14,.06)]">
-              <p class="font-mono text-[22px] font-extrabold leading-none text-midnight">52.5%</p>
-              <p class="mt-1 text-[10px] font-bold uppercase tracking-[.05em] text-black/60">poverty</p>
+          </div>
+
+          <div
+            class="relative z-10 grid grid-cols-[1.15fr_.85fr] gap-3 max-sm:grid-cols-1"
+          >
+            <div class="relative">
+              <div
+                class="absolute left-3 top-3 z-20 rounded-full bg-[#e7002a] px-3 py-1 text-[11px] font-bold text-white shadow-sm"
+              >
+                DKF
+              </div>
+              <figure
+                class="about-hero-photo h-[340px] max-lg:h-[320px] max-sm:h-[230px]"
+              >
+                <img
+                  src="dkf/dkf-kids-2.png"
+                  alt="Danny Kioko smiling with children supported by DKF"
+                />
+              </figure>
             </div>
-            <div class="rounded-[8px] bg-white/80 px-3.5 py-3 shadow-[0_10px_24px_rgba(20,18,14,.06)]">
-              <p class="font-mono text-[22px] font-extrabold leading-none text-greenhope">1.57M</p>
-              <p class="mt-1 text-[10px] font-bold uppercase tracking-[.05em] text-black/60">at risk</p>
+
+            <div class="grid gap-3">
+              <figure
+                class="about-hero-photo h-[163px] max-lg:h-[154px] max-sm:h-[190px]"
+              >
+                <img
+                  src="dkf/dkf-kids-1.png"
+                  alt="Children sharing a meal during a DKF outreach"
+                />
+              </figure>
+              <figure
+                class="about-hero-photo h-[163px] max-lg:h-[154px] max-sm:h-[190px]"
+              >
+                <img
+                  src="dkf/dkf-kids-3.png"
+                  alt="Children receiving food through the Danny Kioko Foundation"
+                />
+              </figure>
             </div>
           </div>
         </div>
+      </section>
 
-        <div class="relative z-10 grid grid-cols-[1.15fr_.85fr] gap-3 max-sm:grid-cols-1">
-          <div class="relative">
-            <div class="absolute left-3 top-3 z-20 rounded-full bg-[#e7002a] px-3 py-1 text-[11px] font-bold text-white shadow-sm">
-              DKF
-            </div>
-            <figure class="about-hero-photo h-[340px] max-lg:h-[320px] max-sm:h-[230px]">
-              <img src="dkf/dkf-kids-2.png"
-                   alt="Danny Kioko smiling with children supported by DKF" />
-            </figure>
+      <section
+        class="relative overflow-hidden bg-[#f7f7f7] px-8 py-[76px] text-ink max-lg:px-6 max-sm:px-5 max-sm:py-14"
+        aria-labelledby="origin-title"
+      >
+        <div
+          class="pointer-events-none absolute -right-[130px] -top-[170px] h-[360px] w-[410px] rounded-[52%_0_0_57%/50%_0_0_56%] bg-release"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="pointer-events-none absolute -bottom-[92px] left-0 h-[188px] w-[220px] bg-harvest"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="relative z-10 mx-auto grid max-w-[1120px] grid-cols-[.85fr_1.15fr] gap-14 max-lg:grid-cols-1"
+        >
+          <div>
+            <p
+              class="mb-4 text-[18px] font-normal uppercase tracking-[.02em] text-release"
+            >
+              Born on mission
+            </p>
+            <h2
+              id="origin-title"
+              class="text-[clamp(38px,5vw,64px)] font-normal leading-[1.02] tracking-normal"
+            >
+              A foundation formed where need kept meeting the gospel.
+            </h2>
           </div>
 
-          <div class="grid gap-3">
-            <figure class="about-hero-photo h-[163px] max-lg:h-[154px] max-sm:h-[190px]">
-              <img src="dkf/dkf-kids-1.png"
-                   alt="Children sharing a meal during a DKF outreach" />
-            </figure>
-            <figure class="about-hero-photo h-[163px] max-lg:h-[154px] max-sm:h-[190px]">
-              <img src="dkf/dkf-kids-3.png"
-                   alt="Children receiving food through the Danny Kioko Foundation" />
-            </figure>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="relative overflow-hidden bg-[#f7f7f7] px-8 py-[76px] text-ink max-lg:px-6 max-sm:px-5 max-sm:py-14"
-             aria-labelledby="origin-title">
-      <div class="pointer-events-none absolute -right-[130px] -top-[170px] h-[360px] w-[410px] rounded-[52%_0_0_57%/50%_0_0_56%] bg-release"
-           aria-hidden="true"></div>
-      <div class="pointer-events-none absolute -bottom-[92px] left-0 h-[188px] w-[220px] bg-harvest"
-           aria-hidden="true"></div>
-
-      <div class="relative z-10 mx-auto grid max-w-[1120px] grid-cols-[.85fr_1.15fr] gap-14 max-lg:grid-cols-1">
-        <div>
-          <p class="mb-4 text-[18px] font-normal uppercase tracking-[.02em] text-release">Born on mission</p>
-          <h2 id="origin-title"
-              class="text-[clamp(38px,5vw,64px)] font-normal leading-[1.02] tracking-normal">
-            A foundation formed where need kept meeting the gospel.
-          </h2>
-        </div>
-
-        <div class="grid gap-7 text-[17px] leading-[1.75] text-black/80 max-sm:text-[15px]">
-          <p>
-            DKF began with the many urgent cases Danny encountered during evangelism missions across Kenya and East
-            Africa: children without school fees, families without food, guardians overwhelmed by illness, poverty, and
-            loss.
-          </p>
-          <p>
-            COVID-19, prolonged droughts, and political unrest deepened those hardships. Even with limited resources,
-            DKF now helps more than 100 children access education, nutrition, healthcare, and other essential needs.
-            Many live with guardians who cannot provide enough support; some face severe malnutrition and serious health
-            conditions.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="grid grid-cols-2 bg-white text-ink max-lg:grid-cols-1"
-             aria-labelledby="mission-title">
-      <div class="bg-midnight px-10 py-[74px] text-white max-lg:px-8 max-sm:px-5 max-sm:py-14">
-        <div class="mx-auto max-w-[520px]">
-          <p class="mb-5 text-[16px] font-medium uppercase tracking-[.12em] text-harvest">Our Mission</p>
-          <h2 id="mission-title"
-              class="text-[clamp(34px,4.5vw,54px)] font-normal leading-[1.05]">
-            Restore hope, dignity, and opportunity.
-          </h2>
-          <p class="mt-7 text-[18px] leading-[1.72] text-white/80 max-sm:text-[16px]">
-            We provide access to education, healthcare, nutrition, shelter, and spiritual support so vulnerable children
-            can grow in safety instead of survival mode.
-          </p>
-        </div>
-      </div>
-
-      <div class="bg-harvest px-10 py-[74px] text-ink max-lg:px-8 max-sm:px-5 max-sm:py-14">
-        <div class="mx-auto max-w-[520px]">
-          <p class="mb-5 text-[16px] font-bold uppercase tracking-[.12em] text-release">Our Vision</p>
-          <h2 class="text-[clamp(34px,4.5vw,54px)] font-normal leading-[1.05]">
-            Every child gets room to thrive.
-          </h2>
-          <p class="mt-7 text-[18px] leading-[1.72] text-black/75 max-sm:text-[16px]">
-            We envision safe, healthy, supportive communities where a child's future is not decided by poverty,
-            abandonment, disability, illness, or where they were born.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="bg-[#f7f7f7] px-8 py-[82px] text-ink max-lg:px-6 max-sm:px-5 max-sm:py-14"
-             aria-labelledby="need-title">
-      <div class="mx-auto max-w-[1120px]">
-        <div class="mb-12 grid grid-cols-[.75fr_1.25fr] gap-12 max-lg:grid-cols-1 max-lg:gap-6">
-          <h2 id="need-title"
-              class="text-[clamp(38px,5vw,62px)] font-normal leading-none">
-            The need is personal, then national.
-          </h2>
-          <p class="max-w-[680px] text-[18px] leading-[1.75] text-black/75 max-sm:text-[15px]">
-            Many children DKF supports have lost parents young or been abandoned, leaving them exposed to street life,
-            hunger, illness, and school dropout. DKF is also deeply committed to children with special needs and
-            children
-            directly or indirectly affected by HIV/AIDS.
-          </p>
-        </div>
-
-        <div class="grid gap-6">
-          <div class="need-row">
-            <p class="font-mono text-[36px] font-extrabold leading-none text-release">15.9M</p>
-            <p class="text-[19px] leading-[1.55] max-sm:text-[16px]">
-              Kenyans live in monetary poverty, according to UNICEF's 2022 reporting.
+          <div
+            class="grid gap-7 text-[17px] leading-[1.75] text-black/80 max-sm:text-[15px]"
+          >
+            <p>
+              DKF began with the many urgent cases Danny encountered during
+              evangelism missions across Kenya and East Africa: children without
+              school fees, families without food, guardians overwhelmed by
+              illness, poverty, and loss.
+            </p>
+            <p>
+              COVID-19, prolonged droughts, and political unrest deepened those
+              hardships. Even with limited resources, DKF now helps more than
+              100 children access education, nutrition, healthcare, and other
+              essential needs. Many live with guardians who cannot provide
+              enough support; some face severe malnutrition and serious health
+              conditions.
             </p>
           </div>
-          <div class="need-row">
-            <p class="font-mono text-[36px] font-extrabold leading-none text-midnight">50%</p>
-            <p class="text-[19px] leading-[1.55] max-sm:text-[16px]">
-              Half the population experiences multidimensional poverty, including gaps in healthcare, safe water,
-              nutrition, housing, and sanitation.
+        </div>
+      </section>
+
+      <section
+        class="grid grid-cols-2 bg-white text-ink max-lg:grid-cols-1"
+        aria-labelledby="mission-title"
+      >
+        <div
+          class="bg-midnight px-10 py-[74px] text-white max-lg:px-8 max-sm:px-5 max-sm:py-14"
+        >
+          <div class="mx-auto max-w-[520px]">
+            <p
+              class="mb-5 text-[16px] font-medium uppercase tracking-[.12em] text-harvest"
+            >
+              Our Mission
+            </p>
+            <h2
+              id="mission-title"
+              class="text-[clamp(34px,4.5vw,54px)] font-normal leading-[1.05]"
+            >
+              Restore hope, dignity, and opportunity.
+            </h2>
+            <p
+              class="mt-7 text-[18px] leading-[1.72] text-white/80 max-sm:text-[16px]"
+            >
+              We provide access to education, healthcare, nutrition, shelter,
+              and spiritual support so vulnerable children can grow in safety
+              instead of survival mode.
             </p>
           </div>
-          <div class="need-row">
-            <p class="font-mono text-[36px] font-extrabold leading-none text-greenhope">46.5%</p>
-            <p class="text-[19px] leading-[1.55] max-sm:text-[16px]">
-              Nearly half of Nairobi County residents live in informal settlements, where economic shocks hit children
-              first and hardest.
+        </div>
+
+        <div
+          class="bg-harvest px-10 py-[74px] text-ink max-lg:px-8 max-sm:px-5 max-sm:py-14"
+        >
+          <div class="mx-auto max-w-[520px]">
+            <p
+              class="mb-5 text-[16px] font-bold uppercase tracking-[.12em] text-release"
+            >
+              Our Vision
+            </p>
+            <h2
+              class="text-[clamp(34px,4.5vw,54px)] font-normal leading-[1.05]"
+            >
+              Every child gets room to thrive.
+            </h2>
+            <p
+              class="mt-7 text-[18px] leading-[1.72] text-black/75 max-sm:text-[16px]"
+            >
+              We envision safe, healthy, supportive communities where a child's
+              future is not decided by poverty, abandonment, disability,
+              illness, or where they were born.
             </p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="relative isolate overflow-hidden bg-white px-8 py-[78px] text-ink max-lg:px-6 max-sm:px-5 max-sm:py-14"
-             aria-labelledby="work-title">
-      <div class="absolute left-1/2 top-[-520px] z-0 h-[980px] w-[1060px] -translate-x-1/2 rounded-[48%] border border-harvest"
-           aria-hidden="true"></div>
-      <div class="relative z-10 mx-auto max-w-[1120px]">
-        <div class="mb-12 flex items-end justify-between gap-8 max-lg:flex-col max-lg:items-start">
-          <h2 id="work-title"
-              class="max-w-[560px] text-[clamp(38px,5vw,62px)] font-normal leading-none">
-            What DKF puts in a child's hands.
-          </h2>
-          <a class="inline-flex h-[52px] min-w-[220px] items-center justify-center gap-5 rounded-full bg-release px-9 text-[20px] font-normal text-white transition hover:bg-[#ff642d] max-sm:w-full max-sm:text-[18px]"
-             href="#support">
-            Partner with DKF
-            <span class="text-[30px]"
-                  aria-hidden="true">&rarr;</span>
-          </a>
+      <section
+        class="bg-[#f7f7f7] px-8 py-[82px] text-ink max-lg:px-6 max-sm:px-5 max-sm:py-14"
+        aria-labelledby="need-title"
+      >
+        <div class="mx-auto max-w-[1120px]">
+          <div
+            class="mb-12 grid grid-cols-[.75fr_1.25fr] gap-12 max-lg:grid-cols-1 max-lg:gap-6"
+          >
+            <h2
+              id="need-title"
+              class="text-[clamp(38px,5vw,62px)] font-normal leading-none"
+            >
+              The need is personal, then national.
+            </h2>
+            <p
+              class="max-w-[680px] text-[18px] leading-[1.75] text-black/75 max-sm:text-[15px]"
+            >
+              Many children DKF supports have lost parents young or been
+              abandoned, leaving them exposed to street life, hunger, illness,
+              and school dropout. DKF is also deeply committed to children with
+              special needs and children directly or indirectly affected by
+              HIV/AIDS.
+            </p>
+          </div>
+
+          <div class="grid gap-6">
+            <div class="need-row">
+              <p
+                class="font-mono text-[36px] font-extrabold leading-none text-release"
+              >
+                15.9M
+              </p>
+              <p class="text-[19px] leading-[1.55] max-sm:text-[16px]">
+                Kenyans live in monetary poverty, according to UNICEF's 2022
+                reporting.
+              </p>
+            </div>
+            <div class="need-row">
+              <p
+                class="font-mono text-[36px] font-extrabold leading-none text-midnight"
+              >
+                50%
+              </p>
+              <p class="text-[19px] leading-[1.55] max-sm:text-[16px]">
+                Half the population experiences multidimensional poverty,
+                including gaps in healthcare, safe water, nutrition, housing,
+                and sanitation.
+              </p>
+            </div>
+            <div class="need-row">
+              <p
+                class="font-mono text-[36px] font-extrabold leading-none text-greenhope"
+              >
+                46.5%
+              </p>
+              <p class="text-[19px] leading-[1.55] max-sm:text-[16px]">
+                Nearly half of Nairobi County residents live in informal
+                settlements, where economic shocks hit children first and
+                hardest.
+              </p>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div class="grid grid-cols-3 gap-5 max-lg:grid-cols-2 max-sm:grid-cols-1">
-          <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
-            <h3 class="mb-3 text-[22px] font-bold text-midnight">School sponsorships</h3>
-            <p class="text-[15px] leading-[1.65] text-black/70">Fees, supplies, uniforms, and the steady push that keeps
-              a child in class.</p>
-          </div>
-          <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
-            <h3 class="mb-3 text-[22px] font-bold text-release">Food &amp; nutrition</h3>
-            <p class="text-[15px] leading-[1.65] text-black/70">Meals and nutrition support for children facing hunger
-              and malnutrition.</p>
-          </div>
-          <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
-            <h3 class="mb-3 text-[22px] font-bold text-greenhope">Healthcare support</h3>
-            <p class="text-[15px] leading-[1.65] text-black/70">Medical assistance for children whose families cannot
-              carry the cost alone.</p>
-          </div>
-          <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
-            <h3 class="mb-3 text-[22px] font-bold text-midnight">Safe shelter</h3>
-            <p class="text-[15px] leading-[1.65] text-black/70">Child protection and loving environments for children at
-              risk.</p>
-          </div>
-          <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
-            <h3 class="mb-3 text-[22px] font-bold text-release">Special needs care</h3>
-            <p class="text-[15px] leading-[1.65] text-black/70">Compassionate support for children with disabilities and
-              HIV/AIDS-related needs.</p>
-          </div>
-          <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
-            <h3 class="mb-3 text-[22px] font-bold text-greenhope">Mentorship</h3>
-            <p class="text-[15px] leading-[1.65] text-black/70">Community outreach, empowerment, spiritual guidance, and
-              steady encouragement.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="support"
-             class="relative isolate overflow-hidden bg-release px-8 py-[76px] text-white max-lg:px-6 max-sm:px-5 max-sm:py-14"
-             aria-labelledby="support-title">
-      <div class="absolute -right-[90px] -top-[96px] h-[210px] w-[310px] rounded-[50%] bg-harvest"
-           aria-hidden="true"></div>
-      <div class="absolute -bottom-[80px] left-[10%] h-[170px] w-[260px] rounded-[50%] bg-midnight"
-           aria-hidden="true"></div>
-
-      <div
-           class="relative z-10 mx-auto grid max-w-[1120px] grid-cols-[1.15fr_.85fr] items-end gap-12 max-lg:grid-cols-1">
-        <div>
-          <p class="mb-5 text-[18px] font-bold uppercase tracking-[.08em] text-white/75">How you can help</p>
-          <h2 id="support-title"
-              class="max-w-[760px] text-[clamp(42px,6vw,78px)] font-extrabold uppercase leading-[.9]">
-            Relief today. A future tomorrow.
-          </h2>
-          <p class="mt-7 max-w-[680px] text-[20px] leading-[1.65] text-white/90 max-sm:text-[16px]">
-            Your support helps provide immediate care while building sustainable solutions that break cycles of poverty
-            and vulnerability. Together, we can give every child the chance to thrive.
-          </p>
-        </div>
-
-        <div class="rounded-[8px] bg-white p-7 text-ink shadow-heavy">
-          <p class="mb-5 text-[22px] font-normal leading-tight">Support us via:</p>
-          <div class="flex flex-wrap gap-4">
-            <a class="inline-flex h-[48px] min-w-[142px] items-center justify-center rounded-full border border-[#ead8df] bg-white px-6 text-[20px] font-extrabold text-[#34b557] shadow-sm"
-               href="#"
-               aria-label="Support via M-PESA">
-              <img class="h-[27px] w-auto object-contain"
-                   src="m-pesa-logo.png"
-                   alt="M-PESA" />
-            </a>
-            <a class="inline-flex h-[48px] min-w-[142px] items-center justify-center rounded-full border border-[#ead8df] bg-white px-6 text-[15px] font-extrabold text-[#1d4f99] shadow-sm"
-               href="#"
-               aria-label="Support via PayPal">
-              <img class="h-[24px] w-auto object-contain"
-                   src="paypal-logo.png"
-                   alt="PayPal" />
+      <section
+        class="relative isolate overflow-hidden bg-white px-8 py-[78px] text-ink max-lg:px-6 max-sm:px-5 max-sm:py-14"
+        aria-labelledby="work-title"
+      >
+        <div
+          class="absolute left-1/2 top-[-520px] z-0 h-[980px] w-[1060px] -translate-x-1/2 rounded-[48%] border border-harvest"
+          aria-hidden="true"
+        ></div>
+        <div class="relative z-10 mx-auto max-w-[1120px]">
+          <div
+            class="mb-12 flex items-end justify-between gap-8 max-lg:flex-col max-lg:items-start"
+          >
+            <h2
+              id="work-title"
+              class="max-w-[560px] text-[clamp(38px,5vw,62px)] font-normal leading-none"
+            >
+              What DKF puts in a child's hands.
+            </h2>
+            <a
+              class="inline-flex h-[52px] min-w-[220px] items-center justify-center gap-5 rounded-full bg-release px-9 text-[20px] font-normal text-white transition hover:bg-[#ff642d] max-sm:w-full max-sm:text-[18px]"
+              href="#support"
+            >
+              Partner with DKF
+              <span class="text-[30px]" aria-hidden="true">&rarr;</span>
             </a>
           </div>
-          <p class="mt-7 border-t border-black/10 pt-6 text-[16px] leading-[1.65] text-black/70">
-            Thank you for your support, prayers, and partnership.
-          </p>
-          <p class="mt-5 text-[18px] font-bold leading-tight">
-            Danny Kioko<br />
-            <span class="text-[14px] font-normal text-black/60">Founder &amp; Director, DKF</span>
-          </p>
+
+          <div
+            class="grid grid-cols-3 gap-5 max-lg:grid-cols-2 max-sm:grid-cols-1"
+          >
+            <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
+              <h3 class="mb-3 text-[22px] font-bold text-midnight">
+                School sponsorships
+              </h3>
+              <p class="text-[15px] leading-[1.65] text-black/70">
+                Fees, supplies, uniforms, and the steady push that keeps a child
+                in class.
+              </p>
+            </div>
+            <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
+              <h3 class="mb-3 text-[22px] font-bold text-release">
+                Food &amp; nutrition
+              </h3>
+              <p class="text-[15px] leading-[1.65] text-black/70">
+                Meals and nutrition support for children facing hunger and
+                malnutrition.
+              </p>
+            </div>
+            <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
+              <h3 class="mb-3 text-[22px] font-bold text-greenhope">
+                Healthcare support
+              </h3>
+              <p class="text-[15px] leading-[1.65] text-black/70">
+                Medical assistance for children whose families cannot carry the
+                cost alone.
+              </p>
+            </div>
+            <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
+              <h3 class="mb-3 text-[22px] font-bold text-midnight">
+                Safe shelter
+              </h3>
+              <p class="text-[15px] leading-[1.65] text-black/70">
+                Child protection and loving environments for children at risk.
+              </p>
+            </div>
+            <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
+              <h3 class="mb-3 text-[22px] font-bold text-release">
+                Special needs care
+              </h3>
+              <p class="text-[15px] leading-[1.65] text-black/70">
+                Compassionate support for children with disabilities and
+                HIV/AIDS-related needs.
+              </p>
+            </div>
+            <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
+              <h3 class="mb-3 text-[22px] font-bold text-greenhope">
+                Mentorship
+              </h3>
+              <p class="text-[15px] leading-[1.65] text-black/70">
+                Community outreach, empowerment, spiritual guidance, and steady
+                encouragement.
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <footer class="bg-midnight px-8 pb-5 pt-[48px] text-white max-lg:px-6 max-sm:px-5">
-      <div
-           class="mx-auto grid max-w-[1066px] grid-cols-[1.4fr_1fr_.8fr_auto] gap-14 max-lg:grid-cols-2 max-sm:grid-cols-1">
-        <div>
-          <a class="font-script text-[44px] leading-none text-white"
-             href="index2.html">Danny Kioko</a>
-          <p class="mt-8 text-[15px] font-light text-white/85">The Worship Minister and Evangelist</p>
+      <section
+        id="support"
+        class="relative isolate overflow-hidden bg-release px-8 py-[76px] text-white max-lg:px-6 max-sm:px-5 max-sm:py-14"
+        aria-labelledby="support-title"
+      >
+        <div
+          class="absolute -right-[90px] -top-[96px] h-[210px] w-[310px] rounded-[50%] bg-harvest"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="absolute -bottom-[80px] left-[10%] h-[170px] w-[260px] rounded-[50%] bg-midnight"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="relative z-10 mx-auto grid max-w-[1120px] grid-cols-[1.15fr_.85fr] items-end gap-12 max-lg:grid-cols-1"
+        >
+          <div>
+            <p
+              class="mb-5 text-[18px] font-bold uppercase tracking-[.08em] text-white/75"
+            >
+              How you can help
+            </p>
+            <h2
+              id="support-title"
+              class="max-w-[760px] text-[clamp(42px,6vw,78px)] font-extrabold uppercase leading-[.9]"
+            >
+              Relief today. A future tomorrow.
+            </h2>
+            <p
+              class="mt-7 max-w-[680px] text-[20px] leading-[1.65] text-white/90 max-sm:text-[16px]"
+            >
+              Your support helps provide immediate care while building
+              sustainable solutions that break cycles of poverty and
+              vulnerability. Together, we can give every child the chance to
+              thrive.
+            </p>
+          </div>
+
+          <div class="rounded-[8px] bg-white p-7 text-ink shadow-heavy">
+            <p class="mb-5 text-[22px] font-normal leading-tight">
+              Support us via:
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a
+                class="inline-flex h-[48px] min-w-[142px] items-center justify-center rounded-full border border-[#ead8df] bg-white px-6 text-[20px] font-extrabold text-[#34b557] shadow-sm"
+                href="#"
+                aria-label="Support via M-PESA"
+              >
+                <img
+                  class="h-[27px] w-auto object-contain"
+                  src="m-pesa-logo.png"
+                  alt="M-PESA"
+                />
+              </a>
+              <a
+                class="inline-flex h-[48px] min-w-[142px] items-center justify-center rounded-full border border-[#ead8df] bg-white px-6 text-[15px] font-extrabold text-[#1d4f99] shadow-sm"
+                href="#"
+                aria-label="Support via PayPal"
+              >
+                <img
+                  class="h-[24px] w-auto object-contain"
+                  src="paypal-logo.png"
+                  alt="PayPal"
+                />
+              </a>
+            </div>
+            <p
+              class="mt-7 border-t border-black/10 pt-6 text-[16px] leading-[1.65] text-black/70"
+            >
+              Thank you for your support, prayers, and partnership.
+            </p>
+            <p class="mt-5 text-[18px] font-bold leading-tight">
+              Danny Kioko<br />
+              <span class="text-[14px] font-normal text-black/60"
+                >Founder &amp; Director, DKF</span
+              >
+            </p>
+          </div>
         </div>
+      </section>
 
-        <div>
-          <h3 class="mb-8 text-[15px] font-light uppercase tracking-[.04em] text-white">Links</h3>
-          <nav class="flex flex-col gap-4 text-[15px] font-light text-white/90">
-            <a href="index2.html">Music</a>
-            <a href="about.html">Danny Kioko Foundation</a>
-            <a href="the-light.html">The Light</a>
-          </nav>
+      <footer
+        class="bg-midnight px-8 pb-5 pt-[48px] text-white max-lg:px-6 max-sm:px-5"
+      >
+        <div
+          class="mx-auto grid max-w-[1066px] grid-cols-[1.4fr_1fr_.8fr_auto] gap-14 max-lg:grid-cols-2 max-sm:grid-cols-1"
+        >
+          <div>
+            <a
+              class="font-script text-[44px] leading-none text-white"
+              href="index.html"
+              >Danny Kioko</a
+            >
+            <p class="mt-8 text-[15px] font-light text-white/85">
+              The Worship Minister and Evangelist
+            </p>
+          </div>
 
-          <div class="mt-8 flex gap-4 text-white">
-            <a href="#"
-               aria-label="Facebook">
-              <svg class="h-5 w-5"
-                   viewBox="0 0 24 24"
-                   fill="currentColor">
-                <path d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v8h4v-8h3l1-4h-4V9c0-.6.4-1 1-1z" />
-              </svg>
-            </a>
-            <a href="#"
-               aria-label="Instagram">
-              <svg class="h-5 w-5"
-                   viewBox="0 0 24 24"
-                   fill="none"
-                   stroke="currentColor"
-                   stroke-width="2">
-                <rect x="4"
-                      y="4"
-                      width="16"
-                      height="16"
-                      rx="5" />
-                <circle cx="12"
-                        cy="12"
-                        r="3.5" />
-                <path d="M17.5 6.5h.01" />
-              </svg>
-            </a>
-            <a href="#"
-               aria-label="Twitter">
-              <svg class="h-5 w-5"
-                   viewBox="0 0 24 24"
-                   fill="currentColor">
+          <div>
+            <h3
+              class="mb-8 text-[15px] font-light uppercase tracking-[.04em] text-white"
+            >
+              Links
+            </h3>
+            <nav
+              class="flex flex-col gap-4 text-[15px] font-light text-white/90"
+            >
+              <a href="index.html">Music</a>
+              <a href="about.html">Danny Kioko Foundation</a>
+              <a href="the-light.html">The Light</a>
+            </nav>
+
+            <div class="mt-8 flex gap-4 text-white">
+              <a href="#" aria-label="Facebook">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v8h4v-8h3l1-4h-4V9c0-.6.4-1 1-1z"
+                  />
+                </svg>
+              </a>
+              <a href="#" aria-label="Instagram">
+                <svg
+                  class="h-5 w-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="4" y="4" width="16" height="16" rx="5" />
+                  <circle cx="12" cy="12" r="3.5" />
+                  <path d="M17.5 6.5h.01" />
+                </svg>
+              </a>
+              <a href="#" aria-label="Twitter">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M22 5.8c-.7.3-1.5.5-2.3.6.8-.5 1.4-1.2 1.7-2.2-.8.5-1.6.8-2.6 1-1.5-1.6-4.1-.8-4.7 1.3-.1.4-.1.8 0 1.1-3.2-.2-6-1.7-7.9-4-.4.7-.6 1.5-.3 2.3.2.8.7 1.5 1.4 1.9-.6 0-1.2-.2-1.7-.5 0 1.8 1.3 3.4 3.1 3.7-.6.2-1.2.2-1.8.1.5 1.5 2 2.6 3.7 2.7-1.6 1.2-3.5 1.9-5.6 1.9H4c1.8 1.2 4 1.8 6.3 1.8 7.5 0 11.7-6.2 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z"
+                  />
+                </svg>
+              </a>
+              <a href="#" aria-label="Email">
+                <svg
+                  class="h-5 w-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M4 6h16v12H4z" />
+                  <path d="m4 7 8 6 8-6" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3
+              class="mb-8 text-[15px] font-light uppercase tracking-[.04em] text-white"
+            >
+              Songs
+            </h3>
+            <div
+              class="flex flex-col gap-4 text-[15px] font-light text-white/90"
+            >
+              <a href="index.html">Muvango</a>
+              <a href="index.html">It's Possible</a>
+              <a href="index.html">Uinuliwe</a>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-6">
+            <a class="footer-listen-pill text-[#1ed760]" href="#"
+              ><span class="spotify-icon"
+                ><svg
+                  class="h-3 w-3"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-width="2.3"
+                >
+                  <path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" />
+                  <path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" />
+                  <path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" /></svg></span
+              ><span>Spotify</span></a
+            >
+            <a class="footer-listen-pill text-white" href="#"
+              ><span class="youtube-icon"
+                ><svg class="h-2.5 w-3" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 7.8v8.4l7.2-4.2L9 7.8z" /></svg></span
+              ><span>YouTube</span></a
+            >
+            <a class="footer-listen-pill text-white" href="#"
+              ><svg
+                class="h-[26px] w-[22px]"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
                 <path
-                      d="M22 5.8c-.7.3-1.5.5-2.3.6.8-.5 1.4-1.2 1.7-2.2-.8.5-1.6.8-2.6 1-1.5-1.6-4.1-.8-4.7 1.3-.1.4-.1.8 0 1.1-3.2-.2-6-1.7-7.9-4-.4.7-.6 1.5-.3 2.3.2.8.7 1.5 1.4 1.9-.6 0-1.2-.2-1.7-.5 0 1.8 1.3 3.4 3.1 3.7-.6.2-1.2.2-1.8.1.5 1.5 2 2.6 3.7 2.7-1.6 1.2-3.5 1.9-5.6 1.9H4c1.8 1.2 4 1.8 6.3 1.8 7.5 0 11.7-6.2 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z" />
-              </svg>
-            </a>
-            <a href="#"
-               aria-label="Email">
-              <svg class="h-5 w-5"
-                   viewBox="0 0 24 24"
-                   fill="none"
-                   stroke="currentColor"
-                   stroke-width="2">
-                <path d="M4 6h16v12H4z" />
-                <path d="m4 7 8 6 8-6" />
-              </svg>
-            </a>
+                  d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z"
+                /></svg
+              ><span>Apple</span></a
+            >
           </div>
         </div>
 
-        <div>
-          <h3 class="mb-8 text-[15px] font-light uppercase tracking-[.04em] text-white">Songs</h3>
-          <div class="flex flex-col gap-4 text-[15px] font-light text-white/90">
-            <a href="index2.html">Muvango</a>
-            <a href="index2.html">It's Possible</a>
-            <a href="index2.html">Uinuliwe</a>
-          </div>
+        <div
+          class="mx-auto mt-[40px] max-w-[1066px] border-t border-white/20 pt-6 text-center text-[15px] font-light text-white/90"
+        >
+          &copy; Dan Kioko -2026
         </div>
+      </footer>
+    </main>
 
-        <div class="flex flex-col gap-6">
-          <a class="footer-listen-pill text-[#1ed760]"
-             href="#"><span class="spotify-icon"><svg class="h-3 w-3"
-                   viewBox="0 0 24 24"
-                   fill="none"
-                   stroke="currentColor"
-                   stroke-linecap="round"
-                   stroke-width="2.3">
-                <path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" />
-                <path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" />
-                <path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" />
-              </svg></span><span>Spotify</span></a>
-          <a class="footer-listen-pill text-white"
-             href="#"><span class="youtube-icon"><svg class="h-2.5 w-3"
-                   viewBox="0 0 24 24"
-                   fill="currentColor">
-                <path d="M9 7.8v8.4l7.2-4.2L9 7.8z" />
-              </svg></span><span>YouTube</span></a>
-          <a class="footer-listen-pill text-white"
-             href="#"><svg class="h-[26px] w-[22px]"
-                 viewBox="0 0 24 24"
-                 fill="currentColor">
-              <path
-                    d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z" />
-            </svg><span>Apple</span></a>
-        </div>
-      </div>
+    <script>
+      const menuButton = document.querySelector(".menu-button");
+      const siteNav = document.querySelector("#siteNav");
 
-      <div
-           class="mx-auto mt-[40px] max-w-[1066px] border-t border-white/20 pt-6 text-center text-[15px] font-light text-white/90">
-        &copy; Dan Kioko -2026
-      </div>
-    </footer>
-  </main>
-
-  <script>
-    const menuButton = document.querySelector(".menu-button");
-    const siteNav = document.querySelector("#siteNav");
-
-    menuButton.addEventListener("click", () => {
-      const isOpen = siteNav.classList.toggle("is-open");
-      menuButton.setAttribute("aria-expanded", String(isOpen));
-    });
-  </script>
-</body>
-
+      menuButton.addEventListener("click", () => {
+        const isOpen = siteNav.classList.toggle("is-open");
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+      });
+    </script>
+  </body>
 </html>

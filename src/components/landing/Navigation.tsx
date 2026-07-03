@@ -1,153 +1,115 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
-export function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+interface NavLink {
+  href: string;
+  label: string;
+}
 
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+const navLinks: NavLink[] = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/safe-space", label: "Safe Space" },
+  { href: "/safe-space-gala", label: "Gala 2027" },
+  { href: "/events", label: "Events" },
+  { href: "/donate", label: "Donate" },
+];
 
-  // Close mobile menu when clicking a link
-  const handleLinkClick = () => {
-    setIsMobileMenuOpen(false);
+export default function Navigation() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
-  // Prevent body scroll when mobile menu is open
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isMobileMenuOpen]);
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
-    <>
-      <nav
-        className={cn(
-          "sticky top-0 z-50 transition-all duration-300",
-          isScrolled
-            ? "bg-white/95 backdrop-blur-sm border-b border-stone-100"
-            : "bg-white border-b border-stone-100",
-        )}
+    <header
+      className="relative z-10 flex items-center justify-between gap-3.5 bg-[#f5f2ec] py-0 px-3 h-[63px] sm:px-[18px] sm:h-[68px] md:h-[64px] md:gap-6 md:pl-[36px] md:pr-[16px] text-ink shadow-[0_1px_0_rgba(15,15,15,.08)]"
+      aria-label="Primary"
+    >
+      {/* Logo */}
+      <Link
+        href="/"
+        className="text-2xl whitespace-nowrap font-script leading-none text-[#111]"
+        onClick={closeMenu}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between py-2">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
-            <img
-              src="https://saicxdmkixfxhkaxfhmm.supabase.co/storage/v1/object/public/library/covers/jkbLogo.png"
-              alt="JKB"
-              className="h-9 sm:h-11 w-auto object-contain"
-            />
-            <span className="font-light text-sm sm:text-base tracking-wide text-stone-600 group-hover:text-primary transition-colors">
-              Jonathan K Bett
-            </span>
-          </Link>
+        DK Foundation
+      </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6 lg:gap-10">
-            <NavLink href="#about" onClick={handleLinkClick}>
-              About
-            </NavLink>
-            <NavLink href="#books" onClick={handleLinkClick}>
-              Books
-            </NavLink>
-            <NavLink href="#thoughts" onClick={handleLinkClick}>
-              Thoughts
-            </NavLink>
-            <NavLink href="#connect" onClick={handleLinkClick}>
-              Connect With Me
-            </NavLink>
-          </div>
+      {/* Navigation Links - Desktop */}
+      <nav
+        className={`
+          nav-links absolute left-0 right-0 top-[63px] flex-col items-stretch gap-0 border-t border-[#ececec] bg-[#f5f2ec] px-[18px] pb-[18px] pt-2.5 text-[15px] shadow-[0_18px_32px_rgba(0,0,0,.14)]
+          sm:top-[68px]
+          md:relative md:top-0 md:left-auto md:right-auto md:flex md:flex-row md:items-center md:justify-center md:gap-[clamp(16px,2.5vw,32px)] md:border-0 md:bg-transparent md:p-0 md:text-[clamp(13px,1.1vw,15px)] md:shadow-none md:ml-auto
+          ${isMenuOpen ? "flex" : "hidden"}
+        `}
+        id="siteNav"
+        aria-label="Main navigation"
+      >
+        {navLinks.map((link) => {
+          const isActive = pathname === link.href;
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden flex items-center justify-center h-9 w-9 rounded-md text-stone-600 hover:bg-stone-100 hover:text-primary transition-colors"
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
-          </button>
-        </div>
+          return (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`
+                relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2
+                ${isActive ? "text-release after:scale-x-100" : "after:scale-x-0"}
+              `}
+              onClick={closeMenu}
+            >
+              {link.label}
+            </Link>
+          );
+        })}
       </nav>
 
-      {/* Mobile Menu Overlay */}
-      <div
-        className={cn(
-          "fixed inset-0 z-40 bg-white/95 backdrop-blur-sm transition-all duration-300 md:hidden",
-          isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible",
-        )}
+      {/* CTA Button */}
+      <Link
+        href="/donate"
+        className="hidden min-w-[110px] items-center justify-center justify-self-end rounded-full bg-[#111] px-4 text-[14px] font-semibold tracking-wide text-white shadow-navButton transition-opacity hover:opacity-80 sm:inline-flex md:h-[42px] md:min-w-[126px] md:px-[22px]"
       >
-        <div className="flex flex-col items-center justify-center min-h-screen gap-8 px-8">
-          <MobileNavLink href="#about" onClick={handleLinkClick}>
-            About
-          </MobileNavLink>
-          <MobileNavLink href="#books" onClick={handleLinkClick}>
-            Books
-          </MobileNavLink>
-          <MobileNavLink href="#thoughts" onClick={handleLinkClick}>
-            Thoughts
-          </MobileNavLink>
-          <MobileNavLink href="#connect" onClick={handleLinkClick}>
-            Connect With Me
-          </MobileNavLink>
-        </div>
-      </div>
-    </>
-  );
-}
+        Donate Now
+      </Link>
 
-function NavLink({
-  href,
-  children,
-  onClick,
-}: {
-  href: string;
-  children: React.ReactNode;
-  onClick?: () => void;
-}) {
-  return (
-    <Link
-      href={href}
-      onClick={onClick}
-      className="nav-link text-sm font-medium text-stone-600 hover:text-ink transition-colors"
-    >
-      {children}
-    </Link>
-  );
-}
-
-function MobileNavLink({
-  href,
-  children,
-  onClick,
-}: {
-  href: string;
-  children: React.ReactNode;
-  onClick?: () => void;
-}) {
-  return (
-    <Link
-      href={href}
-      onClick={onClick}
-      className="text-2xl font-light text-stone-600 hover:text-primary transition-colors"
-    >
-      {children}
-    </Link>
+      {/* Mobile Menu Toggle */}
+      <button
+        className="menu-button inline-flex h-[42px] w-[42px] flex-col items-center justify-center gap-[5px] rounded-[7px] border-0 bg-[#f0f1f5] text-[#121212] md:hidden"
+        type="button"
+        aria-label="Toggle navigation"
+        aria-expanded={isMenuOpen}
+        aria-controls="siteNav"
+        onClick={toggleMenu}
+      >
+        <span
+          className={`
+            block h-0.5 w-5 rounded-sm bg-current transition-transform duration-300
+            ${isMenuOpen ? "translate-y-[7px] rotate-45" : ""}
+          `}
+        />
+        <span
+          className={`
+            block h-0.5 w-5 rounded-sm bg-current transition-opacity duration-300
+            ${isMenuOpen ? "opacity-0" : ""}
+          `}
+        />
+        <span
+          className={`
+            block h-0.5 w-5 rounded-sm bg-current transition-transform duration-300
+            ${isMenuOpen ? "-translate-y-[7px] -rotate-45" : ""}
+          `}
+        />
+      </button>
+    </header>
   );
 }

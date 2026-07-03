@@ -33,26 +33,12 @@
       };
     </script>
     <style>
-      .slide {
-        opacity: 0;
-        pointer-events: none;
-        transform: scale(1.018);
-      }
-
-      .slide.is-active {
-        opacity: 1;
-        pointer-events: auto;
-        transform: scale(1);
-      }
-
-      .dot.is-active {
-        width: 57px;
-      }
-
+      /* Navigation mobile toggle */
       .nav-links.is-open {
         display: flex;
       }
 
+      /* Music pill styles (used in music cards) */
       .music-pill {
         display: inline-flex;
         align-items: center;
@@ -68,7 +54,6 @@
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
         transition: transform 0.15s ease;
       }
-
       .music-pill:hover {
         transform: translateY(-2px);
       }
@@ -112,30 +97,89 @@
           background 0.15s ease,
           transform 0.15s ease;
       }
-
       .footer-listen-pill:hover {
         background: rgba(255, 255, 255, 0.08);
         transform: translateY(-2px);
       }
+
+      /* Hero cover tilt effect */
+      .hero-cover {
+        position: absolute;
+        overflow: hidden;
+        border-radius: 16px;
+        background: #fff;
+        box-shadow: 0 24px 48px rgba(0, 0, 0, 0.18);
+        transform-origin: center bottom;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+      .hero-cover:hover {
+        transform: translateY(-10px) rotate(var(--tilt)) scale(1.035);
+        box-shadow: 0 34px 62px rgba(0, 0, 0, 0.24);
+      }
+      .hero-cover img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .vertical-dots span {
+        display: block;
+        height: 8px;
+        width: 8px;
+        border-radius: 9999px;
+        background: rgba(16, 16, 16, 0.22);
+      }
+      .vertical-dots span:nth-child(2) {
+        background: #f25a25;
+      }
+
+      .mission-lane {
+        display: grid;
+        grid-template-columns: 132px 1fr;
+        gap: 28px;
+        border-top: 1px solid rgba(16, 16, 16, 0.14);
+        padding-top: 24px;
+      }
+
+      .music-card .relative > img {
+        transition: transform 0.25s ease;
+      }
+      .music-card:hover .relative > img {
+        transform: scale(1.045);
+      }
+
+      @media (max-width: 760px) {
+        .mission-lane {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+      }
     </style>
   </head>
-
   <body class="min-h-screen bg-[#0c0b10] font-sans text-white antialiased">
-    <main
-      class="min-h-screen overflow-hidden border-t-[3px] border-x-2 border-[#111] max-sm:border-x-0"
-    >
-      <!-- <div
+    <main class="min-h-screen overflow-hidden">
+      <!-- ===== HEADER from second page ===== -->
+      <div
         class="flex h-[33px] items-center justify-center bg-release px-4 text-center text-[15px] font-medium tracking-[.01em] max-sm:h-[31px] max-sm:text-[13px]"
       >
-        New Song Release: Muvango
-      </div> -->
+        New Campaign Ongoing -
+        <a
+          href="#"
+          class="ml-1 underline underline-offset-2 hover:no-underline hover:text-white/80 transition-colors"
+        >
+          Donate now
+        </a>
+      </div>
+
       <header
         class="relative z-10 flex items-center justify-between gap-3.5 bg-[#f5f2ec] py-0 px-3 h-[63px] sm:px-[18px] sm:h-[68px] md:h-[64px] md:gap-6 md:pl-[36px] md:pr-[16px] text-ink shadow-[0_1px_0_rgba(15,15,15,.08)]"
         aria-label="Primary"
       >
         <a
           class="text-2xl whitespace-nowrap font-script leading-none text-[#111]"
-          href="index2.html"
+          href="index.html"
         >
           Danny Kioko
         </a>
@@ -148,7 +192,7 @@
           <a
             class="relative py-3 text-release after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-100 after:bg-release md:py-2"
             href="about.html"
-            >About Danny Kioko Foundation</a
+            >About DKF</a
           >
           <a
             class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
@@ -162,14 +206,15 @@
           >
           <a
             class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
+            href="music-and-evangelism.html"
+            >Music</a
+          >
+          <a
+            class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
             href="safe-space-gala.html"
             >Safe Space Gala</a
           >
-          <!-- <a
-            class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
-            href="the-light.html"
-            >The Light</a
-          > -->
+          <!-- <a class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2" href="the-light.html">The Light</a> -->
         </nav>
 
         <a
@@ -191,6 +236,7 @@
           <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
         </button>
       </header>
+      <!-- ===== end HEADER ===== -->
 
       <section
         class="relative isolate h-[calc(100vh-105px)] min-h-[500px] bg-[#15121c] max-[980px]:h-[calc(100vh-101px)] max-sm:h-[calc(100vh-94px)]"
@@ -227,74 +273,6 @@
                 href="#"
               >
                 Donate Now
-              </a>
-            </div>
-          </article>
-
-          <article
-            class="slide absolute inset-0 grid place-items-center px-[70px] pb-[54px] pt-[58px] transition-[opacity,transform] duration-700 ease-out max-[980px]:px-[54px] max-[980px]:pb-[64px] max-[980px]:pt-[62px] max-sm:items-center max-sm:px-6 max-sm:pb-[76px] max-sm:pt-[58px]"
-          >
-            <div
-              class="absolute inset-0 -z-20 bg-[url('images/safe.jpg')] bg-cover bg-center max-sm:bg-[position:53%_center]"
-            ></div>
-            <div
-              class="absolute inset-0 -z-10 bg-[linear-gradient(rgba(18,16,28,.51),rgba(18,16,28,.51)),radial-gradient(circle_at_50%_46%,rgba(255,255,255,.05),transparent_38%)]"
-            ></div>
-            <div class="mt-1.5 w-full max-w-[760px] text-center">
-              <div
-                class="mb-[19px] inline-flex items-center justify-center gap-3 text-[clamp(16px,1.9vw,20px)] font-normal leading-tight text-white/95 before:h-[3px] before:w-[52px] before:bg-current before:opacity-80 after:h-[3px] after:w-[52px] after:bg-[#21d0c3] max-sm:mb-[18px] max-sm:gap-[9px] max-sm:text-sm max-sm:before:h-0.5 max-sm:before:w-7 max-sm:after:h-0.5 max-sm:after:w-7"
-              >
-                International Youth Project
-              </div>
-              <h1
-                class="m-0 text-[clamp(40px,5.2vw,62px)] font-medium uppercase leading-none tracking-[.1em] text-white max-sm:text-[clamp(34px,12vw,48px)] max-sm:tracking-[.06em]"
-              >
-                Safe Space
-              </h1>
-              <p
-                class="m-0 mt-[30px] text-[clamp(18px,2vw,22px)] font-medium uppercase leading-tight tracking-[.01em] text-white max-sm:mt-[31px] max-sm:text-[19px]"
-              >
-                Empowering Youth Through Mentorship &amp; Leadership
-              </p>
-              <a
-                class="mt-11 inline-flex h-[48px] min-w-[160px] items-center justify-center rounded-[31px] bg-release px-[28px] text-[clamp(17px,1.8vw,20px)] font-medium text-white shadow-listen transition hover:-translate-y-0.5 hover:bg-[#ff642d] focus-visible:-translate-y-0.5 focus-visible:bg-[#ff642d] max-[980px]:mt-9 max-sm:mt-8 max-sm:h-[48px] max-sm:min-w-[154px] max-sm:text-[19px]"
-                href="#"
-              >
-                Learn More
-              </a>
-            </div>
-          </article>
-
-          <article
-            class="slide absolute inset-0 grid place-items-center px-[70px] pb-[54px] pt-[58px] transition-[opacity,transform] duration-700 ease-out max-[980px]:px-[54px] max-[980px]:pb-[64px] max-[980px]:pt-[62px] max-sm:items-center max-sm:px-6 max-sm:pb-[76px] max-sm:pt-[58px]"
-          >
-            <div
-              class="absolute inset-0 -z-20 bg-[url('images/kids.jpg')] bg-cover bg-center max-sm:bg-[position:53%_center]"
-            ></div>
-            <div
-              class="absolute inset-0 -z-10 bg-[linear-gradient(rgba(18,16,28,.51),rgba(18,16,28,.51)),radial-gradient(circle_at_50%_46%,rgba(255,255,255,.05),transparent_38%)]"
-            ></div>
-            <div class="mt-1.5 w-full max-w-[760px] text-center">
-              <div
-                class="mb-[19px] inline-flex items-center justify-center gap-3 text-[clamp(16px,1.9vw,20px)] font-normal leading-tight text-white/95 before:h-[3px] before:w-[52px] before:bg-current before:opacity-80 after:h-[3px] after:w-[52px] after:bg-[#21d0c3] max-sm:mb-[18px] max-sm:gap-[9px] max-sm:text-sm max-sm:before:h-0.5 max-sm:before:w-7 max-sm:after:h-0.5 max-sm:after:w-7"
-              >
-                Transforming Lives in Africa
-              </div>
-              <h1
-                class="m-0 text-[clamp(40px,5.2vw,62px)] font-medium uppercase leading-none tracking-[.1em] text-white max-sm:text-[clamp(34px,12vw,48px)] max-sm:tracking-[.06em]"
-              >
-                Danny Kioko Foundation
-              </h1>
-              <p
-                class="m-0 mt-[30px] text-[clamp(18px,2vw,22px)] font-medium uppercase leading-tight tracking-[.01em] text-white max-sm:mt-[31px] max-sm:text-[19px]"
-              >
-                Restoring Hope for Vulnerable Children &amp; Families
-              </p>
-              <a
-                class="mt-11 inline-flex h-[48px] min-w-[160px] items-center justify-center rounded-[31px] bg-release px-[28px] text-[clamp(17px,1.8vw,20px)] font-medium text-white shadow-listen transition hover:-translate-y-0.5 hover:bg-[#ff642d] focus-visible:-translate-y-0.5 focus-visible:bg-[#ff642d] max-[980px]:mt-9 max-sm:mt-8 max-sm:h-[48px] max-sm:min-w-[154px] max-sm:text-[19px]"
-                href="#"
-              >
-                Support Our Work
               </a>
             </div>
           </article>
@@ -1063,6 +1041,14 @@
       });
 
       restartAutoplay();
+
+      const menuButton = document.querySelector(".menu-button");
+      const siteNav = document.querySelector("#siteNav");
+
+      menuButton.addEventListener("click", () => {
+        const isOpen = siteNav.classList.toggle("is-open");
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+      });
     </script>
   </body>
 </html>

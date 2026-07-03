@@ -1,545 +1,802 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Safe Space GALA 2027 — DK Foundation</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Safe Space GALA 2027 — DK Foundation</title>
 
-  <!-- Tailwind CSS via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <style>
-    /* Custom theme colors */
-    :root {
-      --release: #e84c2b;
-      --midnight: #0c1a36;
-      --harvest: #d4a02b;
-    }
+    <style>
+      /* Custom theme colors */
+      :root {
+        --release: #e84c2b;
+        --midnight: #0c1a36;
+        --harvest: #d4a02b;
+      }
 
-    .bg-release {
-      background-color: #e84c2b;
-    }
-    .bg-midnight {
-      background-color: #0c1a36;
-    }
-    .bg-harvest {
-      background-color: #d4a02b;
-    }
-    .text-release {
-      color: #e84c2b;
-    }
-    .text-midnight {
-      color: #0c1a36;
-    }
-    .border-release {
-      border-color: #e84c2b;
-    }
+      .bg-release {
+        background-color: #e84c2b;
+      }
+      .bg-midnight {
+        background-color: #0c1a36;
+      }
+      .bg-harvest {
+        background-color: #d4a02b;
+      }
+      .text-release {
+        color: #e84c2b;
+      }
+      .text-midnight {
+        color: #0c1a36;
+      }
+      .border-release {
+        border-color: #e84c2b;
+      }
 
-    /* Shadow for buttons */
-    .shadow-listen {
-      box-shadow: 0 8px 24px rgba(232, 76, 43, 0.35);
-    }
+      /* Shadow for buttons */
+      .shadow-listen {
+        box-shadow: 0 8px 24px rgba(232, 76, 43, 0.35);
+      }
 
-    /* Footer pill styles */
-    .footer-listen-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      border-radius: 9999px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      padding: 8px 18px 8px 12px;
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 1.4;
-      text-decoration: none;
-      transition: background 0.2s, border-color 0.2s;
-    }
-    .footer-listen-pill:hover {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: rgba(255, 255, 255, 0.3);
-    }
-    .youtube-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 24px;
-      height: 24px;
-      border-radius: 4px;
-      background: #ff0000;
-      color: white;
-    }
-    .spotify-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: #1ed760;
-      color: white;
-    }
-    .font-script {
-      font-family: 'Georgia', serif;
-    }
+      /* Footer pill styles */
+      .footer-listen-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border-radius: 9999px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 8px 18px 8px 12px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.4;
+        text-decoration: none;
+        transition:
+          background 0.2s,
+          border-color 0.2s;
+      }
+      .footer-listen-pill:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+      .youtube-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        border-radius: 4px;
+        background: #ff0000;
+        color: white;
+      }
+      .spotify-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: #1ed760;
+        color: white;
+      }
+      .font-script {
+        font-family: "Georgia", serif;
+      }
 
-    .event-detail {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-      padding-bottom: 1rem;
-      margin-bottom: 1rem;
-    }
-    .event-detail:last-child {
-      border-bottom: none;
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
-  </style>
-</head>
+      .event-detail {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+      }
+      .event-detail:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+    </style>
+  </head>
 
-<body>
-
-    <header class="relative z-10 flex items-center justify-between gap-3.5 bg-[#f5f2ec] py-0 px-3 h-[63px] sm:px-[18px] sm:h-[68px] md:h-[64px] md:gap-6 md:pl-[36px] md:pr-[16px] text-ink shadow-[0_1px_0_rgba(15,15,15,.08)]"
-            aria-label="Primary">
-
-      <a class="text-2xl whitespace-nowrap font-script leading-none text-[#111]"
-         href="index2.html">
+  <body>
+    <header
+      class="relative z-10 flex items-center justify-between gap-3.5 bg-[#f5f2ec] py-0 px-3 h-[63px] sm:px-[18px] sm:h-[68px] md:h-[64px] md:gap-6 md:pl-[36px] md:pr-[16px] text-ink shadow-[0_1px_0_rgba(15,15,15,.08)]"
+      aria-label="Primary"
+    >
+      <a
+        class="text-2xl whitespace-nowrap font-script leading-none text-[#111]"
+        href="index.html"
+      >
         Danny Kioko
       </a>
 
-      <nav class="nav-links absolute left-0 right-0 top-[63px] hidden flex-col items-stretch gap-0 border-t border-[#ececec] bg-[#f5f2ec] px-[18px] pb-[18px] pt-2.5 text-[15px] shadow-[0_18px_32px_rgba(0,0,0,.14)] sm:top-[68px] md:relative md:top-0 md:left-auto md:right-auto md:flex md:flex-row md:items-center md:justify-center md:gap-[clamp(16px,2.5vw,32px)] md:border-0 md:bg-transparent md:p-0 md:text-[clamp(13px,1.1vw,15px)] md:shadow-none md:ml-auto"
-           id="siteNav"
-           aria-label="Main navigation">
-        <a class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
-           href="index2.html">About Me</a>
-        <a class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
-           href="music-and-evangelism.html">Music &amp; Evangelism</a>
-        <a class="relative py-3 text-release after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-100 after:bg-release md:py-2"
-           href="about.html">DKF</a>
+      <nav
+        class="nav-links absolute left-0 right-0 top-[63px] hidden flex-col items-stretch gap-0 border-t border-[#ececec] bg-[#f5f2ec] px-[18px] pb-[18px] pt-2.5 text-[15px] shadow-[0_18px_32px_rgba(0,0,0,.14)] sm:top-[68px] md:relative md:top-0 md:left-auto md:right-auto md:flex md:flex-row md:items-center md:justify-center md:gap-[clamp(16px,2.5vw,32px)] md:border-0 md:bg-transparent md:p-0 md:text-[clamp(13px,1.1vw,15px)] md:shadow-none md:ml-auto"
+        id="siteNav"
+        aria-label="Main navigation"
+      >
         <a
-            class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
-            href="safe-space-gala.html"
-            >Safe Space Gala</a
-          >
+          class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
+          href="index.html"
+          >About Me</a
+        >
+        <a
+          class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
+          href="music-and-evangelism.html"
+          >Music &amp; Evangelism</a
+        >
+        <a
+          class="relative py-3 text-release after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-100 after:bg-release md:py-2"
+          href="about.html"
+          >DKF</a
+        >
+        <a
+          class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
+          href="safe-space-gala.html"
+          >Safe Space Gala</a
+        >
         <!-- <a class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
            href="the-light.html">The Light</a> -->
       </nav>
 
-      <a class="hidden min-w-[110px] items-center justify-center justify-self-end rounded-full bg-[#111] px-4 text-[14px] font-semibold tracking-wide text-white shadow-navButton transition-opacity hover:opacity-80 sm:inline-flex md:h-[42px] md:min-w-[126px] md:px-[22px]"
-         href="music-and-evangelism.html">
+      <a
+        class="hidden min-w-[110px] items-center justify-center justify-self-end rounded-full bg-[#111] px-4 text-[14px] font-semibold tracking-wide text-white shadow-navButton transition-opacity hover:opacity-80 sm:inline-flex md:h-[42px] md:min-w-[126px] md:px-[22px]"
+        href="music-and-evangelism.html"
+      >
         Listen Now
       </a>
 
-      <button class="menu-button inline-flex h-[42px] w-[42px] flex-col items-center justify-center gap-[5px] rounded-[7px] border-0 bg-[#f0f1f5] text-[#121212] md:hidden"
-              type="button"
-              aria-label="Toggle navigation"
-              aria-expanded="false"
-              aria-controls="siteNav">
+      <button
+        class="menu-button inline-flex h-[42px] w-[42px] flex-col items-center justify-center gap-[5px] rounded-[7px] border-0 bg-[#f0f1f5] text-[#121212] md:hidden"
+        type="button"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="siteNav"
+      >
         <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
         <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
         <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
       </button>
     </header>
 
-  <!-- ============================================================ -->
-  <!-- HERO — SAFE SPACE GALA 2027                                  -->
-  <!-- ============================================================ -->
+    <!-- ============================================================ -->
+    <!-- HERO — SAFE SPACE GALA 2027                                  -->
+    <!-- ============================================================ -->
 
-  <section class="relative h-[80vh] min-h-[500px] w-full overflow-hidden" aria-label="Safe Space GALA 2027 hero">
-    <div class="absolute inset-0 -z-20 bg-[url('images/safe.jpg')] bg-cover bg-center">
-    </div>
-    <div class="absolute inset-0 -z-10 bg-[linear-gradient(rgba(18,16,28,.65),rgba(18,16,28,.65)),radial-gradient(circle_at_50%_46%,rgba(255,255,255,.05),transparent_38%)]">
-    </div>
+    <section
+      class="relative h-[80vh] min-h-[500px] w-full overflow-hidden"
+      aria-label="Safe Space GALA 2027 hero"
+    >
+      <div
+        class="absolute inset-0 -z-20 bg-[url('images/safe.jpg')] bg-cover bg-center"
+      ></div>
+      <div
+        class="absolute inset-0 -z-10 bg-[linear-gradient(rgba(18,16,28,.65),rgba(18,16,28,.65)),radial-gradient(circle_at_50%_46%,rgba(255,255,255,.05),transparent_38%)]"
+      ></div>
 
-    <div class="flex h-full items-center justify-center px-8 max-sm:px-5">
-      <div class="w-full max-w-[860px] text-center">
-        <div class="mb-5 inline-flex items-center justify-center gap-3 text-[clamp(14px,1.5vw,18px)] font-normal leading-tight text-white/90 before:h-[3px] before:w-[40px] before:bg-current before:opacity-60 after:h-[3px] after:w-[40px] after:bg-[#21d0c3] max-sm:before:w-6 max-sm:after:w-6">
-          May 29, 2027 • Washington State, USA
-        </div>
-        <h1 class="m-0 text-[clamp(36px,5.5vw,68px)] font-medium uppercase leading-[1.05] tracking-[.06em] text-white max-sm:text-[clamp(30px,10vw,42px)]">
-          Safe Space GALA 2027
-        </h1>
-        <p class="m-0 mt-4 text-[clamp(18px,2vw,24px)] font-light uppercase tracking-[.08em] text-white/80 max-sm:mt-3 max-sm:text-[16px]">
-          Uniting Communities. Transforming Children's Lives.
-        </p>
-        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <a class="inline-flex h-[48px] min-w-[160px] items-center justify-center rounded-[31px] bg-release px-[32px] text-[17px] font-medium text-white shadow-listen transition hover:-translate-y-0.5 hover:bg-[#ff642d]" href="#tickets">
-            Get Tickets
-          </a>
-          <a class="inline-flex h-[48px] min-w-[160px] items-center justify-center rounded-[31px] border border-white/30 px-[32px] text-[17px] font-medium text-white transition hover:bg-white/10" href="#about">
-            Learn More
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- EVENT DETAILS                                                -->
-  <!-- ============================================================ -->
-
-  <section class="bg-white px-8 py-[44px] text-black max-lg:px-6 max-sm:px-5 max-sm:py-8">
-    <div class="mx-auto max-w-[900px]">
-      <div class="grid grid-cols-3 gap-6 max-sm:grid-cols-1 max-sm:gap-4">
-        <div class="rounded-[12px] bg-[#f7f7f7] p-6 text-center">
-          <span class="text-[28px]">📅</span>
-          <h4 class="mt-2 text-[15px] font-bold text-midnight">Date</h4>
-          <p class="text-[14px] text-black/70">May 29, 2027</p>
-        </div>
-        <div class="rounded-[12px] bg-[#f7f7f7] p-6 text-center">
-          <span class="text-[28px]">📍</span>
-          <h4 class="mt-2 text-[15px] font-bold text-midnight">Venue</h4>
-          <p class="text-[14px] text-black/70">Washington State, USA (TBD)</p>
-        </div>
-        <div class="rounded-[12px] bg-[#f7f7f7] p-6 text-center">
-          <span class="text-[28px]">🎯</span>
-          <h4 class="mt-2 text-[15px] font-bold text-midnight">Goal</h4>
-          <p class="text-[14px] text-black/70">$3 Million Children's Center</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- VISION & MISSION                                             -->
-  <!-- ============================================================ -->
-
-  <section class="bg-[#f7f7f7] px-8 py-[52px] text-black max-lg:px-6 max-sm:px-5 max-sm:py-10" id="about">
-    <div class="mx-auto max-w-[900px]">
-      <h2 class="mb-[28px] text-center text-[clamp(24px,2.8vw,32px)] font-normal leading-none tracking-normal max-sm:mb-6">
-        <span>Vision &amp;</span>
-        <span class="ml-4 inline-block border-b border-release pb-[10px] text-release max-sm:ml-2">Mission</span>
-      </h2>
-
-      <div class="grid grid-cols-2 gap-8 max-sm:grid-cols-1">
-        <div class="rounded-[16px] bg-white p-8 shadow-[0_6px_18px_rgba(20,18,14,.06)]">
-          <h3 class="text-[18px] font-bold text-release uppercase tracking-[.04em]">Vision</h3>
-          <p class="mt-3 text-[15px] leading-[1.7] text-black/80">
-            Uniting Generations, Transforming Children's Lives
+      <div class="flex h-full items-center justify-center px-8 max-sm:px-5">
+        <div class="w-full max-w-[860px] text-center">
+          <div
+            class="mb-5 inline-flex items-center justify-center gap-3 text-[clamp(14px,1.5vw,18px)] font-normal leading-tight text-white/90 before:h-[3px] before:w-[40px] before:bg-current before:opacity-60 after:h-[3px] after:w-[40px] after:bg-[#21d0c3] max-sm:before:w-6 max-sm:after:w-6"
+          >
+            May 29, 2027 • Washington State, USA
+          </div>
+          <h1
+            class="m-0 text-[clamp(36px,5.5vw,68px)] font-medium uppercase leading-[1.05] tracking-[.06em] text-white max-sm:text-[clamp(30px,10vw,42px)]"
+          >
+            Safe Space GALA 2027
+          </h1>
+          <p
+            class="m-0 mt-4 text-[clamp(18px,2vw,24px)] font-light uppercase tracking-[.08em] text-white/80 max-sm:mt-3 max-sm:text-[16px]"
+          >
+            Uniting Communities. Transforming Children's Lives.
           </p>
-        </div>
-
-        <div class="rounded-[16px] bg-white p-8 shadow-[0_6px_18px_rgba(20,18,14,.06)]">
-          <h3 class="text-[18px] font-bold text-midnight uppercase tracking-[.04em]">Mission</h3>
-          <p class="mt-3 text-[15px] leading-[1.7] text-black/80">
-            To unite diverse partners in support of sustainable solutions that improve the lives of vulnerable children through education, healthcare, protection, and community development.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- ABOUT THE GALA                                               -->
-  <!-- ============================================================ -->
-
-  <section class="bg-white px-8 py-[52px] text-black max-lg:px-6 max-sm:px-5 max-sm:py-10">
-    <div class="mx-auto max-w-[860px]">
-      <h2 class="mb-[28px] text-center text-[clamp(24px,2.8vw,32px)] font-normal leading-none tracking-normal max-sm:mb-6">
-        <span>About</span>
-        <span class="ml-4 inline-block border-b border-release pb-[10px] text-release max-sm:ml-2">The Gala</span>
-      </h2>
-
-      <p class="text-[16px] leading-[1.8] text-black/85 max-sm:text-[15px]">
-        The <strong>"Safe Space" GALA 2027</strong> is a faith-centered community event designed to bring together people of all ages, cultures, and backgrounds. The gala provides a safe and welcoming environment where youth and elders can connect, share experiences, strengthen relationships, and grow together in faith.
-      </p>
-
-      <p class="mt-4 text-[16px] leading-[1.8] text-black/85 max-sm:text-[15px]">
-        At a time when many young people are becoming disconnected from their cultural heritage, family values, and spiritual foundations, the event seeks to bridge generational gaps by creating opportunities for meaningful interaction, mentorship, and mutual understanding.
-      </p>
-
-      <p class="mt-4 text-[16px] leading-[1.8] text-black/85 max-sm:text-[15px]">
-        Through inspirational praise and worship, the gala celebrates the richness of diverse cultures while promoting unity, hope, and spiritual growth. The event recognizes that both generations have valuable contributions to make: elders offer wisdom, guidance, and life experience, while young people bring creativity, energy, innovation, and vision. Together, they create stronger families, healthier communities, and a brighter future.
-      </p>
-
-      <div class="mt-8 grid grid-cols-2 gap-4 max-sm:grid-cols-1">
-        <div class="rounded-[12px] bg-[#f7f7f7] p-5 text-center">
-          <span class="text-2xl">👴</span>
-          <h4 class="mt-2 text-[14px] font-bold text-midnight">Elders Offer</h4>
-          <p class="text-[13px] text-black/60">Wisdom, Guidance, Life Experience</p>
-        </div>
-        <div class="rounded-[12px] bg-[#f7f7f7] p-5 text-center">
-          <span class="text-2xl">🧑‍🎤</span>
-          <h4 class="mt-2 text-[14px] font-bold text-midnight">Youth Bring</h4>
-          <p class="text-[13px] text-black/60">Creativity, Energy, Innovation, Vision</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- THE CHILDREN'S CENTER PROJECT                                -->
-  <!-- ============================================================ -->
-
-  <section class="bg-midnight px-8 py-[52px] text-white max-lg:px-6 max-sm:px-5 max-sm:py-10">
-    <div class="mx-auto max-w-[860px] text-center">
-      <h2 class="text-[clamp(24px,2.8vw,32px)] font-normal leading-none tracking-normal">
-        <span>Children's Hope &amp;</span>
-        <span class="ml-4 inline-block border-b border-release pb-[10px] text-release max-sm:ml-2">Empowerment Center</span>
-      </h2>
-
-      <div class="mt-6 rounded-[16px] bg-white/5 p-6 border border-white/10">
-        <p class="text-[16px] leading-[1.8] text-white/85 max-sm:text-[15px]">
-          The gala serves as a major fundraising platform to support the foundation's vision of establishing a <strong>Children's Hope and Empowerment Center</strong> in <strong>Karen, Nairobi, Kenya</strong> — a transformational project estimated at <strong>USD $3 million</strong>.
-        </p>
-      </div>
-
-      <div class="mt-6 grid grid-cols-3 gap-4 max-sm:grid-cols-1">
-        <div class="rounded-[12px] bg-white/5 p-4 border border-white/5">
-          <span class="text-2xl">🏠</span>
-          <h4 class="mt-2 text-[14px] font-bold text-white/90">Safe Home</h4>
-          <p class="text-[12px] text-white/60">Protection and care for vulnerable children</p>
-        </div>
-        <div class="rounded-[12px] bg-white/5 p-4 border border-white/5">
-          <span class="text-2xl">📚</span>
-          <h4 class="mt-2 text-[14px] font-bold text-white/90">Education &amp; Healthcare</h4>
-          <p class="text-[12px] text-white/60">Schooling, nutrition, and medical care</p>
-        </div>
-        <div class="rounded-[12px] bg-white/5 p-4 border border-white/5">
-          <span class="text-2xl">🙏</span>
-          <h4 class="mt-2 text-[14px] font-bold text-white/90">Mentorship &amp; Spiritual Care</h4>
-          <p class="text-[12px] text-white/60">Counseling, vocational training, and discipleship</p>
-        </div>
-      </div>
-
-      <div class="mt-6 rounded-[16px] bg-release/20 p-6 border border-release/30">
-        <p class="text-[15px] leading-[1.7] text-white/90 max-sm:text-[14px]">
-          <strong>Goal:</strong> Mobilize individuals, churches, businesses, community leaders, and philanthropic partners to invest in this life-changing initiative.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- MORE THAN AN EVENING                                         -->
-  <!-- ============================================================ -->
-
-  <section class="bg-white px-8 py-[52px] text-black max-lg:px-6 max-sm:px-5 max-sm:py-10">
-    <div class="mx-auto max-w-[860px] text-center">
-      <h2 class="text-[clamp(24px,2.8vw,32px)] font-normal leading-none tracking-normal">
-        <span>More Than</span>
-        <span class="ml-4 inline-block border-b border-release pb-[10px] text-release max-sm:ml-2">An Evening</span>
-      </h2>
-
-      <p class="mt-6 text-[16px] leading-[1.8] text-black/85 max-sm:text-[15px]">
-        The <strong>Safe Space Praise Gala</strong> is more than an evening of music — it is a movement of worship, unity, cultural preservation, mentorship, compassion, and social impact.
-      </p>
-
-      <div class="mt-8 grid grid-cols-3 gap-4 max-sm:grid-cols-1">
-        <div class="rounded-[12px] bg-[#f7f7f7] p-5">
-          <span class="text-2xl">🙌</span>
-          <h4 class="mt-2 text-[14px] font-bold text-midnight">Worship</h4>
-          <p class="text-[12px] text-black/60">Glorifying God through praise</p>
-        </div>
-        <div class="rounded-[12px] bg-[#f7f7f7] p-5">
-          <span class="text-2xl">🤝</span>
-          <h4 class="mt-2 text-[14px] font-bold text-midnight">Unity</h4>
-          <p class="text-[12px] text-black/60">Strengthening communities</p>
-        </div>
-        <div class="rounded-[12px] bg-[#f7f7f7] p-5">
-          <span class="text-2xl">🌟</span>
-          <h4 class="mt-2 text-[14px] font-bold text-midnight">Light</h4>
-          <p class="text-[12px] text-black/60">Shining God's love through service</p>
-        </div>
-      </div>
-
-      <blockquote class="mt-8 border-l-4 border-release pl-6 text-left max-sm:pl-4">
-        <p class="text-[17px] italic leading-[1.7] text-black/80 max-sm:text-[15px]">
-          "We are called to be the light of the world, shining God's love through worship, service, generosity, and care for those in need."
-        </p>
-      </blockquote>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- FOUNDER SECTION                                              -->
-  <!-- ============================================================ -->
-
-  <section class="bg-[#f7f7f7] px-8 py-[52px] text-black max-lg:px-6 max-sm:px-5 max-sm:py-10">
-    <div class="mx-auto max-w-[860px]">
-      <h2 class="mb-[28px] text-center text-[clamp(24px,2.8vw,32px)] font-normal leading-none tracking-normal max-sm:mb-6">
-        <span>About</span>
-        <span class="ml-4 inline-block border-b border-release pb-[10px] text-release max-sm:ml-2">The Founder</span>
-      </h2>
-
-      <div class="flex gap-8 items-start max-sm:flex-col max-sm:items-center">
-        <img
-          class="h-[200px] w-[200px] rounded-full object-cover object-center shrink-0 max-sm:h-[160px] max-sm:w-[160px]"
-          src="images/danny.jpg"
-          alt="Evangelist Danny Kioko"
-        />
-        <div>
-          <h3 class="text-[22px] font-bold text-midnight">Evangelist Danny Kioko</h3>
-          <p class="text-[15px] text-black/60">Gospel Artist, Evangelist, Mentor, Philanthropist &amp; Community Leader</p>
-          <p class="mt-3 text-[15px] leading-[1.7] text-black/80 max-sm:text-[14px]">
-            Based in Seattle, Washington, Danny Kioko is the Founder of DK Foundation. Through his music ministry, youth mentorship initiatives, and charitable work, he has inspired individuals and communities both in the United States and East Africa.
-          </p>
-          <p class="mt-2 text-[15px] leading-[1.7] text-black/80 max-sm:text-[14px]">
-            His passion is to use worship, service, and community outreach to transform lives, restore hope, and create lasting opportunities for future generations.
-          </p>
-
-          <div class="mt-4 flex flex-wrap gap-3">
-            <a href="https://youtu.be/fecpYsSw7rg?si=ZkeP8tvnXWlwcubu" target="_blank" class="inline-flex h-[38px] items-center gap-2 rounded-full bg-midnight px-5 text-[13px] font-medium text-white transition hover:bg-[#173770]">
-              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M10 15l5-3-5-3v6z" />
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
-              </svg>
-              About DK Foundation
+          <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <a
+              class="inline-flex h-[48px] min-w-[160px] items-center justify-center rounded-[31px] bg-release px-[32px] text-[17px] font-medium text-white shadow-listen transition hover:-translate-y-0.5 hover:bg-[#ff642d]"
+              href="#tickets"
+            >
+              Get Tickets
             </a>
-            <a href="https://youtu.be/dhA4KuXPEmw?si=5LyL3iJb8DlJnqYp" target="_blank" class="inline-flex h-[38px] items-center gap-2 rounded-full bg-release px-5 text-[13px] font-medium text-white transition hover:bg-[#ff642d]">
-              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M9 7.8v8.4l7.2-4.2L9 7.8z" />
-              </svg>
-              Danny's Music
+            <a
+              class="inline-flex h-[48px] min-w-[160px] items-center justify-center rounded-[31px] border border-white/30 px-[32px] text-[17px] font-medium text-white transition hover:bg-white/10"
+              href="#about"
+            >
+              Learn More
             </a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============================================================ -->
-  <!-- TICKETS / CTA SECTION                                        -->
-  <!-- ============================================================ -->
+    <!-- ============================================================ -->
+    <!-- EVENT DETAILS                                                -->
+    <!-- ============================================================ -->
 
-  <section class="bg-white px-8 py-[52px] text-black max-lg:px-6 max-sm:px-5 max-sm:py-10" id="tickets">
-    <div class="mx-auto max-w-[760px] text-center">
-      <h2 class="text-[clamp(28px,3.2vw,38px)] font-medium uppercase leading-none tracking-[.06em] text-midnight">Get Your Tickets</h2>
-      <p class="mt-4 text-[16px] leading-[1.7] text-black/70 max-sm:text-[15px]">
-        Tickets will be on sale soon! Stay tuned for updates.
-      </p>
+    <section
+      class="bg-white px-8 py-[44px] text-black max-lg:px-6 max-sm:px-5 max-sm:py-8"
+    >
+      <div class="mx-auto max-w-[900px]">
+        <div class="grid grid-cols-3 gap-6 max-sm:grid-cols-1 max-sm:gap-4">
+          <div class="rounded-[12px] bg-[#f7f7f7] p-6 text-center">
+            <span class="text-[28px]">📅</span>
+            <h4 class="mt-2 text-[15px] font-bold text-midnight">Date</h4>
+            <p class="text-[14px] text-black/70">May 29, 2027</p>
+          </div>
+          <div class="rounded-[12px] bg-[#f7f7f7] p-6 text-center">
+            <span class="text-[28px]">📍</span>
+            <h4 class="mt-2 text-[15px] font-bold text-midnight">Venue</h4>
+            <p class="text-[14px] text-black/70">Washington State, USA (TBD)</p>
+          </div>
+          <div class="rounded-[12px] bg-[#f7f7f7] p-6 text-center">
+            <span class="text-[28px]">🎯</span>
+            <h4 class="mt-2 text-[15px] font-bold text-midnight">Goal</h4>
+            <p class="text-[14px] text-black/70">
+              $3 Million Children's Center
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <div class="mt-6 rounded-[16px] bg-[#f7f7f7] p-6 border border-black/5">
-        <p class="text-[14px] text-black/60">
-          <strong>Date:</strong> May 29, 2027 &nbsp;•&nbsp; <strong>Venue:</strong> Washington State, USA (TBD)
+    <!-- ============================================================ -->
+    <!-- VISION & MISSION                                             -->
+    <!-- ============================================================ -->
+
+    <section
+      class="bg-[#f7f7f7] px-8 py-[52px] text-black max-lg:px-6 max-sm:px-5 max-sm:py-10"
+      id="about"
+    >
+      <div class="mx-auto max-w-[900px]">
+        <h2
+          class="mb-[28px] text-center text-[clamp(24px,2.8vw,32px)] font-normal leading-none tracking-normal max-sm:mb-6"
+        >
+          <span>Vision &amp;</span>
+          <span
+            class="ml-4 inline-block border-b border-release pb-[10px] text-release max-sm:ml-2"
+            >Mission</span
+          >
+        </h2>
+
+        <div class="grid grid-cols-2 gap-8 max-sm:grid-cols-1">
+          <div
+            class="rounded-[16px] bg-white p-8 shadow-[0_6px_18px_rgba(20,18,14,.06)]"
+          >
+            <h3
+              class="text-[18px] font-bold text-release uppercase tracking-[.04em]"
+            >
+              Vision
+            </h3>
+            <p class="mt-3 text-[15px] leading-[1.7] text-black/80">
+              Uniting Generations, Transforming Children's Lives
+            </p>
+          </div>
+
+          <div
+            class="rounded-[16px] bg-white p-8 shadow-[0_6px_18px_rgba(20,18,14,.06)]"
+          >
+            <h3
+              class="text-[18px] font-bold text-midnight uppercase tracking-[.04em]"
+            >
+              Mission
+            </h3>
+            <p class="mt-3 text-[15px] leading-[1.7] text-black/80">
+              To unite diverse partners in support of sustainable solutions that
+              improve the lives of vulnerable children through education,
+              healthcare, protection, and community development.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ABOUT THE GALA                                               -->
+    <!-- ============================================================ -->
+
+    <section
+      class="bg-white px-8 py-[52px] text-black max-lg:px-6 max-sm:px-5 max-sm:py-10"
+    >
+      <div class="mx-auto max-w-[860px]">
+        <h2
+          class="mb-[28px] text-center text-[clamp(24px,2.8vw,32px)] font-normal leading-none tracking-normal max-sm:mb-6"
+        >
+          <span>About</span>
+          <span
+            class="ml-4 inline-block border-b border-release pb-[10px] text-release max-sm:ml-2"
+            >The Gala</span
+          >
+        </h2>
+
+        <p class="text-[16px] leading-[1.8] text-black/85 max-sm:text-[15px]">
+          The <strong>"Safe Space" GALA 2027</strong> is a faith-centered
+          community event designed to bring together people of all ages,
+          cultures, and backgrounds. The gala provides a safe and welcoming
+          environment where youth and elders can connect, share experiences,
+          strengthen relationships, and grow together in faith.
         </p>
-        <p class="mt-2 text-[14px] text-black/60">
-          <strong>Contact us for more details</strong>
+
+        <p
+          class="mt-4 text-[16px] leading-[1.8] text-black/85 max-sm:text-[15px]"
+        >
+          At a time when many young people are becoming disconnected from their
+          cultural heritage, family values, and spiritual foundations, the event
+          seeks to bridge generational gaps by creating opportunities for
+          meaningful interaction, mentorship, and mutual understanding.
         </p>
-      </div>
 
-      <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-        <a class="inline-flex h-[48px] min-w-[160px] items-center justify-center rounded-[31px] bg-release px-[32px] text-[17px] font-medium text-white shadow-listen transition hover:-translate-y-0.5 hover:bg-[#ff642d]" href="#">
-          Notify Me
-        </a>
-        <a class="inline-flex h-[48px] min-w-[160px] items-center justify-center rounded-[31px] border border-midnight/20 px-[32px] text-[17px] font-medium text-midnight transition hover:bg-midnight/5" href="#">
-          Contact Us
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- DONATE SECTION                                               -->
-  <!-- ============================================================ -->
-
-  <section class="bg-midnight px-8 py-[52px] text-white max-lg:px-6 max-sm:px-5 max-sm:py-10" id="donate">
-    <div class="mx-auto max-w-[760px] text-center">
-      <h2 class="text-[clamp(24px,2.8vw,32px)] font-normal leading-none tracking-normal">
-        <span>Support the</span>
-        <span class="ml-4 inline-block border-b border-release pb-[10px] text-release max-sm:ml-2">Children's Center</span>
-      </h2>
-      <p class="mt-4 text-[16px] leading-[1.7] text-white/80 max-sm:text-[15px]">
-        Every gift transforms a life. Partner with us to build a future of hope, dignity, and opportunity for vulnerable children in Kenya and East Africa.
-      </p>
-      <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-        <a class="inline-flex h-[48px] min-w-[160px] items-center justify-center rounded-[31px] bg-release px-[32px] text-[17px] font-medium text-white shadow-listen transition hover:-translate-y-0.5 hover:bg-[#ff642d]" href="#">
-          Donate Now
-        </a>
-        <a class="inline-flex h-[48px] min-w-[160px] items-center justify-center rounded-[31px] border border-white/30 px-[32px] text-[17px] font-medium text-white transition hover:bg-white/10" href="#">
-          Learn More
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- FOOTER                                                       -->
-  <!-- ============================================================ -->
-
-  <footer class="bg-midnight px-8 pb-4 pt-[32px] text-white max-lg:px-6 max-sm:px-5">
-    <div class="mx-auto grid max-w-[1066px] grid-cols-[1.4fr_1fr_.8fr_auto] gap-14 max-lg:grid-cols-2 max-sm:grid-cols-1">
-      <div>
-        <a class="font-script text-[32px] leading-none text-white" href="#">DK Foundation</a>
-        <p class="mt-4 text-[13px] font-light text-white/85">
-          Safe Space GALA 2027 — Uniting Communities. Transforming Children's Lives.
+        <p
+          class="mt-4 text-[16px] leading-[1.8] text-black/85 max-sm:text-[15px]"
+        >
+          Through inspirational praise and worship, the gala celebrates the
+          richness of diverse cultures while promoting unity, hope, and
+          spiritual growth. The event recognizes that both generations have
+          valuable contributions to make: elders offer wisdom, guidance, and
+          life experience, while young people bring creativity, energy,
+          innovation, and vision. Together, they create stronger families,
+          healthier communities, and a brighter future.
         </p>
+
+        <div class="mt-8 grid grid-cols-2 gap-4 max-sm:grid-cols-1">
+          <div class="rounded-[12px] bg-[#f7f7f7] p-5 text-center">
+            <span class="text-2xl">👴</span>
+            <h4 class="mt-2 text-[14px] font-bold text-midnight">
+              Elders Offer
+            </h4>
+            <p class="text-[13px] text-black/60">
+              Wisdom, Guidance, Life Experience
+            </p>
+          </div>
+          <div class="rounded-[12px] bg-[#f7f7f7] p-5 text-center">
+            <span class="text-2xl">🧑‍🎤</span>
+            <h4 class="mt-2 text-[14px] font-bold text-midnight">
+              Youth Bring
+            </h4>
+            <p class="text-[13px] text-black/60">
+              Creativity, Energy, Innovation, Vision
+            </p>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div>
-        <h3 class="mb-8 text-[15px] font-light uppercase tracking-[.04em] text-white">Links</h3>
-        <nav class="flex flex-col gap-4 text-[15px] font-light text-white/90">
-          <a href="#about">About the Gala</a>
-          <a href="#">DK Foundation</a>
-          <a href="#">Children's Center</a>
-        </nav>
+    <!-- ============================================================ -->
+    <!-- THE CHILDREN'S CENTER PROJECT                                -->
+    <!-- ============================================================ -->
 
-        <div class="mt-8 flex gap-4 text-white">
-          <a href="#" aria-label="Facebook">
-            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v8h4v-8h3l1-4h-4V9c0-.6.4-1 1-1z" />
-            </svg>
+    <section
+      class="bg-midnight px-8 py-[52px] text-white max-lg:px-6 max-sm:px-5 max-sm:py-10"
+    >
+      <div class="mx-auto max-w-[860px] text-center">
+        <h2
+          class="text-[clamp(24px,2.8vw,32px)] font-normal leading-none tracking-normal"
+        >
+          <span>Children's Hope &amp;</span>
+          <span
+            class="ml-4 inline-block border-b border-release pb-[10px] text-release max-sm:ml-2"
+            >Empowerment Center</span
+          >
+        </h2>
+
+        <div class="mt-6 rounded-[16px] bg-white/5 p-6 border border-white/10">
+          <p class="text-[16px] leading-[1.8] text-white/85 max-sm:text-[15px]">
+            The gala serves as a major fundraising platform to support the
+            foundation's vision of establishing a
+            <strong>Children's Hope and Empowerment Center</strong> in
+            <strong>Karen, Nairobi, Kenya</strong> — a transformational project
+            estimated at <strong>USD $3 million</strong>.
+          </p>
+        </div>
+
+        <div class="mt-6 grid grid-cols-3 gap-4 max-sm:grid-cols-1">
+          <div class="rounded-[12px] bg-white/5 p-4 border border-white/5">
+            <span class="text-2xl">🏠</span>
+            <h4 class="mt-2 text-[14px] font-bold text-white/90">Safe Home</h4>
+            <p class="text-[12px] text-white/60">
+              Protection and care for vulnerable children
+            </p>
+          </div>
+          <div class="rounded-[12px] bg-white/5 p-4 border border-white/5">
+            <span class="text-2xl">📚</span>
+            <h4 class="mt-2 text-[14px] font-bold text-white/90">
+              Education &amp; Healthcare
+            </h4>
+            <p class="text-[12px] text-white/60">
+              Schooling, nutrition, and medical care
+            </p>
+          </div>
+          <div class="rounded-[12px] bg-white/5 p-4 border border-white/5">
+            <span class="text-2xl">🙏</span>
+            <h4 class="mt-2 text-[14px] font-bold text-white/90">
+              Mentorship &amp; Spiritual Care
+            </h4>
+            <p class="text-[12px] text-white/60">
+              Counseling, vocational training, and discipleship
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="mt-6 rounded-[16px] bg-release/20 p-6 border border-release/30"
+        >
+          <p class="text-[15px] leading-[1.7] text-white/90 max-sm:text-[14px]">
+            <strong>Goal:</strong> Mobilize individuals, churches, businesses,
+            community leaders, and philanthropic partners to invest in this
+            life-changing initiative.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- MORE THAN AN EVENING                                         -->
+    <!-- ============================================================ -->
+
+    <section
+      class="bg-white px-8 py-[52px] text-black max-lg:px-6 max-sm:px-5 max-sm:py-10"
+    >
+      <div class="mx-auto max-w-[860px] text-center">
+        <h2
+          class="text-[clamp(24px,2.8vw,32px)] font-normal leading-none tracking-normal"
+        >
+          <span>More Than</span>
+          <span
+            class="ml-4 inline-block border-b border-release pb-[10px] text-release max-sm:ml-2"
+            >An Evening</span
+          >
+        </h2>
+
+        <p
+          class="mt-6 text-[16px] leading-[1.8] text-black/85 max-sm:text-[15px]"
+        >
+          The <strong>Safe Space Praise Gala</strong> is more than an evening of
+          music — it is a movement of worship, unity, cultural preservation,
+          mentorship, compassion, and social impact.
+        </p>
+
+        <div class="mt-8 grid grid-cols-3 gap-4 max-sm:grid-cols-1">
+          <div class="rounded-[12px] bg-[#f7f7f7] p-5">
+            <span class="text-2xl">🙌</span>
+            <h4 class="mt-2 text-[14px] font-bold text-midnight">Worship</h4>
+            <p class="text-[12px] text-black/60">
+              Glorifying God through praise
+            </p>
+          </div>
+          <div class="rounded-[12px] bg-[#f7f7f7] p-5">
+            <span class="text-2xl">🤝</span>
+            <h4 class="mt-2 text-[14px] font-bold text-midnight">Unity</h4>
+            <p class="text-[12px] text-black/60">Strengthening communities</p>
+          </div>
+          <div class="rounded-[12px] bg-[#f7f7f7] p-5">
+            <span class="text-2xl">🌟</span>
+            <h4 class="mt-2 text-[14px] font-bold text-midnight">Light</h4>
+            <p class="text-[12px] text-black/60">
+              Shining God's love through service
+            </p>
+          </div>
+        </div>
+
+        <blockquote
+          class="mt-8 border-l-4 border-release pl-6 text-left max-sm:pl-4"
+        >
+          <p
+            class="text-[17px] italic leading-[1.7] text-black/80 max-sm:text-[15px]"
+          >
+            "We are called to be the light of the world, shining God's love
+            through worship, service, generosity, and care for those in need."
+          </p>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- FOUNDER SECTION                                              -->
+    <!-- ============================================================ -->
+
+    <section
+      class="bg-[#f7f7f7] px-8 py-[52px] text-black max-lg:px-6 max-sm:px-5 max-sm:py-10"
+    >
+      <div class="mx-auto max-w-[860px]">
+        <h2
+          class="mb-[28px] text-center text-[clamp(24px,2.8vw,32px)] font-normal leading-none tracking-normal max-sm:mb-6"
+        >
+          <span>About</span>
+          <span
+            class="ml-4 inline-block border-b border-release pb-[10px] text-release max-sm:ml-2"
+            >The Founder</span
+          >
+        </h2>
+
+        <div class="flex gap-8 items-start max-sm:flex-col max-sm:items-center">
+          <img
+            class="h-[200px] w-[200px] rounded-full object-cover object-center shrink-0 max-sm:h-[160px] max-sm:w-[160px]"
+            src="images/danny.jpg"
+            alt="Evangelist Danny Kioko"
+          />
+          <div>
+            <h3 class="text-[22px] font-bold text-midnight">
+              Evangelist Danny Kioko
+            </h3>
+            <p class="text-[15px] text-black/60">
+              Gospel Artist, Evangelist, Mentor, Philanthropist &amp; Community
+              Leader
+            </p>
+            <p
+              class="mt-3 text-[15px] leading-[1.7] text-black/80 max-sm:text-[14px]"
+            >
+              Based in Seattle, Washington, Danny Kioko is the Founder of DK
+              Foundation. Through his music ministry, youth mentorship
+              initiatives, and charitable work, he has inspired individuals and
+              communities both in the United States and East Africa.
+            </p>
+            <p
+              class="mt-2 text-[15px] leading-[1.7] text-black/80 max-sm:text-[14px]"
+            >
+              His passion is to use worship, service, and community outreach to
+              transform lives, restore hope, and create lasting opportunities
+              for future generations.
+            </p>
+
+            <div class="mt-4 flex flex-wrap gap-3">
+              <a
+                href="https://youtu.be/fecpYsSw7rg?si=ZkeP8tvnXWlwcubu"
+                target="_blank"
+                class="inline-flex h-[38px] items-center gap-2 rounded-full bg-midnight px-5 text-[13px] font-medium text-white transition hover:bg-[#173770]"
+              >
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M10 15l5-3-5-3v6z" />
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+                  />
+                </svg>
+                About DK Foundation
+              </a>
+              <a
+                href="https://youtu.be/dhA4KuXPEmw?si=5LyL3iJb8DlJnqYp"
+                target="_blank"
+                class="inline-flex h-[38px] items-center gap-2 rounded-full bg-release px-5 text-[13px] font-medium text-white transition hover:bg-[#ff642d]"
+              >
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 7.8v8.4l7.2-4.2L9 7.8z" />
+                </svg>
+                Danny's Music
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TICKETS / CTA SECTION                                        -->
+    <!-- ============================================================ -->
+
+    <section
+      class="bg-white px-8 py-[52px] text-black max-lg:px-6 max-sm:px-5 max-sm:py-10"
+      id="tickets"
+    >
+      <div class="mx-auto max-w-[760px] text-center">
+        <h2
+          class="text-[clamp(28px,3.2vw,38px)] font-medium uppercase leading-none tracking-[.06em] text-midnight"
+        >
+          Get Your Tickets
+        </h2>
+        <p
+          class="mt-4 text-[16px] leading-[1.7] text-black/70 max-sm:text-[15px]"
+        >
+          Tickets will be on sale soon! Stay tuned for updates.
+        </p>
+
+        <div class="mt-6 rounded-[16px] bg-[#f7f7f7] p-6 border border-black/5">
+          <p class="text-[14px] text-black/60">
+            <strong>Date:</strong> May 29, 2027 &nbsp;•&nbsp;
+            <strong>Venue:</strong> Washington State, USA (TBD)
+          </p>
+          <p class="mt-2 text-[14px] text-black/60">
+            <strong>Contact us for more details</strong>
+          </p>
+        </div>
+
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <a
+            class="inline-flex h-[48px] min-w-[160px] items-center justify-center rounded-[31px] bg-release px-[32px] text-[17px] font-medium text-white shadow-listen transition hover:-translate-y-0.5 hover:bg-[#ff642d]"
+            href="#"
+          >
+            Notify Me
           </a>
-          <a href="#" aria-label="Instagram">
-            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="4" y="4" width="16" height="16" rx="5" />
-              <circle cx="12" cy="12" r="3.5" />
-              <path d="M17.5 6.5h.01" />
-            </svg>
+          <a
+            class="inline-flex h-[48px] min-w-[160px] items-center justify-center rounded-[31px] border border-midnight/20 px-[32px] text-[17px] font-medium text-midnight transition hover:bg-midnight/5"
+            href="#"
+          >
+            Contact Us
           </a>
-          <a href="#" aria-label="Twitter">
-            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M22 5.8c-.7.3-1.5.5-2.3.6.8-.5 1.4-1.2 1.7-2.2-.8.5-1.6.8-2.6 1-1.5-1.6-4.1-.8-4.7 1.3-.1.4-.1.8 0 1.1-3.2-.2-6-1.7-7.9-4-.4.7-.6 1.5-.3 2.3.2.8.7 1.5 1.4 1.9-.6 0-1.2-.2-1.7-.5 0 1.8 1.3 3.4 3.1 3.7-.6.2-1.2.2-1.8.1.5 1.5 2 2.6 3.7 2.7-1.6 1.2-3.5 1.9-5.6 1.9H4c1.8 1.2 4 1.8 6.3 1.8 7.5 0 11.7-6.2 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z" />
-            </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- DONATE SECTION                                               -->
+    <!-- ============================================================ -->
+
+    <section
+      class="bg-midnight px-8 py-[52px] text-white max-lg:px-6 max-sm:px-5 max-sm:py-10"
+      id="donate"
+    >
+      <div class="mx-auto max-w-[760px] text-center">
+        <h2
+          class="text-[clamp(24px,2.8vw,32px)] font-normal leading-none tracking-normal"
+        >
+          <span>Support the</span>
+          <span
+            class="ml-4 inline-block border-b border-release pb-[10px] text-release max-sm:ml-2"
+            >Children's Center</span
+          >
+        </h2>
+        <p
+          class="mt-4 text-[16px] leading-[1.7] text-white/80 max-sm:text-[15px]"
+        >
+          Every gift transforms a life. Partner with us to build a future of
+          hope, dignity, and opportunity for vulnerable children in Kenya and
+          East Africa.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <a
+            class="inline-flex h-[48px] min-w-[160px] items-center justify-center rounded-[31px] bg-release px-[32px] text-[17px] font-medium text-white shadow-listen transition hover:-translate-y-0.5 hover:bg-[#ff642d]"
+            href="#"
+          >
+            Donate Now
           </a>
-          <a href="#" aria-label="Email">
-            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M4 6h16v12H4z" />
-              <path d="m4 7 8 6 8-6" />
+          <a
+            class="inline-flex h-[48px] min-w-[160px] items-center justify-center rounded-[31px] border border-white/30 px-[32px] text-[17px] font-medium text-white transition hover:bg-white/10"
+            href="#"
+          >
+            Learn More
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- FOOTER                                                       -->
+    <!-- ============================================================ -->
+
+    <footer
+      class="bg-midnight px-8 pb-4 pt-[32px] text-white max-lg:px-6 max-sm:px-5"
+    >
+      <div
+        class="mx-auto grid max-w-[1066px] grid-cols-[1.4fr_1fr_.8fr_auto] gap-14 max-lg:grid-cols-2 max-sm:grid-cols-1"
+      >
+        <div>
+          <a class="font-script text-[32px] leading-none text-white" href="#"
+            >DK Foundation</a
+          >
+          <p class="mt-4 text-[13px] font-light text-white/85">
+            Safe Space GALA 2027 — Uniting Communities. Transforming Children's
+            Lives.
+          </p>
+        </div>
+
+        <div>
+          <h3
+            class="mb-8 text-[15px] font-light uppercase tracking-[.04em] text-white"
+          >
+            Links
+          </h3>
+          <nav class="flex flex-col gap-4 text-[15px] font-light text-white/90">
+            <a href="#about">About the Gala</a>
+            <a href="#">DK Foundation</a>
+            <a href="#">Children's Center</a>
+          </nav>
+
+          <div class="mt-8 flex gap-4 text-white">
+            <a href="#" aria-label="Facebook">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v8h4v-8h3l1-4h-4V9c0-.6.4-1 1-1z"
+                />
+              </svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <svg
+                class="h-5 w-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="4" y="4" width="16" height="16" rx="5" />
+                <circle cx="12" cy="12" r="3.5" />
+                <path d="M17.5 6.5h.01" />
+              </svg>
+            </a>
+            <a href="#" aria-label="Twitter">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M22 5.8c-.7.3-1.5.5-2.3.6.8-.5 1.4-1.2 1.7-2.2-.8.5-1.6.8-2.6 1-1.5-1.6-4.1-.8-4.7 1.3-.1.4-.1.8 0 1.1-3.2-.2-6-1.7-7.9-4-.4.7-.6 1.5-.3 2.3.2.8.7 1.5 1.4 1.9-.6 0-1.2-.2-1.7-.5 0 1.8 1.3 3.4 3.1 3.7-.6.2-1.2.2-1.8.1.5 1.5 2 2.6 3.7 2.7-1.6 1.2-3.5 1.9-5.6 1.9H4c1.8 1.2 4 1.8 6.3 1.8 7.5 0 11.7-6.2 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z"
+                />
+              </svg>
+            </a>
+            <a href="#" aria-label="Email">
+              <svg
+                class="h-5 w-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M4 6h16v12H4z" />
+                <path d="m4 7 8 6 8-6" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3
+            class="mb-8 text-[15px] font-light uppercase tracking-[.04em] text-white"
+          >
+            Quick Links
+          </h3>
+          <div class="flex flex-col gap-4 text-[15px] font-light text-white/90">
+            <a href="#">Vision</a>
+            <a href="#">Mission</a>
+            <a href="#">Tickets</a>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-6">
+          <a
+            class="footer-listen-pill text-[#1ed760]"
+            href="https://youtu.be/dhA4KuXPEmw?si=5LyL3iJb8DlJnqYp"
+            target="_blank"
+          >
+            <span class="spotify-icon">
+              <svg
+                class="h-3 w-3"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-width="2.3"
+              >
+                <path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" />
+                <path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" />
+                <path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" />
+              </svg>
+            </span>
+            <span>Spotify</span>
+          </a>
+          <a
+            class="footer-listen-pill text-white"
+            href="https://youtu.be/dhA4KuXPEmw?si=5LyL3iJb8DlJnqYp"
+            target="_blank"
+          >
+            <span class="youtube-icon">
+              <svg class="h-2.5 w-3" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9 7.8v8.4l7.2-4.2L9 7.8z" />
+              </svg>
+            </span>
+            <span>YouTube</span>
+          </a>
+          <a class="footer-listen-pill text-white" href="#">
+            <svg
+              class="h-[26px] w-[22px]"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z"
+              />
             </svg>
+            <span>Apple</span>
           </a>
         </div>
       </div>
 
-      <div>
-        <h3 class="mb-8 text-[15px] font-light uppercase tracking-[.04em] text-white">Quick Links</h3>
-        <div class="flex flex-col gap-4 text-[15px] font-light text-white/90">
-          <a href="#">Vision</a>
-          <a href="#">Mission</a>
-          <a href="#">Tickets</a>
-        </div>
+      <div
+        class="mx-auto mt-[40px] max-w-[1066px] border-t border-white/20 pt-6 text-center text-[15px] font-light text-white/90"
+      >
+        &copy; DK Foundation — Safe Space GALA 2027
       </div>
-
-      <div class="flex flex-col gap-6">
-        <a class="footer-listen-pill text-[#1ed760]" href="https://youtu.be/dhA4KuXPEmw?si=5LyL3iJb8DlJnqYp" target="_blank">
-          <span class="spotify-icon">
-            <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.3">
-              <path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" />
-              <path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" />
-              <path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" />
-            </svg>
-          </span>
-          <span>Spotify</span>
-        </a>
-        <a class="footer-listen-pill text-white" href="https://youtu.be/dhA4KuXPEmw?si=5LyL3iJb8DlJnqYp" target="_blank">
-          <span class="youtube-icon">
-            <svg class="h-2.5 w-3" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M9 7.8v8.4l7.2-4.2L9 7.8z" />
-            </svg>
-          </span>
-          <span>YouTube</span>
-        </a>
-        <a class="footer-listen-pill text-white" href="#">
-          <svg class="h-[26px] w-[22px]" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z" />
-          </svg>
-          <span>Apple</span>
-        </a>
-      </div>
-    </div>
-
-    <div class="mx-auto mt-[40px] max-w-[1066px] border-t border-white/20 pt-6 text-center text-[15px] font-light text-white/90">
-      &copy; DK Foundation — Safe Space GALA 2027
-    </div>
-  </footer>
-
-</body>
+    </footer>
+  </body>
 </html>

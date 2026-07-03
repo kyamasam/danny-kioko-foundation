@@ -1,890 +1,1765 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0" />
-  <title>Danny Kioko | Music &amp; Evangelism</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect"
-        href="https://fonts.googleapis.com" />
-  <link rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Great+Vibes&amp;display=swap"
-        rel="stylesheet" />
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ["Inter", "Arial", "sans-serif"],
-            script: ["Great Vibes", "cursive"],
-          },
-          colors: {
-            release: "#f25a25",
-            ink: "#101010",
-            midnight: "#122a5c",
-          },
-          boxShadow: {
-            listen: "0 13px 20px rgba(4, 4, 4, .24)",
-            navButton: "0 8px 18px rgba(18, 42, 92, .17)",
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Danny Kioko | Music &amp; Evangelism</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Great+Vibes&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "Arial", "sans-serif"],
+              script: ["Great Vibes", "cursive"],
+            },
+            colors: {
+              release: "#f25a25",
+              ink: "#101010",
+              midnight: "#122a5c",
+            },
+            boxShadow: {
+              listen: "0 13px 20px rgba(4, 4, 4, .24)",
+              navButton: "0 8px 18px rgba(18, 42, 92, .17)",
+            },
           },
         },
-      },
-    };
-  </script>
-  <style>
-    .slide {
-      opacity: 0;
-      pointer-events: none;
-      transform: scale(1.018);
-    }
-
-    .slide.is-active {
-      opacity: 1;
-      pointer-events: auto;
-      transform: scale(1);
-    }
-
-    .dot.is-active {
-      width: 57px;
-    }
-
-    .nav-links.is-open {
-      display: flex;
-    }
-
-    .music-pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      min-width: 91px;
-      height: 36px;
-      padding: 0 12px;
-      border: 1px solid #ead8df;
-      border-radius: 9999px;
-      background: #fff;
-      font-size: 12px;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
-      transition: transform .15s ease;
-    }
-
-    .music-pill:hover {
-      transform: translateY(-2px);
-    }
-
-    .youtube-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 20px;
-      height: 14px;
-      border-radius: 4px;
-      background: #f00;
-      color: #fff;
-    }
-
-    .spotify-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 17px;
-      height: 17px;
-      border-radius: 9999px;
-      background: #1ed760;
-      color: #fff;
-    }
-
-    .footer-listen-pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      min-width: 112px;
-      height: 40px;
-      padding: 0 15px;
-      border: 1px solid rgba(99, 145, 225, .8);
-      border-radius: 9999px;
-      background: rgba(255, 255, 255, .02);
-      font-size: 15px;
-      font-weight: 700;
-      transition: background .15s ease, transform .15s ease;
-    }
-
-    .footer-listen-pill:hover {
-      background: rgba(255, 255, 255, .08);
-      transform: translateY(-2px);
-    }
-
-    .hero-cover {
-      position: absolute;
-      overflow: hidden;
-      border-radius: 16px;
-      background: #fff;
-      box-shadow: 0 24px 48px rgba(0, 0, 0, .18);
-      transform-origin: center bottom;
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-
-    .hero-cover:hover {
-      transform: translateY(-10px) rotate(var(--tilt)) scale(1.035);
-      box-shadow: 0 34px 62px rgba(0, 0, 0, .24);
-    }
-
-    .hero-cover img {
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-    }
-
-    .vertical-dots span {
-      display: block;
-      height: 8px;
-      width: 8px;
-      border-radius: 9999px;
-      background: rgba(16, 16, 16, .22);
-    }
-
-    .vertical-dots span:nth-child(2) {
-      background: #f25a25;
-    }
-
-    .mission-lane {
-      display: grid;
-      grid-template-columns: 132px 1fr;
-      gap: 28px;
-      border-top: 1px solid rgba(16, 16, 16, .14);
-      padding-top: 24px;
-    }
-
-    .music-card .relative>img {
-      transition: transform .25s ease;
-    }
-
-    .music-card:hover .relative>img {
-      transform: scale(1.045);
-    }
-
-    @media (max-width: 760px) {
-      .mission-lane {
-        grid-template-columns: 1fr;
-        gap: 10px;
+      };
+    </script>
+    <style>
+      .slide {
+        opacity: 0;
+        pointer-events: none;
+        transform: scale(1.018);
       }
-    }
-  </style>
-</head>
 
-<body class="min-h-screen bg-[#0c0b10] font-sans text-white antialiased">
-  <main class="min-h-screen overflow-hidden border-t-[3px] border-x-2 border-[#111] max-sm:border-x-0">
-    <div
-         class="flex h-[33px] items-center justify-center bg-release px-4 text-center text-[15px] font-medium tracking-[.01em] max-sm:h-[31px] max-sm:text-[13px]">
-      New Song Release: Muvango
-    </div>
+      .slide.is-active {
+        opacity: 1;
+        pointer-events: auto;
+        transform: scale(1);
+      }
 
-    <header class="relative z-10 flex items-center justify-between gap-3.5 bg-[#f5f2ec] py-0 px-3 h-[63px] sm:px-[18px] sm:h-[68px] md:h-[64px] md:gap-6 md:pl-[36px] md:pr-[16px] text-ink shadow-[0_1px_0_rgba(15,15,15,.08)]"
-            aria-label="Primary">
+      .dot.is-active {
+        width: 57px;
+      }
 
-      <a class="text-2xl whitespace-nowrap font-script leading-none text-[#111]"
-         href="index2.html">
-        Danny Kioko
-      </a>
+      .nav-links.is-open {
+        display: flex;
+      }
 
-      <nav class="nav-links absolute left-0 right-0 top-[63px] hidden flex-col items-stretch gap-0 border-t border-[#ececec] bg-[#f5f2ec] px-[18px] pb-[18px] pt-2.5 text-[15px] shadow-[0_18px_32px_rgba(0,0,0,.14)] sm:top-[68px] md:relative md:top-0 md:left-auto md:right-auto md:flex md:flex-row md:items-center md:justify-center md:gap-[clamp(16px,2.5vw,32px)] md:border-0 md:bg-transparent md:p-0 md:text-[clamp(13px,1.1vw,15px)] md:shadow-none md:ml-auto"
-           id="siteNav"
-           aria-label="Main navigation">
-        <a class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
-           href="index2.html">About Me</a>
-        <a class="relative py-3 text-release after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-100 after:bg-release md:py-2"
-           href="music-and-evangelism.html">Music &amp; Evangelism</a>
-        <a class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
-           href="about.html">DKF</a>
-        <a class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
-           href="the-light.html">The Light</a>
-      </nav>
+      .music-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        min-width: 91px;
+        height: 36px;
+        padding: 0 12px;
+        border: 1px solid #ead8df;
+        border-radius: 9999px;
+        background: #fff;
+        font-size: 12px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        transition: transform 0.15s ease;
+      }
 
-      <a class="hidden min-w-[110px] items-center justify-center justify-self-end rounded-full bg-[#111] px-4 text-[14px] font-semibold tracking-wide text-white shadow-navButton transition-opacity hover:opacity-80 sm:inline-flex md:h-[42px] md:min-w-[126px] md:px-[22px]"
-         href="#all-music">
-        Listen Now
-      </a>
+      .music-pill:hover {
+        transform: translateY(-2px);
+      }
 
-      <button class="menu-button inline-flex h-[42px] w-[42px] flex-col items-center justify-center gap-[5px] rounded-[7px] border-0 bg-[#f0f1f5] text-[#121212] md:hidden"
-              type="button"
-              aria-label="Toggle navigation"
-              aria-expanded="false"
-              aria-controls="siteNav">
-        <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
-        <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
-        <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
-      </button>
-    </header>
+      .youtube-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 14px;
+        border-radius: 4px;
+        background: #f00;
+        color: #fff;
+      }
 
-    <section class="relative isolate overflow-hidden bg-[#f8f7f4] px-8 pb-12 pt-14 text-ink max-lg:px-6 max-sm:px-5 max-sm:pb-10 max-sm:pt-10"
-             aria-labelledby="music-evangelism-hero">
-      <div class="vertical-dots absolute right-6 top-1/2 z-20 flex -translate-y-1/2 flex-col gap-8 max-md:hidden"
-           aria-hidden="true">
-        <span></span><span></span><span></span><span></span><span></span><span></span>
+      .spotify-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 17px;
+        height: 17px;
+        border-radius: 9999px;
+        background: #1ed760;
+        color: #fff;
+      }
+
+      .footer-listen-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        min-width: 112px;
+        height: 40px;
+        padding: 0 15px;
+        border: 1px solid rgba(99, 145, 225, 0.8);
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.02);
+        font-size: 15px;
+        font-weight: 700;
+        transition:
+          background 0.15s ease,
+          transform 0.15s ease;
+      }
+
+      .footer-listen-pill:hover {
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateY(-2px);
+      }
+
+      .hero-cover {
+        position: absolute;
+        overflow: hidden;
+        border-radius: 16px;
+        background: #fff;
+        box-shadow: 0 24px 48px rgba(0, 0, 0, 0.18);
+        transform-origin: center bottom;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+
+      .hero-cover:hover {
+        transform: translateY(-10px) rotate(var(--tilt)) scale(1.035);
+        box-shadow: 0 34px 62px rgba(0, 0, 0, 0.24);
+      }
+
+      .hero-cover img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .vertical-dots span {
+        display: block;
+        height: 8px;
+        width: 8px;
+        border-radius: 9999px;
+        background: rgba(16, 16, 16, 0.22);
+      }
+
+      .vertical-dots span:nth-child(2) {
+        background: #f25a25;
+      }
+
+      .mission-lane {
+        display: grid;
+        grid-template-columns: 132px 1fr;
+        gap: 28px;
+        border-top: 1px solid rgba(16, 16, 16, 0.14);
+        padding-top: 24px;
+      }
+
+      .music-card .relative > img {
+        transition: transform 0.25s ease;
+      }
+
+      .music-card:hover .relative > img {
+        transform: scale(1.045);
+      }
+
+      @media (max-width: 760px) {
+        .mission-lane {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen bg-[#0c0b10] font-sans text-white antialiased">
+    <main
+      class="min-h-screen overflow-hidden border-t-[3px] border-x-2 border-[#111] max-sm:border-x-0"
+    >
+      <div
+        class="flex h-[33px] items-center justify-center bg-release px-4 text-center text-[15px] font-medium tracking-[.01em] max-sm:h-[31px] max-sm:text-[13px]"
+      >
+        New Song Release: Muvango
       </div>
 
-      <div class="relative z-10 mx-auto max-w-[1160px] text-center">
-        <p class="mx-auto mb-5 inline-flex items-center gap-3 text-[12px] font-bold uppercase tracking-[.22em] text-release">
-          <span class="h-[3px] w-[42px] bg-release"
-                aria-hidden="true"></span>
-          Gospel music, worship, crusades, mentorship
-        </p>
-        <h1 id="music-evangelism-hero"
-            class="mx-auto max-w-[940px] text-[clamp(44px,7vw,92px)] font-extrabold uppercase leading-[.9] tracking-normal">
-          Music &amp; Evangelism
-        </h1>
-        <p class="mx-auto mt-5 max-w-[670px] text-[17px] leading-[1.65] text-black/70 max-sm:text-[15px]">
-          A ministry using gospel songs, preaching, worship experiences, mentorship, and outreach to awaken faith,
-          restore hope, and point people to Christ.
-        </p>
+      <header
+        class="relative z-10 flex items-center justify-between gap-3.5 bg-[#f5f2ec] py-0 px-3 h-[63px] sm:px-[18px] sm:h-[68px] md:h-[64px] md:gap-6 md:pl-[36px] md:pr-[16px] text-ink shadow-[0_1px_0_rgba(15,15,15,.08)]"
+        aria-label="Primary"
+      >
+        <a
+          class="text-2xl whitespace-nowrap font-script leading-none text-[#111]"
+          href="index.html"
+        >
+          Danny Kioko
+        </a>
 
-        <div class="relative mx-auto mt-10 h-[330px] max-w-[950px] max-lg:h-[290px] max-md:h-[560px] max-sm:h-[510px]"
-             aria-label="Featured Danny Kioko music covers">
-          <figure class="hero-cover left-[2%] top-[54px] h-[202px] w-[245px] -rotate-[12deg] max-lg:w-[210px] max-md:left-[4%] max-md:top-[310px] max-sm:h-[150px] max-sm:w-[168px]"
-                  style="--tilt:-12deg">
-            <img src="its-possible.png"
-                 alt="It's Possible cover art" />
-          </figure>
-          <figure class="hero-cover left-[18%] top-[10px] z-[2] h-[222px] w-[258px] rotate-[8deg] max-lg:left-[15%] max-lg:w-[220px] max-md:left-[2%] max-md:top-[96px] max-sm:h-[155px] max-sm:w-[176px]"
-                  style="--tilt:8deg">
-            <img src="muvango.png"
-                 alt="Muvango cover art" />
-          </figure>
-          <figure class="hero-cover left-1/2 top-0 z-[5] h-[258px] w-[300px] -translate-x-1/2 rotate-[-2deg] max-lg:w-[250px] max-md:top-[10px] max-sm:h-[180px] max-sm:w-[205px]"
-                  style="--tilt:-2deg">
-            <img src="amenikumbuka.png"
-                 alt="Amenikumbuka cover art" />
-          </figure>
-          <figure class="hero-cover right-[17%] top-[34px] z-[3] h-[220px] w-[254px] rotate-[11deg] max-lg:right-[13%] max-lg:w-[218px] max-md:right-[2%] max-md:top-[118px] max-sm:h-[155px] max-sm:w-[176px]"
-                  style="--tilt:11deg">
-            <img src="ni-wewe.avif"
-                 alt="Ni Wewe cover art" />
-          </figure>
-          <figure class="hero-cover right-[2%] top-[76px] h-[198px] w-[238px] -rotate-[9deg] max-lg:w-[205px] max-md:right-[6%] max-md:top-[318px] max-sm:h-[150px] max-sm:w-[168px]"
-                  style="--tilt:-9deg">
-            <img src="ngai-munene.avif"
-                 alt="Ngai Munene cover art" />
-          </figure>
+        <nav
+          class="nav-links absolute left-0 right-0 top-[63px] hidden flex-col items-stretch gap-0 border-t border-[#ececec] bg-[#f5f2ec] px-[18px] pb-[18px] pt-2.5 text-[15px] shadow-[0_18px_32px_rgba(0,0,0,.14)] sm:top-[68px] md:relative md:top-0 md:left-auto md:right-auto md:flex md:flex-row md:items-center md:justify-center md:gap-[clamp(16px,2.5vw,32px)] md:border-0 md:bg-transparent md:p-0 md:text-[clamp(13px,1.1vw,15px)] md:shadow-none md:ml-auto"
+          id="siteNav"
+          aria-label="Main navigation"
+        >
+          <a
+            class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
+            href="index.html"
+            >About DKF</a
+          >
+          <a
+            class="relative py-3 text-release after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-100 after:bg-release md:py-2"
+            href="music-and-evangelism.html"
+            >Music &amp; Evangelism</a
+          >
+          <a
+            class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
+            href="about.html"
+            >DKF</a
+          >
+          <a
+            class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
+            href="the-light.html"
+            >The Light</a
+          >
+        </nav>
+
+        <a
+          class="hidden min-w-[110px] items-center justify-center justify-self-end rounded-full bg-[#111] px-4 text-[14px] font-semibold tracking-wide text-white shadow-navButton transition-opacity hover:opacity-80 sm:inline-flex md:h-[42px] md:min-w-[126px] md:px-[22px]"
+          href="#all-music"
+        >
+          Listen Now
+        </a>
+
+        <button
+          class="menu-button inline-flex h-[42px] w-[42px] flex-col items-center justify-center gap-[5px] rounded-[7px] border-0 bg-[#f0f1f5] text-[#121212] md:hidden"
+          type="button"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+          aria-controls="siteNav"
+        >
+          <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
+          <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
+          <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
+        </button>
+      </header>
+
+      <section
+        class="relative isolate overflow-hidden bg-[#f8f7f4] px-8 pb-12 pt-14 text-ink max-lg:px-6 max-sm:px-5 max-sm:pb-10 max-sm:pt-10"
+        aria-labelledby="music-evangelism-hero"
+      >
+        <div
+          class="vertical-dots absolute right-6 top-1/2 z-20 flex -translate-y-1/2 flex-col gap-8 max-md:hidden"
+          aria-hidden="true"
+        >
+          <span></span><span></span><span></span><span></span><span></span
+          ><span></span>
         </div>
 
-        <div class="mt-2 flex flex-wrap items-center justify-center gap-4">
-          <a class="inline-flex h-[48px] min-w-[156px] items-center justify-center rounded-full bg-release px-7 text-[16px] font-semibold text-white shadow-listen transition hover:-translate-y-0.5 hover:bg-[#ff642d]"
-             href="#all-music">
-            Explore Songs
-          </a>
-          <a class="inline-flex h-[48px] min-w-[182px] items-center justify-center rounded-full border border-black/15 bg-white px-7 text-[16px] font-semibold text-ink transition hover:-translate-y-0.5"
-             href="#evangelism">
-            Ministry Vision
-          </a>
-        </div>
-      </div>
-    </section>
-
-
-
-    <section id="evangelism"
-             class="relative isolate overflow-hidden bg-white px-8 py-[76px] text-ink max-lg:px-6 max-sm:px-5 max-sm:py-14"
-             aria-labelledby="evangelism-title">
-      <div class="pointer-events-none absolute -right-[120px] top-[72px] h-[210px] w-[300px] rotate-[-10deg] rounded-[22px] bg-[#fac844]"
-           aria-hidden="true"></div>
-      <div class="pointer-events-none absolute -left-[110px] bottom-[30px] h-[240px] w-[240px] rounded-full border-[34px] border-release/80"
-           aria-hidden="true"></div>
-
-      <div class="relative z-10 mx-auto grid max-w-[1120px] grid-cols-[.85fr_1.15fr] gap-14 max-lg:grid-cols-1">
-        <div>
-          <p class="mb-4 text-[15px] font-bold uppercase tracking-[.18em] text-release">The mission</p>
-          <h2 id="evangelism-title"
-              class="text-[clamp(38px,5.2vw,68px)] font-normal leading-[.98]">
-            More than music. A call to restoration.
-          </h2>
-          <div class="mt-8 overflow-hidden rounded-[18px] bg-black shadow-[0_22px_48px_rgba(0,0,0,.18)]">
-            <img class="h-[300px] w-full object-cover object-center max-sm:h-[220px]"
-                 src="dan_photo.png"
-                 alt="Evangelist Danny Kioko portrait" />
-          </div>
-        </div>
-
-        <div class="grid content-start gap-7">
-          <p class="text-[18px] leading-[1.75] text-black/75 max-sm:text-[15px]">
-            Danny Kioko uses gospel music not only as entertainment, but as a tool for evangelism, healing,
-            discipleship, and community transformation. Worship opens the room, preaching anchors the message, and
-            outreach carries that message into families and communities.
+        <div class="relative z-10 mx-auto max-w-[1160px] text-center">
+          <p
+            class="mx-auto mb-5 inline-flex items-center gap-3 text-[12px] font-bold uppercase tracking-[.22em] text-release"
+          >
+            <span class="h-[3px] w-[42px] bg-release" aria-hidden="true"></span>
+            Gospel music, worship, crusades, mentorship
+          </p>
+          <h1
+            id="music-evangelism-hero"
+            class="mx-auto max-w-[940px] text-[clamp(44px,7vw,92px)] font-extrabold uppercase leading-[.9] tracking-normal"
+          >
+            Music &amp; Evangelism
+          </h1>
+          <p
+            class="mx-auto mt-5 max-w-[670px] text-[17px] leading-[1.65] text-black/70 max-sm:text-[15px]"
+          >
+            A ministry using gospel songs, preaching, worship experiences,
+            mentorship, and outreach to awaken faith, restore hope, and point
+            people to Christ.
           </p>
 
-          <div class="grid gap-6">
-            <div class="mission-lane">
-              <p class="font-mono text-[34px] font-extrabold leading-none text-release">01</p>
-              <div>
-                <h3 class="text-[22px] font-bold leading-tight text-midnight">Worship that invites faith</h3>
-                <p class="mt-2 text-[15px] leading-[1.65] text-black/68">
-                  Songs like Muvango and It&rsquo;s Possible encourage believers with hope, perseverance, and confidence in
-                  God&rsquo;s power.
-                </p>
-              </div>
-            </div>
+          <div
+            class="relative mx-auto mt-10 h-[330px] max-w-[950px] max-lg:h-[290px] max-md:h-[560px] max-sm:h-[510px]"
+            aria-label="Featured Danny Kioko music covers"
+          >
+            <figure
+              class="hero-cover left-[2%] top-[54px] h-[202px] w-[245px] -rotate-[12deg] max-lg:w-[210px] max-md:left-[4%] max-md:top-[310px] max-sm:h-[150px] max-sm:w-[168px]"
+              style="--tilt: -12deg"
+            >
+              <img src="its-possible.png" alt="It's Possible cover art" />
+            </figure>
+            <figure
+              class="hero-cover left-[18%] top-[10px] z-[2] h-[222px] w-[258px] rotate-[8deg] max-lg:left-[15%] max-lg:w-[220px] max-md:left-[2%] max-md:top-[96px] max-sm:h-[155px] max-sm:w-[176px]"
+              style="--tilt: 8deg"
+            >
+              <img src="muvango.png" alt="Muvango cover art" />
+            </figure>
+            <figure
+              class="hero-cover left-1/2 top-0 z-[5] h-[258px] w-[300px] -translate-x-1/2 rotate-[-2deg] max-lg:w-[250px] max-md:top-[10px] max-sm:h-[180px] max-sm:w-[205px]"
+              style="--tilt: -2deg"
+            >
+              <img src="amenikumbuka.png" alt="Amenikumbuka cover art" />
+            </figure>
+            <figure
+              class="hero-cover right-[17%] top-[34px] z-[3] h-[220px] w-[254px] rotate-[11deg] max-lg:right-[13%] max-lg:w-[218px] max-md:right-[2%] max-md:top-[118px] max-sm:h-[155px] max-sm:w-[176px]"
+              style="--tilt: 11deg"
+            >
+              <img src="ni-wewe.avif" alt="Ni Wewe cover art" />
+            </figure>
+            <figure
+              class="hero-cover right-[2%] top-[76px] h-[198px] w-[238px] -rotate-[9deg] max-lg:w-[205px] max-md:right-[6%] max-md:top-[318px] max-sm:h-[150px] max-sm:w-[168px]"
+              style="--tilt: -9deg"
+            >
+              <img src="ngai-munene.avif" alt="Ngai Munene cover art" />
+            </figure>
+          </div>
 
-            <div class="mission-lane">
-              <p class="font-mono text-[34px] font-extrabold leading-none text-[#d7a400]">02</p>
-              <div>
-                <h3 class="text-[22px] font-bold leading-tight text-midnight">Crusades and worship experiences</h3>
-                <p class="mt-2 text-[15px] leading-[1.65] text-black/68">
-                  Through concerts, international ministry, and evangelistic gatherings, the message centers on Christ,
-                  hope, and restoration.
-                </p>
-              </div>
-            </div>
-
-            <div class="mission-lane">
-              <p class="font-mono text-[34px] font-extrabold leading-none text-[#20d461]">03</p>
-              <div>
-                <h3 class="text-[22px] font-bold leading-tight text-midnight">Youth mentorship and purpose</h3>
-                <p class="mt-2 text-[15px] leading-[1.65] text-black/68">
-                  Faith-based mentorship helps young people discover purpose, grow spiritually, and develop leadership
-                  for their generation.
-                </p>
-              </div>
-            </div>
-
-            <div class="mission-lane">
-              <p class="font-mono text-[34px] font-extrabold leading-none text-release">04</p>
-              <div>
-                <h3 class="text-[22px] font-bold leading-tight text-midnight">Compassion in action</h3>
-                <p class="mt-2 text-[15px] leading-[1.65] text-black/68">
-                  Through DKF, ministry becomes practical care: education, food assistance, shelter support, mentorship,
-                  and spiritual guidance for underprivileged children.
-                </p>
-              </div>
-            </div>
+          <div class="mt-2 flex flex-wrap items-center justify-center gap-4">
+            <a
+              class="inline-flex h-[48px] min-w-[156px] items-center justify-center rounded-full bg-release px-7 text-[16px] font-semibold text-white shadow-listen transition hover:-translate-y-0.5 hover:bg-[#ff642d]"
+              href="#all-music"
+            >
+              Explore Songs
+            </a>
+            <a
+              class="inline-flex h-[48px] min-w-[182px] items-center justify-center rounded-full border border-black/15 bg-white px-7 text-[16px] font-semibold text-ink transition hover:-translate-y-0.5"
+              href="#evangelism"
+            >
+              Ministry Vision
+            </a>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="relative overflow-hidden bg-[#f7f7f7] px-8 pb-[40px] pt-[36px] text-black max-lg:px-6 max-sm:px-5 max-sm:pb-10 max-sm:pt-8"
-             aria-labelledby="my-music">
-      <div class="mx-auto max-w-[1160px]">
-        <h2 id="my-music"
-            class="mb-[24px] text-center text-[clamp(24px,2.8vw,30px)] font-normal leading-none tracking-normal max-sm:mb-6">
-          <span>My</span>
-          <span class="ml-4 inline-block border-b border-release pb-[14px] text-release max-sm:ml-2">Music</span>
-        </h2>
+      <section
+        id="evangelism"
+        class="relative isolate overflow-hidden bg-white px-8 py-[76px] text-ink max-lg:px-6 max-sm:px-5 max-sm:py-14"
+        aria-labelledby="evangelism-title"
+      >
+        <div
+          class="pointer-events-none absolute -right-[120px] top-[72px] h-[210px] w-[300px] rotate-[-10deg] rounded-[22px] bg-[#fac844]"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="pointer-events-none absolute -left-[110px] bottom-[30px] h-[240px] w-[240px] rounded-full border-[34px] border-release/80"
+          aria-hidden="true"
+        ></div>
 
         <div
-             class="grid grid-cols-[minmax(0,420px)_minmax(0,560px)] items-center justify-between gap-[36px] max-lg:grid-cols-1 max-lg:gap-8">
-          <div class="pt-0">
+          class="relative z-10 mx-auto grid max-w-[1120px] grid-cols-[.85fr_1.15fr] gap-14 max-lg:grid-cols-1"
+        >
+          <div>
             <p
-               class="mb-[14px] flex items-center gap-3 text-[14px] font-normal uppercase leading-none tracking-[.02em] text-release">
-              <span class="h-px w-[24px] bg-release"
-                    aria-hidden="true"></span>
-              Latest Release
+              class="mb-4 text-[15px] font-bold uppercase tracking-[.18em] text-release"
+            >
+              The mission
+            </p>
+            <h2
+              id="evangelism-title"
+              class="text-[clamp(38px,5.2vw,68px)] font-normal leading-[.98]"
+            >
+              More than music. A call to restoration.
+            </h2>
+            <div
+              class="mt-8 overflow-hidden rounded-[18px] bg-black shadow-[0_22px_48px_rgba(0,0,0,.18)]"
+            >
+              <img
+                class="h-[300px] w-full object-cover object-center max-sm:h-[220px]"
+                src="dan_photo.png"
+                alt="Evangelist Danny Kioko portrait"
+              />
+            </div>
+          </div>
+
+          <div class="grid content-start gap-7">
+            <p
+              class="text-[18px] leading-[1.75] text-black/75 max-sm:text-[15px]"
+            >
+              Danny Kioko uses gospel music not only as entertainment, but as a
+              tool for evangelism, healing, discipleship, and community
+              transformation. Worship opens the room, preaching anchors the
+              message, and outreach carries that message into families and
+              communities.
             </p>
 
-            <h3
-                class="mb-[28px] text-[clamp(30px,3.5vw,38px)] font-normal leading-none tracking-normal max-lg:mb-8 max-sm:text-[34px]">
-              Muvango
-            </h3>
+            <div class="grid gap-6">
+              <div class="mission-lane">
+                <p
+                  class="font-mono text-[34px] font-extrabold leading-none text-release"
+                >
+                  01
+                </p>
+                <div>
+                  <h3 class="text-[22px] font-bold leading-tight text-midnight">
+                    Worship that invites faith
+                  </h3>
+                  <p class="mt-2 text-[15px] leading-[1.65] text-black/68">
+                    Songs like Muvango and It&rsquo;s Possible encourage
+                    believers with hope, perseverance, and confidence in
+                    God&rsquo;s power.
+                  </p>
+                </div>
+              </div>
 
-            <p class="mb-2 text-[15px] font-normal leading-tight tracking-[.01em]">
-              A Song of hope and Encouragement
-            </p>
-            <p class="mb-[24px] text-[15px] font-normal leading-tight tracking-[.01em] max-sm:mb-6">
-              To all Believers
-            </p>
+              <div class="mission-lane">
+                <p
+                  class="font-mono text-[34px] font-extrabold leading-none text-[#d7a400]"
+                >
+                  02
+                </p>
+                <div>
+                  <h3 class="text-[22px] font-bold leading-tight text-midnight">
+                    Crusades and worship experiences
+                  </h3>
+                  <p class="mt-2 text-[15px] leading-[1.65] text-black/68">
+                    Through concerts, international ministry, and evangelistic
+                    gatherings, the message centers on Christ, hope, and
+                    restoration.
+                  </p>
+                </div>
+              </div>
 
-            <div class="mb-[16px] flex items-center gap-5 max-sm:gap-4">
-              <img class="h-[44px] w-[44px] object-contain"
-                   src="skizalogo.png"
-                   alt="Skiza logo" />
-              <p class="text-[22px] font-extrabold leading-none tracking-[.04em] text-midnight">
-                *240*34#
+              <div class="mission-lane">
+                <p
+                  class="font-mono text-[34px] font-extrabold leading-none text-[#20d461]"
+                >
+                  03
+                </p>
+                <div>
+                  <h3 class="text-[22px] font-bold leading-tight text-midnight">
+                    Youth mentorship and purpose
+                  </h3>
+                  <p class="mt-2 text-[15px] leading-[1.65] text-black/68">
+                    Faith-based mentorship helps young people discover purpose,
+                    grow spiritually, and develop leadership for their
+                    generation.
+                  </p>
+                </div>
+              </div>
+
+              <div class="mission-lane">
+                <p
+                  class="font-mono text-[34px] font-extrabold leading-none text-release"
+                >
+                  04
+                </p>
+                <div>
+                  <h3 class="text-[22px] font-bold leading-tight text-midnight">
+                    Compassion in action
+                  </h3>
+                  <p class="mt-2 text-[15px] leading-[1.65] text-black/68">
+                    Through DKF, ministry becomes practical care: education,
+                    food assistance, shelter support, mentorship, and spiritual
+                    guidance for underprivileged children.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="relative overflow-hidden bg-[#f7f7f7] px-8 pb-[40px] pt-[36px] text-black max-lg:px-6 max-sm:px-5 max-sm:pb-10 max-sm:pt-8"
+        aria-labelledby="my-music"
+      >
+        <div class="mx-auto max-w-[1160px]">
+          <h2
+            id="my-music"
+            class="mb-[24px] text-center text-[clamp(24px,2.8vw,30px)] font-normal leading-none tracking-normal max-sm:mb-6"
+          >
+            <span>My</span>
+            <span
+              class="ml-4 inline-block border-b border-release pb-[14px] text-release max-sm:ml-2"
+              >Music</span
+            >
+          </h2>
+
+          <div
+            class="grid grid-cols-[minmax(0,420px)_minmax(0,560px)] items-center justify-between gap-[36px] max-lg:grid-cols-1 max-lg:gap-8"
+          >
+            <div class="pt-0">
+              <p
+                class="mb-[14px] flex items-center gap-3 text-[14px] font-normal uppercase leading-none tracking-[.02em] text-release"
+              >
+                <span
+                  class="h-px w-[24px] bg-release"
+                  aria-hidden="true"
+                ></span>
+                Latest Release
+              </p>
+
+              <h3
+                class="mb-[28px] text-[clamp(30px,3.5vw,38px)] font-normal leading-none tracking-normal max-lg:mb-8 max-sm:text-[34px]"
+              >
+                Muvango
+              </h3>
+
+              <p
+                class="mb-2 text-[15px] font-normal leading-tight tracking-[.01em]"
+              >
+                A Song of hope and Encouragement
+              </p>
+              <p
+                class="mb-[24px] text-[15px] font-normal leading-tight tracking-[.01em] max-sm:mb-6"
+              >
+                To all Believers
+              </p>
+
+              <div class="mb-[16px] flex items-center gap-5 max-sm:gap-4">
+                <img
+                  class="h-[44px] w-[44px] object-contain"
+                  src="skizalogo.png"
+                  alt="Skiza logo"
+                />
+                <p
+                  class="text-[22px] font-extrabold leading-none tracking-[.04em] text-midnight"
+                >
+                  *240*34#
+                </p>
+              </div>
+
+              <p
+                class="mb-[14px] text-[16px] font-normal uppercase leading-none tracking-[.02em]"
+              >
+                Listen On
+              </p>
+
+              <div class="flex flex-wrap items-center gap-5 max-sm:gap-3">
+                <a
+                  class="inline-flex h-[40px] items-center justify-center gap-1.5 rounded-full border border-[#ead8df] bg-white px-5 text-[17px] font-bold text-[#111] shadow-sm transition hover:-translate-y-0.5 max-sm:h-11 max-sm:px-4"
+                  href="#"
+                  aria-label="Listen on YouTube"
+                >
+                  <span
+                    class="inline-flex h-[19px] w-[27px] items-center justify-center rounded-[5px] bg-[#ff0000] text-white"
+                  >
+                    <svg
+                      class="h-3 w-3.5"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M9 7.8v8.4l7.2-4.2L9 7.8z" />
+                    </svg>
+                  </span>
+                  <span>YouTube</span>
+                </a>
+
+                <a
+                  class="inline-flex h-[40px] items-center justify-center gap-1.5 rounded-full border border-[#ead8df] bg-white px-5 text-[17px] font-bold text-[#16c65f] shadow-sm transition hover:-translate-y-0.5 max-sm:h-11 max-sm:px-4"
+                  href="#"
+                  aria-label="Listen on Spotify"
+                >
+                  <span
+                    class="inline-flex h-[23px] w-[23px] items-center justify-center rounded-full bg-[#1ed760] text-white"
+                  >
+                    <svg
+                      class="h-[15px] w-[15px]"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-width="2"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" />
+                      <path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" />
+                      <path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" />
+                    </svg>
+                  </span>
+                  <span>Spotify</span>
+                </a>
+
+                <a
+                  class="inline-flex h-[40px] items-center justify-center gap-1.5 rounded-full border border-[#ead8df] bg-white px-6 text-[20px] font-normal text-black shadow-sm transition hover:-translate-y-0.5 max-sm:h-11 max-sm:px-5 max-sm:text-lg"
+                  href="#"
+                  aria-label="Listen on Apple Music"
+                >
+                  <svg
+                    class="h-[24px] w-[20px]"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z"
+                    />
+                  </svg>
+                  <span>Apple</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="relative">
+              <div class="overflow-hidden rounded-[17px] bg-[#d9d1ff]">
+                <img
+                  class="h-[290px] w-full object-cover object-center max-lg:h-[260px] max-sm:h-[200px]"
+                  src="muvango.png"
+                  alt="Danny Kioko performing Muvango on stage"
+                />
+              </div>
+
+              <div
+                class="absolute bottom-4 left-1/2 flex h-[88px] w-[92%] -translate-x-1/2 items-center gap-5 rounded-[4px] bg-white px-6 shadow-[0_10px_28px_rgba(0,0,0,.12)] max-sm:h-auto max-sm:flex-wrap max-sm:gap-3 max-sm:px-4 max-sm:py-4"
+              >
+                <div class="flex items-center gap-4 text-black max-sm:gap-3">
+                  <button
+                    class="text-[19px] leading-none"
+                    type="button"
+                    aria-label="Previous track"
+                  >
+                    &#9668;&#9668;
+                  </button>
+                  <button
+                    class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-black text-white"
+                    type="button"
+                    aria-label="Play Muvango"
+                  >
+                    <span class="ml-0.5 text-[15px] leading-none">&#9658;</span>
+                  </button>
+                  <button
+                    class="text-[19px] leading-none"
+                    type="button"
+                    aria-label="Next track"
+                  >
+                    &#9658;&#9658;
+                  </button>
+                </div>
+
+                <div class="min-w-0 flex-1">
+                  <div
+                    class="mb-2 grid grid-cols-[1fr_auto_auto] items-center gap-8 text-[11px] text-black max-sm:grid-cols-1 max-sm:gap-1"
+                  >
+                    <span></span>
+                    <span>Muvango</span>
+                    <span class="text-right"
+                      >EV Danny Kioko<br />1:4 / 4.52</span
+                    >
+                  </div>
+                  <div class="h-1 w-full bg-[#ddd]">
+                    <div class="h-full w-[43%] bg-release"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="bg-white px-8 pb-[40px] pt-4 text-black max-lg:px-6 max-sm:px-5"
+        aria-labelledby="all-music"
+      >
+        <div class="mx-auto max-w-[1120px]">
+          <h2
+            id="all-music"
+            class="mb-[36px] text-center text-[clamp(24px,2.8vw,32px)] font-normal leading-none tracking-normal max-sm:mb-8"
+          >
+            <span>All</span>
+            <span
+              class="ml-4 inline-block border-b border-release pb-[10px] text-release max-sm:ml-2"
+              >Music</span
+            >
+          </h2>
+
+          <div
+            class="grid grid-cols-3 gap-x-10 gap-y-[48px] max-lg:grid-cols-2 max-lg:gap-x-8 max-sm:grid-cols-1 max-sm:gap-y-10"
+          >
+            <article class="music-card">
+              <h3
+                class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight"
+              >
+                It&rsquo;s Possible
+              </h3>
+              <div class="relative overflow-hidden rounded-[16px]">
+                <img
+                  class="h-[170px] w-full object-cover object-center"
+                  src="its-possible.png"
+                  alt="Danny Kioko performing It's Possible"
+                />
+                <div
+                  class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm"
+                >
+                  <button
+                    class="text-xs leading-none"
+                    type="button"
+                    aria-label="Previous It's Possible"
+                  >
+                    &#9668;&#9668;
+                  </button>
+                  <button
+                    class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
+                    type="button"
+                    aria-label="Play It's Possible"
+                  >
+                    <span class="ml-px text-[9px] leading-none">&#9658;</span>
+                  </button>
+                  <button
+                    class="text-xs leading-none"
+                    type="button"
+                    aria-label="Next It's Possible"
+                  >
+                    &#9658;&#9658;
+                  </button>
+                </div>
+              </div>
+              <div class="mt-[18px] flex items-center justify-between gap-3">
+                <a
+                  class="music-pill text-[#111]"
+                  href="#"
+                  aria-label="Listen to It's Possible on YouTube"
+                >
+                  <span class="youtube-icon"
+                    ><svg
+                      class="h-2.5 w-3"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M9 7.8v8.4l7.2-4.2L9 7.8z" /></svg
+                  ></span>
+                  <span>YouTube</span>
+                </a>
+                <a
+                  class="music-pill font-bold text-[#16c65f]"
+                  href="#"
+                  aria-label="Listen to It's Possible on Spotify"
+                >
+                  <span class="spotify-icon"
+                    ><svg
+                      class="h-3 w-3"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-width="2"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" />
+                      <path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" />
+                      <path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" /></svg
+                  ></span>
+                  <span>Spotify</span>
+                </a>
+                <a
+                  class="music-pill text-black"
+                  href="#"
+                  aria-label="Listen to It's Possible on Apple Music"
+                >
+                  <svg
+                    class="h-[20px] w-[17px]"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z"
+                    />
+                  </svg>
+                  <span>Apple</span>
+                </a>
+              </div>
+              <div class="mt-[18px] flex items-center justify-center gap-8">
+                <img
+                  class="h-[43px] w-[43px] object-contain"
+                  src="skizalogo.png"
+                  alt="Skiza logo"
+                />
+                <p
+                  class="text-[25px] font-extrabold leading-none tracking-[.04em] text-midnight"
+                >
+                  *240*34#
+                </p>
+              </div>
+            </article>
+
+            <article class="music-card">
+              <h3
+                class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight"
+              >
+                Muvango
+              </h3>
+              <div class="relative overflow-hidden rounded-[16px]">
+                <img
+                  class="h-[170px] w-full object-cover object-center"
+                  src="muvango.png"
+                  alt="Danny Kioko performing Muvango"
+                />
+                <div
+                  class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm"
+                >
+                  <button
+                    class="text-xs leading-none"
+                    type="button"
+                    aria-label="Previous Muvango"
+                  >
+                    &#9668;&#9668;
+                  </button>
+                  <button
+                    class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
+                    type="button"
+                    aria-label="Play Muvango"
+                  >
+                    <span class="ml-px text-[9px] leading-none">&#9658;</span>
+                  </button>
+                  <button
+                    class="text-xs leading-none"
+                    type="button"
+                    aria-label="Next Muvango"
+                  >
+                    &#9658;&#9658;
+                  </button>
+                </div>
+              </div>
+              <div class="mt-[18px] flex items-center justify-between gap-3">
+                <a
+                  class="music-pill text-[#111]"
+                  href="#"
+                  aria-label="Listen to Muvango on YouTube"
+                  ><span class="youtube-icon"
+                    ><svg
+                      class="h-2.5 w-3"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M9 7.8v8.4l7.2-4.2L9 7.8z" /></svg></span
+                  ><span>YouTube</span></a
+                >
+                <a
+                  class="music-pill font-bold text-[#16c65f]"
+                  href="#"
+                  aria-label="Listen to Muvango on Spotify"
+                  ><span class="spotify-icon"
+                    ><svg
+                      class="h-3 w-3"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-width="2"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" />
+                      <path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" />
+                      <path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" /></svg></span
+                  ><span>Spotify</span></a
+                >
+                <a
+                  class="music-pill text-black"
+                  href="#"
+                  aria-label="Listen to Muvango on Apple Music"
+                  ><svg
+                    class="h-[20px] w-[17px]"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z"
+                    /></svg
+                  ><span>Apple</span></a
+                >
+              </div>
+              <div class="mt-[18px] flex items-center justify-center gap-8">
+                <img
+                  class="h-[30px] w-[30px] object-contain"
+                  src="skizalogo.png"
+                  alt="Skiza logo"
+                />
+                <p
+                  class="text-[17px] font-extrabold leading-none tracking-[.04em] text-midnight"
+                >
+                  *240*34#
+                </p>
+              </div>
+            </article>
+
+            <article class="music-card">
+              <h3
+                class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight"
+              >
+                Ni Wewe
+              </h3>
+              <div class="relative overflow-hidden rounded-[16px]">
+                <img
+                  class="h-[170px] w-full object-cover object-center"
+                  src="ni-wewe.avif"
+                  alt="Danny Kioko Ni Wewe music video"
+                />
+                <div
+                  class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm"
+                >
+                  <button
+                    class="text-xs leading-none"
+                    type="button"
+                    aria-label="Previous Ni Wewe"
+                  >
+                    &#9668;&#9668;
+                  </button>
+                  <button
+                    class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
+                    type="button"
+                    aria-label="Play Ni Wewe"
+                  >
+                    <span class="ml-px text-[9px] leading-none">&#9658;</span>
+                  </button>
+                  <button
+                    class="text-xs leading-none"
+                    type="button"
+                    aria-label="Next Ni Wewe"
+                  >
+                    &#9658;&#9658;
+                  </button>
+                </div>
+              </div>
+              <div class="mt-[18px] flex items-center justify-between gap-3">
+                <a
+                  class="music-pill text-[#111]"
+                  href="#"
+                  aria-label="Listen to Ni Wewe on YouTube"
+                  ><span class="youtube-icon"
+                    ><svg
+                      class="h-2.5 w-3"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M9 7.8v8.4l7.2-4.2L9 7.8z" /></svg></span
+                  ><span>YouTube</span></a
+                >
+                <a
+                  class="music-pill font-bold text-[#16c65f]"
+                  href="#"
+                  aria-label="Listen to Ni Wewe on Spotify"
+                  ><span class="spotify-icon"
+                    ><svg
+                      class="h-3 w-3"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-width="2"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" />
+                      <path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" />
+                      <path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" /></svg></span
+                  ><span>Spotify</span></a
+                >
+                <a
+                  class="music-pill text-black"
+                  href="#"
+                  aria-label="Listen to Ni Wewe on Apple Music"
+                  ><svg
+                    class="h-[20px] w-[17px]"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z"
+                    /></svg
+                  ><span>Apple</span></a
+                >
+              </div>
+              <div class="mt-[18px] flex items-center justify-center gap-8">
+                <img
+                  class="h-[30px] w-[30px] object-contain"
+                  src="skizalogo.png"
+                  alt="Skiza logo"
+                />
+                <p
+                  class="text-[17px] font-extrabold leading-none tracking-[.04em] text-midnight"
+                >
+                  *240*34#
+                </p>
+              </div>
+            </article>
+
+            <article class="music-card">
+              <h3
+                class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight"
+              >
+                Uinuliwe
+              </h3>
+              <div class="relative overflow-hidden rounded-[16px]">
+                <img
+                  class="h-[170px] w-full object-cover object-center"
+                  src="uinuliwe.png"
+                  alt="Danny Kioko performing Uinuliwe"
+                />
+                <div
+                  class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm"
+                >
+                  <button
+                    class="text-xs leading-none"
+                    type="button"
+                    aria-label="Previous Uinuliwe"
+                  >
+                    &#9668;&#9668;
+                  </button>
+                  <button
+                    class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
+                    type="button"
+                    aria-label="Play Uinuliwe"
+                  >
+                    <span class="ml-px text-[9px] leading-none">&#9658;</span>
+                  </button>
+                  <button
+                    class="text-xs leading-none"
+                    type="button"
+                    aria-label="Next Uinuliwe"
+                  >
+                    &#9658;&#9658;
+                  </button>
+                </div>
+              </div>
+              <div class="mt-[18px] flex items-center justify-between gap-3">
+                <a
+                  class="music-pill text-[#111]"
+                  href="#"
+                  aria-label="Listen to Uinuliwe on YouTube"
+                  ><span class="youtube-icon"
+                    ><svg
+                      class="h-2.5 w-3"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M9 7.8v8.4l7.2-4.2L9 7.8z" /></svg></span
+                  ><span>YouTube</span></a
+                >
+                <a
+                  class="music-pill font-bold text-[#16c65f]"
+                  href="#"
+                  aria-label="Listen to Uinuliwe on Spotify"
+                  ><span class="spotify-icon"
+                    ><svg
+                      class="h-3 w-3"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-width="2"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" />
+                      <path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" />
+                      <path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" /></svg></span
+                  ><span>Spotify</span></a
+                >
+                <a
+                  class="music-pill text-black"
+                  href="#"
+                  aria-label="Listen to Uinuliwe on Apple Music"
+                  ><svg
+                    class="h-[20px] w-[17px]"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z"
+                    /></svg
+                  ><span>Apple</span></a
+                >
+              </div>
+              <div class="mt-[18px] flex items-center justify-center gap-8">
+                <img
+                  class="h-[30px] w-[30px] object-contain"
+                  src="skizalogo.png"
+                  alt="Skiza logo"
+                />
+                <p
+                  class="text-[17px] font-extrabold leading-none tracking-[.04em] text-midnight"
+                >
+                  *240*34#
+                </p>
+              </div>
+            </article>
+
+            <article class="music-card">
+              <h3
+                class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight"
+              >
+                Neema
+              </h3>
+              <div class="relative overflow-hidden rounded-[16px]">
+                <img
+                  class="h-[170px] w-full object-cover object-center"
+                  src="neema.avif"
+                  alt="Danny Kioko Neema music video"
+                />
+                <div
+                  class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm"
+                >
+                  <button
+                    class="text-xs leading-none"
+                    type="button"
+                    aria-label="Previous Neema"
+                  >
+                    &#9668;&#9668;
+                  </button>
+                  <button
+                    class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
+                    type="button"
+                    aria-label="Play Neema"
+                  >
+                    <span class="ml-px text-[9px] leading-none">&#9658;</span>
+                  </button>
+                  <button
+                    class="text-xs leading-none"
+                    type="button"
+                    aria-label="Next Neema"
+                  >
+                    &#9658;&#9658;
+                  </button>
+                </div>
+              </div>
+              <div class="mt-[18px] flex items-center justify-between gap-3">
+                <a
+                  class="music-pill text-[#111]"
+                  href="#"
+                  aria-label="Listen to Neema on YouTube"
+                  ><span class="youtube-icon"
+                    ><svg
+                      class="h-2.5 w-3"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M9 7.8v8.4l7.2-4.2L9 7.8z" /></svg></span
+                  ><span>YouTube</span></a
+                >
+                <a
+                  class="music-pill font-bold text-[#16c65f]"
+                  href="#"
+                  aria-label="Listen to Neema on Spotify"
+                  ><span class="spotify-icon"
+                    ><svg
+                      class="h-3 w-3"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-width="2"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" />
+                      <path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" />
+                      <path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" /></svg></span
+                  ><span>Spotify</span></a
+                >
+                <a
+                  class="music-pill text-black"
+                  href="#"
+                  aria-label="Listen to Neema on Apple Music"
+                  ><svg
+                    class="h-[20px] w-[17px]"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z"
+                    /></svg
+                  ><span>Apple</span></a
+                >
+              </div>
+              <div class="mt-[18px] flex items-center justify-center gap-8">
+                <img
+                  class="h-[30px] w-[30px] object-contain"
+                  src="skizalogo.png"
+                  alt="Skiza logo"
+                />
+                <p
+                  class="text-[17px] font-extrabold leading-none tracking-[.04em] text-midnight"
+                >
+                  *240*34#
+                </p>
+              </div>
+            </article>
+
+            <article class="music-card">
+              <h3
+                class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight"
+              >
+                Ithoka
+              </h3>
+              <div class="relative overflow-hidden rounded-[16px]">
+                <img
+                  class="h-[170px] w-full object-cover object-center"
+                  src="ithoka.avif"
+                  alt="Danny Kioko Ithoka music video"
+                />
+                <div
+                  class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm"
+                >
+                  <button
+                    class="text-xs leading-none"
+                    type="button"
+                    aria-label="Previous Ithoka"
+                  >
+                    &#9668;&#9668;
+                  </button>
+                  <button
+                    class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
+                    type="button"
+                    aria-label="Play Ithoka"
+                  >
+                    <span class="ml-px text-[9px] leading-none">&#9658;</span>
+                  </button>
+                  <button
+                    class="text-xs leading-none"
+                    type="button"
+                    aria-label="Next Ithoka"
+                  >
+                    &#9658;&#9658;
+                  </button>
+                </div>
+              </div>
+              <div class="mt-[18px] flex items-center justify-between gap-3">
+                <a
+                  class="music-pill text-[#111]"
+                  href="#"
+                  aria-label="Listen to Ithoka on YouTube"
+                  ><span class="youtube-icon"
+                    ><svg
+                      class="h-2.5 w-3"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M9 7.8v8.4l7.2-4.2L9 7.8z" /></svg></span
+                  ><span>YouTube</span></a
+                >
+                <a
+                  class="music-pill font-bold text-[#16c65f]"
+                  href="#"
+                  aria-label="Listen to Ithoka on Spotify"
+                  ><span class="spotify-icon"
+                    ><svg
+                      class="h-3 w-3"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-width="2"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" />
+                      <path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" />
+                      <path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" /></svg></span
+                  ><span>Spotify</span></a
+                >
+                <a
+                  class="music-pill text-black"
+                  href="#"
+                  aria-label="Listen to Ithoka on Apple Music"
+                  ><svg
+                    class="h-[20px] w-[17px]"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z"
+                    /></svg
+                  ><span>Apple</span></a
+                >
+              </div>
+              <div class="mt-[18px] flex items-center justify-center gap-8">
+                <img
+                  class="h-[30px] w-[30px] object-contain"
+                  src="skizalogo.png"
+                  alt="Skiza logo"
+                />
+                <p
+                  class="text-[17px] font-extrabold leading-none tracking-[.04em] text-midnight"
+                >
+                  *240*34#
+                </p>
+              </div>
+            </article>
+
+            <article class="music-card">
+              <h3
+                class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight"
+              >
+                Amenikumbuka
+              </h3>
+              <div class="relative overflow-hidden rounded-[16px]">
+                <img
+                  class="h-[170px] w-full object-cover object-center"
+                  src="amenikumbuka.png"
+                  alt="Danny Kioko Amenikumbuka music video"
+                />
+                <div
+                  class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm"
+                >
+                  <button
+                    class="text-xs leading-none"
+                    type="button"
+                    aria-label="Previous Amenikumbuka"
+                  >
+                    &#9668;&#9668;
+                  </button>
+                  <button
+                    class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
+                    type="button"
+                    aria-label="Play Amenikumbuka"
+                  >
+                    <span class="ml-px text-[9px] leading-none">&#9658;</span>
+                  </button>
+                  <button
+                    class="text-xs leading-none"
+                    type="button"
+                    aria-label="Next Amenikumbuka"
+                  >
+                    &#9658;&#9658;
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="music-card">
+              <h3
+                class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight"
+              >
+                Ngai Munene
+              </h3>
+              <div class="relative overflow-hidden rounded-[16px]">
+                <img
+                  class="h-[170px] w-full object-cover object-center"
+                  src="ngai-munene.avif"
+                  alt="Danny Kioko Ngai Munene music video"
+                />
+                <div
+                  class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm"
+                >
+                  <button
+                    class="text-xs leading-none"
+                    type="button"
+                    aria-label="Previous Ngai Munene"
+                  >
+                    &#9668;&#9668;
+                  </button>
+                  <button
+                    class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
+                    type="button"
+                    aria-label="Play Ngai Munene"
+                  >
+                    <span class="ml-px text-[9px] leading-none">&#9658;</span>
+                  </button>
+                  <button
+                    class="text-xs leading-none"
+                    type="button"
+                    aria-label="Next Ngai Munene"
+                  >
+                    &#9658;&#9658;
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="music-card">
+              <h3
+                class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight"
+              >
+                Nina Yesu
+              </h3>
+              <div class="relative overflow-hidden rounded-[16px]">
+                <img
+                  class="h-[170px] w-full object-cover object-center"
+                  src="nina-yesu.avif"
+                  alt="Danny Kioko Nina Yesu music video"
+                />
+                <div
+                  class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm"
+                >
+                  <button
+                    class="text-xs leading-none"
+                    type="button"
+                    aria-label="Previous Nina Yesu"
+                  >
+                    &#9668;&#9668;
+                  </button>
+                  <button
+                    class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
+                    type="button"
+                    aria-label="Play Nina Yesu"
+                  >
+                    <span class="ml-px text-[9px] leading-none">&#9658;</span>
+                  </button>
+                  <button
+                    class="text-xs leading-none"
+                    type="button"
+                    aria-label="Next Nina Yesu"
+                  >
+                    &#9658;&#9658;
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="music-card">
+              <h3
+                class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight"
+              >
+                Merry Christmas
+              </h3>
+              <div class="relative overflow-hidden rounded-[16px]">
+                <img
+                  class="h-[170px] w-full object-cover object-center"
+                  src="merry-christmass.avif"
+                  alt="Danny Kioko Merry Christmas music video"
+                />
+                <div
+                  class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm"
+                >
+                  <button
+                    class="text-xs leading-none"
+                    type="button"
+                    aria-label="Previous Merry Christmas"
+                  >
+                    &#9668;&#9668;
+                  </button>
+                  <button
+                    class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
+                    type="button"
+                    aria-label="Play Merry Christmas"
+                  >
+                    <span class="ml-px text-[9px] leading-none">&#9658;</span>
+                  </button>
+                  <button
+                    class="text-xs leading-none"
+                    type="button"
+                    aria-label="Next Merry Christmas"
+                  >
+                    &#9658;&#9658;
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="relative isolate overflow-hidden bg-[#f7f7f7] px-8 pb-10 pt-8 text-black max-lg:px-6 max-sm:px-5"
+        aria-labelledby="dkf-title"
+      >
+        <div
+          class="pointer-events-none absolute -left-[70px] -top-[150px] h-[250px] w-[190px] rounded-[0_0_90px_90px] bg-[#fac844] max-sm:-left-[110px]"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="pointer-events-none absolute -left-[54px] top-[76px] h-[170px] w-[132px] rounded-full bg-[#fac844] max-sm:-left-[92px]"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="pointer-events-none absolute left-1/2 top-[-290px] -z-0 h-[980px] w-[1060px] -translate-x-1/2 rounded-[48%] border border-[#fac844]/80"
+          aria-hidden="true"
+        ></div>
+
+        <div class="relative z-10 mx-auto max-w-[980px] text-center">
+          <h2
+            id="dkf-title"
+            class="mb-6 text-[clamp(24px,2.8vw,34px)] font-normal leading-none tracking-normal"
+          >
+            <span>Danny Kioko</span>
+            <span
+              class="ml-3 inline-block border-b border-release pb-3 text-release max-sm:ml-0 max-sm:mt-2"
+              >Foundation</span
+            >
+          </h2>
+
+          <p
+            class="mx-auto max-w-[850px] text-[15px] font-normal leading-[1.62] tracking-[.01em] max-sm:text-[14px]"
+          >
+            The Danny Kioko Foundation (DKF) is a non-profit organization
+            dedicated to improving the quality of life for underprivileged
+            children and vulnerable communities in Kenya and beyond. The
+            foundation was born out of the many cases of need that Danny
+            encountered during his evangelism missions across Kenya and East
+            Africa.
+          </p>
+
+          <div
+            class="mt-[24px] grid grid-cols-3 gap-[32px] max-lg:gap-4 max-md:grid-cols-1"
+          >
+            <div class="rounded-[12px] bg-[#fac844] px-6 py-4 text-white">
+              <p
+                class="font-mono text-[40px] leading-none tracking-[-.04em] max-lg:text-[34px]"
+              >
+                1,000
+              </p>
+              <p class="mt-3 text-[14px] font-bold leading-none">
+                Children Reached
               </p>
             </div>
-
-            <p class="mb-[14px] text-[16px] font-normal uppercase leading-none tracking-[.02em]">
-              Listen On
-            </p>
-
-            <div class="flex flex-wrap items-center gap-5 max-sm:gap-3">
-              <a class="inline-flex h-[40px] items-center justify-center gap-1.5 rounded-full border border-[#ead8df] bg-white px-5 text-[17px] font-bold text-[#111] shadow-sm transition hover:-translate-y-0.5 max-sm:h-11 max-sm:px-4"
-                 href="#"
-                 aria-label="Listen on YouTube">
-                <span
-                      class="inline-flex h-[19px] w-[27px] items-center justify-center rounded-[5px] bg-[#ff0000] text-white">
-                  <svg class="h-3 w-3.5"
-                       viewBox="0 0 24 24"
-                       fill="currentColor"
-                       aria-hidden="true">
-                    <path d="M9 7.8v8.4l7.2-4.2L9 7.8z" />
-                  </svg>
-                </span>
-                <span>YouTube</span>
-              </a>
-
-              <a class="inline-flex h-[40px] items-center justify-center gap-1.5 rounded-full border border-[#ead8df] bg-white px-5 text-[17px] font-bold text-[#16c65f] shadow-sm transition hover:-translate-y-0.5 max-sm:h-11 max-sm:px-4"
-                 href="#"
-                 aria-label="Listen on Spotify">
-                <span
-                      class="inline-flex h-[23px] w-[23px] items-center justify-center rounded-full bg-[#1ed760] text-white">
-                  <svg class="h-[15px] w-[15px]"
-                       viewBox="0 0 24 24"
-                       fill="none"
-                       stroke="currentColor"
-                       stroke-linecap="round"
-                       stroke-width="2"
-                       aria-hidden="true">
-                    <path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" />
-                    <path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" />
-                    <path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" />
-                  </svg>
-                </span>
-                <span>Spotify</span>
-              </a>
-
-              <a class="inline-flex h-[40px] items-center justify-center gap-1.5 rounded-full border border-[#ead8df] bg-white px-6 text-[20px] font-normal text-black shadow-sm transition hover:-translate-y-0.5 max-sm:h-11 max-sm:px-5 max-sm:text-lg"
-                 href="#"
-                 aria-label="Listen on Apple Music">
-                <svg class="h-[24px] w-[20px]"
-                     viewBox="0 0 24 24"
-                     fill="currentColor"
-                     aria-hidden="true">
-                  <path
-                        d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z" />
-                </svg>
-                <span>Apple</span>
-              </a>
+            <div class="rounded-[12px] bg-midnight px-6 py-4 text-white">
+              <p
+                class="font-mono text-[40px] leading-none tracking-[-.04em] max-lg:text-[34px]"
+              >
+                $ 50k
+              </p>
+              <p class="mt-3 text-[14px] font-bold leading-none">Raised</p>
+            </div>
+            <div class="rounded-[12px] bg-[#20d461] px-6 py-4 text-white">
+              <p
+                class="font-mono text-[40px] leading-none tracking-[-.04em] max-lg:text-[34px]"
+              >
+                $ 50k
+              </p>
+              <p class="mt-3 text-[14px] font-bold leading-none">Raised</p>
             </div>
           </div>
 
-          <div class="relative">
-            <div class="overflow-hidden rounded-[17px] bg-[#d9d1ff]">
-              <img class="h-[290px] w-full object-cover object-center max-lg:h-[260px] max-sm:h-[200px]"
-                   src="muvango.png"
-                   alt="Danny Kioko performing Muvango on stage" />
-            </div>
-
-            <div
-                 class="absolute bottom-4 left-1/2 flex h-[88px] w-[92%] -translate-x-1/2 items-center gap-5 rounded-[4px] bg-white px-6 shadow-[0_10px_28px_rgba(0,0,0,.12)] max-sm:h-auto max-sm:flex-wrap max-sm:gap-3 max-sm:px-4 max-sm:py-4">
-              <div class="flex items-center gap-4 text-black max-sm:gap-3">
-                <button class="text-[19px] leading-none"
-                        type="button"
-                        aria-label="Previous track">&#9668;&#9668;</button>
-                <button class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-black text-white"
-                        type="button"
-                        aria-label="Play Muvango">
-                  <span class="ml-0.5 text-[15px] leading-none">&#9658;</span>
-                </button>
-                <button class="text-[19px] leading-none"
-                        type="button"
-                        aria-label="Next track">&#9658;&#9658;</button>
-              </div>
-
-              <div class="min-w-0 flex-1">
-                <div
-                     class="mb-2 grid grid-cols-[1fr_auto_auto] items-center gap-8 text-[11px] text-black max-sm:grid-cols-1 max-sm:gap-1">
-                  <span></span>
-                  <span>Muvango</span>
-                  <span class="text-right">EV Danny Kioko<br />1:4 / 4.52</span>
-                </div>
-                <div class="h-1 w-full bg-[#ddd]">
-                  <div class="h-full w-[43%] bg-release"></div>
-                </div>
+          <div
+            class="mt-[24px] flex items-end justify-between gap-6 text-left max-md:flex-col max-md:items-stretch"
+          >
+            <div>
+              <p class="mb-3 text-[17px] font-normal leading-none">
+                Support Us Via:
+              </p>
+              <div class="flex flex-wrap gap-5">
+                <a
+                  class="inline-flex h-[44px] min-w-[132px] items-center justify-center rounded-full border border-[#ead8df] bg-white px-6 text-[20px] font-extrabold text-[#34b557]"
+                  href="#"
+                  aria-label="Support via M-PESA"
+                >
+                  <img
+                    class="h-[25px] w-auto object-contain"
+                    src="m-pesa-logo.png"
+                    alt="M-PESA"
+                  />
+                </a>
+                <a
+                  class="inline-flex h-[44px] min-w-[132px] items-center justify-center gap-2 rounded-full border border-[#ead8df] bg-white px-6 text-[15px] font-extrabold text-[#1d4f99]"
+                  href="#"
+                  aria-label="Support via PayPal"
+                >
+                  <img
+                    class="h-[22px] w-auto object-contain"
+                    src="paypal-logo.png"
+                    alt="PayPal"
+                  />
+                </a>
               </div>
             </div>
+
+            <a
+              class="inline-flex h-[42px] min-w-[220px] items-center justify-center gap-4 rounded-full bg-midnight px-8 text-[16px] font-normal text-white transition hover:bg-[#173770] max-sm:min-w-0 max-sm:w-full"
+              href="about.html"
+            >
+              More About DKF
+              <span class="text-[22px]" aria-hidden="true">&rarr;</span>
+            </a>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="bg-white px-8 pb-[40px] pt-4 text-black max-lg:px-6 max-sm:px-5" aria-labelledby="all-music">
-      <div class="mx-auto max-w-[1120px]">
-        <h2 id="all-music"
-            class="mb-[36px] text-center text-[clamp(24px,2.8vw,32px)] font-normal leading-none tracking-normal max-sm:mb-8">
-          <span>All</span>
-          <span class="ml-4 inline-block border-b border-release pb-[10px] text-release max-sm:ml-2">Music</span>
-        </h2>
-
-        <div class="grid grid-cols-3 gap-x-10 gap-y-[48px] max-lg:grid-cols-2 max-lg:gap-x-8 max-sm:grid-cols-1 max-sm:gap-y-10">
-          <article class="music-card">
-            <h3 class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight">It&rsquo;s Possible</h3>
-            <div class="relative overflow-hidden rounded-[16px]">
-              <img class="h-[170px] w-full object-cover object-center" src="its-possible.png"
-                   alt="Danny Kioko performing It's Possible" />
-              <div class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm">
-                <button class="text-xs leading-none" type="button" aria-label="Previous It's Possible">&#9668;&#9668;</button>
-                <button class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
-                        type="button" aria-label="Play It's Possible">
-                  <span class="ml-px text-[9px] leading-none">&#9658;</span>
-                </button>
-                <button class="text-xs leading-none" type="button" aria-label="Next It's Possible">&#9658;&#9658;</button>
-              </div>
-            </div>
-            <div class="mt-[18px] flex items-center justify-between gap-3">
-              <a class="music-pill text-[#111]" href="#" aria-label="Listen to It's Possible on YouTube">
-                <span class="youtube-icon"><svg class="h-2.5 w-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 7.8v8.4l7.2-4.2L9 7.8z" /></svg></span>
-                <span>YouTube</span>
-              </a>
-              <a class="music-pill font-bold text-[#16c65f]" href="#" aria-label="Listen to It's Possible on Spotify">
-                <span class="spotify-icon"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" aria-hidden="true"><path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" /><path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" /><path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" /></svg></span>
-                <span>Spotify</span>
-              </a>
-              <a class="music-pill text-black" href="#" aria-label="Listen to It's Possible on Apple Music">
-                <svg class="h-[20px] w-[17px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z" /></svg>
-                <span>Apple</span>
-              </a>
-            </div>
-            <div class="mt-[18px] flex items-center justify-center gap-8">
-              <img class="h-[43px] w-[43px] object-contain" src="skizalogo.png" alt="Skiza logo" />
-              <p class="text-[25px] font-extrabold leading-none tracking-[.04em] text-midnight">*240*34#</p>
-            </div>
-          </article>
-
-          <article class="music-card">
-            <h3 class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight">Muvango</h3>
-            <div class="relative overflow-hidden rounded-[16px]">
-              <img class="h-[170px] w-full object-cover object-center" src="muvango.png"
-                   alt="Danny Kioko performing Muvango" />
-              <div class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm">
-                <button class="text-xs leading-none" type="button" aria-label="Previous Muvango">&#9668;&#9668;</button>
-                <button class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
-                        type="button" aria-label="Play Muvango"><span class="ml-px text-[9px] leading-none">&#9658;</span></button>
-                <button class="text-xs leading-none" type="button" aria-label="Next Muvango">&#9658;&#9658;</button>
-              </div>
-            </div>
-            <div class="mt-[18px] flex items-center justify-between gap-3">
-              <a class="music-pill text-[#111]" href="#" aria-label="Listen to Muvango on YouTube"><span class="youtube-icon"><svg class="h-2.5 w-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 7.8v8.4l7.2-4.2L9 7.8z" /></svg></span><span>YouTube</span></a>
-              <a class="music-pill font-bold text-[#16c65f]" href="#" aria-label="Listen to Muvango on Spotify"><span class="spotify-icon"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" aria-hidden="true"><path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" /><path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" /><path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" /></svg></span><span>Spotify</span></a>
-              <a class="music-pill text-black" href="#" aria-label="Listen to Muvango on Apple Music"><svg class="h-[20px] w-[17px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z" /></svg><span>Apple</span></a>
-            </div>
-            <div class="mt-[18px] flex items-center justify-center gap-8"><img class="h-[30px] w-[30px] object-contain" src="skizalogo.png" alt="Skiza logo" /><p class="text-[17px] font-extrabold leading-none tracking-[.04em] text-midnight">*240*34#</p></div>
-          </article>
-
-          <article class="music-card">
-            <h3 class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight">Ni Wewe</h3>
-            <div class="relative overflow-hidden rounded-[16px]">
-              <img class="h-[170px] w-full object-cover object-center" src="ni-wewe.avif"
-                   alt="Danny Kioko Ni Wewe music video" />
-              <div class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm">
-                <button class="text-xs leading-none" type="button" aria-label="Previous Ni Wewe">&#9668;&#9668;</button>
-                <button class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
-                        type="button" aria-label="Play Ni Wewe"><span class="ml-px text-[9px] leading-none">&#9658;</span></button>
-                <button class="text-xs leading-none" type="button" aria-label="Next Ni Wewe">&#9658;&#9658;</button>
-              </div>
-            </div>
-            <div class="mt-[18px] flex items-center justify-between gap-3">
-              <a class="music-pill text-[#111]" href="#" aria-label="Listen to Ni Wewe on YouTube"><span class="youtube-icon"><svg class="h-2.5 w-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 7.8v8.4l7.2-4.2L9 7.8z" /></svg></span><span>YouTube</span></a>
-              <a class="music-pill font-bold text-[#16c65f]" href="#" aria-label="Listen to Ni Wewe on Spotify"><span class="spotify-icon"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" aria-hidden="true"><path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" /><path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" /><path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" /></svg></span><span>Spotify</span></a>
-              <a class="music-pill text-black" href="#" aria-label="Listen to Ni Wewe on Apple Music"><svg class="h-[20px] w-[17px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z" /></svg><span>Apple</span></a>
-            </div>
-            <div class="mt-[18px] flex items-center justify-center gap-8"><img class="h-[30px] w-[30px] object-contain" src="skizalogo.png" alt="Skiza logo" /><p class="text-[17px] font-extrabold leading-none tracking-[.04em] text-midnight">*240*34#</p></div>
-          </article>
-
-          <article class="music-card">
-            <h3 class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight">Uinuliwe</h3>
-            <div class="relative overflow-hidden rounded-[16px]">
-              <img class="h-[170px] w-full object-cover object-center" src="uinuliwe.png"
-                   alt="Danny Kioko performing Uinuliwe" />
-              <div class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm">
-                <button class="text-xs leading-none" type="button" aria-label="Previous Uinuliwe">&#9668;&#9668;</button>
-                <button class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
-                        type="button" aria-label="Play Uinuliwe"><span class="ml-px text-[9px] leading-none">&#9658;</span></button>
-                <button class="text-xs leading-none" type="button" aria-label="Next Uinuliwe">&#9658;&#9658;</button>
-              </div>
-            </div>
-            <div class="mt-[18px] flex items-center justify-between gap-3">
-              <a class="music-pill text-[#111]" href="#" aria-label="Listen to Uinuliwe on YouTube"><span class="youtube-icon"><svg class="h-2.5 w-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 7.8v8.4l7.2-4.2L9 7.8z" /></svg></span><span>YouTube</span></a>
-              <a class="music-pill font-bold text-[#16c65f]" href="#" aria-label="Listen to Uinuliwe on Spotify"><span class="spotify-icon"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" aria-hidden="true"><path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" /><path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" /><path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" /></svg></span><span>Spotify</span></a>
-              <a class="music-pill text-black" href="#" aria-label="Listen to Uinuliwe on Apple Music"><svg class="h-[20px] w-[17px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z" /></svg><span>Apple</span></a>
-            </div>
-            <div class="mt-[18px] flex items-center justify-center gap-8"><img class="h-[30px] w-[30px] object-contain" src="skizalogo.png" alt="Skiza logo" /><p class="text-[17px] font-extrabold leading-none tracking-[.04em] text-midnight">*240*34#</p></div>
-          </article>
-
-          <article class="music-card">
-            <h3 class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight">Neema</h3>
-            <div class="relative overflow-hidden rounded-[16px]">
-              <img class="h-[170px] w-full object-cover object-center" src="neema.avif"
-                   alt="Danny Kioko Neema music video" />
-              <div class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm">
-                <button class="text-xs leading-none" type="button" aria-label="Previous Neema">&#9668;&#9668;</button>
-                <button class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
-                        type="button" aria-label="Play Neema"><span class="ml-px text-[9px] leading-none">&#9658;</span></button>
-                <button class="text-xs leading-none" type="button" aria-label="Next Neema">&#9658;&#9658;</button>
-              </div>
-            </div>
-            <div class="mt-[18px] flex items-center justify-between gap-3">
-              <a class="music-pill text-[#111]" href="#" aria-label="Listen to Neema on YouTube"><span class="youtube-icon"><svg class="h-2.5 w-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 7.8v8.4l7.2-4.2L9 7.8z" /></svg></span><span>YouTube</span></a>
-              <a class="music-pill font-bold text-[#16c65f]" href="#" aria-label="Listen to Neema on Spotify"><span class="spotify-icon"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" aria-hidden="true"><path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" /><path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" /><path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" /></svg></span><span>Spotify</span></a>
-              <a class="music-pill text-black" href="#" aria-label="Listen to Neema on Apple Music"><svg class="h-[20px] w-[17px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z" /></svg><span>Apple</span></a>
-            </div>
-            <div class="mt-[18px] flex items-center justify-center gap-8"><img class="h-[30px] w-[30px] object-contain" src="skizalogo.png" alt="Skiza logo" /><p class="text-[17px] font-extrabold leading-none tracking-[.04em] text-midnight">*240*34#</p></div>
-          </article>
-
-          <article class="music-card">
-            <h3 class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight">Ithoka</h3>
-            <div class="relative overflow-hidden rounded-[16px]">
-              <img class="h-[170px] w-full object-cover object-center" src="ithoka.avif"
-                   alt="Danny Kioko Ithoka music video" />
-              <div class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm">
-                <button class="text-xs leading-none" type="button" aria-label="Previous Ithoka">&#9668;&#9668;</button>
-                <button class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
-                        type="button" aria-label="Play Ithoka"><span class="ml-px text-[9px] leading-none">&#9658;</span></button>
-                <button class="text-xs leading-none" type="button" aria-label="Next Ithoka">&#9658;&#9658;</button>
-              </div>
-            </div>
-            <div class="mt-[18px] flex items-center justify-between gap-3">
-              <a class="music-pill text-[#111]" href="#" aria-label="Listen to Ithoka on YouTube"><span class="youtube-icon"><svg class="h-2.5 w-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 7.8v8.4l7.2-4.2L9 7.8z" /></svg></span><span>YouTube</span></a>
-              <a class="music-pill font-bold text-[#16c65f]" href="#" aria-label="Listen to Ithoka on Spotify"><span class="spotify-icon"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" aria-hidden="true"><path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" /><path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" /><path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" /></svg></span><span>Spotify</span></a>
-              <a class="music-pill text-black" href="#" aria-label="Listen to Ithoka on Apple Music"><svg class="h-[20px] w-[17px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z" /></svg><span>Apple</span></a>
-            </div>
-            <div class="mt-[18px] flex items-center justify-center gap-8"><img class="h-[30px] w-[30px] object-contain" src="skizalogo.png" alt="Skiza logo" /><p class="text-[17px] font-extrabold leading-none tracking-[.04em] text-midnight">*240*34#</p></div>
-          </article>
-
-          <article class="music-card">
-            <h3 class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight">
-              Amenikumbuka</h3>
-            <div class="relative overflow-hidden rounded-[16px]">
-              <img class="h-[170px] w-full object-cover object-center" src="amenikumbuka.png"
-                   alt="Danny Kioko Amenikumbuka music video" />
-              <div class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm">
-                <button class="text-xs leading-none" type="button" aria-label="Previous Amenikumbuka">&#9668;&#9668;</button>
-                <button class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
-                        type="button" aria-label="Play Amenikumbuka"><span class="ml-px text-[9px] leading-none">&#9658;</span></button>
-                <button class="text-xs leading-none" type="button" aria-label="Next Amenikumbuka">&#9658;&#9658;</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="music-card">
-            <h3 class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight">Ngai Munene</h3>
-            <div class="relative overflow-hidden rounded-[16px]">
-              <img class="h-[170px] w-full object-cover object-center" src="ngai-munene.avif"
-                   alt="Danny Kioko Ngai Munene music video" />
-              <div class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm">
-                <button class="text-xs leading-none" type="button" aria-label="Previous Ngai Munene">&#9668;&#9668;</button>
-                <button class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
-                        type="button" aria-label="Play Ngai Munene"><span class="ml-px text-[9px] leading-none">&#9658;</span></button>
-                <button class="text-xs leading-none" type="button" aria-label="Next Ngai Munene">&#9658;&#9658;</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="music-card">
-            <h3 class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight">Nina Yesu</h3>
-            <div class="relative overflow-hidden rounded-[16px]">
-              <img class="h-[170px] w-full object-cover object-center" src="nina-yesu.avif"
-                   alt="Danny Kioko Nina Yesu music video" />
-              <div class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm">
-                <button class="text-xs leading-none" type="button" aria-label="Previous Nina Yesu">&#9668;&#9668;</button>
-                <button class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
-                        type="button" aria-label="Play Nina Yesu"><span class="ml-px text-[9px] leading-none">&#9658;</span></button>
-                <button class="text-xs leading-none" type="button" aria-label="Next Nina Yesu">&#9658;&#9658;</button>
-              </div>
-            </div>
-          </article>
-
-          <article class="music-card">
-            <h3 class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight">
-              Merry Christmas</h3>
-            <div class="relative overflow-hidden rounded-[16px]">
-              <img class="h-[170px] w-full object-cover object-center" src="merry-christmass.avif"
-                   alt="Danny Kioko Merry Christmas music video" />
-              <div class="absolute bottom-2 left-1/2 flex h-[45px] w-[94px] -translate-x-1/2 items-center justify-center gap-3 rounded bg-white/90 text-black shadow-sm">
-                <button class="text-xs leading-none" type="button" aria-label="Previous Merry Christmas">&#9668;&#9668;</button>
-                <button class="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-black text-white"
-                        type="button" aria-label="Play Merry Christmas"><span class="ml-px text-[9px] leading-none">&#9658;</span></button>
-                <button class="text-xs leading-none" type="button" aria-label="Next Merry Christmas">&#9658;&#9658;</button>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="relative isolate overflow-hidden bg-[#f7f7f7] px-8 pb-10 pt-8 text-black max-lg:px-6 max-sm:px-5"
-             aria-labelledby="dkf-title">
-      <div class="pointer-events-none absolute -left-[70px] -top-[150px] h-[250px] w-[190px] rounded-[0_0_90px_90px] bg-[#fac844] max-sm:-left-[110px]"
-           aria-hidden="true"></div>
-      <div class="pointer-events-none absolute -left-[54px] top-[76px] h-[170px] w-[132px] rounded-full bg-[#fac844] max-sm:-left-[92px]"
-           aria-hidden="true"></div>
-      <div class="pointer-events-none absolute left-1/2 top-[-290px] -z-0 h-[980px] w-[1060px] -translate-x-1/2 rounded-[48%] border border-[#fac844]/80"
-           aria-hidden="true"></div>
-
-      <div class="relative z-10 mx-auto max-w-[980px] text-center">
-        <h2 id="dkf-title"
-            class="mb-6 text-[clamp(24px,2.8vw,34px)] font-normal leading-none tracking-normal">
-          <span>Danny Kioko</span>
-          <span class="ml-3 inline-block border-b border-release pb-3 text-release max-sm:ml-0 max-sm:mt-2">Foundation</span>
-        </h2>
-
-        <p class="mx-auto max-w-[850px] text-[15px] font-normal leading-[1.62] tracking-[.01em] max-sm:text-[14px]">
-          The Danny Kioko Foundation (DKF) is a non-profit organization dedicated to improving the quality of life for
-          underprivileged children and vulnerable communities in Kenya and beyond. The foundation was born out of the
-          many cases of need that Danny encountered during his evangelism missions across Kenya and East Africa.
-        </p>
-
-        <div class="mt-[24px] grid grid-cols-3 gap-[32px] max-lg:gap-4 max-md:grid-cols-1">
-          <div class="rounded-[12px] bg-[#fac844] px-6 py-4 text-white">
-            <p class="font-mono text-[40px] leading-none tracking-[-.04em] max-lg:text-[34px]">1,000</p>
-            <p class="mt-3 text-[14px] font-bold leading-none">Children Reached</p>
-          </div>
-          <div class="rounded-[12px] bg-midnight px-6 py-4 text-white">
-            <p class="font-mono text-[40px] leading-none tracking-[-.04em] max-lg:text-[34px]">$ 50k</p>
-            <p class="mt-3 text-[14px] font-bold leading-none">Raised</p>
-          </div>
-          <div class="rounded-[12px] bg-[#20d461] px-6 py-4 text-white">
-            <p class="font-mono text-[40px] leading-none tracking-[-.04em] max-lg:text-[34px]">$ 50k</p>
-            <p class="mt-3 text-[14px] font-bold leading-none">Raised</p>
-          </div>
-        </div>
-
-        <div class="mt-[24px] flex items-end justify-between gap-6 text-left max-md:flex-col max-md:items-stretch">
+      <footer
+        class="bg-midnight px-8 pb-4 pt-[32px] text-white max-lg:px-6 max-sm:px-5"
+      >
+        <div
+          class="mx-auto grid max-w-[1066px] grid-cols-[1.4fr_1fr_.8fr_auto] gap-14 max-lg:grid-cols-2 max-sm:grid-cols-1"
+        >
           <div>
-            <p class="mb-3 text-[17px] font-normal leading-none">Support Us Via:</p>
-            <div class="flex flex-wrap gap-5">
-              <a class="inline-flex h-[44px] min-w-[132px] items-center justify-center rounded-full border border-[#ead8df] bg-white px-6 text-[20px] font-extrabold text-[#34b557]"
-                 href="#" aria-label="Support via M-PESA">
-                <img class="h-[25px] w-auto object-contain"
-                     src="m-pesa-logo.png"
-                     alt="M-PESA" />
+            <a
+              class="font-script text-[32px] leading-none text-white"
+              href="index.html"
+              >Danny Kioko</a
+            >
+            <p class="mt-4 text-[13px] font-light text-white/85">
+              The Worship Minister and Evangelist
+            </p>
+          </div>
+
+          <div>
+            <h3
+              class="mb-8 text-[15px] font-light uppercase tracking-[.04em] text-white"
+            >
+              Links
+            </h3>
+            <nav
+              class="flex flex-col gap-4 text-[15px] font-light text-white/90"
+            >
+              <a href="music-and-evangelism.html">Music</a>
+              <a href="about.html">Danny Kioko Foundation</a>
+              <a href="the-light.html">The Light</a>
+            </nav>
+
+            <div class="mt-8 flex gap-4 text-white">
+              <a href="#" aria-label="Facebook">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v8h4v-8h3l1-4h-4V9c0-.6.4-1 1-1z"
+                  />
+                </svg>
               </a>
-              <a class="inline-flex h-[44px] min-w-[132px] items-center justify-center gap-2 rounded-full border border-[#ead8df] bg-white px-6 text-[15px] font-extrabold text-[#1d4f99]"
-                 href="#" aria-label="Support via PayPal">
-                <img class="h-[22px] w-auto object-contain"
-                     src="paypal-logo.png"
-                     alt="PayPal" />
+              <a href="#" aria-label="Instagram">
+                <svg
+                  class="h-5 w-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="4" y="4" width="16" height="16" rx="5" />
+                  <circle cx="12" cy="12" r="3.5" />
+                  <path d="M17.5 6.5h.01" />
+                </svg>
+              </a>
+              <a href="#" aria-label="Twitter">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M22 5.8c-.7.3-1.5.5-2.3.6.8-.5 1.4-1.2 1.7-2.2-.8.5-1.6.8-2.6 1-1.5-1.6-4.1-.8-4.7 1.3-.1.4-.1.8 0 1.1-3.2-.2-6-1.7-7.9-4-.4.7-.6 1.5-.3 2.3.2.8.7 1.5 1.4 1.9-.6 0-1.2-.2-1.7-.5 0 1.8 1.3 3.4 3.1 3.7-.6.2-1.2.2-1.8.1.5 1.5 2 2.6 3.7 2.7-1.6 1.2-3.5 1.9-5.6 1.9H4c1.8 1.2 4 1.8 6.3 1.8 7.5 0 11.7-6.2 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z"
+                  />
+                </svg>
+              </a>
+              <a href="#" aria-label="Email">
+                <svg
+                  class="h-5 w-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M4 6h16v12H4z" />
+                  <path d="m4 7 8 6 8-6" />
+                </svg>
               </a>
             </div>
           </div>
 
-          <a class="inline-flex h-[42px] min-w-[220px] items-center justify-center gap-4 rounded-full bg-midnight px-8 text-[16px] font-normal text-white transition hover:bg-[#173770] max-sm:min-w-0 max-sm:w-full"
-             href="about.html">
-            More About DKF
-            <span class="text-[22px]" aria-hidden="true">&rarr;</span>
-          </a>
-        </div>
-      </div>
-    </section>
+          <div>
+            <h3
+              class="mb-8 text-[15px] font-light uppercase tracking-[.04em] text-white"
+            >
+              Songs
+            </h3>
+            <div
+              class="flex flex-col gap-4 text-[15px] font-light text-white/90"
+            >
+              <a href="#all-music">Muvango</a>
+              <a href="#all-music">It's Possible</a>
+              <a href="#all-music">Ni Wewe</a>
+            </div>
+          </div>
 
-    <footer class="bg-midnight px-8 pb-4 pt-[32px] text-white max-lg:px-6 max-sm:px-5">
-      <div class="mx-auto grid max-w-[1066px] grid-cols-[1.4fr_1fr_.8fr_auto] gap-14 max-lg:grid-cols-2 max-sm:grid-cols-1">
-        <div>
-          <a class="font-script text-[32px] leading-none text-white" href="index2.html">Danny Kioko</a>
-          <p class="mt-4 text-[13px] font-light text-white/85">The Worship Minister and Evangelist</p>
-        </div>
-
-        <div>
-          <h3 class="mb-8 text-[15px] font-light uppercase tracking-[.04em] text-white">Links</h3>
-          <nav class="flex flex-col gap-4 text-[15px] font-light text-white/90">
-            <a href="music-and-evangelism.html">Music</a>
-            <a href="about.html">Danny Kioko Foundation</a>
-            <a href="the-light.html">The Light</a>
-          </nav>
-
-          <div class="mt-8 flex gap-4 text-white">
-            <a href="#" aria-label="Facebook">
-              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v8h4v-8h3l1-4h-4V9c0-.6.4-1 1-1z" /></svg>
-            </a>
-            <a href="#" aria-label="Instagram">
-              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="5" /><circle cx="12" cy="12" r="3.5" /><path d="M17.5 6.5h.01" /></svg>
-            </a>
-            <a href="#" aria-label="Twitter">
-              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.8c-.7.3-1.5.5-2.3.6.8-.5 1.4-1.2 1.7-2.2-.8.5-1.6.8-2.6 1-1.5-1.6-4.1-.8-4.7 1.3-.1.4-.1.8 0 1.1-3.2-.2-6-1.7-7.9-4-.4.7-.6 1.5-.3 2.3.2.8.7 1.5 1.4 1.9-.6 0-1.2-.2-1.7-.5 0 1.8 1.3 3.4 3.1 3.7-.6.2-1.2.2-1.8.1.5 1.5 2 2.6 3.7 2.7-1.6 1.2-3.5 1.9-5.6 1.9H4c1.8 1.2 4 1.8 6.3 1.8 7.5 0 11.7-6.2 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z" /></svg>
-            </a>
-            <a href="#" aria-label="Email">
-              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16v12H4z" /><path d="m4 7 8 6 8-6" /></svg>
-            </a>
+          <div class="flex flex-col gap-6">
+            <a class="footer-listen-pill text-[#1ed760]" href="#"
+              ><span class="spotify-icon"
+                ><svg
+                  class="h-3 w-3"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-width="2"
+                >
+                  <path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" />
+                  <path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" />
+                  <path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" /></svg></span
+              ><span>Spotify</span></a
+            >
+            <a class="footer-listen-pill text-white" href="#"
+              ><span class="youtube-icon"
+                ><svg class="h-2.5 w-3" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 7.8v8.4l7.2-4.2L9 7.8z" /></svg></span
+              ><span>YouTube</span></a
+            >
+            <a class="footer-listen-pill text-white" href="#"
+              ><svg
+                class="h-[26px] w-[22px]"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z"
+                /></svg
+              ><span>Apple</span></a
+            >
           </div>
         </div>
 
-        <div>
-          <h3 class="mb-8 text-[15px] font-light uppercase tracking-[.04em] text-white">Songs</h3>
-          <div class="flex flex-col gap-4 text-[15px] font-light text-white/90">
-            <a href="#all-music">Muvango</a>
-            <a href="#all-music">It's Possible</a>
-            <a href="#all-music">Ni Wewe</a>
-          </div>
+        <div
+          class="mx-auto mt-[40px] max-w-[1066px] border-t border-white/20 pt-6 text-center text-[15px] font-light text-white/90"
+        >
+          &copy; Dan Kioko -2026
         </div>
+      </footer>
+    </main>
 
-        <div class="flex flex-col gap-6">
-          <a class="footer-listen-pill text-[#1ed760]" href="#"><span class="spotify-icon"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" /><path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" /><path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" /></svg></span><span>Spotify</span></a>
-          <a class="footer-listen-pill text-white" href="#"><span class="youtube-icon"><svg class="h-2.5 w-3" viewBox="0 0 24 24" fill="currentColor"><path d="M9 7.8v8.4l7.2-4.2L9 7.8z" /></svg></span><span>YouTube</span></a>
-          <a class="footer-listen-pill text-white" href="#"><svg class="h-[26px] w-[22px]" viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z" /></svg><span>Apple</span></a>
-        </div>
-      </div>
+    <script>
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const dotsWrap = document.querySelector(".slider-dots");
+      const prevButton = document.querySelector(".slider-arrow.prev");
+      const nextButton = document.querySelector(".slider-arrow.next");
+      const menuButton = document.querySelector(".menu-button");
+      const siteNav = document.querySelector("#siteNav");
+      const dotBaseClass =
+        "dot h-[13px] w-[13px] rounded-full border-0 bg-white opacity-95 transition-[width,opacity]";
+      let activeIndex = 0;
+      let autoplayId;
 
-      <div class="mx-auto mt-[40px] max-w-[1066px] border-t border-white/20 pt-6 text-center text-[15px] font-light text-white/90">
-        &copy; Dan Kioko -2026
-      </div>
-    </footer>
-  </main>
+      slides.forEach((_, index) => {
+        const dot = document.createElement("button");
+        dot.className =
+          index === 0 ? `${dotBaseClass} is-active` : dotBaseClass;
+        dot.type = "button";
+        dot.setAttribute("aria-label", `Go to slide ${index + 1}`);
+        dot.addEventListener("click", () => {
+          showSlide(index);
+          restartAutoplay();
+        });
+        dotsWrap.appendChild(dot);
+      });
 
-  <script>
-    const slides = Array.from(document.querySelectorAll(".slide"));
-    const dotsWrap = document.querySelector(".slider-dots");
-    const prevButton = document.querySelector(".slider-arrow.prev");
-    const nextButton = document.querySelector(".slider-arrow.next");
-    const menuButton = document.querySelector(".menu-button");
-    const siteNav = document.querySelector("#siteNav");
-    const dotBaseClass = "dot h-[13px] w-[13px] rounded-full border-0 bg-white opacity-95 transition-[width,opacity]";
-    let activeIndex = 0;
-    let autoplayId;
+      const dots = Array.from(document.querySelectorAll(".dot"));
 
-    slides.forEach((_, index) => {
-      const dot = document.createElement("button");
-      dot.className = index === 0 ? `${dotBaseClass} is-active` : dotBaseClass;
-      dot.type = "button";
-      dot.setAttribute("aria-label", `Go to slide ${index + 1}`);
-      dot.addEventListener("click", () => {
-        showSlide(index);
+      function showSlide(index) {
+        activeIndex = (index + slides.length) % slides.length;
+
+        slides.forEach((slide, slideIndex) => {
+          slide.classList.toggle("is-active", slideIndex === activeIndex);
+        });
+
+        dots.forEach((dot, dotIndex) => {
+          dot.classList.toggle("is-active", dotIndex === activeIndex);
+        });
+      }
+
+      function nextSlide() {
+        showSlide(activeIndex + 1);
+      }
+
+      function restartAutoplay() {
+        window.clearInterval(autoplayId);
+        autoplayId = window.setInterval(nextSlide, 6500);
+      }
+
+      prevButton.addEventListener("click", () => {
+        showSlide(activeIndex - 1);
         restartAutoplay();
       });
-      dotsWrap.appendChild(dot);
-    });
 
-    const dots = Array.from(document.querySelectorAll(".dot"));
-
-    function showSlide(index) {
-      activeIndex = (index + slides.length) % slides.length;
-
-      slides.forEach((slide, slideIndex) => {
-        slide.classList.toggle("is-active", slideIndex === activeIndex);
+      nextButton.addEventListener("click", () => {
+        nextSlide();
+        restartAutoplay();
       });
 
-      dots.forEach((dot, dotIndex) => {
-        dot.classList.toggle("is-active", dotIndex === activeIndex);
+      menuButton.addEventListener("click", () => {
+        const isOpen = siteNav.classList.toggle("is-open");
+        menuButton.setAttribute("aria-expanded", String(isOpen));
       });
-    }
 
-    function nextSlide() {
-      showSlide(activeIndex + 1);
-    }
-
-    function restartAutoplay() {
-      window.clearInterval(autoplayId);
-      autoplayId = window.setInterval(nextSlide, 6500);
-    }
-
-    prevButton.addEventListener("click", () => {
-      showSlide(activeIndex - 1);
       restartAutoplay();
-    });
-
-    nextButton.addEventListener("click", () => {
-      nextSlide();
-      restartAutoplay();
-    });
-
-    menuButton.addEventListener("click", () => {
-      const isOpen = siteNav.classList.toggle("is-open");
-      menuButton.setAttribute("aria-expanded", String(isOpen));
-    });
-
-    restartAutoplay();
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>

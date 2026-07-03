@@ -3,109 +3,183 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Safe Space — DK Foundation</title>
-
-    <!-- Tailwind CSS via CDN -->
+    <title>Danny Kioko | Music & Evangelism</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "Arial", "sans-serif"],
+              script: ["Great Vibes", "cursive"],
+            },
+            colors: {
+              release: "#f25a25",
+              ink: "#101010",
+              midnight: "#122a5c",
+            },
+            boxShadow: {
+              listen: "0 13px 20px rgba(4, 4, 4, .24)",
+              navButton: "0 8px 18px rgba(18, 42, 92, .17)",
+            },
+          },
+        },
+      };
+    </script>
     <style>
-      /* Custom theme colors */
-      :root {
-        --release: #e84c2b;
-        --midnight: #0c1a36;
+      /* Navigation mobile toggle */
+      .nav-links.is-open {
+        display: flex;
       }
 
-      .bg-release {
-        background-color: #e84c2b;
-      }
-      .bg-midnight {
-        background-color: #0c1a36;
-      }
-      .text-release {
-        color: #e84c2b;
-      }
-      .text-midnight {
-        color: #0c1a36;
-      }
-      .border-release {
-        border-color: #e84c2b;
-      }
-
-      /* Slide transitions */
-      .slide {
-        opacity: 0;
-        transform: scale(1.02);
-        pointer-events: none;
-        transition:
-          opacity 0.7s ease,
-          transform 0.7s ease;
-      }
-      .slide.is-active {
-        opacity: 1;
-        transform: scale(1);
-        pointer-events: auto;
-      }
-
-      /* Shadow for buttons */
-      .shadow-listen {
-        box-shadow: 0 8px 24px rgba(232, 76, 43, 0.35);
-      }
-
-      /* Footer pill styles */
-      .footer-listen-pill {
+      /* Music pill styles (used in music cards) */
+      .music-pill {
         display: inline-flex;
         align-items: center;
-        gap: 10px;
+        justify-content: center;
+        gap: 4px;
+        min-width: 91px;
+        height: 36px;
+        padding: 0 12px;
+        border: 1px solid #ead8df;
         border-radius: 9999px;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        padding: 8px 18px 8px 12px;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 1.4;
-        text-decoration: none;
-        transition:
-          background 0.2s,
-          border-color 0.2s;
+        background: #fff;
+        font-size: 12px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        transition: transform 0.15s ease;
       }
-      .footer-listen-pill:hover {
-        background: rgba(255, 255, 255, 0.05);
-        border-color: rgba(255, 255, 255, 0.3);
+      .music-pill:hover {
+        transform: translateY(-2px);
       }
+
       .youtube-icon {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 24px;
-        height: 24px;
+        width: 20px;
+        height: 14px;
         border-radius: 4px;
-        background: #ff0000;
-        color: white;
+        background: #f00;
+        color: #fff;
       }
+
       .spotify-icon {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
+        width: 17px;
+        height: 17px;
+        border-radius: 9999px;
         background: #1ed760;
-        color: white;
+        color: #fff;
       }
-      .font-script {
-        font-family: "Georgia", serif;
+
+      .footer-listen-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        min-width: 112px;
+        height: 40px;
+        padding: 0 15px;
+        border: 1px solid rgba(99, 145, 225, 0.8);
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.02);
+        font-size: 15px;
+        font-weight: 700;
+        transition:
+          background 0.15s ease,
+          transform 0.15s ease;
+      }
+      .footer-listen-pill:hover {
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateY(-2px);
+      }
+
+      /* Hero cover tilt effect */
+      .hero-cover {
+        position: absolute;
+        overflow: hidden;
+        border-radius: 16px;
+        background: #fff;
+        box-shadow: 0 24px 48px rgba(0, 0, 0, 0.18);
+        transform-origin: center bottom;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+      .hero-cover:hover {
+        transform: translateY(-10px) rotate(var(--tilt)) scale(1.035);
+        box-shadow: 0 34px 62px rgba(0, 0, 0, 0.24);
+      }
+      .hero-cover img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .vertical-dots span {
+        display: block;
+        height: 8px;
+        width: 8px;
+        border-radius: 9999px;
+        background: rgba(16, 16, 16, 0.22);
+      }
+      .vertical-dots span:nth-child(2) {
+        background: #f25a25;
+      }
+
+      .mission-lane {
+        display: grid;
+        grid-template-columns: 132px 1fr;
+        gap: 28px;
+        border-top: 1px solid rgba(16, 16, 16, 0.14);
+        padding-top: 24px;
+      }
+
+      .music-card .relative > img {
+        transition: transform 0.25s ease;
+      }
+      .music-card:hover .relative > img {
+        transform: scale(1.045);
+      }
+
+      @media (max-width: 760px) {
+        .mission-lane {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
       }
     </style>
   </head>
+  <body class="min-h-screen bg-[#0c0b10] font-sans text-white antialiased">
+    <main class="min-h-screen overflow-hidden">
+      <!-- ===== HEADER from second page ===== -->
+      <div
+        class="flex h-[33px] items-center justify-center bg-release px-4 text-center text-[15px] font-medium tracking-[.01em] max-sm:h-[31px] max-sm:text-[13px]"
+      >
+        New Campaign Ongoing -
+        <a
+          href="#"
+          class="ml-1 underline underline-offset-2 hover:no-underline hover:text-white/80 transition-colors"
+        >
+          Donate now
+        </a>
+      </div>
 
-  <body>
-
-    <header
+      <header
         class="relative z-10 flex items-center justify-between gap-3.5 bg-[#f5f2ec] py-0 px-3 h-[63px] sm:px-[18px] sm:h-[68px] md:h-[64px] md:gap-6 md:pl-[36px] md:pr-[16px] text-ink shadow-[0_1px_0_rgba(15,15,15,.08)]"
         aria-label="Primary"
       >
         <a
           class="text-2xl whitespace-nowrap font-script leading-none text-[#111]"
-          href="index2.html"
+          href="index.html"
         >
           Danny Kioko
         </a>
@@ -115,32 +189,33 @@
           id="siteNav"
           aria-label="Main navigation"
         >
-          
-          <a
+         <a
             class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
-            href="about".html"
-            >About Danny Kioko Foundation</a
+            href="safe-space.html"
+            >About DKF</a
           >
           <a
             class="relative py-3 text-release after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-100 after:bg-release md:py-2"
-            href="safe-space.html"
+            href="about.html"
             >Safe Space</a
           >
-          <!-- <a
+         
+          <a
             class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
             href="about.html"
             >DKF</a
-          > -->
+          >
+          <a
+            class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
+            href="music-and-evangelism.html"
+            >Music</a
+          >
           <a
             class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
             href="safe-space-gala.html"
             >Safe Space Gala</a
           >
-          <!-- <a
-            class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
-            href="the-light.html"
-            >The Light</a -->
-          >
+          <!-- <a class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2" href="the-light.html">The Light</a> -->
         </nav>
 
         <a
@@ -162,10 +237,7 @@
           <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
         </button>
       </header>
-    <!-- ============================================================ -->
-    <!-- HERO SLIDE — SAFE SPACE                                      -->
-    <!-- ============================================================ -->
-
+      <!-- ===== end HEADER ===== -->
     <section
       class="relative h-screen w-full overflow-hidden"
       aria-label="Safe Space hero"

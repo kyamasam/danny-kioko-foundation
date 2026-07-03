@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Instrument+Sans:wght@300;400;500&display=swap');
+/* globals.css */
 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Instrument+Sans:wght@300;400;500&display=swap');
 
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -84,6 +85,11 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* Custom DK Foundation Colors */
+  --color-release: #e84c2b;
+  --color-midnight: #0c1a36;
+  --color-harvest: #d4a02b;
 }
 
 .dark {
@@ -120,37 +126,9 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-@layer utilities {
-  .animate-in {
-    animation-duration: 0.5s;
-    animation-fill-mode: both;
-    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  
-  .fade-in { animation-name: fadeIn; }
-  .slide-in-from-top { animation-name: slideFromTop; }
-  .slide-in-from-bottom-3 { animation-name: slideFromBottom; }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  
-  @keyframes slideFromTop {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  @keyframes slideFromBottom {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  .delay-75 { animation-delay: 75ms; }
-  .delay-150 { animation-delay: 150ms; }
-  .delay-300 { animation-delay: 300ms; }
-}
-
+/* ============================================================ */
+/* BASE STYLES                                                  */
+/* ============================================================ */
 
 @layer base {
   * {
@@ -163,7 +141,138 @@
     @apply font-sans;
   }
 }
-@keyframes slide-in-from-left-5 {
+
+/* ============================================================ */
+/* CUSTOM UTILITIES                                             */
+/* ============================================================ */
+
+@layer utilities {
+  /* Animation Utilities */
+  .animate-in {
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .fade-in {
+    animation-name: fadeIn;
+  }
+
+  .slide-in-from-top {
+    animation-name: slideFromTop;
+  }
+
+  .slide-in-from-bottom-3 {
+    animation-name: slideFromBottom;
+  }
+
+  .slide-in-from-left-5 {
+    animation-name: slideFromLeft;
+  }
+
+  .slide-in-from-right-5 {
+    animation-name: slideFromRight;
+  }
+
+  .delay-75 {
+    animation-delay: 75ms;
+  }
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+  .delay-150 {
+    animation-delay: 150ms;
+  }
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+
+  /* DK Foundation Custom Colors */
+  .bg-release {
+    background-color: var(--color-release);
+  }
+  .bg-midnight {
+    background-color: var(--color-midnight);
+  }
+  .bg-harvest {
+    background-color: var(--color-harvest);
+  }
+
+  .text-release {
+    color: var(--color-release);
+  }
+  .text-midnight {
+    color: var(--color-midnight);
+  }
+  .text-harvest {
+    color: var(--color-harvest);
+  }
+
+  .border-release {
+    border-color: var(--color-release);
+  }
+  .border-midnight {
+    border-color: var(--color-midnight);
+  }
+
+  /* Shadows */
+  .shadow-listen {
+    box-shadow: 0 8px 24px rgba(232, 76, 43, 0.35);
+  }
+  .shadow-navButton {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Font */
+  .font-script {
+    font-family: 'Playfair Display', 'Georgia', serif;
+  }
+
+  /* Text color */
+  .text-ink {
+    color: #1a1a1a;
+  }
+}
+
+/* ============================================================ */
+/* KEYFRAMES                                                    */
+/* ============================================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideFromLeft {
   from {
     opacity: 0;
     transform: translateX(-1.25rem);
@@ -174,7 +283,7 @@
   }
 }
 
-@keyframes slide-in-from-right-5 {
+@keyframes slideFromRight {
   from {
     opacity: 0;
     transform: translateX(1.25rem);
@@ -191,87 +300,187 @@
   }
 }
 
-.animate-spin {
-  animation: spin 1s linear infinite;
-}
-
-
-.animate-in {
-  animation-duration: 0.5s;
-  animation-fill-mode: both;
-  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.fade-in {
-  animation-name: fadeIn;
-}
-
-.slide-in-from-left-5 {
-  animation-name: slide-in-from-left-5;
-}
-
-.slide-in-from-right-5 {
-  animation-name: slide-in-from-right-5;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
+@keyframes pulse {
+  0%,
+  100% {
     opacity: 1;
   }
+  50% {
+    opacity: 0.5;
+  }
 }
 
-.delay-100 {
-  animation-delay: 100ms;
-}
+/* ============================================================ */
+/* ANIMATION CLASSES                                            */
+/* ============================================================ */
 
-.delay-200 {
-  animation-delay: 200ms;
-}
-
-.delay-300 {
-  animation-delay: 300ms;
+.animate-spin {
+  animation: spin 1s linear infinite;
 }
 
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
+/* ============================================================ */
+/* BACKGROUND IMAGE UTILITIES                                   */
+/* NOTE: Images must be in /public/images/ folder              */
+/* ============================================================ */
+
+@layer utilities {
+  /* Hero background */
+  .hero-bg {
+    position: relative;
+    background: url('/images/library_2.png') center/cover no-repeat;
   }
-  50% {
-    opacity: .5;
+
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg,
+        rgba(14, 46, 38, .90) 0%,
+        rgba(20, 60, 48, .82) 40%,
+        rgba(10, 35, 28, .60) 100%);
+    z-index: 0;
+  }
+
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, .02) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* DK Foundation Background Images */
+  .bg-danny {
+    background-image: url('/images/danny.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .bg-kids {
+    background-image: url('/images/kids.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .bg-safe {
+    background-image: url('/images/safe.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .bg-shosh {
+    background-image: url('/images/shosh.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .bg-amenikumbuka {
+    background-image: url('/images/amenikumbuka.png');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .bg-uinuliwe {
+    background-image: url('/images/uinuliwe.png');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .bg-possible {
+    background-image: url('/images/its-possible.png');
+    background-size: cover;
+    background-position: center;
   }
 }
 
+/* ============================================================ */
+/* SLIDE TRANSITIONS                                            */
+/* ============================================================ */
 
-/* Hero background */
-.hero-bg {
-  position: relative;
-  background: url('/library_2.png') center/cover no-repeat;
-}
-
-.hero-bg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(110deg,
-      rgba(14, 46, 38, .90) 0%,
-      rgba(20, 60, 48, .82) 40%,
-      rgba(10, 35, 28, .60) 100%);
-  z-index: 0;
-}
-
-.hero-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(255, 255, 255, .02) 1px, transparent 1px);
-  background-size: 28px 28px;
+.slide {
+  opacity: 0;
+  transform: scale(1.02);
   pointer-events: none;
-  z-index: 0;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.slide.is-active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* ============================================================ */
+/* MUSIC PILL STYLES                                            */
+/* ============================================================ */
+
+.music-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 4px 14px 4px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.8;
+  background: white;
+  transition: box-shadow 0.2s, background 0.2s;
+  text-decoration: none;
+}
+
+.music-pill:hover {
+  background: #f5f5f5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.youtube-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background: #ff0000;
+  color: white;
+}
+
+.spotify-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #1ed760;
+  color: white;
+}
+
+/* ============================================================ */
+/* FOOTER PILL STYLES                                           */
+/* ============================================================ */
+
+.footer-listen-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 8px 18px 8px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.footer-listen-pill:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.3);
 }

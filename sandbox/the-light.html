@@ -1,532 +1,734 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0" />
-  <title>Danny Kioko Foundation | The Light</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect"
-        href="https://fonts.googleapis.com" />
-  <link rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Great+Vibes&amp;display=swap"
-        rel="stylesheet" />
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ["Inter", "Arial", "sans-serif"],
-            script: ["Great Vibes", "cursive"],
-          },
-          colors: {
-            release: "#f25a25",
-            ink: "#101010",
-            midnight: "#122a5c",
-            harvest: "#fac844",
-            greenhope: "#20d461",
-          },
-          boxShadow: {
-            navButton: "0 8px 18px rgba(18, 42, 92, .17)",
-            heavy: "0 24px 54px rgba(0, 0, 0, .24)",
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Danny Kioko Foundation | The Light</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Great+Vibes&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "Arial", "sans-serif"],
+              script: ["Great Vibes", "cursive"],
+            },
+            colors: {
+              release: "#f25a25",
+              ink: "#101010",
+              midnight: "#122a5c",
+              harvest: "#fac844",
+              greenhope: "#20d461",
+            },
+            boxShadow: {
+              navButton: "0 8px 18px rgba(18, 42, 92, .17)",
+              heavy: "0 24px 54px rgba(0, 0, 0, .24)",
+            },
           },
         },
-      },
-    };
-  </script>
-  <style>
-    .nav-links.is-open {
-      display: flex;
-    }
-
-    .footer-listen-pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      min-width: 112px;
-      height: 40px;
-      padding: 0 15px;
-      border: 1px solid rgba(99, 145, 225, .8);
-      border-radius: 9999px;
-      background: rgba(255, 255, 255, .02);
-      font-size: 15px;
-      font-weight: 700;
-      transition: background .15s ease, transform .15s ease;
-    }
-
-    .footer-listen-pill:hover {
-      background: rgba(255, 255, 255, .08);
-      transform: translateY(-2px);
-    }
-
-    .youtube-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 20px;
-      height: 14px;
-      border-radius: 4px;
-      background: #f00;
-      color: #fff;
-    }
-
-    .spotify-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 17px;
-      height: 17px;
-      border-radius: 9999px;
-      background: #1ed760;
-      color: #fff;
-    }
-
-    .light-photo {
-      overflow: hidden;
-      border-radius: 22px;
-      background: #fff;
-      box-shadow: 0 18px 34px rgba(20, 18, 14, .13);
-    }
-
-    .light-photo img {
-      display: block;
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-    }
-
-    .program-row {
-      display: grid;
-      grid-template-columns: 190px 1fr;
-      gap: 28px;
-      border-top: 1px solid rgba(16, 16, 16, .12);
-      padding-top: 28px;
-    }
-
-    @media (max-width: 640px) {
-      .program-row {
-        grid-template-columns: 1fr;
-        gap: 10px;
+      };
+    </script>
+    <style>
+      .nav-links.is-open {
+        display: flex;
       }
-    }
-  </style>
-</head>
 
-<body class="min-h-screen bg-[#0c0b10] font-sans text-white antialiased">
-  <main class="min-h-screen overflow-hidden border-t-[3px] border-x-2 border-[#111] max-sm:border-x-0">
-    <div
-         class="flex h-[33px] items-center justify-center bg-release px-4 text-center text-[15px] font-medium tracking-[.01em] max-sm:h-[31px] max-sm:text-[13px]">
-      New Song Release: Muvango
-    </div>
+      .footer-listen-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        min-width: 112px;
+        height: 40px;
+        padding: 0 15px;
+        border: 1px solid rgba(99, 145, 225, 0.8);
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.02);
+        font-size: 15px;
+        font-weight: 700;
+        transition:
+          background 0.15s ease,
+          transform 0.15s ease;
+      }
 
-    <header class="relative z-10 flex items-center justify-between gap-3.5 bg-[#f5f2ec] py-0 px-3 h-[63px] sm:px-[18px] sm:h-[68px] md:h-[64px] md:gap-6 md:pl-[36px] md:pr-[16px] text-ink shadow-[0_1px_0_rgba(15,15,15,.08)]"
-            aria-label="Primary">
+      .footer-listen-pill:hover {
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateY(-2px);
+      }
 
-      <a class="text-2xl whitespace-nowrap font-script leading-none text-[#111]"
-         href="index2.html">
-        Danny Kioko
-      </a>
+      .youtube-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 14px;
+        border-radius: 4px;
+        background: #f00;
+        color: #fff;
+      }
 
-      <nav class="nav-links absolute left-0 right-0 top-[63px] hidden flex-col items-stretch gap-0 border-t border-[#ececec] bg-[#f5f2ec] px-[18px] pb-[18px] pt-2.5 text-[15px] shadow-[0_18px_32px_rgba(0,0,0,.14)] sm:top-[68px] md:relative md:top-0 md:left-auto md:right-auto md:flex md:flex-row md:items-center md:justify-center md:gap-[clamp(16px,2.5vw,32px)] md:border-0 md:bg-transparent md:p-0 md:text-[clamp(13px,1.1vw,15px)] md:shadow-none md:ml-auto"
-           id="siteNav"
-           aria-label="Main navigation">
-        <a class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
-           href="index2.html">About Me</a>
-        <a class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
-           href="music-and-evangelism.html">Music &amp; Evangelism</a>
-        <a class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
-           href="about.html">DKF</a>
-        <a class="relative py-3 text-release after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-100 after:bg-release md:py-2"
-           href="the-light.html">The Light</a>
-      </nav>
+      .spotify-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 17px;
+        height: 17px;
+        border-radius: 9999px;
+        background: #1ed760;
+        color: #fff;
+      }
 
-      <a class="hidden min-w-[110px] items-center justify-center justify-self-end rounded-full bg-[#111] px-4 text-[14px] font-semibold tracking-wide text-white shadow-navButton transition-opacity hover:opacity-80 sm:inline-flex md:h-[42px] md:min-w-[126px] md:px-[22px]"
-         href="music-and-evangelism.html">
-        Listen Now
-      </a>
+      .light-photo {
+        overflow: hidden;
+        border-radius: 22px;
+        background: #fff;
+        box-shadow: 0 18px 34px rgba(20, 18, 14, 0.13);
+      }
 
-      <button class="menu-button inline-flex h-[42px] w-[42px] flex-col items-center justify-center gap-[5px] rounded-[7px] border-0 bg-[#f0f1f5] text-[#121212] md:hidden"
-              type="button"
-              aria-label="Toggle navigation"
-              aria-expanded="false"
-              aria-controls="siteNav">
-        <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
-        <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
-        <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
-      </button>
-    </header>
+      .light-photo img {
+        display: block;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
 
-    <section class="relative isolate overflow-hidden bg-[#f4efe6] text-ink"
-             aria-labelledby="light-hero">
-      <div class="relative mx-auto grid min-h-[530px] max-w-[1180px] grid-cols-[minmax(310px,.86fr)_minmax(420px,1fr)] items-center gap-10 px-8 py-8 max-lg:min-h-0 max-lg:grid-cols-1 max-lg:px-8 max-lg:py-10 max-sm:px-5">
-        <div class="pointer-events-none absolute -right-16 bottom-7 z-0 h-[120px] w-[150px] rounded-full bg-harvest max-sm:-right-20 max-sm:h-[96px] max-sm:w-[124px]"
-             aria-hidden="true"></div>
+      .program-row {
+        display: grid;
+        grid-template-columns: 190px 1fr;
+        gap: 28px;
+        border-top: 1px solid rgba(16, 16, 16, 0.12);
+        padding-top: 28px;
+      }
 
-        <div class="relative z-10 max-w-[540px]">
-          <p class="mb-4 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[.18em] text-release">
-            <span class="h-[3px] w-[42px] bg-release"
-                  aria-hidden="true"></span>
-            International youth project
-          </p>
-          <h1 id="light-hero"
-              class="text-[clamp(34px,4.8vw,66px)] font-extrabold uppercase leading-[.9] tracking-normal">
-            The Light
-          </h1>
-          <p class="mt-5 max-w-[500px] text-[17px] leading-[1.65] text-black/72 max-sm:text-[15px]">
-            A DK Foundation mentorship project helping young people grow in faith, leadership, purpose, and life skills.
-          </p>
-          <div class="mt-7 flex flex-wrap gap-3">
-            <a class="inline-flex h-[48px] min-w-[166px] items-center justify-center rounded-full bg-release px-7 text-[17px] font-semibold text-white transition hover:bg-[#ff642d]"
-               href="#programs">
-              Explore Programs
-            </a>
-            <a class="inline-flex h-[48px] min-w-[142px] items-center justify-center rounded-full border border-black/15 bg-white px-7 text-[17px] font-semibold text-midnight transition hover:bg-white/75"
-               href="about.html">
-              About DKF
-            </a>
+      @media (max-width: 640px) {
+        .program-row {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen bg-[#0c0b10] font-sans text-white antialiased">
+    <main
+      class="min-h-screen overflow-hidden border-t-[3px] border-x-2 border-[#111] max-sm:border-x-0"
+    >
+      <div
+        class="flex h-[33px] items-center justify-center bg-release px-4 text-center text-[15px] font-medium tracking-[.01em] max-sm:h-[31px] max-sm:text-[13px]"
+      >
+        New Song Release: Muvango
+      </div>
+
+      <header
+        class="relative z-10 flex items-center justify-between gap-3.5 bg-[#f5f2ec] py-0 px-3 h-[63px] sm:px-[18px] sm:h-[68px] md:h-[64px] md:gap-6 md:pl-[36px] md:pr-[16px] text-ink shadow-[0_1px_0_rgba(15,15,15,.08)]"
+        aria-label="Primary"
+      >
+        <a
+          class="text-2xl whitespace-nowrap font-script leading-none text-[#111]"
+          href="index.html"
+        >
+          Danny Kioko
+        </a>
+
+        <nav
+          class="nav-links absolute left-0 right-0 top-[63px] hidden flex-col items-stretch gap-0 border-t border-[#ececec] bg-[#f5f2ec] px-[18px] pb-[18px] pt-2.5 text-[15px] shadow-[0_18px_32px_rgba(0,0,0,.14)] sm:top-[68px] md:relative md:top-0 md:left-auto md:right-auto md:flex md:flex-row md:items-center md:justify-center md:gap-[clamp(16px,2.5vw,32px)] md:border-0 md:bg-transparent md:p-0 md:text-[clamp(13px,1.1vw,15px)] md:shadow-none md:ml-auto"
+          id="siteNav"
+          aria-label="Main navigation"
+        >
+          <a
+            class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
+            href="index.html"
+            >About Me</a
+          >
+          <a
+            class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
+            href="music-and-evangelism.html"
+            >Music &amp; Evangelism</a
+          >
+          <a
+            class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
+            href="about.html"
+            >DKF</a
+          >
+          <a
+            class="relative py-3 text-release after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-100 after:bg-release md:py-2"
+            href="the-light.html"
+            >The Light</a
+          >
+        </nav>
+
+        <a
+          class="hidden min-w-[110px] items-center justify-center justify-self-end rounded-full bg-[#111] px-4 text-[14px] font-semibold tracking-wide text-white shadow-navButton transition-opacity hover:opacity-80 sm:inline-flex md:h-[42px] md:min-w-[126px] md:px-[22px]"
+          href="music-and-evangelism.html"
+        >
+          Listen Now
+        </a>
+
+        <button
+          class="menu-button inline-flex h-[42px] w-[42px] flex-col items-center justify-center gap-[5px] rounded-[7px] border-0 bg-[#f0f1f5] text-[#121212] md:hidden"
+          type="button"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+          aria-controls="siteNav"
+        >
+          <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
+          <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
+          <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
+        </button>
+      </header>
+
+      <section
+        class="relative isolate overflow-hidden bg-[#f4efe6] text-ink"
+        aria-labelledby="light-hero"
+      >
+        <div
+          class="relative mx-auto grid min-h-[530px] max-w-[1180px] grid-cols-[minmax(310px,.86fr)_minmax(420px,1fr)] items-center gap-10 px-8 py-8 max-lg:min-h-0 max-lg:grid-cols-1 max-lg:px-8 max-lg:py-10 max-sm:px-5"
+        >
+          <div
+            class="pointer-events-none absolute -right-16 bottom-7 z-0 h-[120px] w-[150px] rounded-full bg-harvest max-sm:-right-20 max-sm:h-[96px] max-sm:w-[124px]"
+            aria-hidden="true"
+          ></div>
+
+          <div class="relative z-10 max-w-[540px]">
+            <p
+              class="mb-4 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[.18em] text-release"
+            >
+              <span
+                class="h-[3px] w-[42px] bg-release"
+                aria-hidden="true"
+              ></span>
+              International youth project
+            </p>
+            <h1
+              id="light-hero"
+              class="text-[clamp(34px,4.8vw,66px)] font-extrabold uppercase leading-[.9] tracking-normal"
+            >
+              The Light
+            </h1>
+            <p
+              class="mt-5 max-w-[500px] text-[17px] leading-[1.65] text-black/72 max-sm:text-[15px]"
+            >
+              A DK Foundation mentorship project helping young people grow in
+              faith, leadership, purpose, and life skills.
+            </p>
+            <div class="mt-7 flex flex-wrap gap-3">
+              <a
+                class="inline-flex h-[48px] min-w-[166px] items-center justify-center rounded-full bg-release px-7 text-[17px] font-semibold text-white transition hover:bg-[#ff642d]"
+                href="#programs"
+              >
+                Explore Programs
+              </a>
+              <a
+                class="inline-flex h-[48px] min-w-[142px] items-center justify-center rounded-full border border-black/15 bg-white px-7 text-[17px] font-semibold text-midnight transition hover:bg-white/75"
+                href="about.html"
+              >
+                About DKF
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="relative z-10 grid grid-cols-[1fr_.82fr] gap-3 max-sm:grid-cols-1"
+          >
+            <figure
+              class="light-photo h-[360px] max-lg:h-[320px] max-sm:h-[235px]"
+            >
+              <img
+                src="dkf/dkf-kids-2.png"
+                alt="Young people smiling during a DK Foundation outreach"
+              />
+            </figure>
+            <div class="grid gap-3">
+              <div
+                class="rounded-[8px] bg-midnight p-6 text-white shadow-heavy max-sm:p-5"
+              >
+                <p
+                  class="font-mono text-[40px] font-extrabold leading-none text-harvest"
+                >
+                  Faith
+                </p>
+                <p class="mt-4 text-[15px] leading-[1.55] text-white/82">
+                  Mentorship, prayer, worship, and practical guidance for a
+                  brighter future.
+                </p>
+              </div>
+              <figure
+                class="light-photo h-[166px] max-lg:h-[146px] max-sm:h-[205px]"
+              >
+                <img
+                  src="pexels-anat-morad-275582206-13250722.jpg"
+                  alt="City skyline representing international youth collaboration"
+                />
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="relative overflow-hidden bg-[#f7f7f7] px-8 py-[76px] text-ink max-lg:px-6 max-sm:px-5 max-sm:py-14"
+        aria-labelledby="about-light-title"
+      >
+        <div
+          class="pointer-events-none absolute -right-[130px] -top-[170px] h-[360px] w-[410px] rounded-[52%_0_0_57%/50%_0_0_56%] bg-release"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="pointer-events-none absolute -bottom-[92px] left-0 h-[188px] w-[220px] bg-harvest"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="relative z-10 mx-auto grid max-w-[1120px] grid-cols-[.85fr_1.15fr] gap-14 max-lg:grid-cols-1"
+        >
+          <div>
+            <p
+              class="mb-4 text-[18px] font-normal uppercase tracking-[.02em] text-release"
+            >
+              About the project
+            </p>
+            <h2
+              id="about-light-title"
+              class="text-[clamp(38px,5vw,64px)] font-normal leading-[1.02] tracking-normal"
+            >
+              A safe place for young people to discover purpose.
+            </h2>
+          </div>
+
+          <div
+            class="grid gap-7 text-[17px] leading-[1.75] text-black/80 max-sm:text-[15px]"
+          >
+            <p>
+              The Light is hosted by DK Foundation, a non-profit registered in
+              Washington State. It creates a positive, faith-filled environment
+              where youths from different backgrounds are mentored, encouraged,
+              and equipped to become responsible leaders.
+            </p>
+            <p>
+              Through conferences, mentorship, outreach, and Christian teaching,
+              the project responds to challenges such as lack of guidance,
+              unemployment, depression, peer pressure, substance abuse,
+              violence, and loss of direction.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="grid grid-cols-2 bg-white text-ink max-lg:grid-cols-1"
+        aria-labelledby="light-mission-title"
+      >
+        <div
+          class="bg-midnight px-10 py-[74px] text-white max-lg:px-8 max-sm:px-5 max-sm:py-14"
+        >
+          <div class="mx-auto max-w-[520px]">
+            <p
+              class="mb-5 text-[16px] font-medium uppercase tracking-[.12em] text-harvest"
+            >
+              Mission
+            </p>
+            <h2
+              id="light-mission-title"
+              class="text-[clamp(34px,4.5vw,54px)] font-normal leading-[1.05]"
+            >
+              Mentor, train, and empower the next generation.
+            </h2>
+            <p
+              class="mt-7 text-[18px] leading-[1.72] text-white/80 max-sm:text-[16px]"
+            >
+              We provide Christian mentorship, leadership training, educational
+              support, and opportunities that help young people grow
+              spiritually, emotionally, socially, and professionally.
+            </p>
           </div>
         </div>
 
-        <div class="relative z-10 grid grid-cols-[1fr_.82fr] gap-3 max-sm:grid-cols-1">
-          <figure class="light-photo h-[360px] max-lg:h-[320px] max-sm:h-[235px]">
-            <img src="dkf/dkf-kids-2.png"
-                 alt="Young people smiling during a DK Foundation outreach" />
-          </figure>
-          <div class="grid gap-3">
-            <div class="rounded-[8px] bg-midnight p-6 text-white shadow-heavy max-sm:p-5">
-              <p class="font-mono text-[40px] font-extrabold leading-none text-harvest">Faith</p>
-              <p class="mt-4 text-[15px] leading-[1.55] text-white/82">
-                Mentorship, prayer, worship, and practical guidance for a brighter future.
+        <div
+          class="bg-harvest px-10 py-[74px] text-ink max-lg:px-8 max-sm:px-5 max-sm:py-14"
+        >
+          <div class="mx-auto max-w-[520px]">
+            <p
+              class="mb-5 text-[16px] font-bold uppercase tracking-[.12em] text-release"
+            >
+              Vision
+            </p>
+            <h2
+              class="text-[clamp(34px,4.5vw,54px)] font-normal leading-[1.05]"
+            >
+              Spiritually grounded, confident, purpose-driven leaders.
+            </h2>
+            <p
+              class="mt-7 text-[18px] leading-[1.72] text-black/75 max-sm:text-[16px]"
+            >
+              The Light envisions young people who shine in their communities
+              and positively impact the world through faith, character, and
+              service.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="bg-white px-8 py-[82px] text-ink max-lg:px-6 max-sm:px-5 max-sm:py-14"
+        aria-labelledby="objectives-title"
+      >
+        <div class="mx-auto max-w-[1120px]">
+          <div
+            class="mb-12 grid grid-cols-[.72fr_1.28fr] gap-12 max-lg:grid-cols-1 max-lg:gap-6"
+          >
+            <h2
+              id="objectives-title"
+              class="text-[clamp(38px,5vw,62px)] font-normal leading-none"
+            >
+              What The Light helps young people build.
+            </h2>
+            <p
+              class="max-w-[690px] text-[18px] leading-[1.75] text-black/75 max-sm:text-[15px]"
+            >
+              The project brings youths together for mentorship, faith
+              formation, practical training, friendship, and community service.
+            </p>
+          </div>
+
+          <div
+            class="grid grid-cols-3 gap-5 max-lg:grid-cols-2 max-sm:grid-cols-1"
+          >
+            <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
+              <h3 class="mb-3 text-[22px] font-bold text-midnight">
+                Christian values
+              </h3>
+              <p class="text-[15px] leading-[1.65] text-black/70">
+                Faith, moral leadership, prayer, worship, and spiritual growth.
               </p>
             </div>
-            <figure class="light-photo h-[166px] max-lg:h-[146px] max-sm:h-[205px]">
-              <img src="pexels-anat-morad-275582206-13250722.jpg"
-                   alt="City skyline representing international youth collaboration" />
-            </figure>
+            <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
+              <h3 class="mb-3 text-[22px] font-bold text-release">
+                Mentorship
+              </h3>
+              <p class="text-[15px] leading-[1.65] text-black/70">
+                Guidance from experienced Christian leaders, role models,
+                pastors, and professionals.
+              </p>
+            </div>
+            <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
+              <h3 class="mb-3 text-[22px] font-bold text-greenhope">
+                Leadership skills
+              </h3>
+              <p class="text-[15px] leading-[1.65] text-black/70">
+                Communication, teamwork, integrity, confidence, and personal
+                responsibility.
+              </p>
+            </div>
+            <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
+              <h3 class="mb-3 text-[22px] font-bold text-midnight">
+                Education
+              </h3>
+              <p class="text-[15px] leading-[1.65] text-black/70">
+                Encouragement toward learning, career development,
+                entrepreneurship, and innovation.
+              </p>
+            </div>
+            <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
+              <h3 class="mb-3 text-[22px] font-bold text-release">
+                Safe spaces
+              </h3>
+              <p class="text-[15px] leading-[1.65] text-black/70">
+                Room for young people to share stories, ask questions, build
+                friendships, and receive care.
+              </p>
+            </div>
+            <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
+              <h3 class="mb-3 text-[22px] font-bold text-greenhope">
+                Community service
+              </h3>
+              <p class="text-[15px] leading-[1.65] text-black/70">
+                Outreach, school visits, charity events, counseling, and
+                practical acts of compassion.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="relative overflow-hidden bg-[#f7f7f7] px-8 py-[76px] text-ink max-lg:px-6 max-sm:px-5 max-sm:py-14"
-             aria-labelledby="about-light-title">
-      <div class="pointer-events-none absolute -right-[130px] -top-[170px] h-[360px] w-[410px] rounded-[52%_0_0_57%/50%_0_0_56%] bg-release"
-           aria-hidden="true"></div>
-      <div class="pointer-events-none absolute -bottom-[92px] left-0 h-[188px] w-[220px] bg-harvest"
-           aria-hidden="true"></div>
-
-      <div class="relative z-10 mx-auto grid max-w-[1120px] grid-cols-[.85fr_1.15fr] gap-14 max-lg:grid-cols-1">
-        <div>
-          <p class="mb-4 text-[18px] font-normal uppercase tracking-[.02em] text-release">About the project</p>
-          <h2 id="about-light-title"
-              class="text-[clamp(38px,5vw,64px)] font-normal leading-[1.02] tracking-normal">
-            A safe place for young people to discover purpose.
-          </h2>
-        </div>
-
-        <div class="grid gap-7 text-[17px] leading-[1.75] text-black/80 max-sm:text-[15px]">
-          <p>
-            The Light is hosted by DK Foundation, a non-profit registered in Washington State. It creates a positive,
-            faith-filled environment where youths from different backgrounds are mentored, encouraged, and equipped to
-            become responsible leaders.
-          </p>
-          <p>
-            Through conferences, mentorship, outreach, and Christian teaching, the project responds to challenges such
-            as lack of guidance, unemployment, depression, peer pressure, substance abuse, violence, and loss of
-            direction.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="grid grid-cols-2 bg-white text-ink max-lg:grid-cols-1"
-             aria-labelledby="light-mission-title">
-      <div class="bg-midnight px-10 py-[74px] text-white max-lg:px-8 max-sm:px-5 max-sm:py-14">
-        <div class="mx-auto max-w-[520px]">
-          <p class="mb-5 text-[16px] font-medium uppercase tracking-[.12em] text-harvest">Mission</p>
-          <h2 id="light-mission-title"
-              class="text-[clamp(34px,4.5vw,54px)] font-normal leading-[1.05]">
-            Mentor, train, and empower the next generation.
-          </h2>
-          <p class="mt-7 text-[18px] leading-[1.72] text-white/80 max-sm:text-[16px]">
-            We provide Christian mentorship, leadership training, educational support, and opportunities that help
-            young people grow spiritually, emotionally, socially, and professionally.
-          </p>
-        </div>
-      </div>
-
-      <div class="bg-harvest px-10 py-[74px] text-ink max-lg:px-8 max-sm:px-5 max-sm:py-14">
-        <div class="mx-auto max-w-[520px]">
-          <p class="mb-5 text-[16px] font-bold uppercase tracking-[.12em] text-release">Vision</p>
-          <h2 class="text-[clamp(34px,4.5vw,54px)] font-normal leading-[1.05]">
-            Spiritually grounded, confident, purpose-driven leaders.
-          </h2>
-          <p class="mt-7 text-[18px] leading-[1.72] text-black/75 max-sm:text-[16px]">
-            The Light envisions young people who shine in their communities and positively impact the world through
-            faith, character, and service.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="bg-white px-8 py-[82px] text-ink max-lg:px-6 max-sm:px-5 max-sm:py-14"
-             aria-labelledby="objectives-title">
-      <div class="mx-auto max-w-[1120px]">
-        <div class="mb-12 grid grid-cols-[.72fr_1.28fr] gap-12 max-lg:grid-cols-1 max-lg:gap-6">
-          <h2 id="objectives-title"
-              class="text-[clamp(38px,5vw,62px)] font-normal leading-none">
-            What The Light helps young people build.
-          </h2>
-          <p class="max-w-[690px] text-[18px] leading-[1.75] text-black/75 max-sm:text-[15px]">
-            The project brings youths together for mentorship, faith formation, practical training, friendship, and
-            community service.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-3 gap-5 max-lg:grid-cols-2 max-sm:grid-cols-1">
-          <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
-            <h3 class="mb-3 text-[22px] font-bold text-midnight">Christian values</h3>
-            <p class="text-[15px] leading-[1.65] text-black/70">Faith, moral leadership, prayer, worship, and spiritual
-              growth.</p>
-          </div>
-          <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
-            <h3 class="mb-3 text-[22px] font-bold text-release">Mentorship</h3>
-            <p class="text-[15px] leading-[1.65] text-black/70">Guidance from experienced Christian leaders, role
-              models, pastors, and professionals.</p>
-          </div>
-          <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
-            <h3 class="mb-3 text-[22px] font-bold text-greenhope">Leadership skills</h3>
-            <p class="text-[15px] leading-[1.65] text-black/70">Communication, teamwork, integrity, confidence, and
-              personal responsibility.</p>
-          </div>
-          <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
-            <h3 class="mb-3 text-[22px] font-bold text-midnight">Education</h3>
-            <p class="text-[15px] leading-[1.65] text-black/70">Encouragement toward learning, career development,
-              entrepreneurship, and innovation.</p>
-          </div>
-          <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
-            <h3 class="mb-3 text-[22px] font-bold text-release">Safe spaces</h3>
-            <p class="text-[15px] leading-[1.65] text-black/70">Room for young people to share stories, ask questions,
-              build friendships, and receive care.</p>
-          </div>
-          <div class="rounded-[8px] border border-black/10 bg-[#f7f7f7] p-7">
-            <h3 class="mb-3 text-[22px] font-bold text-greenhope">Community service</h3>
-            <p class="text-[15px] leading-[1.65] text-black/70">Outreach, school visits, charity events, counseling,
-              and practical acts of compassion.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="programs"
-             class="relative isolate overflow-hidden bg-[#f7f7f7] px-8 py-[82px] text-ink max-lg:px-6 max-sm:px-5 max-sm:py-14"
-             aria-labelledby="programs-title">
-      <div class="absolute left-1/2 top-[-520px] z-0 h-[980px] w-[1060px] -translate-x-1/2 rounded-[48%] border border-harvest"
-           aria-hidden="true"></div>
-      <div class="relative z-10 mx-auto max-w-[1120px]">
-        <div class="mb-12 flex items-end justify-between gap-8 max-lg:flex-col max-lg:items-start">
-          <h2 id="programs-title"
-              class="max-w-[620px] text-[clamp(38px,5vw,62px)] font-normal leading-none">
-            Programs that turn encouragement into direction.
-          </h2>
-          <a class="inline-flex h-[52px] min-w-[220px] items-center justify-center gap-5 rounded-full bg-release px-9 text-[20px] font-normal text-white transition hover:bg-[#ff642d] max-sm:w-full max-sm:text-[18px]"
-             href="#impact">
-            See the impact
-            <span class="text-[30px]"
-                  aria-hidden="true">&rarr;</span>
-          </a>
-        </div>
-
-        <div class="grid gap-8">
-          <div class="program-row">
-            <h3 class="text-[26px] font-bold leading-tight text-midnight">Youth conferences</h3>
-            <p class="text-[18px] leading-[1.65] text-black/75 max-sm:text-[16px]">
-              International gatherings with worship, prayer, speakers, pastors, artists, counseling, networking, and
-              talent showcases.
-            </p>
-          </div>
-          <div class="program-row">
-            <h3 class="text-[26px] font-bold leading-tight text-release">Christian mentorship</h3>
-            <p class="text-[18px] leading-[1.65] text-black/75 max-sm:text-[16px]">
-              Mentors provide spiritual guidance, accountability, encouragement, and support as youths overcome
-              challenges and build strong values.
-            </p>
-          </div>
-          <div class="program-row">
-            <h3 class="text-[26px] font-bold leading-tight text-greenhope">Leadership training</h3>
-            <p class="text-[18px] leading-[1.65] text-black/75 max-sm:text-[16px]">
-              Workshops and team activities develop communication, emotional wellness, career readiness, and practical
-              leadership.
-            </p>
-          </div>
-          <div class="program-row">
-            <h3 class="text-[26px] font-bold leading-tight text-midnight">Community outreach</h3>
-            <p class="text-[18px] leading-[1.65] text-black/75 max-sm:text-[16px]">
-              Charity events, school visits, counseling sessions, and service initiatives support vulnerable youths and
-              families.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="impact"
-             class="relative isolate overflow-hidden bg-release px-8 py-[76px] text-white max-lg:px-6 max-sm:px-5 max-sm:py-14"
-             aria-labelledby="impact-title">
-      <div class="absolute -right-[90px] -top-[96px] h-[210px] w-[310px] rounded-[50%] bg-harvest"
-           aria-hidden="true"></div>
-      <div class="absolute -bottom-[80px] left-[10%] h-[170px] w-[260px] rounded-[50%] bg-midnight"
-           aria-hidden="true"></div>
-
-      <div class="relative z-10 mx-auto grid max-w-[1120px] grid-cols-[1.05fr_.95fr] items-center gap-12 max-lg:grid-cols-1">
-        <div>
-          <p class="mb-5 text-[18px] font-bold uppercase tracking-[.08em] text-white/75">Impact</p>
-          <h2 id="impact-title"
-              class="max-w-[780px] text-[clamp(42px,6vw,78px)] font-extrabold uppercase leading-[.9]">
-            Helping young people shine.
-          </h2>
-          <p class="mt-7 max-w-[700px] text-[20px] leading-[1.65] text-white/90 max-sm:text-[16px]">
-            The Light inspires hope, restores purpose, and nurtures young leaders who are spiritually strong, socially
-            responsible, and committed to making a positive difference.
-          </p>
-        </div>
-
-        <div class="rounded-[8px] bg-white p-7 text-ink shadow-heavy">
-          <p class="text-[24px] font-normal leading-tight">
-            Together, we can raise a generation that shines as a light in the world.
-          </p>
-          <p class="mt-6 border-t border-black/10 pt-6 text-[16px] leading-[1.65] text-black/70">
-            Through faith, mentorship, leadership, and empowerment, The Light guides young people toward futures filled
-            with purpose, hope, and positive impact.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <footer class="bg-midnight px-8 pb-5 pt-[48px] text-white max-lg:px-6 max-sm:px-5">
-      <div
-           class="mx-auto grid max-w-[1066px] grid-cols-[1.4fr_1fr_.8fr_auto] gap-14 max-lg:grid-cols-2 max-sm:grid-cols-1">
-        <div>
-          <a class="font-script text-[44px] leading-none text-white"
-             href="index2.html">Danny Kioko</a>
-          <p class="mt-8 text-[15px] font-light text-white/85">The Worship Minister and Evangelist</p>
-        </div>
-
-        <div>
-          <h3 class="mb-8 text-[15px] font-light uppercase tracking-[.04em] text-white">Links</h3>
-          <nav class="flex flex-col gap-4 text-[15px] font-light text-white/90">
-            <a href="index2.html">Music</a>
-            <a href="about.html">Danny Kioko Foundation</a>
-            <a href="the-light.html">The Light</a>
-          </nav>
-
-          <div class="mt-8 flex gap-4 text-white">
-            <a href="#"
-               aria-label="Facebook">
-              <svg class="h-5 w-5"
-                   viewBox="0 0 24 24"
-                   fill="currentColor">
-                <path d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v8h4v-8h3l1-4h-4V9c0-.6.4-1 1-1z" />
-              </svg>
+      <section
+        id="programs"
+        class="relative isolate overflow-hidden bg-[#f7f7f7] px-8 py-[82px] text-ink max-lg:px-6 max-sm:px-5 max-sm:py-14"
+        aria-labelledby="programs-title"
+      >
+        <div
+          class="absolute left-1/2 top-[-520px] z-0 h-[980px] w-[1060px] -translate-x-1/2 rounded-[48%] border border-harvest"
+          aria-hidden="true"
+        ></div>
+        <div class="relative z-10 mx-auto max-w-[1120px]">
+          <div
+            class="mb-12 flex items-end justify-between gap-8 max-lg:flex-col max-lg:items-start"
+          >
+            <h2
+              id="programs-title"
+              class="max-w-[620px] text-[clamp(38px,5vw,62px)] font-normal leading-none"
+            >
+              Programs that turn encouragement into direction.
+            </h2>
+            <a
+              class="inline-flex h-[52px] min-w-[220px] items-center justify-center gap-5 rounded-full bg-release px-9 text-[20px] font-normal text-white transition hover:bg-[#ff642d] max-sm:w-full max-sm:text-[18px]"
+              href="#impact"
+            >
+              See the impact
+              <span class="text-[30px]" aria-hidden="true">&rarr;</span>
             </a>
-            <a href="#"
-               aria-label="Instagram">
-              <svg class="h-5 w-5"
-                   viewBox="0 0 24 24"
-                   fill="none"
-                   stroke="currentColor"
-                   stroke-width="2">
-                <rect x="4"
-                      y="4"
-                      width="16"
-                      height="16"
-                      rx="5" />
-                <circle cx="12"
-                        cy="12"
-                        r="3.5" />
-                <path d="M17.5 6.5h.01" />
-              </svg>
-            </a>
-            <a href="#"
-               aria-label="Twitter">
-              <svg class="h-5 w-5"
-                   viewBox="0 0 24 24"
-                   fill="currentColor">
+          </div>
+
+          <div class="grid gap-8">
+            <div class="program-row">
+              <h3 class="text-[26px] font-bold leading-tight text-midnight">
+                Youth conferences
+              </h3>
+              <p
+                class="text-[18px] leading-[1.65] text-black/75 max-sm:text-[16px]"
+              >
+                International gatherings with worship, prayer, speakers,
+                pastors, artists, counseling, networking, and talent showcases.
+              </p>
+            </div>
+            <div class="program-row">
+              <h3 class="text-[26px] font-bold leading-tight text-release">
+                Christian mentorship
+              </h3>
+              <p
+                class="text-[18px] leading-[1.65] text-black/75 max-sm:text-[16px]"
+              >
+                Mentors provide spiritual guidance, accountability,
+                encouragement, and support as youths overcome challenges and
+                build strong values.
+              </p>
+            </div>
+            <div class="program-row">
+              <h3 class="text-[26px] font-bold leading-tight text-greenhope">
+                Leadership training
+              </h3>
+              <p
+                class="text-[18px] leading-[1.65] text-black/75 max-sm:text-[16px]"
+              >
+                Workshops and team activities develop communication, emotional
+                wellness, career readiness, and practical leadership.
+              </p>
+            </div>
+            <div class="program-row">
+              <h3 class="text-[26px] font-bold leading-tight text-midnight">
+                Community outreach
+              </h3>
+              <p
+                class="text-[18px] leading-[1.65] text-black/75 max-sm:text-[16px]"
+              >
+                Charity events, school visits, counseling sessions, and service
+                initiatives support vulnerable youths and families.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="impact"
+        class="relative isolate overflow-hidden bg-release px-8 py-[76px] text-white max-lg:px-6 max-sm:px-5 max-sm:py-14"
+        aria-labelledby="impact-title"
+      >
+        <div
+          class="absolute -right-[90px] -top-[96px] h-[210px] w-[310px] rounded-[50%] bg-harvest"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="absolute -bottom-[80px] left-[10%] h-[170px] w-[260px] rounded-[50%] bg-midnight"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="relative z-10 mx-auto grid max-w-[1120px] grid-cols-[1.05fr_.95fr] items-center gap-12 max-lg:grid-cols-1"
+        >
+          <div>
+            <p
+              class="mb-5 text-[18px] font-bold uppercase tracking-[.08em] text-white/75"
+            >
+              Impact
+            </p>
+            <h2
+              id="impact-title"
+              class="max-w-[780px] text-[clamp(42px,6vw,78px)] font-extrabold uppercase leading-[.9]"
+            >
+              Helping young people shine.
+            </h2>
+            <p
+              class="mt-7 max-w-[700px] text-[20px] leading-[1.65] text-white/90 max-sm:text-[16px]"
+            >
+              The Light inspires hope, restores purpose, and nurtures young
+              leaders who are spiritually strong, socially responsible, and
+              committed to making a positive difference.
+            </p>
+          </div>
+
+          <div class="rounded-[8px] bg-white p-7 text-ink shadow-heavy">
+            <p class="text-[24px] font-normal leading-tight">
+              Together, we can raise a generation that shines as a light in the
+              world.
+            </p>
+            <p
+              class="mt-6 border-t border-black/10 pt-6 text-[16px] leading-[1.65] text-black/70"
+            >
+              Through faith, mentorship, leadership, and empowerment, The Light
+              guides young people toward futures filled with purpose, hope, and
+              positive impact.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <footer
+        class="bg-midnight px-8 pb-5 pt-[48px] text-white max-lg:px-6 max-sm:px-5"
+      >
+        <div
+          class="mx-auto grid max-w-[1066px] grid-cols-[1.4fr_1fr_.8fr_auto] gap-14 max-lg:grid-cols-2 max-sm:grid-cols-1"
+        >
+          <div>
+            <a
+              class="font-script text-[44px] leading-none text-white"
+              href="index.html"
+              >Danny Kioko</a
+            >
+            <p class="mt-8 text-[15px] font-light text-white/85">
+              The Worship Minister and Evangelist
+            </p>
+          </div>
+
+          <div>
+            <h3
+              class="mb-8 text-[15px] font-light uppercase tracking-[.04em] text-white"
+            >
+              Links
+            </h3>
+            <nav
+              class="flex flex-col gap-4 text-[15px] font-light text-white/90"
+            >
+              <a href="index.html">Music</a>
+              <a href="about.html">Danny Kioko Foundation</a>
+              <a href="the-light.html">The Light</a>
+            </nav>
+
+            <div class="mt-8 flex gap-4 text-white">
+              <a href="#" aria-label="Facebook">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v8h4v-8h3l1-4h-4V9c0-.6.4-1 1-1z"
+                  />
+                </svg>
+              </a>
+              <a href="#" aria-label="Instagram">
+                <svg
+                  class="h-5 w-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="4" y="4" width="16" height="16" rx="5" />
+                  <circle cx="12" cy="12" r="3.5" />
+                  <path d="M17.5 6.5h.01" />
+                </svg>
+              </a>
+              <a href="#" aria-label="Twitter">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M22 5.8c-.7.3-1.5.5-2.3.6.8-.5 1.4-1.2 1.7-2.2-.8.5-1.6.8-2.6 1-1.5-1.6-4.1-.8-4.7 1.3-.1.4-.1.8 0 1.1-3.2-.2-6-1.7-7.9-4-.4.7-.6 1.5-.3 2.3.2.8.7 1.5 1.4 1.9-.6 0-1.2-.2-1.7-.5 0 1.8 1.3 3.4 3.1 3.7-.6.2-1.2.2-1.8.1.5 1.5 2 2.6 3.7 2.7-1.6 1.2-3.5 1.9-5.6 1.9H4c1.8 1.2 4 1.8 6.3 1.8 7.5 0 11.7-6.2 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z"
+                  />
+                </svg>
+              </a>
+              <a href="#" aria-label="Email">
+                <svg
+                  class="h-5 w-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M4 6h16v12H4z" />
+                  <path d="m4 7 8 6 8-6" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3
+              class="mb-8 text-[15px] font-light uppercase tracking-[.04em] text-white"
+            >
+              Songs
+            </h3>
+            <div
+              class="flex flex-col gap-4 text-[15px] font-light text-white/90"
+            >
+              <a href="index.html">Muvango</a>
+              <a href="index.html">It's Possible</a>
+              <a href="index.html">Uinuliwe</a>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-6">
+            <a class="footer-listen-pill text-[#1ed760]" href="#"
+              ><span class="spotify-icon"
+                ><svg
+                  class="h-3 w-3"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-width="2.3"
+                >
+                  <path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" />
+                  <path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" />
+                  <path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" /></svg></span
+              ><span>Spotify</span></a
+            >
+            <a class="footer-listen-pill text-white" href="#"
+              ><span class="youtube-icon"
+                ><svg class="h-2.5 w-3" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 7.8v8.4l7.2-4.2L9 7.8z" /></svg></span
+              ><span>YouTube</span></a
+            >
+            <a class="footer-listen-pill text-white" href="#"
+              ><svg
+                class="h-[26px] w-[22px]"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
                 <path
-                      d="M22 5.8c-.7.3-1.5.5-2.3.6.8-.5 1.4-1.2 1.7-2.2-.8.5-1.6.8-2.6 1-1.5-1.6-4.1-.8-4.7 1.3-.1.4-.1.8 0 1.1-3.2-.2-6-1.7-7.9-4-.4.7-.6 1.5-.3 2.3.2.8.7 1.5 1.4 1.9-.6 0-1.2-.2-1.7-.5 0 1.8 1.3 3.4 3.1 3.7-.6.2-1.2.2-1.8.1.5 1.5 2 2.6 3.7 2.7-1.6 1.2-3.5 1.9-5.6 1.9H4c1.8 1.2 4 1.8 6.3 1.8 7.5 0 11.7-6.2 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z" />
-              </svg>
-            </a>
-            <a href="#"
-               aria-label="Email">
-              <svg class="h-5 w-5"
-                   viewBox="0 0 24 24"
-                   fill="none"
-                   stroke="currentColor"
-                   stroke-width="2">
-                <path d="M4 6h16v12H4z" />
-                <path d="m4 7 8 6 8-6" />
-              </svg>
-            </a>
+                  d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z"
+                /></svg
+              ><span>Apple</span></a
+            >
           </div>
         </div>
 
-        <div>
-          <h3 class="mb-8 text-[15px] font-light uppercase tracking-[.04em] text-white">Songs</h3>
-          <div class="flex flex-col gap-4 text-[15px] font-light text-white/90">
-            <a href="index2.html">Muvango</a>
-            <a href="index2.html">It's Possible</a>
-            <a href="index2.html">Uinuliwe</a>
-          </div>
+        <div
+          class="mx-auto mt-[40px] max-w-[1066px] border-t border-white/20 pt-6 text-center text-[15px] font-light text-white/90"
+        >
+          &copy; Dan Kioko -2026
         </div>
+      </footer>
+    </main>
 
-        <div class="flex flex-col gap-6">
-          <a class="footer-listen-pill text-[#1ed760]"
-             href="#"><span class="spotify-icon"><svg class="h-3 w-3"
-                   viewBox="0 0 24 24"
-                   fill="none"
-                   stroke="currentColor"
-                   stroke-linecap="round"
-                   stroke-width="2.3">
-                <path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" />
-                <path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" />
-                <path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" />
-              </svg></span><span>Spotify</span></a>
-          <a class="footer-listen-pill text-white"
-             href="#"><span class="youtube-icon"><svg class="h-2.5 w-3"
-                   viewBox="0 0 24 24"
-                   fill="currentColor">
-                <path d="M9 7.8v8.4l7.2-4.2L9 7.8z" />
-              </svg></span><span>YouTube</span></a>
-          <a class="footer-listen-pill text-white"
-             href="#"><svg class="h-[26px] w-[22px]"
-                 viewBox="0 0 24 24"
-                 fill="currentColor">
-              <path
-                    d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z" />
-            </svg><span>Apple</span></a>
-        </div>
-      </div>
+    <script>
+      const menuButton = document.querySelector(".menu-button");
+      const siteNav = document.querySelector("#siteNav");
 
-      <div
-           class="mx-auto mt-[40px] max-w-[1066px] border-t border-white/20 pt-6 text-center text-[15px] font-light text-white/90">
-        &copy; Dan Kioko -2026
-      </div>
-    </footer>
-  </main>
-
-  <script>
-    const menuButton = document.querySelector(".menu-button");
-    const siteNav = document.querySelector("#siteNav");
-
-    menuButton.addEventListener("click", () => {
-      const isOpen = siteNav.classList.toggle("is-open");
-      menuButton.setAttribute("aria-expanded", String(isOpen));
-    });
-  </script>
-</body>
-
+      menuButton.addEventListener("click", () => {
+        const isOpen = siteNav.classList.toggle("is-open");
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+      });
+    </script>
+  </body>
 </html>
