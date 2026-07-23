@@ -49,7 +49,7 @@ export function Footer() {
       </div>
       <div className="w-full text-center mt-8 pt-4 border-t border-white/10">
         <p className="text-white/60 text-xs font-light">
-          © 2026 Danny Kioko Foundation
+          ©Danny Kioko Foundation
         </p>
       </div>
     </footer>
