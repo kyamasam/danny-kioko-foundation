@@ -1,1054 +1,917 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Danny Kioko | Music & Evangelism</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Great+Vibes&display=swap"
-      rel="stylesheet"
-    />
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ["Inter", "Arial", "sans-serif"],
-              script: ["Great Vibes", "cursive"],
-            },
-            colors: {
-              release: "#f25a25",
-              ink: "#101010",
-              midnight: "#122a5c",
-            },
-            boxShadow: {
-              listen: "0 13px 20px rgba(4, 4, 4, .24)",
-              navButton: "0 8px 18px rgba(18, 42, 92, .17)",
-            },
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+  <title>Danny Kioko Foundation | Music & Evangelism</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect"
+        href="https://fonts.googleapis.com" />
+  <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Great+Vibes&display=swap"
+        rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "Arial", "sans-serif"],
+            script: ["Great Vibes", "cursive"],
+          },
+          colors: {
+            release: "#f25a25",
+            ink: "#101010",
+            midnight: "#122a5c",
+          },
+          boxShadow: {
+            listen: "0 13px 20px rgba(4, 4, 4, .24)",
+            navButton: "0 8px 18px rgba(18, 42, 92, .17)",
           },
         },
-      };
-    </script>
-    <style>
-      /* Navigation mobile toggle */
-      .nav-links.is-open {
-        display: flex;
-      }
+      },
+    };
+  </script>
+  <style>
+    /* Navigation mobile toggle */
+    .nav-links.is-open {
+      display: flex;
+    }
 
-      /* Music pill styles (used in music cards) */
-      .music-pill {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 4px;
-        min-width: 91px;
-        height: 36px;
-        padding: 0 12px;
-        border: 1px solid #ead8df;
-        border-radius: 9999px;
-        background: #fff;
-        font-size: 12px;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-        transition: transform 0.15s ease;
-      }
-      .music-pill:hover {
-        transform: translateY(-2px);
-      }
+    /* Music pill styles (used in music cards) */
+    .music-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      min-width: 91px;
+      height: 36px;
+      padding: 0 12px;
+      border: 1px solid #ead8df;
+      border-radius: 9999px;
+      background: #fff;
+      font-size: 12px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      transition: transform 0.15s ease;
+    }
 
-      .youtube-icon {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 20px;
-        height: 14px;
-        border-radius: 4px;
-        background: #f00;
-        color: #fff;
-      }
+    .music-pill:hover {
+      transform: translateY(-2px);
+    }
 
-      .spotify-icon {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 17px;
-        height: 17px;
-        border-radius: 9999px;
-        background: #1ed760;
-        color: #fff;
-      }
+    .youtube-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 14px;
+      border-radius: 4px;
+      background: #f00;
+      color: #fff;
+    }
 
-      .footer-listen-pill {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
-        min-width: 112px;
-        height: 40px;
-        padding: 0 15px;
-        border: 1px solid rgba(99, 145, 225, 0.8);
-        border-radius: 9999px;
-        background: rgba(255, 255, 255, 0.02);
-        font-size: 15px;
-        font-weight: 700;
-        transition:
-          background 0.15s ease,
-          transform 0.15s ease;
-      }
-      .footer-listen-pill:hover {
-        background: rgba(255, 255, 255, 0.08);
-        transform: translateY(-2px);
-      }
+    .spotify-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 17px;
+      height: 17px;
+      border-radius: 9999px;
+      background: #1ed760;
+      color: #fff;
+    }
 
-      /* Hero cover tilt effect */
-      .hero-cover {
-        position: absolute;
-        overflow: hidden;
-        border-radius: 16px;
-        background: #fff;
-        box-shadow: 0 24px 48px rgba(0, 0, 0, 0.18);
-        transform-origin: center bottom;
-        transition:
-          transform 0.25s ease,
-          box-shadow 0.25s ease;
-      }
-      .hero-cover:hover {
-        transform: translateY(-10px) rotate(var(--tilt)) scale(1.035);
-        box-shadow: 0 34px 62px rgba(0, 0, 0, 0.24);
-      }
-      .hero-cover img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-      }
+    .footer-listen-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-width: 112px;
+      height: 40px;
+      padding: 0 15px;
+      border: 1px solid rgba(99, 145, 225, 0.8);
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.02);
+      font-size: 15px;
+      font-weight: 700;
+      transition:
+        background 0.15s ease,
+        transform 0.15s ease;
+    }
 
-      .vertical-dots span {
-        display: block;
-        height: 8px;
-        width: 8px;
-        border-radius: 9999px;
-        background: rgba(16, 16, 16, 0.22);
-      }
-      .vertical-dots span:nth-child(2) {
-        background: #f25a25;
-      }
+    .footer-listen-pill:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-2px);
+    }
 
+    /* Hero cover tilt effect */
+    .hero-cover {
+      position: absolute;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.18);
+      transform-origin: center bottom;
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .hero-cover:hover {
+      transform: translateY(-10px) rotate(var(--tilt)) scale(1.035);
+      box-shadow: 0 34px 62px rgba(0, 0, 0, 0.24);
+    }
+
+    .hero-cover img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .slide {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .slide.is-active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .vertical-dots span {
+      display: block;
+      height: 8px;
+      width: 8px;
+      border-radius: 9999px;
+      background: rgba(16, 16, 16, 0.22);
+    }
+
+    .vertical-dots span:nth-child(2) {
+      background: #f25a25;
+    }
+
+    .mission-lane {
+      display: grid;
+      grid-template-columns: 132px 1fr;
+      gap: 28px;
+      border-top: 1px solid rgba(16, 16, 16, 0.14);
+      padding-top: 24px;
+    }
+
+    .music-card .relative>img {
+      transition: transform 0.25s ease;
+    }
+
+    .music-card:hover .relative>img {
+      transform: scale(1.045);
+    }
+
+    @media (max-width: 760px) {
       .mission-lane {
-        display: grid;
-        grid-template-columns: 132px 1fr;
-        gap: 28px;
-        border-top: 1px solid rgba(16, 16, 16, 0.14);
-        padding-top: 24px;
+        grid-template-columns: 1fr;
+        gap: 10px;
       }
+    }
+  </style>
+</head>
 
-      .music-card .relative > img {
-        transition: transform 0.25s ease;
-      }
-      .music-card:hover .relative > img {
-        transform: scale(1.045);
-      }
+<body class="min-h-screen bg-[#0c0b10] font-sans text-white antialiased">
+  <main class="min-h-screen overflow-hidden">
+    <!-- ===== HEADER from second page ===== -->
+    <div
+         class="flex h-[33px] items-center justify-center bg-release px-4 text-center text-[15px] font-medium tracking-[.01em] max-sm:h-[31px] max-sm:text-[13px]">
+      New Campaign Ongoing -
+      <a href="https://dannykioko.org/give/"
+         class="ml-1 underline underline-offset-2 hover:no-underline hover:text-white/80 transition-colors">
+        Donate now
+      </a>
+    </div>
 
-      @media (max-width: 760px) {
-        .mission-lane {
-          grid-template-columns: 1fr;
-          gap: 10px;
-        }
-      }
-    </style>
-  </head>
-  <body class="min-h-screen bg-[#0c0b10] font-sans text-white antialiased">
-    <main class="min-h-screen overflow-hidden">
-      <!-- ===== HEADER from second page ===== -->
-      <div
-        class="flex h-[33px] items-center justify-center bg-release px-4 text-center text-[15px] font-medium tracking-[.01em] max-sm:h-[31px] max-sm:text-[13px]"
-      >
-        New Campaign Ongoing -
-        <a
-          href="#"
-          class="ml-1 underline underline-offset-2 hover:no-underline hover:text-white/80 transition-colors"
-        >
-          Donate now
-        </a>
+    <header class="relative z-10 flex items-center justify-between gap-3.5 bg-[#f5f2ec] py-0 px-3 h-[63px] sm:px-[18px] sm:h-[68px] md:h-[64px] md:gap-6 md:pl-[36px] md:pr-[16px] text-ink shadow-[0_1px_0_rgba(15,15,15,.08)]"
+            aria-label="Primary">
+      <a class="text-2xl whitespace-nowrap font-script leading-none text-[#111]"
+         href="index.html">
+        Danny Kioko Foundation
+      </a>
+
+      <nav class="nav-links absolute left-0 right-0 top-[63px] hidden flex-col items-stretch gap-0 border-t border-[#ececec] bg-[#f5f2ec] px-[18px] pb-[18px] pt-2.5 text-[15px] shadow-[0_18px_32px_rgba(0,0,0,.14)] sm:top-[68px] md:relative md:top-0 md:left-auto md:right-auto md:flex md:flex-row md:items-center md:justify-center md:gap-[clamp(16px,2.5vw,32px)] md:border-0 md:bg-transparent md:p-0 md:text-[clamp(13px,1.1vw,15px)] md:shadow-none md:ml-auto"
+           id="siteNav"
+           aria-label="Main navigation">
+        <a class="relative py-3 text-release after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-100 after:bg-release md:py-2"
+           href="about.html">Home</a>
+        <a class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
+           href="safe-space.html">Safe Space</a>
+        <a class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
+           href="about.html">About Us</a>
+        <a class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
+           href="music-and-evangelism.html">Music</a>
+        <a class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
+           href="safe-space-gala.html">Safe Space Gala</a>
+        <a class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
+           href="the-light.html">The Light</a>
+      </nav>
+
+      <!-- <a class="hidden min-w-[110px] items-center justify-center justify-self-end rounded-full bg-[#111] px-4 text-[14px] font-semibold tracking-wide text-white shadow-navButton transition-opacity hover:opacity-80 sm:inline-flex md:h-[42px] md:min-w-[126px] md:px-[22px]"
+         href="#">
+        Listen Now
+      </a> -->
+
+      <button class="menu-button inline-flex h-[42px] w-[42px] flex-col items-center justify-center gap-[5px] rounded-[7px] border-0 bg-[#f0f1f5] text-[#121212] justify-self-end md:hidden"
+              type="button"
+              aria-label="Toggle navigation"
+              aria-expanded="false"
+              aria-controls="siteNav">
+        <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
+        <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
+        <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
+      </button>
+    </header>
+    <!-- ===== end HEADER ===== -->
+
+    <section class="relative isolate h-[calc(100vh-105px)] min-h-[500px] bg-[#15121c] max-[980px]:h-[calc(100vh-101px)] max-sm:h-[calc(100vh-94px)]"
+             aria-label="Featured music">
+      <div class="absolute inset-0">
+        <article
+                 class="slide is-active absolute inset-0 grid place-items-center px-[70px] pb-[54px] pt-[58px] transition-[opacity,transform] duration-700 ease-out max-[980px]:px-[54px] max-[980px]:pb-[64px] max-[980px]:pt-[62px] max-sm:items-center max-sm:px-6 max-sm:pb-[76px] max-sm:pt-[58px]">
+          <div
+               class="absolute inset-0 -z-20 bg-[url('images/shosh.jpg')] bg-cover bg-center max-sm:bg-[position:53%_center]">
+          </div>
+          <div
+               class="absolute inset-0 -z-10 bg-[linear-gradient(rgba(18,16,28,.51),rgba(18,16,28,.51)),radial-gradient(circle_at_50%_46%,rgba(255,255,255,.05),transparent_38%)]">
+          </div>
+          <div class="mt-1.5 w-full max-w-[760px] text-center">
+            <div
+                 class="mb-[19px] inline-flex items-center justify-center gap-3 text-[clamp(16px,1.9vw,20px)] font-normal leading-tight text-white/95 before:h-[3px] before:w-[52px] before:bg-current before:opacity-80 after:h-[3px] after:w-[52px] after:bg-[#21d0c3] max-sm:mb-[18px] max-sm:gap-[9px] max-sm:text-sm max-sm:before:h-0.5 max-sm:before:w-7 max-sm:after:h-0.5 max-sm:after:w-7">
+              Nonprofit Organization
+            </div>
+            <h1
+                class="m-0 text-[clamp(40px,5.2vw,62px)] font-medium uppercase leading-none tracking-[.1em] text-white max-sm:text-[clamp(34px,12vw,48px)] max-sm:tracking-[.06em]">
+              DK Foundation
+            </h1>
+            <p
+               class="m-0 mt-[30px] text-[clamp(18px,2vw,22px)] font-medium uppercase leading-tight tracking-[.01em] text-white max-sm:mt-[31px] max-sm:text-[19px]">
+              Restoring Hope. Building Communities.
+            </p>
+            <a class="mt-11 inline-flex h-[48px] min-w-[160px] items-center justify-center rounded-[31px] bg-release px-[28px] text-[clamp(17px,1.8vw,20px)] font-medium text-white shadow-listen transition hover:-translate-y-0.5 hover:bg-[#ff642d] focus-visible:-translate-y-0.5 focus-visible:bg-[#ff642d] max-[980px]:mt-9 max-sm:mt-8 max-sm:h-[48px] max-sm:min-w-[154px] max-sm:text-[19px]"
+               href="https://dannykioko.org/give/">
+              Donate Now
+            </a>
+          </div>
+        </article>
+
+        <article
+                 class="slide absolute inset-0 grid place-items-center px-[70px] pb-[54px] pt-[58px] transition-[opacity,transform] duration-700 ease-out max-[980px]:px-[54px] max-[980px]:pb-[64px] max-[980px]:pt-[62px] max-sm:items-center max-sm:px-6 max-sm:pb-[76px] max-sm:pt-[58px]">
+          <div
+               class="absolute inset-0 -z-20 bg-[url('images/youth_usa/danny_kioko_with_kids_mentoring.jpg')] bg-cover bg-center">
+          </div>
+          <div
+               class="absolute inset-0 -z-10 bg-[linear-gradient(rgba(18,16,28,.58),rgba(18,16,28,.58)),radial-gradient(circle_at_50%_46%,rgba(255,255,255,.05),transparent_38%)]">
+          </div>
+          <div class="mt-1.5 w-full max-w-[760px] text-center">
+            <div
+                 class="mb-[19px] inline-flex items-center justify-center gap-3 text-[clamp(16px,1.9vw,20px)] font-normal leading-tight text-white/95 before:h-[3px] before:w-[52px] before:bg-current before:opacity-80 after:h-[3px] after:w-[52px] after:bg-[#fac844] max-sm:mb-[18px] max-sm:gap-[9px] max-sm:text-sm max-sm:before:h-0.5 max-sm:before:w-7 max-sm:after:h-0.5 max-sm:after:w-7">
+              Youth Empowerment
+            </div>
+            <h1
+                class="m-0 text-[clamp(40px,5.2vw,62px)] font-medium uppercase leading-none tracking-[.1em] text-white max-sm:text-[clamp(34px,12vw,48px)] max-sm:tracking-[.06em]">
+              Mentorship Program
+            </h1>
+            <p
+               class="m-0 mt-[30px] text-[clamp(18px,2vw,22px)] font-medium uppercase leading-tight tracking-[.01em] text-white max-sm:mt-[31px] max-sm:text-[19px]">
+              Equipping the Next Generation.
+            </p>
+            <a class="mt-11 inline-flex h-[48px] min-w-[160px] items-center justify-center rounded-[31px] bg-release px-[28px] text-[clamp(17px,1.8vw,20px)] font-medium text-white shadow-listen transition hover:-translate-y-0.5 hover:bg-[#ff642d] focus-visible:-translate-y-0.5 focus-visible:bg-[#ff642d] max-[980px]:mt-9 max-sm:mt-8 max-sm:h-[48px] max-sm:min-w-[154px] max-sm:text-[19px]"
+               href="#">
+              Get Involved
+            </a>
+          </div>
+        </article>
+
+        <article
+                 class="slide absolute inset-0 grid place-items-center px-[70px] pb-[54px] pt-[58px] transition-[opacity,transform] duration-700 ease-out max-[980px]:px-[54px] max-[980px]:pb-[64px] max-[980px]:pt-[62px] max-sm:items-center max-sm:px-6 max-sm:pb-[76px] max-sm:pt-[58px]">
+          <div
+               class="absolute inset-0 -z-20 bg-[url('images/youth_usa/danny_kioko_foundation_usa_meetup.jpg')] bg-cover bg-center">
+          </div>
+          <div
+               class="absolute inset-0 -z-10 bg-[linear-gradient(rgba(18,16,28,.58),rgba(18,16,28,.58)),radial-gradient(circle_at_50%_46%,rgba(255,255,255,.05),transparent_38%)]">
+          </div>
+          <div class="mt-1.5 w-full max-w-[760px] text-center">
+            <div
+                 class="mb-[19px] inline-flex items-center justify-center gap-3 text-[clamp(16px,1.9vw,20px)] font-normal leading-tight text-white/95 before:h-[3px] before:w-[52px] before:bg-current before:opacity-80 after:h-[3px] after:w-[52px] after:bg-[#21d0c3] max-sm:mb-[18px] max-sm:gap-[9px] max-sm:text-sm max-sm:before:h-0.5 max-sm:before:w-7 max-sm:after:h-0.5 max-sm:after:w-7">
+              Upcoming Event
+            </div>
+            <h1
+                class="m-0 text-[clamp(40px,5.2vw,62px)] font-medium uppercase leading-none tracking-[.1em] text-white max-sm:text-[clamp(34px,12vw,48px)] max-sm:tracking-[.06em]">
+              Safe Space Gala
+            </h1>
+            <p
+               class="m-0 mt-[30px] text-[clamp(18px,2vw,22px)] font-medium uppercase leading-tight tracking-[.01em] text-white max-sm:mt-[31px] max-sm:text-[19px]">
+              Uniting Communities. May 29, 2027.
+            </p>
+            <a class="mt-11 inline-flex h-[48px] min-w-[160px] items-center justify-center rounded-[31px] bg-release px-[28px] text-[clamp(17px,1.8vw,20px)] font-medium text-white shadow-listen transition hover:-translate-y-0.5 hover:bg-[#ff642d] focus-visible:-translate-y-0.5 focus-visible:bg-[#ff642d] max-[980px]:mt-9 max-sm:mt-8 max-sm:h-[48px] max-sm:min-w-[154px] max-sm:text-[19px]"
+               href="safe-space-gala.html">
+              Learn More
+            </a>
+          </div>
+        </article>
       </div>
 
-      <header
-        class="relative z-10 flex items-center justify-between gap-3.5 bg-[#f5f2ec] py-0 px-3 h-[63px] sm:px-[18px] sm:h-[68px] md:h-[64px] md:gap-6 md:pl-[36px] md:pr-[16px] text-ink shadow-[0_1px_0_rgba(15,15,15,.08)]"
-        aria-label="Primary"
-      >
-        <a
-          class="text-2xl whitespace-nowrap font-script leading-none text-[#111]"
-          href="index.html"
-        >
-          Danny Kioko
-        </a>
+      <button class="slider-arrow prev absolute left-4 top-1/2 z-[5] -translate-y-1/2 inline-flex h-[51px] w-[51px] items-center justify-center rounded-full border border-white/70 bg-white/10 text-white transition hover:scale-[1.04] hover:bg-white/20 focus-visible:scale-[1.04] focus-visible:bg-white/20 max-sm:bottom-6 max-sm:left-[22px] max-sm:top-auto max-sm:translate-y-0 max-sm:h-11 max-sm:w-11"
+              type="button"
+              aria-label="Previous slide">
+        <svg class="h-[25px] w-[25px] stroke-[1.7]"
+             viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             aria-hidden="true">
+          <path d="M15 18l-6-6 6-6" />
+          <path d="M21 12H9" />
+        </svg>
+      </button>
 
-        <nav
-          class="nav-links absolute left-0 right-0 top-[63px] hidden flex-col items-stretch gap-0 border-t border-[#ececec] bg-[#f5f2ec] px-[18px] pb-[18px] pt-2.5 text-[15px] shadow-[0_18px_32px_rgba(0,0,0,.14)] sm:top-[68px] md:relative md:top-0 md:left-auto md:right-auto md:flex md:flex-row md:items-center md:justify-center md:gap-[clamp(16px,2.5vw,32px)] md:border-0 md:bg-transparent md:p-0 md:text-[clamp(13px,1.1vw,15px)] md:shadow-none md:ml-auto"
-          id="siteNav"
-          aria-label="Main navigation"
-        >
-          <a
-            class="relative py-3 text-release after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-100 after:bg-release md:py-2"
-            href="about.html"
-            >About DKF</a
-          >
-          <a
-            class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
-            href="safe-space.html"
-            >Safe Space</a
-          >
-          <a
-            class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
-            href="about.html"
-            >DKF</a
-          >
-          <a
-            class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
-            href="music-and-evangelism.html"
-            >Music</a
-          >
-          <a
-            class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2"
-            href="safe-space-gala.html"
-            >Safe Space Gala</a
-          >
-          <!-- <a class="relative py-3 after:absolute after:inset-x-0 after:bottom-0.5 after:h-0.5 after:origin-center after:scale-x-0 after:bg-release after:transition-transform hover:after:scale-x-100 focus-visible:after:scale-x-100 md:py-2" href="the-light.html">The Light</a> -->
-        </nav>
+      <button class="slider-arrow next absolute right-4 top-1/2 z-[5] -translate-y-1/2 inline-flex h-[51px] w-[51px] items-center justify-center rounded-full border border-white/70 bg-white/10 text-white transition hover:scale-[1.04] hover:bg-white/20 focus-visible:scale-[1.04] focus-visible:bg-white/20 max-sm:bottom-6 max-sm:right-[22px] max-sm:top-auto max-sm:translate-y-0 max-sm:h-11 max-sm:w-11"
+              type="button"
+              aria-label="Next slide">
+        <svg class="h-[25px] w-[25px] stroke-[1.7]"
+             viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             aria-hidden="true">
+          <path d="M9 6l6 6-6 6" />
+          <path d="M3 12h12" />
+        </svg>
+      </button>
 
-        <a
-          class="hidden min-w-[110px] items-center justify-center justify-self-end rounded-full bg-[#111] px-4 text-[14px] font-semibold tracking-wide text-white shadow-navButton transition-opacity hover:opacity-80 sm:inline-flex md:h-[42px] md:min-w-[126px] md:px-[22px]"
-          href="#"
-        >
-          Listen Now
-        </a>
+      <div class="slider-dots absolute bottom-[82px] left-1/2 z-[6] flex -translate-x-1/2 items-center justify-center gap-1 max-sm:bottom-[38px]"
+           aria-label="Slide controls"></div>
+      <div class="absolute bottom-0 right-0 z-[4] h-[3px] w-[321px] bg-release max-sm:w-[34vw]"
+           aria-hidden="true"></div>
+    </section>
 
-        <button
-          class="menu-button inline-flex h-[42px] w-[42px] flex-col items-center justify-center gap-[5px] rounded-[7px] border-0 bg-[#f0f1f5] text-[#121212] justify-self-end md:hidden"
-          type="button"
-          aria-label="Toggle navigation"
-          aria-expanded="false"
-          aria-controls="siteNav"
-        >
-          <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
-          <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
-          <span class="block h-0.5 w-5 rounded-sm bg-current"></span>
-        </button>
-      </header>
-      <!-- ===== end HEADER ===== -->
+    <!-- ABOUT DANNY -->
+    <section class="relative isolate overflow-hidden bg-[#f7f7f7] px-8 pb-[52px] pt-[36px] text-[#050505] max-lg:px-6 max-sm:px-5 max-sm:pb-10 max-sm:pt-8"
+             aria-labelledby="about-foundation">
+      <div class="pointer-events-none absolute -right-[96px] -top-[128px] z-0 h-[338px] w-[388px] rounded-[52%_0_0_57%/50%_0_0_56%] bg-release max-lg:-right-[150px] max-lg:-top-[150px] max-sm:-right-[190px] max-sm:-top-[180px]"
+           aria-hidden="true"></div>
+      <div class="pointer-events-none absolute right-[16px] top-[64px] z-0 h-[212px] w-[278px] rotate-[-17deg] rounded-[55%_45%_58%_42%/48%_52%_48%_52%] bg-release max-lg:right-[-72px] max-sm:right-[-140px] max-sm:top-[86px]"
+           aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -bottom-[73px] -left-[5px] z-0 h-[154px] w-[182px] rounded-tl-none bg-[#fac844] max-sm:-bottom-[88px] max-sm:w-[142px]"
+           aria-hidden="true">
+        <div class="absolute -bottom-8 -left-8 h-[108px] w-[166px] rounded-[50%] bg-[#f7f7f7]"></div>
+      </div>
 
-      <section
-        class="relative isolate h-[calc(100vh-105px)] min-h-[500px] bg-[#15121c] max-[980px]:h-[calc(100vh-101px)] max-sm:h-[calc(100vh-94px)]"
-        aria-label="Featured music"
-      >
-        <div class="absolute inset-0">
-          <article
-            class="slide is-active absolute inset-0 grid place-items-center px-[70px] pb-[54px] pt-[58px] transition-[opacity,transform] duration-700 ease-out max-[980px]:px-[54px] max-[980px]:pb-[64px] max-[980px]:pt-[62px] max-sm:items-center max-sm:px-6 max-sm:pb-[76px] max-sm:pt-[58px]"
-          >
-            <div
-              class="absolute inset-0 -z-20 bg-[url('images/shosh.jpg')] bg-cover bg-center max-sm:bg-[position:53%_center]"
-            ></div>
-            <div
-              class="absolute inset-0 -z-10 bg-[linear-gradient(rgba(18,16,28,.51),rgba(18,16,28,.51)),radial-gradient(circle_at_50%_46%,rgba(255,255,255,.05),transparent_38%)]"
-            ></div>
-            <div class="mt-1.5 w-full max-w-[760px] text-center">
-              <div
-                class="mb-[19px] inline-flex items-center justify-center gap-3 text-[clamp(16px,1.9vw,20px)] font-normal leading-tight text-white/95 before:h-[3px] before:w-[52px] before:bg-current before:opacity-80 after:h-[3px] after:w-[52px] after:bg-[#21d0c3] max-sm:mb-[18px] max-sm:gap-[9px] max-sm:text-sm max-sm:before:h-0.5 max-sm:before:w-7 max-sm:after:h-0.5 max-sm:after:w-7"
-              >
-                Nonprofit Organization
+      <div
+           class="relative z-10 mx-auto grid max-w-[1100px] grid-cols-[1fr_420px] items-center gap-[36px] max-lg:grid-cols-1 max-lg:gap-8">
+        <div class="max-w-[560px] max-lg:max-w-3xl">
+          <h2 id="about-foundation"
+              class="mb-[28px] flex flex-wrap items-end gap-x-[20px] gap-y-2 text-[clamp(24px,2.8vw,32px)] font-normal leading-none tracking-normal max-sm:mb-6 max-sm:text-[28px]">
+            <span>About</span>
+            <span class="border-b border-release pb-2 text-release">DK Foundation</span>
+          </h2>
+
+          <p
+             class="max-w-[560px] text-[15px] font-normal leading-[1.68] tracking-[.01em] text-black max-lg:text-[15px] max-sm:text-[15px] max-sm:leading-[1.65]">
+            <strong>DK Foundation</strong> is a nonprofit organization
+            established in Washington State, USA. We exist to mobilize
+            resources, build strategic partnerships, and implement sustainable
+            programs that improve lives and create lasting positive impact in
+            communities across the United States and East Africa.
+          </p>
+
+          <p
+             class="mt-3 max-w-[560px] text-[15px] font-normal leading-[1.68] tracking-[.01em] text-black max-lg:text-[15px] max-sm:text-[15px] max-sm:leading-[1.65]">
+            Our work focuses on supporting vulnerable children and families,
+            empowering youth through mentorship and leadership development,
+            promoting community outreach through faith-based initiatives, and
+            developing sustainable community resources such as children's
+            centers, schools, and resource hubs.
+          </p>
+
+          <div class="mt-[22px] grid grid-cols-3 gap-3 max-w-[560px] max-sm:grid-cols-1 max-sm:max-w-full">
+            <div class="rounded-[10px] bg-white border border-black/10 p-4 shadow-[0_6px_18px_rgba(20,18,14,.07)]">
+              <div class="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-full bg-release/10 text-release">
+                <svg class="h-4 w-4"
+                     viewBox="0 0 24 24"
+                     fill="currentColor"
+                     aria-hidden="true">
+                  <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z" />
+                </svg>
               </div>
-              <h1
-                class="m-0 text-[clamp(40px,5.2vw,62px)] font-medium uppercase leading-none tracking-[.1em] text-white max-sm:text-[clamp(34px,12vw,48px)] max-sm:tracking-[.06em]"
-              >
-                DK Foundation
-              </h1>
-              <p
-                class="m-0 mt-[30px] text-[clamp(18px,2vw,22px)] font-medium uppercase leading-tight tracking-[.01em] text-white max-sm:mt-[31px] max-sm:text-[19px]"
-              >
-                Restoring Hope. Building Communities.
+              <h3 class="text-[13px] font-bold text-ink leading-tight mb-1">
+                Support Children &amp; Families
+              </h3>
+              <p class="text-[12px] leading-[1.6] text-black/60">
+                Providing education, healthcare, nutrition, shelter, and
+                essential support services to disadvantaged children and
+                families.
               </p>
-              <a
-                class="mt-11 inline-flex h-[48px] min-w-[160px] items-center justify-center rounded-[31px] bg-release px-[28px] text-[clamp(17px,1.8vw,20px)] font-medium text-white shadow-listen transition hover:-translate-y-0.5 hover:bg-[#ff642d] focus-visible:-translate-y-0.5 focus-visible:bg-[#ff642d] max-[980px]:mt-9 max-sm:mt-8 max-sm:h-[48px] max-sm:min-w-[154px] max-sm:text-[19px]"
-                href="#"
-              >
+            </div>
+
+            <div class="rounded-[10px] bg-white border border-black/10 p-4 shadow-[0_6px_18px_rgba(20,18,14,.07)]">
+              <div
+                   class="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-full bg-harvest/30 text-[#a06800]">
+                <svg class="h-4 w-4"
+                     viewBox="0 0 24 24"
+                     fill="currentColor"
+                     aria-hidden="true">
+                  <path
+                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                </svg>
+              </div>
+              <h3 class="text-[13px] font-bold text-ink leading-tight mb-1">
+                Empower Youth
+              </h3>
+              <p class="text-[12px] leading-[1.6] text-black/60">
+                Equipping young people with life skills, leadership training,
+                mentorship, and opportunities to reach their full potential.
+              </p>
+            </div>
+
+            <div class="rounded-[10px] bg-white border border-black/10 p-4 shadow-[0_6px_18px_rgba(20,18,14,.07)]">
+              <div
+                   class="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-full bg-midnight/10 text-midnight">
+                <svg class="h-4 w-4"
+                     viewBox="0 0 24 24"
+                     fill="currentColor"
+                     aria-hidden="true">
+                  <path
+                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                </svg>
+              </div>
+              <h3 class="text-[13px] font-bold text-ink leading-tight mb-1">
+                Community Outreach
+              </h3>
+              <p class="text-[12px] leading-[1.6] text-black/60">
+                Strengthening communities through outreach programs, concerts,
+                Christian discipleship, counseling, and faith-based
+                initiatives.
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-[18px] flex max-w-[280px] flex-col gap-[14px] max-sm:max-w-full">
+            <a class="group inline-flex h-[42px] items-center justify-between rounded-full bg-release px-[32px] text-[15px] font-normal text-white transition hover:bg-[#ff642d] focus-visible:bg-[#ff642d] max-sm:h-12 max-sm:px-7 max-sm:text-[16px]"
+               href="about.html#mission-title">
+              <span>Our Mission</span>
+              <span class="text-[24px] leading-none transition group-hover:translate-x-1"
+                    aria-hidden="true">&rarr;</span>
+            </a>
+
+            <a class="group inline-flex h-[42px] items-center justify-between rounded-full bg-midnight px-[32px] text-[15px] font-normal text-white transition hover:bg-[#173770] focus-visible:bg-[#173770] max-sm:h-12 max-sm:px-7 max-sm:text-[16px]"
+               href="#">
+              <span>Get Involved</span>
+              <span class="text-[24px] leading-none transition group-hover:translate-x-1"
+                    aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="relative max-lg:mx-auto max-lg:w-full max-lg:max-w-[560px]">
+          <img class="h-[520px] w-full rounded-[32px] object-cover object-[50%_42%] shadow-[0_1px_0_rgba(255,255,255,.4)] max-lg:h-[340px] max-sm:h-[260px] max-sm:rounded-[24px]"
+               src="danny-potrait.png"
+               alt="Evangelist Danny Kioko — Founder of DK Foundation" />
+          <div class="mt-3 text-center text-sm text-black/60 max-lg:text-left">
+            <span class="font-semibold text-release">Evangelist Danny Kioko</span>
+            <span class="mx-1">&mdash;</span>
+            <span>Founder, DK Foundation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END OF ABOUT DANNY -->
+
+    <!-- EVENTS -->
+    <section class="bg-white px-8 pb-[40px] pt-4 text-black max-lg:px-6 max-sm:px-5"
+             aria-labelledby="recent-events">
+      <div class="mx-auto max-w-[1120px]">
+        <h2 id="recent-events"
+            class="mb-[36px] text-center text-[clamp(24px,2.8vw,32px)] font-normal leading-none tracking-normal max-sm:mb-8">
+          <span>Recent</span>
+          <span class="ml-4 inline-block border-b border-release pb-[10px] text-release max-sm:ml-2">Events</span>
+        </h2>
+
+        <div
+             class="grid grid-cols-3 gap-x-8 gap-y-[48px] max-lg:grid-cols-2 max-lg:gap-x-8 max-sm:grid-cols-1 max-sm:gap-y-10">
+          <!-- Event 1: Safe Space GALA 2027 -->
+          <article class="event-card">
+            <h3 class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight">
+              Safe Space GALA 2027
+            </h3>
+            <div class="relative overflow-hidden rounded-[16px]">
+              <img class="h-[170px] w-full object-cover object-center"
+                   src="images/youth_usa/danny_kioko_foundation_usa_meetup.jpg"
+                   alt="Safe Space GALA 2027 event" />
+              <div
+                   class="absolute bottom-2 left-1/2 flex h-[45px] -translate-x-1/2 items-center justify-center rounded bg-white/90 px-4 text-black shadow-sm">
+                <span class="text-xs font-bold text-midnight">May 29, 2027</span>
+              </div>
+            </div>
+            <div class="mt-[18px] flex flex-col gap-2">
+              <p class="text-[13px] leading-[1.5] text-black/80 text-center">
+                Uniting Communities. Transforming Children's Lives.
+              </p>
+              <div class="flex items-center justify-center gap-4 text-xs text-black/60">
+                <span>Washington State, USA</span>
+                <span>•</span>
+                <span>Tickets Soon</span>
+              </div>
+            </div>
+            <div class="mt-[14px] flex items-center justify-center gap-3">
+              <a class="inline-flex h-[34px] items-center justify-center rounded-full bg-release px-5 text-[13px] font-medium text-white transition hover:bg-[#ff642d]"
+                 href="safe-space-gala.html">
+                Learn More
+              </a>
+              <a class="inline-flex h-[34px] items-center justify-center rounded-full bg-midnight px-5 text-[13px] font-medium text-white transition hover:bg-[#173770]"
+                 href="https://dannykioko.org/give/">
+                Donate
+              </a>
+            </div>
+          </article>
+
+          <!-- Event 2: Children's Hope & Empowerment Center -->
+          <article class="event-card">
+            <h3 class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight">
+              Children's Hope Center
+            </h3>
+            <div class="relative overflow-hidden rounded-[16px]">
+              <img class="h-[170px] w-full object-cover object-center"
+                   src="images/kids.jpg"
+                   alt="Children's Hope and Empowerment Center" />
+              <div
+                   class="absolute bottom-2 left-1/2 flex h-[45px] -translate-x-1/2 items-center justify-center rounded bg-white/90 px-4 text-black shadow-sm">
+                <span class="text-xs font-bold text-midnight">Fundraising</span>
+              </div>
+            </div>
+            <div class="mt-[18px] flex flex-col gap-2">
+              <p class="text-[13px] leading-[1.5] text-black/80 text-center">
+                $3M project in Karen, Nairobi — safe home, education,
+                healthcare, and mentorship.
+              </p>
+              <div class="flex items-center justify-center gap-4 text-xs text-black/60">
+                <span>Nairobi, Kenya</span>
+                <span>•</span>
+                <span>Goal: $3M</span>
+              </div>
+            </div>
+            <div class="mt-[14px] flex items-center justify-center gap-3">
+              <a class="inline-flex h-[34px] items-center justify-center rounded-full bg-release px-5 text-[13px] font-medium text-white transition hover:bg-[#ff642d]"
+                 href="about.html">
+                Learn More
+              </a>
+              <a class="inline-flex h-[34px] items-center justify-center rounded-full bg-midnight px-5 text-[13px] font-medium text-white transition hover:bg-[#173770]"
+                 href="https://dannykioko.org/give/">
                 Donate Now
               </a>
             </div>
           </article>
-        </div>
 
-        <button
-          class="slider-arrow prev absolute left-4 top-1/2 z-[5] -translate-y-1/2 inline-flex h-[51px] w-[51px] items-center justify-center rounded-full border border-white/70 bg-white/10 text-white transition hover:scale-[1.04] hover:bg-white/20 focus-visible:scale-[1.04] focus-visible:bg-white/20 max-sm:bottom-6 max-sm:left-[22px] max-sm:top-auto max-sm:translate-y-0 max-sm:h-11 max-sm:w-11"
-          type="button"
-          aria-label="Previous slide"
-        >
-          <svg
-            class="h-[25px] w-[25px] stroke-[1.7]"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path d="M15 18l-6-6 6-6" />
-            <path d="M21 12H9" />
-          </svg>
-        </button>
-
-        <button
-          class="slider-arrow next absolute right-4 top-1/2 z-[5] -translate-y-1/2 inline-flex h-[51px] w-[51px] items-center justify-center rounded-full border border-white/70 bg-white/10 text-white transition hover:scale-[1.04] hover:bg-white/20 focus-visible:scale-[1.04] focus-visible:bg-white/20 max-sm:bottom-6 max-sm:right-[22px] max-sm:top-auto max-sm:translate-y-0 max-sm:h-11 max-sm:w-11"
-          type="button"
-          aria-label="Next slide"
-        >
-          <svg
-            class="h-[25px] w-[25px] stroke-[1.7]"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path d="M9 6l6 6-6 6" />
-            <path d="M3 12h12" />
-          </svg>
-        </button>
-
-        <div
-          class="slider-dots absolute bottom-[82px] left-1/2 z-[6] flex -translate-x-1/2 items-center justify-center gap-1 max-sm:bottom-[38px]"
-          aria-label="Slide controls"
-        ></div>
-        <div
-          class="absolute bottom-0 right-0 z-[4] h-[3px] w-[321px] bg-release max-sm:w-[34vw]"
-          aria-hidden="true"
-        ></div>
-      </section>
-
-      <!-- ABOUT DANNY -->
-      <section
-        class="relative isolate overflow-hidden bg-[#f7f7f7] px-8 pb-[52px] pt-[36px] text-[#050505] max-lg:px-6 max-sm:px-5 max-sm:pb-10 max-sm:pt-8"
-        aria-labelledby="about-foundation"
-      >
-        <div
-          class="pointer-events-none absolute -right-[96px] -top-[128px] z-0 h-[338px] w-[388px] rounded-[52%_0_0_57%/50%_0_0_56%] bg-release max-lg:-right-[150px] max-lg:-top-[150px] max-sm:-right-[190px] max-sm:-top-[180px]"
-          aria-hidden="true"
-        ></div>
-        <div
-          class="pointer-events-none absolute right-[16px] top-[64px] z-0 h-[212px] w-[278px] rotate-[-17deg] rounded-[55%_45%_58%_42%/48%_52%_48%_52%] bg-release max-lg:right-[-72px] max-sm:right-[-140px] max-sm:top-[86px]"
-          aria-hidden="true"
-        ></div>
-        <div
-          class="pointer-events-none absolute -bottom-[73px] -left-[5px] z-0 h-[154px] w-[182px] rounded-tl-none bg-[#fac844] max-sm:-bottom-[88px] max-sm:w-[142px]"
-          aria-hidden="true"
-        >
-          <div
-            class="absolute -bottom-8 -left-8 h-[108px] w-[166px] rounded-[50%] bg-[#f7f7f7]"
-          ></div>
-        </div>
-
-        <div
-          class="relative z-10 mx-auto grid max-w-[1100px] grid-cols-[1fr_420px] items-center gap-[36px] max-lg:grid-cols-1 max-lg:gap-8"
-        >
-          <div class="max-w-[560px] max-lg:max-w-3xl">
-            <h2
-              id="about-foundation"
-              class="mb-[28px] flex flex-wrap items-end gap-x-[20px] gap-y-2 text-[clamp(24px,2.8vw,32px)] font-normal leading-none tracking-normal max-sm:mb-6 max-sm:text-[28px]"
-            >
-              <span>About</span>
-              <span class="border-b border-release pb-2 text-release"
-                >DK Foundation</span
-              >
-            </h2>
-
-            <p
-              class="max-w-[560px] text-[15px] font-normal leading-[1.68] tracking-[.01em] text-black max-lg:text-[15px] max-sm:text-[15px] max-sm:leading-[1.65]"
-            >
-              <strong>DK Foundation</strong> is a nonprofit organization
-              established in Washington State, USA. We exist to mobilize
-              resources, build strategic partnerships, and implement sustainable
-              programs that improve lives and create lasting positive impact in
-              communities across the United States and East Africa.
-            </p>
-
-            <p
-              class="mt-3 max-w-[560px] text-[15px] font-normal leading-[1.68] tracking-[.01em] text-black max-lg:text-[15px] max-sm:text-[15px] max-sm:leading-[1.65]"
-            >
-              Our work focuses on supporting vulnerable children and families,
-              empowering youth through mentorship and leadership development,
-              promoting community outreach through faith-based initiatives, and
-              developing sustainable community resources such as children's
-              centers, schools, and resource hubs.
-            </p>
-
-            <div
-              class="mt-[22px] grid grid-cols-3 gap-3 max-w-[560px] max-sm:grid-cols-1 max-sm:max-w-full"
-            >
+          <!-- Event 3: Youth Mentorship & Leadership Training -->
+          <article class="event-card">
+            <h3 class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight">
+              Youth Mentorship Program
+            </h3>
+            <div class="relative overflow-hidden rounded-[16px]">
+              <img class="h-[170px] w-full object-cover object-center"
+                   src="images/youth_usa/danny_kioko_with_kids_mentoring.jpg"
+                   alt="Danny Kioko youth mentorship program" />
               <div
-                class="rounded-[10px] bg-white border border-black/10 p-4 shadow-[0_6px_18px_rgba(20,18,14,.07)]"
-              >
-                <div
-                  class="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-full bg-release/10 text-release"
-                >
-                  <svg
-                    class="h-4 w-4"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z" />
-                  </svg>
-                </div>
-                <h3 class="text-[13px] font-bold text-ink leading-tight mb-1">
-                  Support Children &amp; Families
-                </h3>
-                <p class="text-[12px] leading-[1.6] text-black/60">
-                  Providing education, healthcare, nutrition, shelter, and
-                  essential support services to disadvantaged children and
-                  families.
-                </p>
-              </div>
-
-              <div
-                class="rounded-[10px] bg-white border border-black/10 p-4 shadow-[0_6px_18px_rgba(20,18,14,.07)]"
-              >
-                <div
-                  class="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-full bg-harvest/30 text-[#a06800]"
-                >
-                  <svg
-                    class="h-4 w-4"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
-                    />
-                  </svg>
-                </div>
-                <h3 class="text-[13px] font-bold text-ink leading-tight mb-1">
-                  Empower Youth
-                </h3>
-                <p class="text-[12px] leading-[1.6] text-black/60">
-                  Equipping young people with life skills, leadership training,
-                  mentorship, and opportunities to reach their full potential.
-                </p>
-              </div>
-
-              <div
-                class="rounded-[10px] bg-white border border-black/10 p-4 shadow-[0_6px_18px_rgba(20,18,14,.07)]"
-              >
-                <div
-                  class="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-full bg-midnight/10 text-midnight"
-                >
-                  <svg
-                    class="h-4 w-4"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-                    />
-                  </svg>
-                </div>
-                <h3 class="text-[13px] font-bold text-ink leading-tight mb-1">
-                  Community Outreach
-                </h3>
-                <p class="text-[12px] leading-[1.6] text-black/60">
-                  Strengthening communities through outreach programs, concerts,
-                  Christian discipleship, counseling, and faith-based
-                  initiatives.
-                </p>
+                   class="absolute bottom-2 left-1/2 flex h-[45px] -translate-x-1/2 items-center justify-center rounded bg-white/90 px-4 text-black shadow-sm">
+                <span class="text-xs font-bold text-midnight">Monthly</span>
               </div>
             </div>
-
-            <div
-              class="mt-[18px] flex max-w-[280px] flex-col gap-[14px] max-sm:max-w-full"
-            >
-              <a
-                class="group inline-flex h-[42px] items-center justify-between rounded-full bg-release px-[32px] text-[15px] font-normal text-white transition hover:bg-[#ff642d] focus-visible:bg-[#ff642d] max-sm:h-12 max-sm:px-7 max-sm:text-[16px]"
-                href="#"
-              >
-                <span>Our Mission</span>
-                <span
-                  class="text-[24px] leading-none transition group-hover:translate-x-1"
-                  aria-hidden="true"
-                  >&rarr;</span
-                >
+            <div class="mt-[18px] flex flex-col gap-2">
+              <p class="text-[13px] leading-[1.5] text-black/80 text-center">
+                Empowering youth through mentorship, leadership training, and
+                life-skills development in Washington State.
+              </p>
+              <div class="flex items-center justify-center gap-4 text-xs text-black/60">
+                <span>Washington State</span>
+                <span>•</span>
+                <span>Open to All</span>
+              </div>
+            </div>
+            <div class="mt-[14px] flex items-center justify-center gap-3">
+              <a class="inline-flex h-[34px] items-center justify-center rounded-full bg-release px-5 text-[13px] font-medium text-white transition hover:bg-[#ff642d]"
+                 href="the-light.html">
+                Join Us
               </a>
+              <a class="inline-flex h-[34px] items-center justify-center rounded-full bg-midnight px-5 text-[13px] font-medium text-white transition hover:bg-[#173770]"
+                 href="#">
+                Volunteer
+              </a>
+            </div>
+          </article>
 
-              <a
-                class="group inline-flex h-[42px] items-center justify-between rounded-full bg-midnight px-[32px] text-[15px] font-normal text-white transition hover:bg-[#173770] focus-visible:bg-[#173770] max-sm:h-12 max-sm:px-7 max-sm:text-[16px]"
-                href="#"
-              >
-                <span>Get Involved</span>
-                <span
-                  class="text-[24px] leading-none transition group-hover:translate-x-1"
-                  aria-hidden="true"
-                  >&rarr;</span
-                >
+          <!-- Event 4: Community Outreach - East Africa -->
+          <article class="event-card">
+            <h3 class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight">
+              East Africa Outreach
+            </h3>
+            <div class="relative overflow-hidden rounded-[16px]">
+              <img class="h-[170px] w-full object-cover object-center"
+                   src="images/shosh.jpg"
+                   alt="East Africa community outreach" />
+              <div
+                   class="absolute bottom-2 left-1/2 flex h-[45px] -translate-x-1/2 items-center justify-center rounded bg-white/90 px-4 text-black shadow-sm">
+                <span class="text-xs font-bold text-midnight">Ongoing</span>
+              </div>
+            </div>
+            <div class="mt-[18px] flex flex-col gap-2">
+              <p class="text-[13px] leading-[1.5] text-black/80 text-center">
+                Supporting vulnerable children and families with education,
+                nutrition, healthcare, and spiritual care across Kenya and
+                East Africa.
+              </p>
+              <div class="flex items-center justify-center gap-4 text-xs text-black/60">
+                <span>Kenya &amp; East Africa</span>
+                <span>•</span>
+                <span>100+ Children Supported</span>
+              </div>
+            </div>
+            <div class="mt-[14px] flex items-center justify-center gap-3">
+              <a class="inline-flex h-[34px] items-center justify-center rounded-full bg-release px-5 text-[13px] font-medium text-white transition hover:bg-[#ff642d]"
+                 href="about.html">
+                Learn More
+              </a>
+              <a class="inline-flex h-[34px] items-center justify-center rounded-full bg-midnight px-5 text-[13px] font-medium text-white transition hover:bg-[#173770]"
+                 href="#">
+                Sponsor a Child
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- EVENTS -->
+
+    <section class="relative isolate overflow-hidden bg-[#f7f7f7] px-8 pb-10 pt-8 text-black max-lg:px-6 max-sm:px-5"
+             aria-labelledby="dkf-title">
+      <div class="pointer-events-none absolute -left-[70px] -top-[150px] h-[250px] w-[190px] rounded-[0_0_90px_90px] bg-[#fac844] max-sm:-left-[110px]"
+           aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -left-[54px] top-[76px] h-[170px] w-[132px] rounded-full bg-[#fac844] max-sm:-left-[92px]"
+           aria-hidden="true"></div>
+      <div class="pointer-events-none absolute left-1/2 top-[-290px] -z-0 h-[980px] w-[1060px] -translate-x-1/2 rounded-[48%] border border-[#fac844]/80"
+           aria-hidden="true"></div>
+
+      <div class="relative z-10 mx-auto max-w-[980px] text-center">
+        <h2 id="dkf-title"
+            class="mb-6 text-[clamp(24px,2.8vw,34px)] font-normal leading-none tracking-normal">
+          <span>Danny Kioko</span>
+          <span
+                class="ml-3 inline-block border-b border-release pb-3 text-release max-sm:ml-0 max-sm:mt-2">Foundation</span>
+        </h2>
+
+        <p class="mx-auto max-w-[850px] text-[15px] font-normal leading-[1.62] tracking-[.01em] max-sm:text-[14px]">
+          The Danny Kioko Foundation (DKF) is a non-profit organization
+          dedicated to improving the quality of life for underprivileged
+          children and vulnerable communities in Kenya and beyond. The
+          foundation was born out of the many cases of need that Danny
+          encountered during his evangelism missions across Kenya and East
+          Africa.
+        </p>
+
+        <div class="mt-[24px] grid grid-cols-3 gap-[32px] max-lg:gap-4 max-md:grid-cols-1">
+          <div class="rounded-[12px] bg-[#fac844] px-6 py-4 text-white">
+            <p class="font-mono text-[40px] leading-none tracking-[-.04em] max-lg:text-[34px]">
+              1,000
+            </p>
+            <p class="mt-3 text-[14px] font-bold leading-none">
+              Children Reached
+            </p>
+          </div>
+          <div class="rounded-[12px] bg-midnight px-6 py-4 text-white">
+            <p class="font-mono text-[40px] leading-none tracking-[-.04em] max-lg:text-[34px]">
+              $ 50k
+            </p>
+            <p class="mt-3 text-[14px] font-bold leading-none">Raised</p>
+          </div>
+          <div class="rounded-[12px] bg-[#20d461] px-6 py-4 text-white">
+            <p class="font-mono text-[40px] leading-none tracking-[-.04em] max-lg:text-[34px]">
+              $ 50k
+            </p>
+            <p class="mt-3 text-[14px] font-bold leading-none">Raised</p>
+          </div>
+        </div>
+
+        <div class="mt-[24px] flex items-end justify-between gap-6 text-left max-md:flex-col max-md:items-stretch">
+          <div>
+            <p class="mb-3 text-[17px] font-normal leading-none">
+              Support Us Via:
+            </p>
+            <div class="flex flex-wrap gap-5">
+              <a class="inline-flex h-[44px] min-w-[132px] items-center justify-center rounded-full border border-[#ead8df] bg-white px-6 text-[20px] font-extrabold text-[#34b557]"
+                 href="#"
+                 aria-label="Support via M-PESA">
+                <img class="h-[25px] w-auto object-contain"
+                     src="m-pesa-logo.png"
+                     alt="M-PESA" />
+              </a>
+              <a class="inline-flex h-[44px] min-w-[132px] items-center justify-center gap-2 rounded-full border border-[#ead8df] bg-white px-6 text-[15px] font-extrabold text-[#1d4f99]"
+                 href="#"
+                 aria-label="Support via PayPal">
+                <img class="h-[22px] w-auto object-contain"
+                     src="paypal-logo.png"
+                     alt="PayPal" />
               </a>
             </div>
           </div>
 
-          <div
-            class="relative max-lg:mx-auto max-lg:w-full max-lg:max-w-[560px]"
-          >
-            <img
-              class="h-[360px] w-full rounded-[32px] object-cover object-[50%_42%] shadow-[0_1px_0_rgba(255,255,255,.4)] max-lg:h-[340px] max-sm:h-[260px] max-sm:rounded-[24px]"
-              src="danny-potrait.png"
-              alt="Evangelist Danny Kioko — Founder of DK Foundation"
-            />
-            <div
-              class="mt-3 text-center text-sm text-black/60 max-lg:text-left"
-            >
-              <span class="font-semibold text-release"
-                >Evangelist Danny Kioko</span
-              >
-              <span class="mx-1">&mdash;</span>
-              <span>Founder, DK Foundation</span>
-            </div>
-          </div>
+          <a class="inline-flex h-[42px] min-w-[220px] items-center justify-center gap-4 rounded-full bg-midnight px-8 text-[16px] font-normal text-white transition hover:bg-[#173770] max-sm:min-w-0 max-sm:w-full"
+             href="about.html">
+            More About DKF
+            <span class="text-[22px]"
+                  aria-hidden="true">&rarr;</span>
+          </a>
         </div>
-      </section>
-      <!-- END OF ABOUT DANNY -->
+      </div>
+    </section>
 
-      <!-- EVENTS -->
-      <section
-        class="bg-white px-8 pb-[40px] pt-4 text-black max-lg:px-6 max-sm:px-5"
-        aria-labelledby="recent-events"
-      >
-        <div class="mx-auto max-w-[1120px]">
-          <h2
-            id="recent-events"
-            class="mb-[36px] text-center text-[clamp(24px,2.8vw,32px)] font-normal leading-none tracking-normal max-sm:mb-8"
-          >
-            <span>Recent</span>
-            <span
-              class="ml-4 inline-block border-b border-release pb-[10px] text-release max-sm:ml-2"
-              >Events</span
-            >
-          </h2>
-
-          <div
-            class="grid grid-cols-3 gap-x-8 gap-y-[48px] max-lg:grid-cols-2 max-lg:gap-x-8 max-sm:grid-cols-1 max-sm:gap-y-10"
-          >
-            <!-- Event 1: Safe Space GALA 2027 -->
-            <article class="event-card">
-              <h3
-                class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight"
-              >
-                Safe Space GALA 2027
-              </h3>
-              <div class="relative overflow-hidden rounded-[16px]">
-                <img
-                  class="h-[170px] w-full object-cover object-center"
-                  src="images/safe.jpg"
-                  alt="Safe Space GALA 2027 event"
-                />
-                <div
-                  class="absolute bottom-2 left-1/2 flex h-[45px] -translate-x-1/2 items-center justify-center rounded bg-white/90 px-4 text-black shadow-sm"
-                >
-                  <span class="text-xs font-bold text-midnight"
-                    >May 29, 2027</span
-                  >
-                </div>
-              </div>
-              <div class="mt-[18px] flex flex-col gap-2">
-                <p class="text-[13px] leading-[1.5] text-black/80 text-center">
-                  Uniting Communities. Transforming Children's Lives.
-                </p>
-                <div
-                  class="flex items-center justify-center gap-4 text-xs text-black/60"
-                >
-                  <span>Washington State, USA</span>
-                  <span>•</span>
-                  <span>Tickets Soon</span>
-                </div>
-              </div>
-              <div class="mt-[14px] flex items-center justify-center gap-3">
-                <a
-                  class="inline-flex h-[34px] items-center justify-center rounded-full bg-release px-5 text-[13px] font-medium text-white transition hover:bg-[#ff642d]"
-                  href="#"
-                >
-                  Learn More
-                </a>
-                <a
-                  class="inline-flex h-[34px] items-center justify-center rounded-full bg-midnight px-5 text-[13px] font-medium text-white transition hover:bg-[#173770]"
-                  href="#"
-                >
-                  Donate
-                </a>
-              </div>
-            </article>
-
-            <!-- Event 2: Children's Hope & Empowerment Center -->
-            <article class="event-card">
-              <h3
-                class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight"
-              >
-                Children's Hope Center
-              </h3>
-              <div class="relative overflow-hidden rounded-[16px]">
-                <img
-                  class="h-[170px] w-full object-cover object-center"
-                  src="images/kids.jpg"
-                  alt="Children's Hope and Empowerment Center"
-                />
-                <div
-                  class="absolute bottom-2 left-1/2 flex h-[45px] -translate-x-1/2 items-center justify-center rounded bg-white/90 px-4 text-black shadow-sm"
-                >
-                  <span class="text-xs font-bold text-midnight"
-                    >Fundraising</span
-                  >
-                </div>
-              </div>
-              <div class="mt-[18px] flex flex-col gap-2">
-                <p class="text-[13px] leading-[1.5] text-black/80 text-center">
-                  $3M project in Karen, Nairobi — safe home, education,
-                  healthcare, and mentorship.
-                </p>
-                <div
-                  class="flex items-center justify-center gap-4 text-xs text-black/60"
-                >
-                  <span>Nairobi, Kenya</span>
-                  <span>•</span>
-                  <span>Goal: $3M</span>
-                </div>
-              </div>
-              <div class="mt-[14px] flex items-center justify-center gap-3">
-                <a
-                  class="inline-flex h-[34px] items-center justify-center rounded-full bg-release px-5 text-[13px] font-medium text-white transition hover:bg-[#ff642d]"
-                  href="#"
-                >
-                  Learn More
-                </a>
-                <a
-                  class="inline-flex h-[34px] items-center justify-center rounded-full bg-midnight px-5 text-[13px] font-medium text-white transition hover:bg-[#173770]"
-                  href="#"
-                >
-                  Donate Now
-                </a>
-              </div>
-            </article>
-
-            <!-- Event 3: Youth Mentorship & Leadership Training -->
-            <article class="event-card">
-              <h3
-                class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight"
-              >
-                Youth Mentorship Program
-              </h3>
-              <div class="relative overflow-hidden rounded-[16px]">
-                <img
-                  class="h-[170px] w-full object-cover object-center"
-                  src="images/danny.jpg"
-                  alt="Danny Kioko youth mentorship program"
-                />
-                <div
-                  class="absolute bottom-2 left-1/2 flex h-[45px] -translate-x-1/2 items-center justify-center rounded bg-white/90 px-4 text-black shadow-sm"
-                >
-                  <span class="text-xs font-bold text-midnight">Monthly</span>
-                </div>
-              </div>
-              <div class="mt-[18px] flex flex-col gap-2">
-                <p class="text-[13px] leading-[1.5] text-black/80 text-center">
-                  Empowering youth through mentorship, leadership training, and
-                  life-skills development in Washington State.
-                </p>
-                <div
-                  class="flex items-center justify-center gap-4 text-xs text-black/60"
-                >
-                  <span>Washington State</span>
-                  <span>•</span>
-                  <span>Open to All</span>
-                </div>
-              </div>
-              <div class="mt-[14px] flex items-center justify-center gap-3">
-                <a
-                  class="inline-flex h-[34px] items-center justify-center rounded-full bg-release px-5 text-[13px] font-medium text-white transition hover:bg-[#ff642d]"
-                  href="#"
-                >
-                  Join Us
-                </a>
-                <a
-                  class="inline-flex h-[34px] items-center justify-center rounded-full bg-midnight px-5 text-[13px] font-medium text-white transition hover:bg-[#173770]"
-                  href="#"
-                >
-                  Volunteer
-                </a>
-              </div>
-            </article>
-
-            <!-- Event 4: Community Outreach - East Africa -->
-            <article class="event-card">
-              <h3
-                class="mb-4 text-center text-[16px] font-normal leading-none tracking-[.01em] text-midnight"
-              >
-                East Africa Outreach
-              </h3>
-              <div class="relative overflow-hidden rounded-[16px]">
-                <img
-                  class="h-[170px] w-full object-cover object-center"
-                  src="images/shosh.jpg"
-                  alt="East Africa community outreach"
-                />
-                <div
-                  class="absolute bottom-2 left-1/2 flex h-[45px] -translate-x-1/2 items-center justify-center rounded bg-white/90 px-4 text-black shadow-sm"
-                >
-                  <span class="text-xs font-bold text-midnight">Ongoing</span>
-                </div>
-              </div>
-              <div class="mt-[18px] flex flex-col gap-2">
-                <p class="text-[13px] leading-[1.5] text-black/80 text-center">
-                  Supporting vulnerable children and families with education,
-                  nutrition, healthcare, and spiritual care across Kenya and
-                  East Africa.
-                </p>
-                <div
-                  class="flex items-center justify-center gap-4 text-xs text-black/60"
-                >
-                  <span>Kenya &amp; East Africa</span>
-                  <span>•</span>
-                  <span>100+ Children Supported</span>
-                </div>
-              </div>
-              <div class="mt-[14px] flex items-center justify-center gap-3">
-                <a
-                  class="inline-flex h-[34px] items-center justify-center rounded-full bg-release px-5 text-[13px] font-medium text-white transition hover:bg-[#ff642d]"
-                  href="#"
-                >
-                  Learn More
-                </a>
-                <a
-                  class="inline-flex h-[34px] items-center justify-center rounded-full bg-midnight px-5 text-[13px] font-medium text-white transition hover:bg-[#173770]"
-                  href="#"
-                >
-                  Sponsor a Child
-                </a>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-      <!-- EVENTS -->
-
-      <section
-        class="relative isolate overflow-hidden bg-[#f7f7f7] px-8 pb-10 pt-8 text-black max-lg:px-6 max-sm:px-5"
-        aria-labelledby="dkf-title"
-      >
-        <div
-          class="pointer-events-none absolute -left-[70px] -top-[150px] h-[250px] w-[190px] rounded-[0_0_90px_90px] bg-[#fac844] max-sm:-left-[110px]"
-          aria-hidden="true"
-        ></div>
-        <div
-          class="pointer-events-none absolute -left-[54px] top-[76px] h-[170px] w-[132px] rounded-full bg-[#fac844] max-sm:-left-[92px]"
-          aria-hidden="true"
-        ></div>
-        <div
-          class="pointer-events-none absolute left-1/2 top-[-290px] -z-0 h-[980px] w-[1060px] -translate-x-1/2 rounded-[48%] border border-[#fac844]/80"
-          aria-hidden="true"
-        ></div>
-
-        <div class="relative z-10 mx-auto max-w-[980px] text-center">
-          <h2
-            id="dkf-title"
-            class="mb-6 text-[clamp(24px,2.8vw,34px)] font-normal leading-none tracking-normal"
-          >
-            <span>Danny Kioko</span>
-            <span
-              class="ml-3 inline-block border-b border-release pb-3 text-release max-sm:ml-0 max-sm:mt-2"
-              >Foundation</span
-            >
-          </h2>
-
-          <p
-            class="mx-auto max-w-[850px] text-[15px] font-normal leading-[1.62] tracking-[.01em] max-sm:text-[14px]"
-          >
-            The Danny Kioko Foundation (DKF) is a non-profit organization
-            dedicated to improving the quality of life for underprivileged
-            children and vulnerable communities in Kenya and beyond. The
-            foundation was born out of the many cases of need that Danny
-            encountered during his evangelism missions across Kenya and East
-            Africa.
+    <footer class="bg-midnight px-8 pb-4 pt-[32px] text-white max-lg:px-6 max-sm:px-5">
+      <div
+           class="mx-auto grid max-w-[1066px] grid-cols-[1.4fr_1fr_.8fr_auto] gap-14 max-lg:grid-cols-2 max-sm:grid-cols-1">
+        <div>
+          <a class="font-script text-[32px] leading-none text-white"
+             href="#">Danny Kioko</a>
+          <p class="mt-4 text-[13px] font-light text-white/85">
+            The Worship Minister and Evangelist
           </p>
+        </div>
 
-          <div
-            class="mt-[24px] grid grid-cols-3 gap-[32px] max-lg:gap-4 max-md:grid-cols-1"
-          >
-            <div class="rounded-[12px] bg-[#fac844] px-6 py-4 text-white">
-              <p
-                class="font-mono text-[40px] leading-none tracking-[-.04em] max-lg:text-[34px]"
-              >
-                1,000
-              </p>
-              <p class="mt-3 text-[14px] font-bold leading-none">
-                Children Reached
-              </p>
-            </div>
-            <div class="rounded-[12px] bg-midnight px-6 py-4 text-white">
-              <p
-                class="font-mono text-[40px] leading-none tracking-[-.04em] max-lg:text-[34px]"
-              >
-                $ 50k
-              </p>
-              <p class="mt-3 text-[14px] font-bold leading-none">Raised</p>
-            </div>
-            <div class="rounded-[12px] bg-[#20d461] px-6 py-4 text-white">
-              <p
-                class="font-mono text-[40px] leading-none tracking-[-.04em] max-lg:text-[34px]"
-              >
-                $ 50k
-              </p>
-              <p class="mt-3 text-[14px] font-bold leading-none">Raised</p>
-            </div>
-          </div>
+        <div>
+          <h3 class="mb-8 text-[15px] font-light uppercase tracking-[.04em] text-white">
+            Links
+          </h3>
+          <nav class="flex flex-col gap-4 text-[15px] font-light text-white/90">
+            <a href="#">Music</a>
+            <a href="#">Danny Kioko Foundation</a>
+            <a href="#">The Light</a>
+          </nav>
 
-          <div
-            class="mt-[24px] flex items-end justify-between gap-6 text-left max-md:flex-col max-md:items-stretch"
-          >
-            <div>
-              <p class="mb-3 text-[17px] font-normal leading-none">
-                Support Us Via:
-              </p>
-              <div class="flex flex-wrap gap-5">
-                <a
-                  class="inline-flex h-[44px] min-w-[132px] items-center justify-center rounded-full border border-[#ead8df] bg-white px-6 text-[20px] font-extrabold text-[#34b557]"
-                  href="#"
-                  aria-label="Support via M-PESA"
-                >
-                  <img
-                    class="h-[25px] w-auto object-contain"
-                    src="m-pesa-logo.png"
-                    alt="M-PESA"
-                  />
-                </a>
-                <a
-                  class="inline-flex h-[44px] min-w-[132px] items-center justify-center gap-2 rounded-full border border-[#ead8df] bg-white px-6 text-[15px] font-extrabold text-[#1d4f99]"
-                  href="#"
-                  aria-label="Support via PayPal"
-                >
-                  <img
-                    class="h-[22px] w-auto object-contain"
-                    src="paypal-logo.png"
-                    alt="PayPal"
-                  />
-                </a>
-              </div>
-            </div>
-
-            <a
-              class="inline-flex h-[42px] min-w-[220px] items-center justify-center gap-4 rounded-full bg-midnight px-8 text-[16px] font-normal text-white transition hover:bg-[#173770] max-sm:min-w-0 max-sm:w-full"
-              href="about.html"
-            >
-              More About DKF
-              <span class="text-[22px]" aria-hidden="true">&rarr;</span>
+          <div class="mt-8 flex gap-4 text-white">
+            <a href="#"
+               aria-label="Facebook">
+              <svg class="h-5 w-5"
+                   viewBox="0 0 24 24"
+                   fill="currentColor">
+                <path d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v8h4v-8h3l1-4h-4V9c0-.6.4-1 1-1z" />
+              </svg>
+            </a>
+            <a href="#"
+               aria-label="Instagram">
+              <svg class="h-5 w-5"
+                   viewBox="0 0 24 24"
+                   fill="none"
+                   stroke="currentColor"
+                   stroke-width="2">
+                <rect x="4"
+                      y="4"
+                      width="16"
+                      height="16"
+                      rx="5" />
+                <circle cx="12"
+                        cy="12"
+                        r="3.5" />
+                <path d="M17.5 6.5h.01" />
+              </svg>
+            </a>
+            <a href="#"
+               aria-label="Twitter">
+              <svg class="h-5 w-5"
+                   viewBox="0 0 24 24"
+                   fill="currentColor">
+                <path
+                      d="M22 5.8c-.7.3-1.5.5-2.3.6.8-.5 1.4-1.2 1.7-2.2-.8.5-1.6.8-2.6 1-1.5-1.6-4.1-.8-4.7 1.3-.1.4-.1.8 0 1.1-3.2-.2-6-1.7-7.9-4-.4.7-.6 1.5-.3 2.3.2.8.7 1.5 1.4 1.9-.6 0-1.2-.2-1.7-.5 0 1.8 1.3 3.4 3.1 3.7-.6.2-1.2.2-1.8.1.5 1.5 2 2.6 3.7 2.7-1.6 1.2-3.5 1.9-5.6 1.9H4c1.8 1.2 4 1.8 6.3 1.8 7.5 0 11.7-6.2 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z" />
+              </svg>
+            </a>
+            <a href="#"
+               aria-label="Email">
+              <svg class="h-5 w-5"
+                   viewBox="0 0 24 24"
+                   fill="none"
+                   stroke="currentColor"
+                   stroke-width="2">
+                <path d="M4 6h16v12H4z" />
+                <path d="m4 7 8 6 8-6" />
+              </svg>
             </a>
           </div>
         </div>
-      </section>
 
-      <footer
-        class="bg-midnight px-8 pb-4 pt-[32px] text-white max-lg:px-6 max-sm:px-5"
-      >
-        <div
-          class="mx-auto grid max-w-[1066px] grid-cols-[1.4fr_1fr_.8fr_auto] gap-14 max-lg:grid-cols-2 max-sm:grid-cols-1"
-        >
-          <div>
-            <a class="font-script text-[32px] leading-none text-white" href="#"
-              >Danny Kioko</a
-            >
-            <p class="mt-4 text-[13px] font-light text-white/85">
-              The Worship Minister and Evangelist
-            </p>
-          </div>
-
-          <div>
-            <h3
-              class="mb-8 text-[15px] font-light uppercase tracking-[.04em] text-white"
-            >
-              Links
-            </h3>
-            <nav
-              class="flex flex-col gap-4 text-[15px] font-light text-white/90"
-            >
-              <a href="#">Music</a>
-              <a href="#">Danny Kioko Foundation</a>
-              <a href="#">The Light</a>
-            </nav>
-
-            <div class="mt-8 flex gap-4 text-white">
-              <a href="#" aria-label="Facebook">
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v8h4v-8h3l1-4h-4V9c0-.6.4-1 1-1z"
-                  />
-                </svg>
-              </a>
-              <a href="#" aria-label="Instagram">
-                <svg
-                  class="h-5 w-5"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <rect x="4" y="4" width="16" height="16" rx="5" />
-                  <circle cx="12" cy="12" r="3.5" />
-                  <path d="M17.5 6.5h.01" />
-                </svg>
-              </a>
-              <a href="#" aria-label="Twitter">
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M22 5.8c-.7.3-1.5.5-2.3.6.8-.5 1.4-1.2 1.7-2.2-.8.5-1.6.8-2.6 1-1.5-1.6-4.1-.8-4.7 1.3-.1.4-.1.8 0 1.1-3.2-.2-6-1.7-7.9-4-.4.7-.6 1.5-.3 2.3.2.8.7 1.5 1.4 1.9-.6 0-1.2-.2-1.7-.5 0 1.8 1.3 3.4 3.1 3.7-.6.2-1.2.2-1.8.1.5 1.5 2 2.6 3.7 2.7-1.6 1.2-3.5 1.9-5.6 1.9H4c1.8 1.2 4 1.8 6.3 1.8 7.5 0 11.7-6.2 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z"
-                  />
-                </svg>
-              </a>
-              <a href="#" aria-label="Email">
-                <svg
-                  class="h-5 w-5"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M4 6h16v12H4z" />
-                  <path d="m4 7 8 6 8-6" />
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <h3
-              class="mb-8 text-[15px] font-light uppercase tracking-[.04em] text-white"
-            >
-              Songs
-            </h3>
-            <div
-              class="flex flex-col gap-4 text-[15px] font-light text-white/90"
-            >
-              <a href="#">Muvango</a>
-              <a href="#">Muvango</a>
-              <a href="#">Muvango</a>
-            </div>
-          </div>
-
-          <div class="flex flex-col gap-6">
-            <a class="footer-listen-pill text-[#1ed760]" href="#"
-              ><span class="spotify-icon"
-                ><svg
-                  class="h-3 w-3"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-width="2.3"
-                >
-                  <path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" />
-                  <path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" />
-                  <path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" /></svg></span
-              ><span>Spotify</span></a
-            >
-            <a class="footer-listen-pill text-white" href="#"
-              ><span class="youtube-icon"
-                ><svg class="h-2.5 w-3" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M9 7.8v8.4l7.2-4.2L9 7.8z" /></svg></span
-              ><span>YouTube</span></a
-            >
-            <a class="footer-listen-pill text-white" href="#"
-              ><svg
-                class="h-[26px] w-[22px]"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path
-                  d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z"
-                /></svg
-              ><span>Apple</span></a
-            >
+        <div>
+          <h3 class="mb-8 text-[15px] font-light uppercase tracking-[.04em] text-white">
+            Songs
+          </h3>
+          <div class="flex flex-col gap-4 text-[15px] font-light text-white/90">
+            <a href="#">Muvango</a>
+            <a href="#">Muvango</a>
+            <a href="#">Muvango</a>
           </div>
         </div>
 
-        <div
-          class="mx-auto mt-[40px] max-w-[1066px] border-t border-white/20 pt-6 text-center text-[15px] font-light text-white/90"
-        >
-          &copy; Dan Kioko -2026
+        <div class="flex flex-col gap-6">
+          <a class="footer-listen-pill text-[#1ed760]"
+             href="#"><span class="spotify-icon"><svg class="h-3 w-3"
+                   viewBox="0 0 24 24"
+                   fill="none"
+                   stroke="currentColor"
+                   stroke-linecap="round"
+                   stroke-width="2.3">
+                <path d="M5 8.5c4.7-1.3 9.2-.8 13.4 1.4" />
+                <path d="M6.2 12c3.7-.9 7.2-.5 10.4 1.2" />
+                <path d="M7.4 15.2c2.7-.6 5.2-.3 7.4.9" />
+              </svg></span><span>Spotify</span></a>
+          <a class="footer-listen-pill text-white"
+             href="https://www.youtube.com/@DannyKioko"
+             target="_blank"><span class="youtube-icon"><svg class="h-2.5 w-3"
+                   viewBox="0 0 24 24"
+                   fill="currentColor">
+                <path d="M9 7.8v8.4l7.2-4.2L9 7.8z" />
+              </svg></span><span>YouTube</span></a>
+          <a class="footer-listen-pill text-white"
+             href="#"><svg class="h-[26px] w-[22px]"
+                 viewBox="0 0 24 24"
+                 fill="currentColor">
+              <path
+                    d="M16.4 2.2c.1 1.3-.4 2.5-1.2 3.4-.9 1-2.2 1.7-3.4 1.6-.2-1.2.4-2.5 1.2-3.3.9-1 2.3-1.7 3.4-1.7zM20.5 17.1c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-3.9 1c-1.7 0-3-1.6-4-3.1-2.8-4.2-3.1-9.1-1.4-11.8 1.2-1.9 3.1-3 4.9-3 1.8 0 3 1 4.5 1 1.4 0 2.3-1 4.4-1 1.6 0 3.2.9 4.4 2.3-3.8 2.1-3.2 7.6.6 9.5z" />
+            </svg><span>Apple</span></a>
         </div>
-      </footer>
-    </main>
+      </div>
 
-    <script>
-      const slides = Array.from(document.querySelectorAll(".slide"));
-      const dotsWrap = document.querySelector(".slider-dots");
-      const prevButton = document.querySelector(".slider-arrow.prev");
-      const nextButton = document.querySelector(".slider-arrow.next");
-      const menuButton = document.querySelector(".menu-button");
-      const siteNav = document.querySelector("#siteNav");
-      const dotBaseClass =
-        "dot h-[13px] w-[13px] rounded-full border-0 bg-white opacity-95 transition-[width,opacity]";
-      let activeIndex = 0;
-      let autoplayId;
+      <div
+           class="mx-auto mt-[40px] max-w-[1066px] border-t border-white/20 pt-6 text-center text-[15px] font-light text-white/90">
+        &copy; Dan Kioko Foundation
+      </div>
+    </footer>
+  </main>
 
-      slides.forEach((_, index) => {
-        const dot = document.createElement("button");
-        dot.className =
-          index === 0 ? `${dotBaseClass} is-active` : dotBaseClass;
-        dot.type = "button";
-        dot.setAttribute("aria-label", `Go to slide ${index + 1}`);
-        dot.addEventListener("click", () => {
-          showSlide(index);
-          restartAutoplay();
-        });
-        dotsWrap.appendChild(dot);
-      });
+  <script>
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const dotsWrap = document.querySelector(".slider-dots");
+    const prevButton = document.querySelector(".slider-arrow.prev");
+    const nextButton = document.querySelector(".slider-arrow.next");
+    const menuButton = document.querySelector(".menu-button");
+    const siteNav = document.querySelector("#siteNav");
+    const dotBaseClass =
+      "dot h-[13px] w-[13px] rounded-full border-0 bg-white opacity-95 transition-[width,opacity]";
+    let activeIndex = 0;
+    let autoplayId;
 
-      const dots = Array.from(document.querySelectorAll(".dot"));
-
-      function showSlide(index) {
-        activeIndex = (index + slides.length) % slides.length;
-
-        slides.forEach((slide, slideIndex) => {
-          slide.classList.toggle("is-active", slideIndex === activeIndex);
-        });
-
-        dots.forEach((dot, dotIndex) => {
-          dot.classList.toggle("is-active", dotIndex === activeIndex);
-        });
-      }
-
-      function nextSlide() {
-        showSlide(activeIndex + 1);
-      }
-
-      function restartAutoplay() {
-        window.clearInterval(autoplayId);
-        autoplayId = window.setInterval(nextSlide, 6500);
-      }
-
-      prevButton.addEventListener("click", () => {
-        showSlide(activeIndex - 1);
+    slides.forEach((_, index) => {
+      const dot = document.createElement("button");
+      dot.className =
+        index === 0 ? `${dotBaseClass} is-active` : dotBaseClass;
+      dot.type = "button";
+      dot.setAttribute("aria-label", `Go to slide ${index + 1}`);
+      dot.addEventListener("click", () => {
+        showSlide(index);
         restartAutoplay();
       });
+      dotsWrap.appendChild(dot);
+    });
 
-      nextButton.addEventListener("click", () => {
-        nextSlide();
-        restartAutoplay();
+    const dots = Array.from(document.querySelectorAll(".dot"));
+
+    function showSlide(index) {
+      activeIndex = (index + slides.length) % slides.length;
+
+      slides.forEach((slide, slideIndex) => {
+        slide.classList.toggle("is-active", slideIndex === activeIndex);
       });
 
-      menuButton.addEventListener("click", () => {
-        const isOpen = siteNav.classList.toggle("is-open");
-        menuButton.setAttribute("aria-expanded", String(isOpen));
+      dots.forEach((dot, dotIndex) => {
+        dot.classList.toggle("is-active", dotIndex === activeIndex);
       });
+    }
 
+    function nextSlide() {
+      showSlide(activeIndex + 1);
+    }
+
+    function restartAutoplay() {
+      window.clearInterval(autoplayId);
+      autoplayId = window.setInterval(nextSlide, 6500);
+    }
+
+    prevButton.addEventListener("click", () => {
+      showSlide(activeIndex - 1);
       restartAutoplay();
+    });
 
-      const menuButton = document.querySelector(".menu-button");
-      const siteNav = document.querySelector("#siteNav");
+    nextButton.addEventListener("click", () => {
+      nextSlide();
+      restartAutoplay();
+    });
 
-      menuButton.addEventListener("click", () => {
-        const isOpen = siteNav.classList.toggle("is-open");
-        menuButton.setAttribute("aria-expanded", String(isOpen));
-      });
-    </script>
-  </body>
+    menuButton.addEventListener("click", () => {
+      const isOpen = siteNav.classList.toggle("is-open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    restartAutoplay();
+  </script>
+</body>
+
 </html>

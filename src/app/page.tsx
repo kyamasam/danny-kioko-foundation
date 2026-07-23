@@ -5,6 +5,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { Footer } from "@/components/landing";
 
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -515,6 +516,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 }
