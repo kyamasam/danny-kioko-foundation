@@ -1,27 +1,21 @@
 import type { Metadata } from "next";
-import { Jost } from "next/font/google";
+import { Header } from "@/components/foundation/Header";
+import { Footer } from "@/components/foundation/Footer";
 import "./globals.css";
 
-const jost = Jost({
-  variable: "--font-jost",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800"],
-});
-
 export const metadata: Metadata = {
-  title: "A.J.K. Bett - Financial Strategist & Author",
+  title: {
+    default: "Danny Kioko Foundation",
+    template: "%s",
+  },
   description:
-    "Practical blueprints for wealth generation from Kenya's leading financial strategist. Books, podcasts, and insights for entrepreneurs and investors.",
-  keywords:
-    "financial planning, wealth generation, business books, Kenya finance, retirement planning",
-  authors: [{ name: "Aggrey Jonathan K. Bett" }],
+    "Danny Kioko Foundation restores hope, supports children and families, and empowers youth through mentorship, outreach, and community programs.",
   openGraph: {
-    title: "A.J.K. Bett - Financial Strategist & Author",
+    title: "Danny Kioko Foundation",
     description:
-      "Practical blueprints for wealth generation from Kenya's leading financial strategist",
+      "Restoring hope, building communities, and empowering young people.",
     type: "website",
-    locale: "en_KE",
+    locale: "en_US",
   },
 };
 
@@ -31,9 +25,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${jost.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-['Jost',sans-serif]">
+    <html lang="en">
+      <body>
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
