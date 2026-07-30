@@ -2,18 +2,6 @@
 
 import Script from "next/script";
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      "dbox-widget": React.HTMLAttributes<HTMLElement> & {
-        campaign: string;
-        type: string;
-        "enable-auto-scroll"?: string;
-      };
-    }
-  }
-}
-
 export function DonorBoxWidget() {
   return (
     <>
