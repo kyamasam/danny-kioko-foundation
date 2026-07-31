@@ -1,9 +1,21 @@
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
+import { pageMetadata } from "../seo";
 
-export const metadata: Metadata = {
-  title: "Danny Kioko | Music & Evangelism",
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Music & Evangelism",
+  description:
+    "Explore Danny Kioko's gospel music and evangelism ministry supporting DK Foundation outreach, youth mentorship, worship, and community impact in the USA and East Africa.",
+  path: "/music-and-evangelism",
+  image: [
+    {
+      url: "/images/home/danny_kioko_passport_portrait.jpg",
+      width: 864,
+      height: 1296,
+      alt: "Danny Kioko gospel artist and founder of Danny Kioko Foundation",
+    },
+  ],
+});
 
 export const dynamic = "force-dynamic";
 

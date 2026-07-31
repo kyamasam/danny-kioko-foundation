@@ -1,9 +1,21 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { pageMetadata } from "../seo";
 
-export const metadata: Metadata = {
-  title: "Safe Space GALA 2027 — DK Foundation",
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Safe Space Gala 2027",
+  description:
+    "Join Danny Kioko Foundation's Safe Space Gala on May 29, 2027 in Washington State to support a children's center, youth mentorship, and community transformation.",
+  path: "/safe-space-gala",
+  image: [
+    {
+      url: "/images/youth_usa/danny_kioko_young_people_meetup.jpg",
+      width: 2048,
+      height: 1536,
+      alt: "Safe Space Gala community gathering for Danny Kioko Foundation",
+    },
+  ],
+});
 
 export const dynamic = "force-dynamic";
 

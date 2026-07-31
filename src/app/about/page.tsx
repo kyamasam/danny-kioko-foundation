@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "../seo";
 
-export const metadata: Metadata = {
-  title: "Danny Kioko Foundation | About DKF",
-};
+export const metadata: Metadata = pageMetadata({
+  title: "About DK Foundation",
+  description:
+    "Learn about Danny Kioko Foundation, a Washington State nonprofit helping vulnerable children and families access education, nutrition, healthcare, shelter, mentorship, and spiritual support.",
+  path: "/about",
+});
 
 export const dynamic = "force-dynamic";
 

@@ -1,9 +1,21 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { pageMetadata } from "../seo";
 
-export const metadata: Metadata = {
-  title: "Danny Kioko | Safe Space",
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Safe Space Youth Mentorship Program",
+  description:
+    "Safe Space is a DK Foundation youth mentorship initiative offering leadership development, faith-based support, life skills, community service, and positive role models.",
+  path: "/safe-space",
+  image: [
+    {
+      url: "/images/youth_usa/danny_kioko_young_people_meetup.jpg",
+      width: 2048,
+      height: 1536,
+      alt: "Young people gathered for a Danny Kioko Foundation Safe Space mentorship meetup",
+    },
+  ],
+});
 
 export const dynamic = "force-dynamic";
 

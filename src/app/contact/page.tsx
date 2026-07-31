@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "../seo";
 
-export const metadata: Metadata = {
-  title: "Danny Kioko Foundation | Contact",
+export const metadata: Metadata = pageMetadata({
+  title: "Contact",
   description:
-    "Get in touch with the Danny Kioko Foundation. We'd love to hear from you.",
-};
+    "Contact Danny Kioko Foundation to ask questions, explore partnerships, volunteer, sponsor programs, or support nonprofit work for children, families, and youth.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
@@ -20,7 +22,7 @@ export default function ContactPage() {
           </h1>
           <p className="mt-5 max-w-[540px] text-[17px] leading-[1.65] text-black/72 max-sm:text-[15px]">
             Have a question, want to partner with us, or just want to say hello?
-            Fill out the form below and we'll get back to you as soon as
+            Fill out the form below and we&apos;ll get back to you as soon as
             possible.
           </p>
         </div>

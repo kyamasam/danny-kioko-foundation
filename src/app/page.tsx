@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "./seo";
 
-export const metadata: Metadata = {
-  title: "Danny Kioko Foundation | Music & Evangelism",
+export const metadata: Metadata = pageMetadata({
+  title: "Washington Nonprofit for Children, Families & Youth",
   description:
-    "Danny Kioko Foundation restores hope, supports children and families, and empowers youth through mentorship, outreach, and community programs.",
-};
+    "Danny Kioko Foundation restores hope through youth mentorship, child welfare, education support, faith-based outreach, and community programs in the USA and East Africa.",
+  path: "/",
+});
 
 export const dynamic = "force-dynamic";
 

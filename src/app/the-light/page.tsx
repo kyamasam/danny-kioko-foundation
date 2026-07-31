@@ -1,8 +1,20 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "../seo";
 
-export const metadata: Metadata = {
-  title: "Danny Kioko | The Light",
-};
+export const metadata: Metadata = pageMetadata({
+  title: "The Light Youth Project",
+  description:
+    "The Light is a DK Foundation youth project helping young people grow in faith, leadership, purpose, life skills, mentorship, prayer, worship, and service.",
+  path: "/the-light",
+  image: [
+    {
+      url: "/images/youth_usa/danny_kioko_mentorship_meetup_usa.jpg",
+      width: 2048,
+      height: 1536,
+      alt: "Danny Kioko Foundation mentorship session with young people",
+    },
+  ],
+});
 
 export const dynamic = "force-dynamic";
 

@@ -1,11 +1,13 @@
 import { DonorBoxWidget } from "@/components/foundation/DonorBoxWidget";
 import type { Metadata } from "next";
+import { pageMetadata } from "../seo";
 
-export const metadata: Metadata = {
-  title: "Danny Kioko Foundation | Donate",
+export const metadata: Metadata = pageMetadata({
+  title: "Donate to Support Children & Youth",
   description:
-    "Support the Danny Kioko Foundation. Your gift restores hope for vulnerable children and families.",
-};
+    "Donate to Danny Kioko Foundation and help provide education, meals, healthcare, shelter, mentorship, and safe community programs for vulnerable children and youth.",
+  path: "/donate",
+});
 
 export default function DonatePage() {
   return (
