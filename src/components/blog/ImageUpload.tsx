@@ -44,7 +44,7 @@ export function ImageUpload({ value, onChange }: Props) {
 
       {value ? (
         <div className="relative h-48 w-full overflow-hidden rounded-lg border border-[#ececec]">
-          <Image src={value} alt="Cover" fill className="object-cover" />
+          <Image src={value} alt="Cover" fill className="object-cover" unoptimized />
           <button
             type="button"
             onClick={() => onChange("")}

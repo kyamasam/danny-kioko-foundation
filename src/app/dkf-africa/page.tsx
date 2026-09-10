@@ -130,7 +130,7 @@ export default function AboutPage() {
                  aria-labelledby="mission-title">
           <div className="bg-midnight px-10 py-[74px] text-white max-lg:px-8 max-sm:px-5 max-sm:py-14">
             <div className="mx-auto max-w-[520px]">
-              <p className="mb-5 text-[16px] font-medium uppercase tracking-[.12em] text-harvest">
+              <p id="our-mission" className="mb-5 text-[16px] font-medium uppercase tracking-[.12em] text-harvest">
                 Our Mission
               </p>
               <h2 id="mission-title"

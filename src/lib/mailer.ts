@@ -30,6 +30,45 @@ export function verifyUnsubscribeToken(email: string, token: string): boolean {
   }
 }
 
+export async function sendNewEventEmail(subscribers: string[], event: {
+  title: string;
+  slug: string;
+  excerpt?: string | null;
+}) {
+  if (subscribers.length === 0) return;
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://dannykioko.org";
+  const eventUrl = `${siteUrl}/events/${event.slug}`;
+  const from = process.env.SMTP_FROM ?? "Danny Kioko Foundation <info@dannykioko.org>";
+
+  for (const email of subscribers) {
+    const token = generateUnsubscribeToken(email);
+    const unsubscribeUrl = `${siteUrl}/unsubscribe?email=${encodeURIComponent(email)}&token=${token}`;
+
+    await transporter.sendMail({
+      from,
+      to: email,
+      subject: `New event: ${event.title}`,
+      html: `
+        <div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:24px">
+          <p style="font-size:12px;font-weight:600;letter-spacing:.08em;color:#e84c2b;text-transform:uppercase;margin-bottom:8px">Upcoming Event</p>
+          <h2 style="color:#1a1a1a;margin-top:0">${event.title}</h2>
+          ${event.excerpt ? `<p style="color:#555">${event.excerpt}</p>` : ""}
+          <a href="${eventUrl}" style="display:inline-block;margin-top:16px;padding:12px 24px;background:#e84c2b;color:#fff;border-radius:6px;text-decoration:none">
+            View event details
+          </a>
+          <hr style="margin-top:32px;border:none;border-top:1px solid #eee"/>
+          <p style="font-size:12px;color:#999">
+            You're receiving this because you subscribed at dannykioko.org.
+            <br/>
+            <a href="${unsubscribeUrl}" style="color:#999">Unsubscribe</a>
+          </p>
+        </div>
+      `,
+    });
+  }
+}
+
 export async function sendNewPostEmail(subscribers: string[], post: {
   title: string;
   slug: string;

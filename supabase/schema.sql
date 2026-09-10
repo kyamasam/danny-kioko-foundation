@@ -75,6 +75,69 @@ CREATE POLICY "public_insert_subscribers"
   ON dk_foundation.subscribers FOR INSERT
   WITH CHECK (true);
 
+create table if not exists dk_foundation.events (
+  id uuid primary key default gen_random_uuid(),
+  title text not null,
+  slug text not null unique,
+  excerpt text,
+  content jsonb not null default '{}',
+  cover_image text,
+  preview_images jsonb not null default '[]',
+  cta_buttons jsonb not null default '[]',
+  status text not null default 'draft' check (status in ('draft', 'published')),
+  author_name text not null default 'DK Foundation',
+  published_at timestamptz,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create trigger events_updated_at
+  before update on dk_foundation.events
+  for each row execute function dk_foundation.set_updated_at();
+
+alter table dk_foundation.events enable row level security;
+
+create policy "public_read_published_events"
+  on dk_foundation.events for select
+  using (status = 'published');
+
+create policy "admin_all_events"
+  on dk_foundation.events for all
+  using (auth.role() = 'authenticated')
+  with check (auth.role() = 'authenticated');
+
+-- Hero Slides table
+create table if not exists dk_foundation.hero_slides (
+  id                 uuid primary key default gen_random_uuid(),
+  label              text not null,
+  label_accent_color text not null default '#21d0c3',
+  heading            text not null,
+  subheading         text not null,
+  image_url          text not null,
+  image_position     text not null default 'center',
+  button_label       text not null default 'Learn More',
+  button_url         text not null default '#',
+  sort_order         integer not null default 0,
+  status             text not null default 'draft' check (status in ('draft', 'published')),
+  created_at         timestamptz not null default now(),
+  updated_at         timestamptz not null default now()
+);
+
+create trigger hero_slides_updated_at
+  before update on dk_foundation.hero_slides
+  for each row execute function dk_foundation.set_updated_at();
+
+alter table dk_foundation.hero_slides enable row level security;
+
+create policy "public_read_published_slides"
+  on dk_foundation.hero_slides for select
+  using (status = 'published');
+
+create policy "admin_all_slides"
+  on dk_foundation.hero_slides for all
+  using (auth.role() = 'authenticated')
+  with check (auth.role() = 'authenticated');
+
 -- ============================================================
 -- After running this SQL, also do these steps in the dashboard:
 --

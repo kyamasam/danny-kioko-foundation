@@ -38,6 +38,24 @@ export default async function AdminLayout({
             New post
           </Link>
           <Link
+            href="/admin/hero-slides"
+            className="rounded-lg px-3 py-2 font-medium text-[#111] hover:bg-[#f5f2ec]"
+          >
+            Hero Slides
+          </Link>
+          <Link
+            href="/admin/events"
+            className="rounded-lg px-3 py-2 font-medium text-[#111] hover:bg-[#f5f2ec]"
+          >
+            Events
+          </Link>
+          <Link
+            href="/admin/events/new"
+            className="rounded-lg px-3 py-2 font-medium text-[#111] hover:bg-[#f5f2ec]"
+          >
+            New event
+          </Link>
+          <Link
             href="/admin/subscribers"
             className="rounded-lg px-3 py-2 font-medium text-[#111] hover:bg-[#f5f2ec]"
           >
@@ -48,6 +66,12 @@ export default async function AdminLayout({
             className="rounded-lg px-3 py-2 font-medium text-[#111] hover:bg-[#f5f2ec]"
           >
             View blog
+          </Link>
+          <Link
+            href="/events"
+            className="rounded-lg px-3 py-2 font-medium text-[#111] hover:bg-[#f5f2ec]"
+          >
+            View events
           </Link>
         </nav>
 
