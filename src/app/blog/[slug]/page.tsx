@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { type Metadata } from "next";
+import { createServiceClient } from "@/lib/supabase/server";
 
 type Blog = {
   id: string;
@@ -18,10 +19,14 @@ type Blog = {
 };
 
 async function getBlog(slug: string): Promise<Blog | null> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-  const res = await fetch(`${baseUrl}/api/blogs/${slug}`, { next: { revalidate: 60 } });
-  if (!res.ok) return null;
-  return res.json();
+  const supabase = createServiceClient();
+  const { data, error } = await supabase
+    .from("blogs")
+    .select("id, title, slug, excerpt, content, cover_image, status, author_name, published_at, created_at")
+    .eq("slug", slug)
+    .single();
+  if (error || !data) return null;
+  return data;
 }
 
 export async function generateMetadata(

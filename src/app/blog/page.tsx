@@ -1,4 +1,5 @@
 import { BlogCard, type Blog } from "@/components/blog/BlogCard";
+import { createServiceClient } from "@/lib/supabase/server";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -7,10 +8,15 @@ export const metadata: Metadata = {
 };
 
 async function getBlogs(): Promise<Blog[]> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-  const res = await fetch(`${baseUrl}/api/blogs`, { next: { revalidate: 60 } });
-  if (!res.ok) return [];
-  return res.json();
+  const supabase = createServiceClient();
+  const { data, error } = await supabase
+    .from("blogs")
+    .select("id, title, slug, excerpt, cover_image, status, author_name, published_at, created_at")
+    .eq("status", "published")
+    .order("created_at", { ascending: false })
+    .limit(20);
+  if (error) return [];
+  return data ?? [];
 }
 
 export default async function BlogPage() {
