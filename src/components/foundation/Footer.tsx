@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -13,6 +16,68 @@ const involvedLinks = [
   { label: "Annual Gala", href: "/safe-space-gala" },
   { label: "Donate", href: "/donate" },
 ];
+
+function SubscribeForm() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error" | "duplicate">("idle");
+  const [message, setMessage] = useState("");
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setStatus("loading");
+
+    const res = await fetch("/api/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
+
+    if (res.ok) {
+      setStatus("success");
+      setEmail("");
+    } else {
+      const data = await res.json();
+      setStatus(res.status === 409 ? "duplicate" : "error");
+      setMessage(data.error ?? "Something went wrong.");
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+      <label className="sr-only" htmlFor="footer-email">
+        Email Address
+      </label>
+      {status === "success" ? (
+        <p className="rounded-md bg-green-900/30 px-4 py-3 text-[14px] text-green-300">
+          You&apos;re subscribed! Thank you.
+        </p>
+      ) : (
+        <>
+          <input
+            className="min-h-11 w-full rounded-md border border-white/15 bg-white px-4 text-[15px] text-midnight outline-none transition placeholder:text-midnight/50 focus:border-harvest focus:ring-2 focus:ring-harvest/30"
+            id="footer-email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email address"
+            required
+            disabled={status === "loading"}
+          />
+          {(status === "error" || status === "duplicate") && (
+            <p className="text-[13px] text-red-300">{message}</p>
+          )}
+          <button
+            className="inline-flex min-h-11 items-center justify-center rounded-full bg-harvest px-5 text-[14px] font-semibold text-midnight transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-harvest/40 disabled:opacity-60"
+            type="submit"
+            disabled={status === "loading"}
+          >
+            {status === "loading" ? "Subscribing…" : "Subscribe"}
+          </button>
+        </>
+      )}
+    </form>
+  );
+}
 
 export function Footer() {
   return (
@@ -146,40 +211,7 @@ export function Footer() {
           <p className="mb-5 text-[15px] font-light text-white/80">
             Get foundation updates and upcoming events in your inbox.
           </p>
-          <form
-            action="https://dannykioko.us21.list-manage.com/subscribe/post?u=fd4a0a1948c79b678f20ed19b&id=212a565b05&f_id=000ca8e6f0"
-            method="post"
-            target="_blank"
-            className="flex flex-col gap-3"
-            name="mc-embedded-subscribe-form"
-          >
-            <label className="sr-only" htmlFor="footer-mce-email">
-              Email Address
-            </label>
-            <input
-              className="min-h-11 w-full rounded-md border border-white/15 bg-white px-4 text-[15px] text-midnight outline-none transition placeholder:text-midnight/50 focus:border-harvest focus:ring-2 focus:ring-harvest/30"
-              id="footer-mce-email"
-              type="email"
-              name="EMAIL"
-              placeholder="Email address"
-              required
-            />
-            <div aria-hidden="true" className="absolute left-[-5000px]">
-              <input
-                type="text"
-                name="b_fd4a0a1948c79b678f20ed19b_212a565b05"
-                tabIndex={-1}
-                defaultValue=""
-              />
-            </div>
-            <button
-              className="inline-flex min-h-11 items-center justify-center rounded-full bg-harvest px-5 text-[14px] font-semibold text-midnight transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-harvest/40"
-              type="submit"
-              name="subscribe"
-            >
-              Subscribe
-            </button>
-          </form>
+          <SubscribeForm />
         </div>
       </div>
 

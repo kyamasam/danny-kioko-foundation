@@ -6,11 +6,12 @@ import { useState } from "react";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "Safe Space", href: "/safe-space" },
-  { label: "About Us", href: "/about" },
+  { label: "DKF USA", href: "/dkf-usa" },
+  { label: "DKF Africa", href: "/dkf-africa" },
   { label: "Music", href: "/music-and-evangelism" },
-  { label: "Safe Space Gala", href: "/safe-space-gala" },
-  { label: "The Light", href: "/the-light" },
+  { label: "Stories", href: "/blog" },
+  // { label: "Safe Space Gala", href: "/safe-space-gala" },
+  // { label: "The Light", href: "/the-light" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -57,8 +58,8 @@ export function Header() {
               <Link
                 key={item.href}
                 className={`${baseNavClass} ${isActive
-                    ? "text-release after:scale-x-100"
-                    : "after:scale-x-0"
+                  ? "text-release after:scale-x-100"
+                  : "after:scale-x-0"
                   }`}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
