@@ -39,7 +39,8 @@ export async function sendNewEventEmail(subscribers: string[], event: {
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://dannykioko.org";
   const eventUrl = `${siteUrl}/events/${event.slug}`;
-  const from = process.env.SMTP_FROM ?? "Danny Kioko Foundation <info@dannykioko.org>";
+  const from = process.env.SMTP_FROM;
+  if (!from) throw new Error("SMTP_FROM env var is not set");
 
   for (const email of subscribers) {
     const token = generateUnsubscribeToken(email);
@@ -78,7 +79,8 @@ export async function sendNewPostEmail(subscribers: string[], post: {
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://dannykioko.org";
   const postUrl = `${siteUrl}/blog/${post.slug}`;
-  const from = process.env.SMTP_FROM ?? "Danny Kioko Foundation <info@dannykioko.org>";
+  const from = process.env.SMTP_FROM;
+  if (!from) throw new Error("SMTP_FROM env var is not set");
 
   for (const email of subscribers) {
     const token = generateUnsubscribeToken(email);
