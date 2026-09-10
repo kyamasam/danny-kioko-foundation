@@ -133,7 +133,82 @@ export default function HomePage() {
                aria-hidden="true"></div>
         </section>
     
-        {/* ABOUT DANNY */}
+        {/* ABOUT DANNY KIOKO - PERSON */}
+        <section className="relative isolate overflow-hidden bg-midnight px-8 pb-[60px] pt-[52px] text-white max-lg:px-6 max-sm:px-5 max-sm:pb-10 max-sm:pt-10"
+                 aria-labelledby="about-danny-kioko">
+          <div className="pointer-events-none absolute -left-[80px] -top-[100px] z-0 h-[300px] w-[340px] rounded-[52%_0_0_57%/50%_0_0_56%] bg-release/20 max-sm:-left-[160px]"
+               aria-hidden="true"></div>
+          <div className="pointer-events-none absolute -bottom-[60px] -right-[20px] z-0 h-[200px] w-[240px] rotate-[12deg] rounded-[55%_45%_58%_42%/48%_52%_48%_52%] bg-release/10"
+               aria-hidden="true"></div>
+
+          <div className="relative z-10 mx-auto grid max-w-[1100px] grid-cols-[380px_1fr] items-center gap-[48px] max-lg:grid-cols-1 max-lg:gap-8">
+            <div className="relative max-lg:mx-auto max-lg:w-full max-lg:max-w-[400px]">
+              <img className="h-[480px] w-full rounded-[32px] object-cover object-[50%_15%] shadow-[0_24px_48px_rgba(0,0,0,.45)] max-lg:h-[360px] max-sm:h-[400px] max-sm:rounded-[24px]"
+                   src="/danny-potrait.png"
+                   alt="Danny Kioko — Performing Artist, Youth Mentor &amp; Founder" />
+              <div className="mt-3 text-center text-sm text-white/60">
+                <span className="font-semibold text-release">Danny Kioko</span>
+                <span className="mx-1">—</span>
+                <span>Artist · Mentor · Founder</span>
+              </div>
+            </div>
+
+            <div className="max-w-[580px] max-lg:max-w-3xl">
+              <h2 id="about-danny-kioko"
+                  className="mb-[28px] flex flex-wrap items-end gap-x-[20px] gap-y-2 text-[clamp(24px,2.8vw,32px)] font-normal leading-none tracking-normal max-sm:mb-6 max-sm:text-[28px]">
+                <span>About</span>
+                <span className="border-b border-release pb-2 text-release">Danny Kioko</span>
+              </h2>
+
+              <p className="max-w-[560px] text-[15px] font-normal leading-[1.75] tracking-[.01em] text-white/85 max-sm:text-[15px] max-sm:leading-[1.65]">
+                Danny Kioko is a passionate performing artist whose journey through music gave birth to a broader mission of inspiring and empowering the community. Through music, he became a dedicated youth mentor and founded <strong className="text-white">Safe Space Inc.</strong>, a youth mentorship program.
+              </p>
+
+              <p className="mt-4 max-w-[560px] text-[15px] font-normal leading-[1.75] tracking-[.01em] text-white/85 max-sm:text-[15px] max-sm:leading-[1.65]">
+                His vision further grew through the founding of <strong className="text-white">DK Foundation Kenya (DKF Kenya)</strong>, which supports needy children by providing essential basic needs, and <strong className="text-white">DK Foundation USA</strong>, extending his commitment to creating opportunities and transforming lives.
+              </p>
+
+              <div className="mt-[28px] flex flex-wrap gap-4">
+                <div className="flex items-start gap-3">
+                  <div className="mt-[2px] flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-release/20 text-release">
+                    <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-[13px] font-semibold text-white leading-tight">Performing Artist</p>
+                    <p className="text-[12px] text-white/55 leading-snug mt-[2px]">Music as a vehicle for community transformation</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="mt-[2px] flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-harvest/20 text-harvest">
+                    <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-[13px] font-semibold text-white leading-tight">Youth Mentor</p>
+                    <p className="text-[12px] text-white/55 leading-snug mt-[2px]">Founder of Safe Space Inc. mentorship program</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="mt-[2px] flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/10 text-white/70">
+                    <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-[13px] font-semibold text-white leading-tight">Nonprofit Founder</p>
+                    <p className="text-[12px] text-white/55 leading-snug mt-[2px]">DKF Kenya &amp; DK Foundation USA</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* END OF ABOUT DANNY KIOKO */}
+
+        {/* ABOUT DK FOUNDATION */}
         <section className="relative isolate overflow-hidden bg-[#f7f7f7] px-8 pb-[52px] pt-[36px] text-[#050505] max-lg:px-6 max-sm:px-5 max-sm:pb-10 max-sm:pt-8"
                  aria-labelledby="about-foundation">
           <div className="pointer-events-none absolute -right-[96px] -top-[128px] z-0 h-[338px] w-[388px] rounded-[52%_0_0_57%/50%_0_0_56%] bg-release max-lg:-right-[150px] max-lg:-top-[150px] max-sm:-right-[190px] max-sm:-top-[180px]"
@@ -252,18 +327,18 @@ export default function HomePage() {
             </div>
     
             <div className="relative max-lg:mx-auto max-lg:w-full max-lg:max-w-[560px]">
-              <img className="h-[520px] w-full rounded-[32px] object-cover object-[50%_42%] shadow-[0_1px_0_rgba(255,255,255,.4)] max-lg:h-[340px] max-sm:h-[440px] max-sm:rounded-[24px]"
-                   src="/danny-potrait.png"
-                   alt="Evangelist Danny Kioko — Founder of DK Foundation" />
+              <img className="h-[520px] w-full rounded-[32px] object-cover object-center shadow-[0_1px_0_rgba(255,255,255,.4)] max-lg:h-[340px] max-sm:h-[440px] max-sm:rounded-[24px]"
+                   src="/images/dkf_kenya/danny_kioko_foundation_happy_kids_with_danny.jpg"
+                   alt="DK Foundation — Danny Kioko with children in Kenya" />
               <div className="mt-3 text-center text-sm text-black/60 max-lg:text-left">
-                <span className="font-semibold text-release">Evangelist Danny Kioko</span>
+                <span className="font-semibold text-release">DK Foundation Kenya</span>
                 <span className="mx-1">—</span>
-                <span>Founder, DK Foundation</span>
+                <span>Transforming lives, one child at a time</span>
               </div>
             </div>
           </div>
         </section>
-        {/* END OF ABOUT DANNY */}
+        {/* END OF ABOUT DK FOUNDATION */}
     
         {/* EVENTS */}
         <section className="bg-white px-8 pb-[40px] pt-4 text-black max-lg:px-6 max-sm:px-5"
