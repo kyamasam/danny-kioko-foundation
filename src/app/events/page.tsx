@@ -1,4 +1,5 @@
 import { EventCard, type Event } from "@/components/events/EventCard";
+import { createServiceClient } from "@/lib/supabase/server";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -6,11 +7,19 @@ export const metadata: Metadata = {
   description: "Upcoming and past events from the Danny Kioko Foundation.",
 };
 
+export const revalidate = 60;
+
 async function getEvents(): Promise<Event[]> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-  const res = await fetch(`${baseUrl}/api/events`, { next: { revalidate: 60 } });
-  if (!res.ok) return [];
-  return res.json();
+  const supabase = createServiceClient();
+  const { data, error } = await supabase
+    .from("events")
+    .select("id, title, slug, excerpt, cover_image, preview_images, cta_buttons, status, author_name, published_at, created_at")
+    .eq("status", "published")
+    .order("created_at", { ascending: false })
+    .range(0, 19);
+
+  if (error) return [];
+  return data ?? [];
 }
 
 export default async function EventsPage() {
